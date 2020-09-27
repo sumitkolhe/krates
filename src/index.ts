@@ -1,8 +1,6 @@
-import express, { Application, Request, Response, NextFunction } from "express";
+import express, { Application } from "express";
 import "../src/store/store";
-import controller from "./controller/controller"
-
-
+import controller from "./controller/controller";
 const app: Application = express();
 
 app.use(express.urlencoded({ extended: true }));

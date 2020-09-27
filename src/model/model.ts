@@ -1,11 +1,14 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Collection, Schema } from "mongoose";
 
-const boxSchema = new Schema({
-  boxId: { type: String, required: true },
-  hedge: { type: String, required: false },
-  boxData: { type: Object, required: true },
-});
+const boxSchema = new Schema(
+  {
+    boxId: { type: String },
+    hedge: { type: String, required: true },
+    boxData: { type: Object, required: true },
+  },
+  { collection: "user_data" }
+);
 
-const db = mongoose.model("user_data", boxSchema);
+const db = mongoose.model("box_data", boxSchema);
 
 export = db;
