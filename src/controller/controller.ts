@@ -1,4 +1,4 @@
-import express, { Application, Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import db from "../model/model";
 
 const getBox = async (req: Request, res: Response) => {
