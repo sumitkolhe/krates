@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import config from "../config/config"
 
 const dbConnection = mongoose.connect(
-  "mongodb://localhost:27017/box-dev",
+  config.MONGO_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

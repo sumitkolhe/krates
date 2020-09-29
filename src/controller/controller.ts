@@ -10,7 +10,7 @@ const getBoxData = async (req: Request, res: Response) => {
     }
   });
 
-  console.log(db_instance)
+  res.json(db_instance)
 };
 
 const setBoxData = async (req: Request, res: Response) => {
