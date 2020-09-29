@@ -1,10 +1,8 @@
 import { Router } from "express";
-import controller from '../controller/controller';
+import controller from "../controller/controller";
 const router = Router();
 
-router.get("/api/:boxId", controller.getBoxData)
+router.get("/:boxId/:clusterId?", controller.getBoxData);
+router.post("/:boxId/:clusterId?", controller.setBoxData);
 
-router.post("/api/:boxId", controller.setBoxData)
-
-
-export = router
+export = router;
