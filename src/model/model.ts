@@ -1,4 +1,4 @@
-import mongoose, { Collection, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import config from "../config/config";
 
 const boxSchema = new Schema(
