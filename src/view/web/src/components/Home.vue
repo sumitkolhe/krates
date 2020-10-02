@@ -17,22 +17,26 @@
               ></path>
             </svg>
 
-            <h1 class="mt-0">Box</h1>
+            <header class="mt-0">
+              <h1>Box</h1>
+              <h3 class="version-text">v1</h3>
+            </header>
 
-            <h3 class="mt-2 font-weight-medium">
-              <i>A free HTTP based JSON storage</i>
+            <h3 class="mt-2 tagline-text" color="#f55555">
+              <i> A free HTTP based JSON storage</i>
             </h3>
           </v-col>
         </v-row>
 
         <v-row class="mt-2">
           <v-col align="left" class="px-10">
-            <div class="font-weight-regular">
-              <h3>
-                <b>Box</b> is a free to use service that allows you to store,
-                read & modify your JSON data over HTTP API. Copy the URL below
-                and start sending HTTP requests to play around with your data
-                store.
+            <div>
+              <h3 class="body-text">
+                <b>Box</b> is a free to use service that offers a secured JSON
+                based cloud datastore for small projects. Box allows easy data
+                storage just by sending HTTP requests to your Box endpoints. You
+                can store, read , modify & delete your JSON data with just an
+                HTTP API request.
               </h3>
             </div>
           </v-col>
@@ -70,9 +74,8 @@
       <v-col class="text-center" cols="12">
         <h4 class="font-weight-medium">
           Made with ❤️ by
-          <b class="text-decoration-underline">
-            <a href="https://sumit.codes" target="_blank">Sumit</a>
-          </b>
+
+          <a class="text-decoration" href="https://sumit.codes" target="_blank">Sumit</a>
         </h4>
       </v-col>
     </v-footer>
@@ -111,9 +114,28 @@ h4 {
   letter-spacing: 1px;
   font-weight: 400;
 }
-
+h1,
 h3 {
+  display: inline-block;
+}
+.version-text {
   font-weight: 500;
+  font-size: 20px;
+  padding-left: 10px;
+  color: #7e7e7e;
+}
+
+.tagline-text {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.body-text {
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
 }
 
 .boxField {
