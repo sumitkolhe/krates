@@ -20,7 +20,7 @@
             <h1 class="mt-0">Box</h1>
 
             <h3 class="mt-2 font-weight-medium">
-              A free HTTP based JSON storage
+              <i>A free HTTP based JSON storage</i>
             </h3>
           </v-col>
         </v-row>
@@ -28,11 +28,12 @@
         <v-row class="mt-2">
           <v-col align="left" class="px-10">
             <div class="font-weight-regular">
-              <h4>
-                <b>Box</b> lets you store, read & modify JSON data over HTTP
-                APIs for free. Copy the URL below and start sending HTTP
-                requests to play around with your data store.
-              </h4>
+              <h3>
+                <b>Box</b> is a free to use service that allows you to store,
+                read & modify your JSON data over HTTP API. Copy the URL below
+                and start sending HTTP requests to play around with your data
+                store.
+              </h3>
             </div>
           </v-col>
         </v-row>
@@ -40,7 +41,7 @@
         <div v-clipboard:copy="generatedBoxId">
           <v-row>
             <v-col align="center" cols="12">
-              <div class="boxField" color="#ffffff">
+              <div class="boxField">
                 {{ generatedBoxId }}
               </div>
             </v-col>
@@ -49,7 +50,13 @@
 
         <v-row class="mt-6">
           <v-col align="center" class="px-10">
-            <v-btn elevation="0" class="pa-5" color="btnColor">
+            <v-btn
+              elevation="0"
+              class="pa-5"
+              color="btnColor"
+              href="https://docs.box.wtf"
+              target="_blank"
+            >
               <v-icon left> mdi-book </v-icon>
               <h4 class="font-weight-medium"><b>Read the docs</b></h4>
             </v-btn>
@@ -105,10 +112,15 @@ h4 {
   font-weight: 400;
 }
 
+h3 {
+  font-weight: 500;
+}
+
 .boxField {
   cursor: pointer;
-  margin: 2rem 25px;
+  margin: 2rem 20px;
   font-weight: 500;
+  font-size: 16px;
   background-color: #f55555;
   padding: 1.5rem 10px;
   color: #fff;
