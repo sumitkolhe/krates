@@ -1,7 +1,9 @@
 import express, { Application } from "express";
-import "../src/store/store";
+import { dbConnect } from "../src/store/store";
 import routes from "./routes/route";
 const app: Application = express();
+
+dbConnect();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -1,91 +1,70 @@
 <template>
-  <div>
-    <v-container>
-      <v-row class="mx-n8 box-padding">
-        <v-col></v-col>
-        <v-col cols="12" sm="10" md="8" lg="6" xl="5">
-          <v-row>
-            <v-col align="center" cols="12">
-              <svg
-                @click="changeTheme()"
-                width="84"
-                height="84"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M20.49,7.52a.19.19,0,0,1,0-.08.17.17,0,0,1,0-.07l0-.09-.06-.15,0,0h0l0,0,0,0a.48.48,0,0,0-.09-.11l-.09-.08h0l-.05,0,0,0L16.26,4.45h0l-3.72-2.3A.85.85,0,0,0,12.25,2h-.08a.82.82,0,0,0-.27,0h-.1a1.13,1.13,0,0,0-.33.13L4,6.78l-.09.07-.09.08L3.72,7l-.05.06,0,0-.06.15,0,.09v.06a.69.69,0,0,0,0,.2v8.73a1,1,0,0,0,.47.85l7.5,4.64h0l0,0,.15.06.08,0a.86.86,0,0,0,.52,0l.08,0,.15-.06,0,0h0L20,17.21a1,1,0,0,0,.47-.85V7.63S20.49,7.56,20.49,7.52ZM12,4.17l1.78,1.1L8.19,8.73,6.4,7.63Zm-1,15L5.5,15.81V9.42l5.5,3.4Zm1-8.11L10.09,9.91l5.59-3.47L17.6,7.63Zm6.5,4.72L13,19.2V12.82l5.5-3.4Z"
-                ></path>
-              </svg>
-
-              <header>
-                <h1>Box</h1>
-              </header>
-
-              <h3 class="mt-2 tagline-text" color="#f55555">
-                <i> A free HTTP based JSON storage</i>
-              </h3>
-            </v-col>
-          </v-row>
-
-          <v-row class="mt-2">
-            <v-col align="center" class="px-10">
-              <div>
-                <h3 class="body-text">
-                  <b>Box</b> is a free to use service that offers a secured JSON
-                  based cloud datastore for small projects. Box allows easy data
-                  storage just by sending HTTP requests to your Box endpoints.
-                  You can store, read , modify & delete your JSON data with just
-                  an HTTP API request.
-                </h3>
-              </div>
-            </v-col>
-          </v-row>
-
-      
-          <div class="mt-n6" v-clipboard:copy="generatedBoxId">
-            <v-row>
-              <v-col align="center" cols="12">
-                <div class="box-field">
-                  {{ generatedBoxId }}
-                </div>
-              </v-col>
-            </v-row>
+  <v-container>
+    <v-row align="center" justify="center">
+      <svg @click="changeTheme()" width="84" height="84" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M20.49,7.52a.19.19,0,0,1,0-.08.17.17,0,0,1,0-.07l0-.09-.06-.15,0,0h0l0,0,0,0a.48.48,0,0,0-.09-.11l-.09-.08h0l-.05,0,0,0L16.26,4.45h0l-3.72-2.3A.85.85,0,0,0,12.25,2h-.08a.82.82,0,0,0-.27,0h-.1a1.13,1.13,0,0,0-.33.13L4,6.78l-.09.07-.09.08L3.72,7l-.05.06,0,0-.06.15,0,.09v.06a.69.69,0,0,0,0,.2v8.73a1,1,0,0,0,.47.85l7.5,4.64h0l0,0,.15.06.08,0a.86.86,0,0,0,.52,0l.08,0,.15-.06,0,0h0L20,17.21a1,1,0,0,0,.47-.85V7.63S20.49,7.56,20.49,7.52ZM12,4.17l1.78,1.1L8.19,8.73,6.4,7.63Zm-1,15L5.5,15.81V9.42l5.5,3.4Zm1-8.11L10.09,9.91l5.59-3.47L17.6,7.63Zm6.5,4.72L13,19.2V12.82l5.5-3.4Z"
+        ></path>
+      </svg>
+    </v-row>
+    <v-row align="center" justify="center">
+      <h1>Box</h1>
+    </v-row>
+    <v-row justify="center" class="tagline-text mt-2" color="#f55555">
+      <i> A free HTTP based JSON storage</i>
+    </v-row>
+    <v-row justify="center" class="mt-6">
+      <v-col
+        align="center"
+        class="px-10"
+        cols="12"
+        sm="10"
+        md="8"
+        lg="6"
+        xl="5"
+      >
+        <div>
+          <h3 class="body-text">
+            <b>Box</b> is a free to use service that offers a secured JSON based
+            cloud datastore for small projects. Box allows easy data storage
+            just by sending HTTP requests to your Box endpoints. You can store,
+            read , modify & delete your JSON data with just an HTTP API request.
+          </h3>
+        </div>
+      </v-col>
+    </v-row>
+    <v-row justify="center" v-clipboard:copy="generatedBoxId">
+      <v-col align="center" cols="12" sm="10" md="8" lg="6" xl="5">
+        <v-sheet
+          height="65"
+          class="mt-6 mx-8 animate"
+          justify="middle"
+          rounded="lg"
+          color="#f55555"
+        >
+          <div class="py-5">
+            <span class="font-weight-medium col-2 text-truncate">
+              {{ generatedBoxId }}
+            </span>
           </div>
+        </v-sheet>
+      </v-col>
+    </v-row>
 
-          <v-row class="mt-2">
-            <v-col align="center" class="px-10">
-              <v-btn
-                elevation="0"
-                height="50"
-                color="btnColor"
-                href="https://docs.box.wtf"
-                target="_blank"
-              >
-                <v-icon> mdi-book </v-icon>
-                <h4 class="font-weight-medium px-1"><b>Read the docs</b></h4>
-              </v-btn>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col align="center" class="px-10">
-              <v-btn
-                elevation="0"
-                height="50"
-                color="btnColor"
-                href="https://github.com/sumitkolhe/box"
-                target="_blank"
-              >
-                <v-icon> mdi-github </v-icon>
-                <h4 class="font-weight-bold px-1">Contribute</h4>
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-col>
-        <v-col></v-col>
-      </v-row>
-    </v-container>
-  </div>
+    <v-row justify="center" class="mt-12">
+      <v-btn depressed height="50" color="btnColor" class="font-weight-medium">
+        <v-icon>mdi-book</v-icon>
+        <h4 class="px-2">Read the docs</h4>
+      </v-btn>
+    </v-row>
+    <v-row justify="center" class="mt-6">
+      <v-btn depressed height="50" color="btnColor" class="font-weight-medium">
+        <v-icon>mdi-github</v-icon>
+        <h4 class="px-2">Contribute</h4>
+      </v-btn>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -94,11 +73,17 @@ export default {
 
   data: () => ({
     generatedBoxId: "",
+    isthemedark: false,
   }),
 
   methods: {
     changeTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+      this.isthemedark = !this.isthemedark;
+      localStorage.setItem(
+        "isThemeDark",
+        JSON.stringify(this.$vuetify.theme.dark)
+      );
     },
   },
 
@@ -111,20 +96,15 @@ export default {
     });
 
     this.generatedBoxId = "https://box.wtf/box_" + boxId;
+
+    this.$vuetify.theme.dark =
+      JSON.parse(localStorage.getItem("isThemeDark")) || false;
+    this.isthemedark = this.$vuetify.theme.dark;
   },
 };
 </script>
 
 <style>
-h4 {
-  letter-spacing: 1px;
-  font-weight: 400;
-}
-h1,
-h3 {
-  display: inline-block;
-}
-
 .tagline-text {
   font-weight: 500;
   font-size: 20px;
@@ -144,29 +124,21 @@ h3 {
   font-family: "Kalam", cursive;
 }
 
-.box-field {
+.animate {
   cursor: pointer;
-  margin: 2rem 20px;
-  font-weight: 500;
-  font-size: 16px;
-  background-color: #f55555;
-  padding: 1.5rem 10px;
-  color: #fff;
-  border-radius: 10px;
-  letter-spacing: 1px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  box-shadow: 0 0 0 0 rgba(245, 85, 85, 0.5);
+  box-shadow: 0 0 0 0 rgba(39, 39, 39, 0.8);
 }
 
-.box-field:hover {
+.animate:hover {
   animation: pulse 0.8s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
 @keyframes pulse {
   to {
-    box-shadow: 0 0 0 12px rgba(230, 237, 255, 0);
+    box-shadow: 0 0 0 12px rgba(230, 237, 255, 0.2);
   }
 }
 

@@ -3,12 +3,19 @@
     <v-main>
       <Home />
     </v-main>
-    <v-footer app padless color="footerColor">
+    <span></span>
+    <v-footer class="justify-center" padless color="footerColor">
       <v-col align="center" cols="12">
         <h4 class="font-weight-medium">
           Made with ❤️ by
-          <a class="text-decoration" href="https://sumit.codes" target="_blank"
-            >Sumit</a
+
+          <v-btn
+            text
+            :ripple="false"
+            color="black"
+            href="https://sumit.codes"
+            target="_blank"
+            >Sumit</v-btn
           >
         </h4>
       </v-col>
@@ -26,22 +33,20 @@ export default {
     Home,
   },
 
-  data: () => ({
-    //
-  }),
+  data: () => ({}),
 };
 </script>
 
 <style >
 * {
   font-family: "Montserrat", sans-serif;
-  overflow-x: hidden;
 }
 
 a,
 a:active,
 a:hover,
-a:focus {
+a:focus,
+a.primary--text {
   text-decoration: none;
   color: #000;
 }

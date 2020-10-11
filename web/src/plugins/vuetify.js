@@ -10,12 +10,14 @@ export default new Vuetify({
       light: {
         textColor: "#fff",
         btnColor: "#e3e3e3",
-        footerColor:"#fff"
+        footerColor: "#fff",
+        fieldColor: "#242424",
       },
       dark: {
         textColor: "#000",
-        btnColor: "#121212",
-        footerColor:"#121212"
+        btnColor: "#424242",
+        footerColor: "#121212",
+        fieldColor: "#fff",
       },
     },
   },

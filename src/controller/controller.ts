@@ -19,7 +19,10 @@ const getClusterData = async (req: Request, res: Response) => {
     ],
   });
 
-  res.json(db_instance);
+  db_instance.forEach((cluster) => {
+    //res.json(cluster);
+    console.log(cluster);
+  });
 };
 
 const setBoxData = async (req: Request, res: Response) => {

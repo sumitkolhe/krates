@@ -1,16 +1,32 @@
-import mongoose from "mongoose";
-import config from "../config/config"
+import Mongoose from "mongoose";
+import config from "../config/config";
 
-const dbConnection = mongoose.connect(
-  config.MONGO_URI,
-  {
+let database: Mongoose.Connection;
+
+export const dbConnect = () => {
+  const uri = config.MONGO_URI;
+
+  if (database) {
+    return;
+  }
+
+  Mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-  },
-  () => {
-    console.log("connected to local db");
-  }
-);
+  });
+  database = Mongoose.connection;
+  database.once("open", async () => {
+    console.log("Connected to database");
+  });
+  database.on("error", () => {
+    console.log("Error connecting to database");
+  });
+};
 
-module.exports = dbConnection
+export const dbDisconnect = () => {
+  if (!database) {
+    return;
+  }
+  Mongoose.disconnect();
+};
