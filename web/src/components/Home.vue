@@ -53,13 +53,27 @@
     </v-row>
 
     <v-row justify="center" class="mt-12">
-      <v-btn depressed height="50" color="btnColor" class="font-weight-medium">
+      <v-btn
+        depressed
+        height="50"
+        color="btnColor"
+        class="font-weight-medium"
+        href="https://docs.box.wtf"
+        target="_blank"
+      >
         <v-icon>mdi-book</v-icon>
         <h4 class="px-2">Read the docs</h4>
       </v-btn>
     </v-row>
     <v-row justify="center" class="mt-6">
-      <v-btn depressed height="50" color="btnColor" class="font-weight-medium">
+      <v-btn
+        depressed
+        height="50"
+        color="btnColor"
+        class="font-weight-medium"
+        href="https://github.com/sumitkolhe/box"
+        target="_blank"
+      >
         <v-icon>mdi-github</v-icon>
         <h4 class="px-2">Contribute</h4>
       </v-btn>

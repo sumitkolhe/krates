@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -x ts-node src/index.ts"
+    "dev": "nodemon src/index.ts"
   },
   "author": "Sumit Kolhe",
   "license": "ISC",

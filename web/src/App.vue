@@ -6,18 +6,7 @@
     <span></span>
     <v-footer class="justify-center" padless color="footerColor">
       <v-col align="center" cols="12">
-        <h4 class="font-weight-medium">
-          Made with ❤️ by
-
-          <v-btn
-            text
-            :ripple="false"
-            color="black"
-            href="https://sumit.codes"
-            target="_blank"
-            >Sumit</v-btn
-          >
-        </h4>
+        <h4 class="font-weight-medium">Made with ❤️</h4>
       </v-col>
     </v-footer>
   </v-app>
