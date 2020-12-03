@@ -4,8 +4,8 @@ import config from "../config/config";
 const boxSchema = new Schema(
   {
     boxId: { type: String, required: true },
-    clusterId: { type: String, required: false },
-    boxData: { type: Object, required: true },
+    collectionId: { type: String, required: false },
+    data: { type: Object, required: true },
   },
   { collection: config.COLLECTION_NAME }
 );
