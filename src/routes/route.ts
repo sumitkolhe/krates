@@ -1,10 +1,7 @@
-import { Router } from "express";
-import controller from "../controller/controller";
-const router = Router();
+import express, { Router } from "express";
 
-router.get("/:boxId", controller.getBoxData);
-router.get("/:boxId/:collectionId", controller.getCollectionData);
-router.post("/:boxId/:collectionId?", controller.setBoxData);
-router.put("/:boxId/:collectionId?", controller.updateBoxData);
+export const routes: Router = express.Router();
 
-export = router;
+routes.get("/", (_req, res) => {
+  res.json({ status: "online" });
+});
