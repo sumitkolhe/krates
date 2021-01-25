@@ -1,4 +1,4 @@
-import { ClusterModel } from "@model/collection.model";
+import { ClusterModel } from "@model/cluster.model";
 import { model, Schema, Document } from "mongoose";
 interface BoxDocument extends Document {
   box_id: {
