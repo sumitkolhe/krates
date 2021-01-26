@@ -1,16 +1,16 @@
-import { ClusterModel } from "@model/cluster.model";
 import { model, Schema, Document } from "mongoose";
 interface BoxDocument extends Document {
   box_id: {
     type: string;
     required: boolean;
   };
-  box_data: {
-    type: object;
+  collection_id: {
+    type: string;
+    required: boolean;
   };
-  cluster: {
-    type: Schema.Types.ObjectId;
-    ref: string;
+  box_data: {
+    type: any;
+    required: boolean;
   };
   created_at: { type: Date };
   updated_at: { type: Date };
@@ -22,14 +22,19 @@ const BoxSchema = new Schema(
       type: String,
       required: true,
     },
+    collection_id: {
+      type: String,
+      required: false,
+    },
     box_data: {
       type: Object,
+      required: true,
     },
-    cluster: [{ type: Schema.Types.ObjectId, ref: ClusterModel }],
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
-BoxSchema.index({ box_id: 1 }, { unique: true });
+BoxSchema.index({ box_id: 1 });
+BoxSchema.index({ collection_id: 1 });
 
 export const BoxModel = model<BoxDocument>("box", BoxSchema);
