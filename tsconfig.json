@@ -30,6 +30,6 @@
       "@controller/*": ["controller/*"]
     }
   },
-  "include": ["src/**/*", "@types"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

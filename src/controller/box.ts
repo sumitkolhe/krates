@@ -17,7 +17,7 @@ export const setBoxData: RequestHandler = async (req, res, next) => {
   try {
     const new_data = new BoxModel({
       box_id: req.params.box_id,
-      box_data: req.body,
+      data: req.body,
     });
 
     await new_data.save().then((response: any) => {

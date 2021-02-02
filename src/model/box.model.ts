@@ -8,7 +8,7 @@ interface BoxDocument extends Document {
     type: string;
     required: boolean;
   };
-  box_data: {
+  data: {
     type: any;
     required: boolean;
   };
@@ -26,7 +26,7 @@ const BoxSchema = new Schema(
       type: String,
       required: false,
     },
-    box_data: {
+    data: {
       type: Object,
       required: true,
     },

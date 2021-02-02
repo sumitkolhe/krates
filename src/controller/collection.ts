@@ -25,7 +25,7 @@ export const setCollectionData: RequestHandler = async (req, res, next) => {
     const new_data = new BoxModel({
       box_id: req.params.box_id,
       collection_id: req.params.collection_id,
-      box_data: req.body,
+      data: req.body,
     });
 
     await new_data.save().then((response: any) => {

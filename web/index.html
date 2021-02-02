@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Box - A free HTTP based JSON storage solution</title>
+    <link rel="icon" href="favicon.ico" type="image/gif"> 
+
+    <link href="style.css"
+          rel="stylesheet"
+          type="text/css" />
+</head>
+
+<body>
+    <svg width="84"
+         height="84"
+         viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.49 7.52a.19.19 0 010-.08.17.17 0 010-.07v-.09l-.06-.15a.48.48 0 00-.09-.11l-.09-.08h-.05l-3.94-2.49-3.72-2.3a.85.85 0 00-.29-.15h-.08a.82.82 0 00-.27 0h-.1a1.13 1.13 0 00-.33.13L4 6.78l-.09.07-.09.08-.1.07-.05.06-.06.15v.15a.69.69 0 000 .2v8.73a1 1 0 00.47.85l7.5 4.64.15.06h.08a.86.86 0 00.52 0h.08l.15-.06L20 17.21a1 1 0 00.47-.85V7.63s.02-.07.02-.11zM12 4.17l1.78 1.1-5.59 3.46-1.79-1.1zm-1 15l-5.5-3.36V9.42l5.5 3.4zm1-8.11l-1.91-1.15 5.59-3.47 1.92 1.19zm6.5 4.72L13 19.2v-6.38l5.5-3.4z"
+              fill="currentColor" />
+    </svg>
+
+
+    <p class="heading">Box</p>
+    <p class="subheading"> <i>A free HTTP based JSON storage</i> </p>
+
+    <p class="about-box"> <b>Box</b> is a free to use service that offers a secured JSON based
+        cloud datastore for small projects. Box allows easy data storage just
+        by sending HTTP requests to your Box endpoint. You can store, read,
+        modify & delete your JSON data with just an HTTP API request.
+
+        <!-- <br><br><br>
+        Box supports following HTTP methods
+        <br><br>
+        <span class="pill">GET</span>
+        <span class="pill">PUT</span>
+        <span class="pill">POST</span>
+        <span class="pill">DELETE</span>
+        <span class="pill">PATCH</span> -->
+    </p>
+
+    <br>
+
+    <input type="text"
+           id="boxId"
+           class="box-id"
+           value="https://box.wtf/${BOX_ID}"
+           readonly />
+    <button onclick="copyURL()">Copy</button>
+
+
+    <script>
+        const uniqueid = createUniqueID();
+        const copyURL = () => {
+            var copyText = document.getElementById('boxId');
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+        };
+
+        function createUniqueID() {
+            var dt = new Date().getTime();
+            var uuid = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
+                var r = (dt + Math.random() * 16) % 16 | 0;
+                dt = Math.floor(dt / 16);
+                return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
+            });
+            return uuid;
+        }
+        var base =
+            window.location.protocol +
+            '//' +
+            window.location.hostname +
+            (window.location.port ? ':' + window.location.port : '');
+        document.getElementById('boxId').value = base + '/box_' + uniqueid;
+
+    </script>
+
+
+</body>
+
+<footer>
+    Made with ❤️ by Sumit
+</footer>
+
+</html>
