@@ -28,8 +28,9 @@
 
     /* Advanced Options */
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": false
   },
   "exclude": ["node_modules", "dist", "coverage"],
-  "include": ["src", "tests"]
+  "include": ["src", "tests", "src/controller/bucket.controller.ts"]
 }

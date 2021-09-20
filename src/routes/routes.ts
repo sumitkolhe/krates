@@ -1,7 +1,8 @@
 import express, { Router } from 'express'
+import { bucketRouter } from '@src/routes/bucket.routes'
+import { collectionRouter } from '@src/routes/collection.routes'
 
 export const routes: Router = express.Router()
 
-routes.get('/', (_req, res) => {
-  res.json('Hello World')
-})
+routes.use(bucketRouter)
+routes.use(collectionRouter)
