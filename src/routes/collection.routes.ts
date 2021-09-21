@@ -3,4 +3,4 @@ import { getCollectionData, setCollectionData } from '@src/controller/collection
 
 export const collectionRouter: Router = express.Router()
 
-collectionRouter.route('/:bucketId/:collectiond').get(getCollectionData).post(setCollectionData)
+collectionRouter.route('/:bucketId/:collectionId').get(getCollectionData).post(setCollectionData)

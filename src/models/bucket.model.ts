@@ -1,14 +1,14 @@
 import { model, Schema, Document } from 'mongoose'
 
-interface BucketDocument extends Document {
-  bucketid: string
+export interface BucketDocument extends Document {
+  bucketId: string
   collectionId: string
   data: Record<string, unknown>
   createdAt: Date
   updatedAt: Date
 }
 
-const BucketSchema = new Schema(
+const BucketSchema: Schema = new Schema(
   {
     bucketId: {
       type: String,

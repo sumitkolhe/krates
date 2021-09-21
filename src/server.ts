@@ -6,12 +6,14 @@ import { routes } from '@src/routes/routes'
 import { HandleError } from '@src/middleware/errorHandler'
 import { Logger } from '@src/utils/logger'
 import { morganMiddleware } from '@src/middleware/morgan'
+import { connectDatabase } from '@src/helpers/connectDatabase'
 
 dotenv.config({ allowEmptyValues: true })
 const app: Application = express()
 const HOST: string = expressConfig.SERVER_HOST
 const PORT: number = expressConfig.SERVER_PORT
 
+connectDatabase()
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))

@@ -3,7 +3,7 @@ import { Logger } from '@src/utils/logger'
 
 export const getCollectionData: RequestHandler = async () => {
   try {
-    // ok
+    Logger.info('get collection data')
   } catch (error) {
     Logger.error(error)
   }
@@ -11,7 +11,7 @@ export const getCollectionData: RequestHandler = async () => {
 
 export const setCollectionData: RequestHandler = async () => {
   try {
-    // ok
+    Logger.info('set collection data')
   } catch (error) {
     Logger.error(error)
   }

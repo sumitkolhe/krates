@@ -1,20 +1,19 @@
-import mongoose from 'mongoose'
-import { databaseConfig } from '@src/config/database'
-import { Logger } from '@src/utils/logger'
+import mongoose, { ConnectOptions } from 'mongoose'
+import { Logger } from '../utils/logger'
+import { databaseConfig } from '../config/database'
 
-export const mongoOptions = {
-  dbName: databaseConfig.DB_NAME,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
+export const mongoOptions: ConnectOptions = {
+  dbName: databaseConfig.databaseName,
+  autoIndex: true,
 }
 
 export const connectDatabase = async (): Promise<void> => {
-  try {
-    await mongoose.connect(databaseConfig.MONGO_URL, mongoOptions)
-    Logger.info('Connected To Database')
-  } catch (error) {
-    Logger.error(error.message)
-  }
+  await mongoose
+    .connect(databaseConfig.mongoUrl, mongoOptions)
+    .then(() => {
+      Logger.info('Connected To Database')
+    })
+    .catch((err) => {
+      Logger.error(err.message)
+    })
 }
