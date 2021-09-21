@@ -6,7 +6,7 @@ export class CollectionService {
   // Get data for a collection
   static getCollectionData = async (bucketId: string, collectionId: string): Promise<Bucket[] | Bucket> => {
     const collectionData = await BucketModel.find({ bucketId, collectionId })
-    return collectionData
+    return sanitizeResponse(collectionData)
   }
 
   // Insert data into a collection
@@ -23,14 +23,15 @@ export class CollectionService {
         data: dataObject,
       })
 
-      return sanitizeResponse(await newRecord.save())
+      const savedRecord = await newRecord.save()
+      return savedRecord
     }
 
     // Check if data object is an Array or object
     if (Array.isArray(data)) {
       const createRecordPromise = data.map(createRecord)
       const records = await Promise.all(createRecordPromise)
-      return records
+      return sanitizeResponse(records)
     }
 
     const newBucket = new BucketModel({

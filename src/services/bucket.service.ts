@@ -18,14 +18,15 @@ export class BucketService {
         data: dataObject,
       })
 
-      return sanitizeResponse(await newRecord.save())
+      const savedRecord = await newRecord.save()
+      return savedRecord
     }
 
     // Check if data is an Array or a object
     if (Array.isArray(data)) {
       const createRecordPromise = data.map(createRecord)
       const records = await Promise.all(createRecordPromise)
-      return records
+      return sanitizeResponse(records)
     }
 
     const newRecord = new BucketModel({
@@ -33,6 +34,7 @@ export class BucketService {
       data,
     })
 
-    return sanitizeResponse(await newRecord.save())
+    const savedRecord = await newRecord.save()
+    return sanitizeResponse(savedRecord)
   }
 }
