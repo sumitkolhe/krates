@@ -6,8 +6,8 @@ export const getBucketData: RequestHandler = async (req, res, next) => {
   try {
     const { bucketId } = req.params
 
-    const response = await BucketService.getBucketData(bucketId)
-    res.json(response)
+    const bucketData = await BucketService.getBucketData(bucketId)
+    res.json(bucketData)
   } catch (error) {
     Logger.error(error.message)
     next(error)
@@ -19,8 +19,8 @@ export const setBucketData: RequestHandler = async (req, res, next) => {
     const { bucketId } = req.params
     const data = req.body
 
-    const response = await BucketService.setBucketData(bucketId, data)
-    res.json(response)
+    const bucketData = await BucketService.setBucketData(bucketId, data)
+    res.json(bucketData)
   } catch (error) {
     Logger.error(error.message)
     next(error)

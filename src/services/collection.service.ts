@@ -2,16 +2,21 @@ import { Bucket } from '@src/interfaces/bucket'
 import { BucketModel } from '@src/models/bucket.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
-export class BucketService {
-  static getBucketData = async (bucketId: string): Promise<Bucket[] | Bucket> => {
-    const bucketData = await BucketModel.find({ bucketId })
-    return bucketData
+export class CollectionService {
+  static getCollectionData = async (bucketId: string, collectionId: string): Promise<Bucket[] | Bucket> => {
+    const collectionData = await BucketModel.find({ bucketId, collectionId })
+    return collectionData
   }
 
-  static setBucketData = async (bucketId: string, data: Bucket): Promise<Bucket[] | Bucket> => {
-    const createRecord = async (dataObject: Pick<Bucket, 'data'>): Promise<Bucket> => {
+  static setCollectionData = async (
+    bucketId: string,
+    collectionId: string,
+    data: Bucket
+  ): Promise<Bucket[] | Bucket> => {
+    const createRecord = async (dataObject: Bucket): Promise<Bucket> => {
       const newRecord = new BucketModel({
         bucketId,
+        collectionId,
         data: dataObject,
       })
 
@@ -26,6 +31,7 @@ export class BucketService {
 
     const newBucket = new BucketModel({
       bucketId,
+      collectionId,
       data,
     })
 
