@@ -3,7 +3,4 @@ export const globalConstants = {
     success: 'SUCCESS',
     failed: 'FAILED',
   },
-  emailTemplates: {
-    verification: 'account_verification',
-  },
 }

@@ -37,4 +37,8 @@ export class BucketService {
     const savedRecord = await newRecord.save()
     return sanitizeResponse(savedRecord)
   }
+
+  static deleteBucketData = async (bucketId: string): Promise<void> => {
+    await BucketModel.deleteMany({ bucketId })
+  }
 }

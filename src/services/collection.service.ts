@@ -42,4 +42,8 @@ export class CollectionService {
 
     return sanitizeResponse(await newBucket.save())
   }
+
+  static deleteCollectionData = async (bucketId: string, collectionId: string): Promise<void> => {
+    await BucketModel.deleteMany({ bucketId, collectionId })
+  }
 }
