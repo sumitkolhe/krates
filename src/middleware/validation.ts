@@ -2,13 +2,10 @@ import Joi from 'joi'
 import { celebrate, Segments } from 'celebrate'
 
 export const validators = {
-  auth: {
-    registration: celebrate({
-      [Segments.BODY]: Joi.object().keys({
-        name: Joi.string().trim().required(),
-        email: Joi.string().email().trim().lowercase().required(),
-        password: Joi.string().min(6).trim().required(),
-      }),
+  bucket: celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      bucketId: Joi.string().trim().length(20).alphanum().required(),
+      collectionId: Joi.string().trim().min(1).optional(),
     }),
-  },
+  }),
 }

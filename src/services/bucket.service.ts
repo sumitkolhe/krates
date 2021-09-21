@@ -3,33 +3,33 @@ import { BucketModel } from '@src/models/bucket.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
 export class BucketService {
-  static retrieveBucketData = () => {
-    // ok
+  static getBucketData = async (bucketId: string): Promise<Bucket[] | Bucket> => {
+    const bucketData = await BucketModel.find({ bucketId })
+
+    return bucketData
   }
 
-  static storeBucketData = async (bucketId: string, data: Bucket): Promise<Bucket[] | Bucket> => {
+  static setBucketData = async (bucketId: string, data: Bucket): Promise<Bucket[] | Bucket> => {
     const createRecord = async (dataObject: Pick<Bucket, 'data'>): Promise<Bucket> => {
       const newRecord = new BucketModel({
         bucketId,
         data: dataObject,
       })
-      const savedRecord = await newRecord.save()
 
-      const sanitizedResponse = sanitizeResponse(savedRecord)
-      return sanitizedResponse
+      return sanitizeResponse(await newRecord.save())
     }
+
     if (Array.isArray(data)) {
       const createRecordPromise = data.map(createRecord)
       const responses = await Promise.all(createRecordPromise)
       return responses
     }
+
     const newBucket = new BucketModel({
       bucketId,
       data,
     })
 
-    const savedRecord = await newBucket.save()
-    const sanitizedResponse = sanitizeResponse(savedRecord)
-    return sanitizedResponse
+    return sanitizeResponse(await newBucket.save())
   }
 }
