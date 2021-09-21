@@ -1,4 +1,7 @@
+/* eslint-disable no-restricted-syntax */
+import { isCelebrateError } from 'celebrate'
 import { ErrorRequestHandler } from 'express'
+import { globalConstants } from '@src/constants'
 
 export class CreateError extends Error {
   public status: number
@@ -32,7 +35,7 @@ export class CreateError extends Error {
   }
 
   static Conflict(message?: string): CreateError {
-    return new CreateError(400, message || 'Conflict')
+    return new CreateError(409, message || 'Conflict')
   }
 
   static MethodNotAllowed(message?: string): CreateError {
@@ -49,10 +52,24 @@ export class CreateError extends Error {
 }
 
 export const HandleError: ErrorRequestHandler = (error: CreateError, _req, res) => {
-  const status = error.status || 500
-  const message = error.message || 'Something went wrong'
-  res.status(status).json({
-    status,
+  let statusCode: number
+  let message = ''
+
+  if (isCelebrateError(error)) {
+    statusCode = 400
+    for (const value of error.details.values()) {
+      message += value.message
+    }
+  } else if (error.name === 'MongoServerError') {
+    statusCode = 500
+    message = 'Database error'
+  } else {
+    statusCode = error.status || 500
+    message = error.message || 'Something went wrong'
+  }
+
+  res.status(statusCode).json({
+    status: globalConstants.status.failed,
     message,
   })
 }

@@ -18,7 +18,7 @@ export const setBucketData: RequestHandler = async (req, res, next) => {
     const response = await BucketService.storeBucketData(bucketId, data)
     res.json(response)
   } catch (error) {
-    Logger.error(error.stack)
+    Logger.error(error.message)
     next(error)
   }
 }

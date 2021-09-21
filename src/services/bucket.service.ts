@@ -7,13 +7,12 @@ export class BucketService {
     // ok
   }
 
-  static storeBucketData = async (bucketId: string, data: Pick<Bucket, 'data'>): Promise<Bucket[] | Bucket> => {
+  static storeBucketData = async (bucketId: string, data: Bucket): Promise<Bucket[] | Bucket> => {
     const createRecord = async (dataObject: Pick<Bucket, 'data'>): Promise<Bucket> => {
       const newRecord = new BucketModel({
         bucketId,
         data: dataObject,
       })
-
       const savedRecord = await newRecord.save()
 
       const sanitizedResponse = sanitizeResponse(savedRecord)
@@ -22,7 +21,6 @@ export class BucketService {
     if (Array.isArray(data)) {
       const createRecordPromise = data.map(createRecord)
       const responses = await Promise.all(createRecordPromise)
-
       return responses
     }
     const newBucket = new BucketModel({
@@ -31,6 +29,7 @@ export class BucketService {
     })
 
     const savedRecord = await newBucket.save()
-    return savedRecord
+    const sanitizedResponse = sanitizeResponse(savedRecord)
+    return sanitizedResponse
   }
 }

@@ -8,6 +8,16 @@ import { Logger } from '@src/utils/logger'
 import { morganMiddleware } from '@src/middleware/morgan'
 import { connectDatabase } from '@src/helpers/connectDatabase'
 
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Express {
+    interface Request {
+      bucketId: string
+      collectionId: string
+    }
+  }
+}
+
 dotenv.config({ allowEmptyValues: true })
 const app: Application = express()
 const HOST: string = expressConfig.SERVER_HOST
