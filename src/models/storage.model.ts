@@ -1,6 +1,6 @@
 import { model, Schema, Document } from 'mongoose'
 
-export interface BucketDocument extends Document {
+export interface StorageDocument extends Document {
   bucketId: string
   collectionId: string
   data: Record<string, unknown>
@@ -29,4 +29,4 @@ const BucketSchema: Schema = new Schema(
 BucketSchema.index({ bucketId: 1 })
 BucketSchema.index({ collectionId: 1 })
 
-export const BucketModel = model<BucketDocument>('bucket', BucketSchema)
+export const StorageModel = model<StorageDocument>('bucket', BucketSchema)

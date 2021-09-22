@@ -1,19 +1,19 @@
 import { Bucket } from '@src/interfaces/bucket'
-import { BucketModel } from '@src/models/storage.model'
+import { StorageModel } from '@src/models/storage.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
 export class StorageService {
-  // Get all data from a bucket
+  // Get all data from a bucket/collection
   static getData = async (bucketId: string, collectionId?: string): Promise<Bucket[] | Bucket> => {
-    const responseData = await BucketModel.find({ bucketId, ...(collectionId ? { collectionId } : {}) })
+    const responseData = await StorageModel.find({ bucketId, ...(collectionId ? { collectionId } : {}) })
     return sanitizeResponse(responseData)
   }
 
-  // Insert data into a bucket
+  // Insert data into a bucket/collection
   static setData = async (bucketId: string, collectionId: string, data: Bucket): Promise<Bucket[] | Bucket> => {
     // Insert all objects in DB
     const createRecord = async (dataObject: Bucket): Promise<Bucket> => {
-      const newRecord = new BucketModel({
+      const newRecord = new StorageModel({
         bucketId,
         ...(collectionId ? { collectionId } : {}),
         data: dataObject,
@@ -30,7 +30,7 @@ export class StorageService {
       return sanitizeResponse(records)
     }
 
-    const newRecord = new BucketModel({
+    const newRecord = new StorageModel({
       bucketId,
       ...(collectionId ? { collectionId } : {}),
       data,
@@ -40,7 +40,8 @@ export class StorageService {
     return sanitizeResponse(savedRecord)
   }
 
+  // delete all data from a bucket/collection
   static deleteData = async (bucketId: string): Promise<void> => {
-    await BucketModel.deleteMany({ bucketId })
+    await StorageModel.deleteMany({ bucketId })
   }
 }

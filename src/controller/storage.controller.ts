@@ -35,7 +35,7 @@ export const deleteData: RequestHandler = async (req, res, next) => {
     await StorageService.deleteData(bucketId)
     res.json({ status: globalConstants.status.success, message: 'Bucket deleted succesfully' })
   } catch (error) {
-    Logger.error(error)
+    Logger.error(error.message)
     next(error)
   }
 }
