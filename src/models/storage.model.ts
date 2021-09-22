@@ -26,7 +26,4 @@ const StorageSchema: Schema = new Schema(
   { timestamps: true }
 )
 
-// StorageSchema.index({ bucketId: 1 })
-// StorageSchema.index({ collectionId: 1 })
-
 export const StorageModel = model<StorageDocument>('detabase', StorageSchema)
