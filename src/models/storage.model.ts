@@ -8,7 +8,7 @@ export interface StorageDocument extends Document {
   updatedAt: Date
 }
 
-const BucketSchema: Schema = new Schema(
+const StorageSchema: Schema = new Schema(
   {
     bucketId: {
       type: String,
@@ -26,7 +26,7 @@ const BucketSchema: Schema = new Schema(
   { timestamps: true }
 )
 
-BucketSchema.index({ bucketId: 1 })
-BucketSchema.index({ collectionId: 1 })
+// StorageSchema.index({ bucketId: 1 })
+// StorageSchema.index({ collectionId: 1 })
 
-export const StorageModel = model<StorageDocument>('bucket', BucketSchema)
+export const StorageModel = model<StorageDocument>('detabase', StorageSchema)

@@ -7,8 +7,8 @@ export const getData: RequestHandler = async (req, res, next) => {
   try {
     const { bucketId, collectionId } = req.params
 
-    const bucketData = await StorageService.getData(bucketId, collectionId)
-    res.json(bucketData)
+    const responseData = await StorageService.getData(bucketId, collectionId)
+    res.json(responseData)
   } catch (error) {
     Logger.error(error.message)
     next(error)
@@ -20,8 +20,21 @@ export const setData: RequestHandler = async (req, res, next) => {
     const { bucketId, collectionId } = req.params
     const data = req.body
 
-    const bucketData = await StorageService.setData(bucketId, collectionId, data)
-    res.json(bucketData)
+    const responseData = await StorageService.setData(bucketId, collectionId, data)
+    res.json(responseData)
+  } catch (error) {
+    Logger.error(error.message)
+    next(error)
+  }
+}
+
+export const putData: RequestHandler = async (req, res, next) => {
+  try {
+    const { bucketId, recordId } = req.params
+    const data = req.body
+
+    const responseData = await StorageService.putData(bucketId, recordId, data)
+    res.json(responseData)
   } catch (error) {
     Logger.error(error.message)
     next(error)

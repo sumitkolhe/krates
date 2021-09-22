@@ -1,10 +1,12 @@
+/* eslint-disable no-console */
 import { Bucket } from '@src/interfaces/bucket'
+import { CreateError } from '@src/middleware/errorHandler'
 import { StorageModel } from '@src/models/storage.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
 export class StorageService {
   // Get all data from a bucket/collection
-  static getData = async (bucketId: string, collectionId?: string): Promise<Bucket[] | Bucket> => {
+  static getData = async (bucketId: string, collectionId: string): Promise<Bucket[] | Bucket> => {
     const responseData = await StorageModel.find({ bucketId, ...(collectionId ? { collectionId } : {}) })
     return sanitizeResponse(responseData)
   }
@@ -40,7 +42,20 @@ export class StorageService {
     return sanitizeResponse(savedRecord)
   }
 
-  // delete all data from a bucket/collection
+  // Insert data into a bucket/collection
+  static putData = async (
+    bucketId: string,
+    recordId: string,
+    data: Pick<Bucket, 'data'>
+  ): Promise<Bucket[] | Bucket> => {
+    const record = await StorageModel.findOneAndUpdate({ _id: recordId, bucketId }, { data }, { new: true })
+
+    if (!record) throw CreateError.BadRequest('No such record exists')
+
+    return sanitizeResponse(record)
+  }
+
+  // delete all data from a bucket
   static deleteData = async (bucketId: string): Promise<void> => {
     await StorageModel.deleteMany({ bucketId })
   }
