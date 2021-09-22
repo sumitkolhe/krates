@@ -1,5 +1,5 @@
 import { Bucket } from '@src/interfaces/bucket'
-import { BucketModel } from '@src/models/bucket.model'
+import { BucketModel } from '@src/models/storage.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
 export class StorageService {
