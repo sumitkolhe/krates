@@ -1,8 +1,11 @@
 import express, { Router } from 'express'
-import { bucketRouter } from '@src/routes/bucket.routes'
-import { collectionRouter } from '@src/routes/collection.routes'
+import { validators } from '@src/middleware/validation'
+import { deleteData, getData, setData } from '@src/controller/storage.controller'
 
 export const routes: Router = express.Router()
 
-routes.use(bucketRouter)
-routes.use(collectionRouter)
+routes
+  .route('/:bucketId/:collectionId?')
+  .get(validators.storage, getData)
+  .post(validators.storage, setData)
+  .delete(validators.storage, deleteData)

@@ -2,19 +2,20 @@ import { Bucket } from '@src/interfaces/bucket'
 import { BucketModel } from '@src/models/bucket.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
-export class BucketService {
+export class StorageService {
   // Get all data from a bucket
-  static getBucketData = async (bucketId: string): Promise<Bucket[] | Bucket> => {
-    const bucketData = await BucketModel.find({ bucketId })
-    return bucketData
+  static getData = async (bucketId: string, collectionId?: string): Promise<Bucket[] | Bucket> => {
+    const responseData = await BucketModel.find({ bucketId, ...(collectionId ? { collectionId } : {}) })
+    return sanitizeResponse(responseData)
   }
 
   // Insert data into a bucket
-  static setBucketData = async (bucketId: string, data: Bucket): Promise<Bucket[] | Bucket> => {
+  static setData = async (bucketId: string, collectionId: string, data: Bucket): Promise<Bucket[] | Bucket> => {
     // Insert all objects in DB
     const createRecord = async (dataObject: Bucket): Promise<Bucket> => {
       const newRecord = new BucketModel({
         bucketId,
+        ...(collectionId ? { collectionId } : {}),
         data: dataObject,
       })
 
@@ -31,6 +32,7 @@ export class BucketService {
 
     const newRecord = new BucketModel({
       bucketId,
+      ...(collectionId ? { collectionId } : {}),
       data,
     })
 
@@ -38,7 +40,7 @@ export class BucketService {
     return sanitizeResponse(savedRecord)
   }
 
-  static deleteBucketData = async (bucketId: string): Promise<void> => {
+  static deleteData = async (bucketId: string): Promise<void> => {
     await BucketModel.deleteMany({ bucketId })
   }
 }

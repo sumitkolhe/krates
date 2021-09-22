@@ -1,13 +1,13 @@
 import { RequestHandler } from 'express'
 import { Logger } from '@src/utils/logger'
-import { BucketService } from '@src/services/bucket.service'
 import { globalConstants } from '@src/constants'
+import { StorageService } from '@src/services/storage.service'
 
-export const getBucketData: RequestHandler = async (req, res, next) => {
+export const getData: RequestHandler = async (req, res, next) => {
   try {
-    const { bucketId } = req.params
+    const { bucketId, collectionId } = req.params
 
-    const bucketData = await BucketService.getBucketData(bucketId)
+    const bucketData = await StorageService.getData(bucketId, collectionId)
     res.json(bucketData)
   } catch (error) {
     Logger.error(error.message)
@@ -15,12 +15,12 @@ export const getBucketData: RequestHandler = async (req, res, next) => {
   }
 }
 
-export const setBucketData: RequestHandler = async (req, res, next) => {
+export const setData: RequestHandler = async (req, res, next) => {
   try {
-    const { bucketId } = req.params
+    const { bucketId, collectionId } = req.params
     const data = req.body
 
-    const bucketData = await BucketService.setBucketData(bucketId, data)
+    const bucketData = await StorageService.setData(bucketId, collectionId, data)
     res.json(bucketData)
   } catch (error) {
     Logger.error(error.message)
@@ -28,11 +28,11 @@ export const setBucketData: RequestHandler = async (req, res, next) => {
   }
 }
 
-export const deleteBucketData: RequestHandler = async (req, res, next) => {
+export const deleteData: RequestHandler = async (req, res, next) => {
   try {
     const { bucketId } = req.params
 
-    await BucketService.deleteBucketData(bucketId)
+    await StorageService.deleteData(bucketId)
     res.json({ status: globalConstants.status.success, message: 'Bucket deleted succesfully' })
   } catch (error) {
     Logger.error(error)
