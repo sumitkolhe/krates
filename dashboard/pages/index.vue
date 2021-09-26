@@ -3,9 +3,10 @@
     <Header />
     <Herohome />
     <Features />
+    <Process />
     <Featuresblock />
     <Testimonials />
-    <Opensource />
+
     <Getstarted />
     <Footer />
   </div>

@@ -34,6 +34,22 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
 
+  tailwindcss: {
+    config: {
+      purge: [],
+      darkMode: 'class', // or 'media' or 'class'
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter'],
+          },
+        },
+      },
+      variants: {},
+      plugins: [],
+    },
+  },
+
   modules: ['@nuxtjs/axios'],
 
   axios: {},

@@ -73,7 +73,7 @@
                   bg-black
                   hover:bg-white hover:border-black hover:text-black
                   ml-3
-                  p-3
+                  p-2
                   px-4
                 "
               >
