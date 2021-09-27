@@ -1,33 +1,30 @@
 <template>
   <section class="relative">
     <div
-      class="absolute inset-0 md:mt-24 lg:mt-0 bg-black pointer-events-none"
-      aria-hidden="true"
-    ></div>
-    <div
       class="
         absolute
-        left-0
-        right-0
-        bottom-0
-        m-auto
-        w-px
-        p-px
-        h-20
-        bg-gray-200
-        transform
-        translate-y-1/2
+        inset-0
+        md:mt-24
+        lg:mt-0
+        bg-gray-50
+        dark:bg-gray-900 dark:border-gray-600
+        border-t border-b
+        pointer-events-none
       "
+      aria-hidden="true"
     ></div>
 
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="py-12 md:py-20">
+      <h2 class="text-4xl font-black mb-2 dark:text-white text-center pt-20">
+        Detabase is...
+      </h2>
+      <div class="py-12 md:pb-24">
         <div
           class="
             max-w-sm
             mx-auto
             grid
-            gap-6
+            gap-8
             md:grid-cols-2
             lg:grid-cols-3
             items-start
@@ -43,7 +40,8 @@
               p-6
               bg-white
               rounded-lg
-              shadow-2xl
+              dark:bg-gray-900 dark:text-gray-200 dark:border-gray-800
+              border-gray-200 border-2
             "
           >
             <svg
@@ -52,16 +50,16 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#000000"
+              stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="w-16 h-16 p-1 -mt-1 mb-2"
+              class="w-14 h-14 p-1 -mt-1 mb-4"
             >
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            <h4 class="text-lg font-bold mb-1">Simple</h4>
-            <p class="text-gray-600 text-center">
+            <h4 class="text-lg font-bold mb-1 dark:text-white">Simple</h4>
+            <p class="text-gray-600 text-center dark:text-gray-400">
               Zero configuration required and super easy to use.
             </p>
           </div>
@@ -74,7 +72,8 @@
               p-6
               bg-white
               rounded-lg
-              shadow-xl
+              dark:bg-gray-900 dark:text-gray-200 dark:border-gray-800
+              border-gray-200 border-2
             "
           >
             <svg
@@ -83,17 +82,17 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#000000"
+              stroke="currentColor"
               stroke-width="2"
-              class="w-16 h-16 p-1 -mt-1 mb-2"
+              class="w-14 h-14 p-1 -mt-1 mb-4"
               stroke-linecap="round"
               stroke-linejoin="round"
             >
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="M7 15h0M2 9.5h20" />
             </svg>
-            <h4 class="text-lg font-bold mb-1">Free</h4>
-            <p class="text-gray-600 text-center">
+            <h4 class="text-lg font-bold mb-1 dark:text-white">Free</h4>
+            <p class="text-gray-600 text-center dark:text-gray-400">
               Detabase is completely free to use and always will be.
             </p>
           </div>
@@ -106,7 +105,8 @@
               p-6
               bg-white
               rounded-lg
-              shadow-xl
+              dark:bg-gray-900 dark:text-gray-200 dark:border-gray-800
+              border-gray-200 border-2
             "
           >
             <svg
@@ -118,14 +118,16 @@
               fill="none"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="w-16 h-16 p-1 -mt-1 mb-2"
+              class="w-14 h-14 p-1 -mt-1 mb-4"
             >
               <polygon
                 points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
               ></polygon>
             </svg>
-            <h4 class="text-lg font-bold mb-1">Lightning Fast</h4>
-            <p class="text-gray-600 text-center">
+            <h4 class="text-lg font-bold mb-1 dark:text-white">
+              Lightning Fast
+            </h4>
+            <p class="text-gray-600 text-center dark:text-gray-400">
               Saving your data is just a HTTP call away.
             </p>
           </div>
@@ -138,14 +140,15 @@
               p-6
               bg-white
               rounded-lg
-              shadow-xl
+              dark:bg-gray-900 dark:text-gray-200 dark:border-gray-800
+              border-gray-200 border-2
             "
           >
             <svg
               viewBox="0 0 24 24"
               width="24"
               height="24"
-              class="w-16 h-16 p-1 -mt-1 mb-2"
+              class="w-14 h-14 p-1 -mt-1 mb-4"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
@@ -161,9 +164,12 @@
               <path d="M16 16h.01"></path>
               <path d="M16 20h.01"></path>
             </svg>
-            <h4 class="text-lg font-bold mb-1">Backend Agnostic</h4>
-            <p class="text-gray-600 text-center">
-              Use detabase from a backend or even directly from the browser.
+            <h4 class="text-lg font-bold mb-1 dark:text-white">
+              Backend Agnostic
+            </h4>
+            <p class="text-gray-600 text-center dark:text-gray-400">
+              Use detabase with a backend server or even directly from the
+              browser.
             </p>
           </div>
 
@@ -175,7 +181,9 @@
               p-6
               bg-white
               rounded-lg
-              shadow-xl
+              dark:bg-gray-900 dark:text-gray-200
+              border-gray-200 border-2
+              dark:border-gray-800
             "
           >
             <svg
@@ -184,9 +192,9 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#000000"
+              stroke="currentColor"
               stroke-width="2"
-              class="w-16 h-16 p-1 -mt-1 mb-2"
+              class="w-14 h-14 p-1 -mt-1 mb-4"
               stroke-linecap="round"
               stroke-linejoin="round"
             >
@@ -195,8 +203,10 @@
               <line x1="6" y1="6" x2="6.01" y2="6"></line>
               <line x1="6" y1="18" x2="6.01" y2="18"></line>
             </svg>
-            <h4 class="text-lg font-bold mb-1">Host your own instance</h4>
-            <p class="text-gray-600 text-center">
+            <h4 class="text-lg font-bold mb-1 dark:text-white">
+              Host your own instance
+            </h4>
+            <p class="text-gray-600 text-center dark:text-gray-400">
               Use Detabase as a free service or host your own private instance.
             </p>
           </div>
@@ -209,7 +219,9 @@
               p-6
               bg-white
               rounded-lg
-              shadow-xl
+              dark:text-gray-200 dark:bg-gray-900
+              border-gray-200 border-2
+              dark:border-gray-800
             "
           >
             <svg
@@ -218,18 +230,20 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#000000"
+              stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
-              class="w-16 h-16 p-1 -mt-1 mb-2"
+              class="w-14 h-14 p-1 -mt-1 mb-4"
               stroke-linejoin="round"
             >
               <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
               <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
               <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
             </svg>
-            <h4 class="text-lg font-bold mb-1">Backed by MongoDB</h4>
-            <p class="text-gray-600 text-center">
+            <h4 class="text-lg font-bold mb-1 dark:text-white">
+              Backed by MongoDB
+            </h4>
+            <p class="text-gray-600 text-center dark:text-gray-400">
               Unlimited possibilites in terms of structure of the data you can
               store.
             </p>

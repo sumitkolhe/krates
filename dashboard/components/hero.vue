@@ -11,6 +11,7 @@
               leading-tighter
               tracking-tighter
               mb-4
+              dark:text-white
             "
             data-aos="zoom-y-out"
           >
@@ -41,13 +42,14 @@
               leading-tighter
               tracking-tighter
               mb-4
+              dark:text-white
             "
           >
             for your projects
           </h1>
           <div class="max-w-3xl mx-auto my-14">
             <p
-              class="text-xl text-gray-600 mb-8"
+              class="text-xl text-gray-600 mb-8 dark:text-gray-400"
               data-aos="zoom-y-out"
               data-aos-delay="150"
             >
@@ -87,6 +89,11 @@
                     ease-in-out
                     p-4
                     px-12
+                    dark:bg-white
+                    dark:text-black
+                    dark:hover:border-white
+                    dark:hover:bg-black
+                    dark:hover:text-white
                   "
                   to="/dashboard"
                   >Get started</NuxtLink
@@ -115,6 +122,11 @@
                     ease-in-out
                     p-4
                     px-12
+                    dark:bg-black
+                    dark:text-gray-400
+                    dark:border-gray-600
+                    dark:hover:border-white
+                    dark:hover:text-white
                   "
                   href="#0"
                   >Read the docs</a

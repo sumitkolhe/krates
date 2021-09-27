@@ -9,8 +9,10 @@
       duration-300
       ease-in-out
       bg-white
+      dark:bg-black
       blur
-      border-b
+      border-b-2 border-gray-200
+      dark:border-b-2 dark:border-gray-800
     "
   >
     <div class="max-w-6xl mx-auto px-5 sm:px-6">
@@ -36,7 +38,7 @@
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-12 w-12"
+              class="h-10 w-10 dark:text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -48,7 +50,9 @@
                 d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
               />
             </svg>
-            <span class="pl-4 font-bold text-2xl">Detabase</span>
+            <span class="pl-4 font-bold text-2xl dark:text-white"
+              >Detabase</span
+            >
           </NuxtLink>
         </div>
 
@@ -71,7 +75,11 @@
                   ease-in-out
                   text-gray-200
                   bg-black
+                  dark:bg-white dark:text-black
                   hover:bg-white hover:border-black hover:text-black
+                  dark:hover:bg-black
+                  dark:hover:border-white
+                  dark:hover:text-white
                   ml-3
                   p-2
                   px-4

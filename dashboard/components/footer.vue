@@ -10,6 +10,7 @@
       bg-gray-50
       blur
       border-t border-gray-200
+      dark:bg-gray-900 dark:border-t dark:border-gray-600
     "
   >
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -27,8 +28,9 @@
             transition
             duration-150
             ease-in-out
+            dark:text-white
           "
-          aria-label="Cruip"
+          aria-label="logo"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,10 +46,126 @@
               d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
             />
           </svg>
-          <span class="text-2xl font-bold pl-4">Detabase </span>
+          <span class="text-2xl font-bold pl-4 dark:text-white">Detabase </span>
         </NuxtLink>
 
-        <h6 class="text-gray-800 font-medium mt-2">Subscribe</h6>
+        <!-- Theme -->
+        <h6 class="text-gray-800 font-medium mt-2">
+          <div class="relative inline-block text-left dropdown">
+            <span class="rounded-md shadow-sm"
+              ><button
+                class="
+                  inline-flex
+                  justify-center
+                  w-full
+                  px-4
+                  py-2
+                  text-sm
+                  font-medium
+                  leading-5
+                  text-gray-700
+                  transition
+                  duration-100
+                  ease-in-out
+                  bg-white
+                  border border-gray-300
+                  rounded-md
+                  hover:text-gray-500
+                  focus:outline-none
+                  focus:border-blue-300
+                  focus:shadow-outline-blue
+                  active:bg-gray-50 active:text-gray-800
+                  dark:bg-black dark:text-gray-600
+                "
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="true"
+                aria-controls="headlessui-menu-items-117"
+              >
+                <span>Theme</span>
+                <svg
+                  class="w-5 h-5 ml-2 -mr-1"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg></button
+            ></span>
+            <div
+              class="
+                opacity-0
+                invisible
+                dropdown-menu
+                transition-all
+                duration-100
+                transform
+                origin-top-right
+                -translate-y-2
+                scale-95
+              "
+            >
+              <div
+                id="headlessui-menu-items-117"
+                class="
+                  absolute
+                  right-0
+                  w-56
+                  mt-2
+                  origin-top-right
+                  bg-white
+                  border border-gray-200
+                  divide-y divide-gray-100
+                  rounded-md
+                  shadow-lg
+                  outline-none
+                "
+                aria-labelledby="theme-select"
+                role="menu"
+              >
+                <div class="py-1">
+                  <button
+                    tabindex="0"
+                    class="
+                      text-gray-700
+                      flex
+                      justify-between
+                      px-4
+                      py-2
+                      text-sm
+                      leading-5
+                      text-left
+                    "
+                    role="menuitem"
+                    @click="changeTheme('light')"
+                  >
+                    Light
+                  </button>
+                  <button
+                    tabindex="1"
+                    class="
+                      text-gray-700
+                      flex
+                      justify-between
+                      px-4
+                      py-2
+                      text-sm
+                      leading-5
+                      text-left
+                    "
+                    role="menuitem"
+                    @click="changeTheme('dark')"
+                  >
+                    Dark
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </h6>
       </div>
 
       <!-- Copyright -->
@@ -55,8 +173,9 @@
         class="
           md:flex md:items-center md:justify-between
           py-4
-          md:py-6 md:pb-8
+          md:py-6 md:pb-12
           border-t border-gray-200
+          dark:border-gray-600
         "
       >
         <ul class="flex mb-4 md:order-1 md:ml-4 md:mb-0">
@@ -96,7 +215,7 @@
           </li>
         </ul>
 
-        <div class="text-sm text-gray-600 mr-4">
+        <div class="text-sm text-gray-600 mr-4 dark:text-gray-400">
           Copyright © 2021 All rights reserved.
         </div>
       </div>
@@ -104,6 +223,21 @@
   </footer>
 </template>
 
-<script>
-export default {}
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  methods: {
+    changeTheme(themeType: string) {
+      if (themeType === 'dark') this.$emit('clicked', true)
+      else this.$emit('clicked', false)
+    },
+  },
+})
 </script>
+<style>
+.dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  transform: translate(0) scale(1);
+  visibility: visible;
+}
+</style>

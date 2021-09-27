@@ -1,13 +1,26 @@
 <template>
-  <div class="flex flex-col min-h-screen overflow-hidden">
+  <div :class="[isDark ? 'dark' : ' ']">
     <main class="flex-grow dark:bg-black">
       <Nuxt />
     </main>
+    <Footer @clicked="onThemeChange" />
   </div>
 </template>
 
-<script>
-export default {}
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  data() {
+    return {
+      isDark: false,
+    }
+  },
+  methods: {
+    onThemeChange(value: boolean) {
+      this.isDark = value
+    },
+  },
+})
 </script>
 
 <style>

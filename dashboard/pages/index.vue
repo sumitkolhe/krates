@@ -1,14 +1,10 @@
 <template>
   <div>
     <Header />
-    <Herohome />
+    <Hero />
+    <HowItWorks />
     <Features />
-    <Process />
-    <Featuresblock />
-    <Testimonials />
-
-    <Getstarted />
-    <Footer />
+    <Contribute />
   </div>
 </template>
 
