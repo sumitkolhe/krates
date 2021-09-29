@@ -1,6 +1,40 @@
 <template>
-  <div class="mt-40">
-    <Request :bucket="generatedBoxId" />
+  <div class="max-w-6xl mx-auto pt-56">
+    <!-- <Request :bucket="generatedBoxId" /> -->
+
+    <div class="">
+      <div
+        class="
+          relative
+          flex flex-col
+          border
+          py-6
+          border-gray-200
+          rounded
+          bg-white
+          mx-6
+          px-6
+          my-12
+        "
+      >
+        <h3 class="text-lg font-medium">Bucket ID</h3>
+        <p class="text-sm mt-3 mb-2">This is your primary namespace id</p>
+        <input
+          v-model="bucketId"
+          type="text"
+          class="
+            border border-gray-200
+            rounded
+            text-sm
+            p-2
+            my-2
+            w-1/5
+            cursor-not-allowed
+            active:border-none
+          "
+        />
+      </div>
+    </div>
 
     <client-only>
       <div class="max-w-6xl mx-auto px-5 sm:px-6">
@@ -16,7 +50,7 @@
 export default {
   data() {
     return {
-      generatedBoxId: '',
+      bucketId: '',
       options: {
         tabSize: 4,
         styleActiveLine: true,
@@ -72,13 +106,12 @@ export default {
 
   mounted() {
     let d = new Date().getTime()
-    const boxId = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
+    const id = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
       const r = (d + Math.random() * 16) % 16 | 0
       d = Math.floor(d / 16)
       return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
     })
-    this.generatedBoxId = 'https://detabase.me/box_' + boxId
-    console.log(this.generatedBoxId)
+    this.bucketId = id
   },
 }
 </script>

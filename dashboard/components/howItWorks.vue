@@ -1,7 +1,6 @@
 <template>
-  <!-- component -->
   <div class="container mx-auto max-w-6xl w-full h-full">
-    <div class="relative wrap overflow-hidden p-10 h-full">
+    <div class="relative wrap overflow-hidden px-8 py-10 h-full">
       <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
         <h2 class="text-4xl font-black mb-4 dark:text-white">
           How Detabase works
@@ -11,6 +10,8 @@
           store your JSON based data easily.
         </p>
       </div>
+
+      <!-- Vertical line -->
       <div
         class="
           border-2-2
@@ -22,13 +23,12 @@
         "
         style="left: 50%"
       ></div>
-      <!-- right timeline -->
-      <div class="mb-8 flex justify-between items-center w-full right-timeline">
-        <div class="order-1 w-5/12"></div>
+      <!-- right timeline 1 -->
+      <div class="mb-8 flex justify-between items-center w-full">
+        <div class="order-1 md:w-5/12 hidden md:inline-flex"></div>
         <div
           class="
             z-20
-            flex
             items-center
             order-1
             bg-black
@@ -37,6 +37,8 @@
             h-8
             rounded-full
             dark:bg-white
+            hidden
+            md:inline-flex
           "
         >
           <h1 class="mx-auto font-semibold text-lg text-white dark:text-black">
@@ -49,10 +51,11 @@
             bg-black
             rounded-lg
             shadow-xl
-            w-5/12
+            md:w-5/12
             px-6
             py-4
             dark:bg-white
+            z-20
           "
         >
           <h3 class="mb-3 font-bold text-white text-xl dark:text-black">
@@ -85,11 +88,10 @@
           left-timeline
         "
       >
-        <div class="order-1 w-5/12"></div>
+        <div class="order-1 md:w-5/12 hidden md:inline-flex"></div>
         <div
           class="
             z-20
-            flex
             items-center
             order-1
             bg-black
@@ -98,13 +100,17 @@
             h-8
             rounded-full
             dark:bg-white
+            hidden
+            md:inline-flex
           "
         >
           <h1 class="mx-auto text-white font-semibold text-lg dark:text-black">
             2
           </h1>
         </div>
-        <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+        <div
+          class="order-1 bg-white rounded-lg shadow-xl md:w-5/12 px-6 py-4 z-20"
+        >
           <h3 class="mb-3 font-bold text-black text-xl">Make Requests</h3>
           <p
             class="
@@ -123,12 +129,11 @@
       </div>
 
       <!-- right timeline -->
-      <div class="mb-8 flex justify-between items-center w-full right-timeline">
-        <div class="order-1 w-5/12"></div>
+      <div class="mb-8 flex justify-between items-center w-full">
+        <div class="order-1 md:w-5/12 hidden md:inline-flex"></div>
         <div
           class="
             z-20
-            flex
             items-center
             order-1
             bg-black
@@ -137,6 +142,8 @@
             h-8
             rounded-full
             dark:bg-white
+            hidden
+            md:inline-flex
           "
         >
           <h1 class="mx-auto font-semibold text-lg text-white dark:text-black">
@@ -149,10 +156,11 @@
             bg-black
             rounded-lg
             shadow-xl
-            w-5/12
+            md:w-5/12
             px-6
             py-4
             dark:bg-white
+            z-20
           "
         >
           <h3 class="mb-3 font-bold text-white dark:text-black text-xl">
@@ -186,11 +194,10 @@
           left-timeline
         "
       >
-        <div class="order-1 w-5/12"></div>
+        <div class="order-1 w-5/12 hidden md:inline-flex"></div>
         <div
           class="
             z-20
-            flex
             items-center
             order-1
             bg-black
@@ -199,13 +206,17 @@
             h-8
             rounded-full
             dark:bg-white
+            hidden
+            md:inline-flex
           "
         >
           <h1 class="mx-auto text-white font-semibold text-lg dark:text-black">
             4
           </h1>
         </div>
-        <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+        <div
+          class="order-1 bg-white rounded-lg shadow-xl md:w-5/12 px-6 py-4 z-20"
+        >
           <h3 class="mb-3 font-bold text-black text-xl">Modify your Data</h3>
           <p
             class="

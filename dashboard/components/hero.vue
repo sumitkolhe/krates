@@ -2,7 +2,7 @@
   <section class="relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="pt-32 pb-12 md:pt-40 md:pb-20">
-        <div class="text-center pb-12 md:pb-16 mt-6">
+        <div class="text-center md:mt-6">
           <h1
             class="
               text-5xl
@@ -24,7 +24,8 @@
               font-extrabold
               leading-tighter
               tracking-tighter
-              mb-4
+              mb-2
+              md:mb-4
               bg-clip-text
               text-transparent
               bg-gradient-to-r
@@ -43,6 +44,7 @@
               tracking-tighter
               mb-4
               dark:text-white
+              leading-tight
             "
           >
             for your projects
@@ -61,7 +63,8 @@
                 max-w-xs
                 mx-auto
                 sm:max-w-none sm:flex sm:justify-center
-                pt-12
+                md:pt-12
+                pt-8
               "
               data-aos="zoom-y-out"
               data-aos-delay="300"

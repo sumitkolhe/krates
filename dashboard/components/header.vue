@@ -11,7 +11,7 @@
       bg-white
       dark:bg-black
       blur
-      border-b-2 border-gray-200
+      border-b border-gray-200
       dark:border-b-2 dark:border-gray-800
     "
   >
@@ -56,7 +56,10 @@
           </NuxtLink>
         </div>
 
-        <nav class="flex flex-grow">
+        <nav
+          v-if="$route.path !== '/dashboard'"
+          class="md:flex flex-grow hidden"
+        >
           <ul class="flex flex-grow justify-end flex-wrap items-center">
             <li>
               <NuxtLink
@@ -107,5 +110,6 @@
 </template>
 
 <script>
-export default {}
+import Vue from 'vue'
+export default Vue.extend({})
 </script>

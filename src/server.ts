@@ -34,5 +34,8 @@ app.use((err: express.ErrorRequestHandler, req: express.Request, res: express.Re
   HandleError(err, req, res, next)
 )
 
+app.use(express.static(`${__dirname}/../dist`))
+app.get(/.*/, (_req: express.Request, res: express.Response) => res.sendFile(`${__dirname}/nuxt/404.html`))
+
 app.listen(PORT, HOST)
 Logger.info(`Server listening on http://${HOST}:${PORT}`)

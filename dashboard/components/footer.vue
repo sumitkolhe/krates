@@ -172,6 +172,7 @@
       <div
         class="
           md:flex md:items-center md:justify-between
+          justify-center
           py-4
           md:py-6 md:pb-12
           border-t border-gray-200
@@ -215,7 +216,7 @@
           </li>
         </ul>
 
-        <div class="text-sm text-gray-600 mr-4 dark:text-gray-400">
+        <div class="text-sm text-gray-600 dark:text-gray-400 text-center">
           Copyright © 2021 All rights reserved.
         </div>
       </div>

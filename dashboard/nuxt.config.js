@@ -39,4 +39,13 @@ export default {
   axios: {},
 
   build: {},
+
+  generate: {
+    dir: '../dist',
+    fallback: true,
+  },
+
+  server: {
+    host: '192.168.0.150',
+  },
 }

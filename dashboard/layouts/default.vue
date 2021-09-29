@@ -1,5 +1,6 @@
 <template>
   <div :class="[isDark ? 'dark' : ' ']">
+    <Header />
     <main class="flex-grow dark:bg-black">
       <Nuxt />
     </main>
@@ -15,6 +16,7 @@ export default Vue.extend({
       isDark: false,
     }
   },
+
   methods: {
     onThemeChange(value: boolean) {
       this.isDark = value
