@@ -1,4 +1,6 @@
-export default {
+import { NuxtConfig } from '@nuxt/types/config'
+
+const NuxtAppConfig: NuxtConfig = {
   target: 'static',
 
   head: {
@@ -24,28 +26,22 @@ export default {
 
   css: ['codemirror/lib/codemirror.css', 'codemirror/theme/base16-dark.css'],
 
-  plugins: [{ src: '~plugins/codemirror', ssr: false }],
+  plugins: [{ src: '~plugins/codemirror.ts', ssr: false }],
 
   components: true,
 
-  buildModules: [
-    '@nuxt/typescript-build',
-    '@nuxtjs/stylelint-module',
-    '@nuxtjs/tailwindcss',
-  ],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/stylelint-module', '@nuxtjs/tailwindcss'],
 
   modules: ['@nuxtjs/axios'],
 
   axios: {},
 
-  build: {},
+  srcDir: 'dashboard/',
 
   generate: {
-    dir: '../dist',
+    dir: './dist/dashboard',
     fallback: true,
   },
-
-  server: {
-    host: '192.168.0.150',
-  },
 }
+
+export default NuxtAppConfig

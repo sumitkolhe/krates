@@ -224,11 +224,11 @@
   </footer>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 export default Vue.extend({
   methods: {
-    changeTheme(themeType: string) {
+    changeTheme(themeType) {
       if (themeType === 'dark') this.$emit('clicked', true)
       else this.$emit('clicked', false)
     },

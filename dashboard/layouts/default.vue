@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 export default Vue.extend({
   data() {
@@ -18,7 +18,7 @@ export default Vue.extend({
   },
 
   methods: {
-    onThemeChange(value: boolean) {
+    onThemeChange(value) {
       this.isDark = value
     },
   },
