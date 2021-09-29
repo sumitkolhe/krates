@@ -47,8 +47,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-export default Vue.extend({
+export default {
   data() {
     return {
       bucketId: '',
@@ -114,5 +113,5 @@ export default Vue.extend({
     })
     this.bucketId = id
   },
-})
+}
 </script>

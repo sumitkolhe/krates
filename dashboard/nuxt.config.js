@@ -28,16 +28,20 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/stylelint-module', '@nuxtjs/tailwindcss'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/tailwindcss',
+  ],
 
   modules: ['@nuxtjs/axios'],
 
   axios: {},
 
-  srcDir: 'dashboard/',
+  build: {},
 
   generate: {
-    dir: './dist/dashboard',
+    dir: '../dist',
     fallback: true,
   },
 
