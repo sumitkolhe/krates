@@ -150,11 +150,14 @@
 
 <script>
 import Vue from 'vue'
+import GeistUI from '@geist-ui/vue'
 export default Vue.extend({
   methods: {
-    changeTheme(themeType) {
-      if (themeType === 'dark') this.$emit('clicked', true)
-      else this.$emit('clicked', false)
+    changeTheme() {
+      // if (themeType === 'dark') this.$emit('clicked', true)
+      // else this.$emit('clicked', false)
+      // GeistUI.theme.enableLight()
+      GeistUI.theme.enableDark()
     },
   },
 })

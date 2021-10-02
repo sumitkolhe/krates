@@ -1,48 +1,45 @@
 <template>
-  <div class="max-w-6xl mx-auto pt-56">
-    <!-- <Request :base="generatedBoxId" /> -->
+  <div>
+    <div class="pt-32 pb-12 border-b">
+      <h1 class="text-4xl font-medium max-w-6xl mx-auto px-6">Dashboard</h1>
+    </div>
 
-    <div class="">
+    <div class="max-w-6xl mx-auto pt-12">
+      <!-- <Request :base="generatedBoxId" /> -->
+      <zi-fieldset
+        class="mx-6 mb-8"
+        footer="The Evil Rabbit Jumped over the Fence"
+      >
+        <h1>Base ID</h1>
+      </zi-fieldset>
       <div
         class="
           relative
-          flex flex-col
-          border
-          py-6
-          border-gray-200
+          flex
+          mx-6
+          flex-col
+          border border-gray-200
           rounded
           bg-white
-          mx-6
-          px-6
-          my-12
+          mb-8
         "
       >
-        <h3 class="text-lg font-medium">Base ID</h3>
-        <p class="text-sm mt-3 mb-2">This is your primary namespace id</p>
-        <input
-          v-model="baseId"
-          type="text"
-          class="
-            border border-gray-200
-            rounded
-            text-sm
-            p-2
-            my-2
-            w-1/5
-            cursor-not-allowed
-            active:border-none
-          "
-        />
-      </div>
-    </div>
-
-    <client-only>
-      <div class="max-w-6xl mx-auto px-5 sm:px-6">
-        <div class="codemirror">
-          <codemirror v-model="code" class="codemirror" :options="options" />
+        <div class="p-6">
+          <h3 class="text-lg font-medium">Base ID</h3>
+          <p class="text-sm mt-3 mb-2">This is your primary namespace id</p>
+          <zi-snippet :text="baseId" width="300px"></zi-snippet>
         </div>
+        <div class="border-t px-6 py-4 bg-gray-50">ok</div>
       </div>
-    </client-only>
+
+      <client-only>
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+          <div class="codemirror">
+            <codemirror v-model="code" class="codemirror" :options="options" />
+          </div>
+        </div>
+      </client-only>
+    </div>
   </div>
 </template>
 
@@ -116,3 +113,10 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style>
+.zi-snippet > pre::before {
+  content: '';
+  user-select: none;
+}
+</style>
