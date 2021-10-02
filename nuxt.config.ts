@@ -26,7 +26,7 @@ const NuxtAppConfig: NuxtConfig = {
 
   css: ['codemirror/lib/codemirror.css', 'codemirror/theme/base16-dark.css'],
 
-  plugins: [{ src: '~plugins/codemirror.ts', ssr: false }],
+  plugins: [{ src: '~plugins/codemirror', ssr: false }],
 
   components: true,
 
