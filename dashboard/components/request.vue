@@ -4,7 +4,7 @@
       <div class="flex flex-wrap mb-4">
         <div class="grid grid-flow-col auto-cols-max">
           <label class="block text-sm sr-only" htmlFor="httpRequest"
-            >Bucket id</label
+            >Base id</label
           >
           <div class="relative flex items-center max-w-md mr-8">
             <input
@@ -23,7 +23,7 @@
                 rounded-lg
                 border border-gray-300
               "
-              :placeholder="bucket"
+              :placeholder="base"
               required
             />
           </div>
@@ -44,7 +44,7 @@
                 rounded-lg
                 border border-gray-300
               "
-              :placeholder="bucket"
+              :placeholder="base"
               required
             />
           </div>
@@ -65,7 +65,7 @@
                 rounded-lg
                 border border-gray-300
               "
-              :placeholder="bucket"
+              :placeholder="base"
               required
             />
           </div>
@@ -99,7 +99,7 @@
 import Vue from 'vue'
 export default Vue.extend({
   props: {
-    bucket: String,
+    base: String,
   },
 })
 </script>

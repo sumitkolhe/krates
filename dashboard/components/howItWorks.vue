@@ -59,7 +59,7 @@
           "
         >
           <h3 class="mb-3 font-bold text-white text-xl dark:text-black">
-            Get your unique bucket ID
+            Get your unique base ID
           </h3>
           <p
             class="
@@ -70,8 +70,8 @@
               dark:text-black
             "
           >
-            Visit Detabase Dashboard and get your unique bucket ID. This bucket
-            ID will acts as your personal namespace for storing data.
+            Visit Detabase Dashboard and get your unique base ID. This base ID
+            will acts as your personal namespace for storing data.
           </p>
         </div>
       </div>

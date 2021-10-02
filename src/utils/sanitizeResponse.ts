@@ -1,10 +1,11 @@
-import { Bucket } from '@src/interfaces/bucket'
+/* eslint-disable no-console */
+import { Base } from '@src/interfaces/base'
 
-export const sanitizeResponse = (data: Bucket[] | Bucket): Bucket[] | Bucket => {
+export const sanitizeResponse = (data: Base[] | Base): Base[] | Base => {
   if (Array.isArray(data)) {
-    const sanitizedResponse: Array<Bucket> = []
+    const sanitizedResponse: Array<Base> = []
     data.forEach((item) => {
-      let response = {} as Bucket
+      let response = {} as Base
 
       response._id = item._id
       response.createdAt = item.createdAt
@@ -17,7 +18,7 @@ export const sanitizeResponse = (data: Bucket[] | Bucket): Bucket[] | Bucket => 
     return sanitizedResponse
   }
 
-  let response = {} as Bucket
+  let response = {} as Base
 
   response._id = data._id
   response.createdAt = data.createdAt

@@ -1,6 +1,6 @@
-export interface Bucket {
+export interface Base {
   _id: string
-  bucketId: string
+  baseId: string
   collectionId: string
   data: Record<string, unknown>
   createdAt: Date

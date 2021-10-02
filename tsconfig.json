@@ -32,5 +32,5 @@
     "useUnknownInCatchVariables": false
   },
   "exclude": ["node_modules", "dist", "coverage"],
-  "include": ["src", "tests", "src/controller/bucket.controller.ts"]
+  "include": ["src", "tests"]
 }

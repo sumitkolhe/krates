@@ -5,9 +5,9 @@ import { StorageService } from '@src/services/storage.service'
 
 export const getData: RequestHandler = async (req, res, next) => {
   try {
-    const { bucketId, collectionId } = req.params
+    const { baseId, collectionId } = req.params
 
-    const responseData = await StorageService.getData(bucketId, collectionId)
+    const responseData = await StorageService.getData(baseId, collectionId)
     res.json(responseData)
   } catch (error) {
     Logger.error(error.message)
@@ -17,10 +17,10 @@ export const getData: RequestHandler = async (req, res, next) => {
 
 export const setData: RequestHandler = async (req, res, next) => {
   try {
-    const { bucketId, collectionId } = req.params
+    const { baseId, collectionId } = req.params
     const data = req.body
 
-    const responseData = await StorageService.setData(bucketId, collectionId, data)
+    const responseData = await StorageService.setData(baseId, collectionId, data)
     res.json(responseData)
   } catch (error) {
     Logger.error(error.message)
@@ -30,10 +30,10 @@ export const setData: RequestHandler = async (req, res, next) => {
 
 export const putData: RequestHandler = async (req, res, next) => {
   try {
-    const { bucketId, recordId } = req.params
+    const { baseId, recordId } = req.params
     const data = req.body
 
-    const responseData = await StorageService.putData(bucketId, recordId, data)
+    const responseData = await StorageService.putData(baseId, recordId, data)
     res.json(responseData)
   } catch (error) {
     Logger.error(error.message)
@@ -43,10 +43,10 @@ export const putData: RequestHandler = async (req, res, next) => {
 
 export const deleteData: RequestHandler = async (req, res, next) => {
   try {
-    const { bucketId } = req.params
+    const { baseId } = req.params
 
-    await StorageService.deleteData(bucketId)
-    res.json({ status: globalConstants.status.success, message: 'Bucket deleted succesfully' })
+    await StorageService.deleteData(baseId)
+    res.json({ status: globalConstants.status.success, message: 'Base deleted succesfully' })
   } catch (error) {
     Logger.error(error.message)
     next(error)

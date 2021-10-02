@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-6xl mx-auto pt-56">
-    <!-- <Request :bucket="generatedBoxId" /> -->
+    <!-- <Request :base="generatedBoxId" /> -->
 
     <div class="">
       <div
@@ -17,10 +17,10 @@
           my-12
         "
       >
-        <h3 class="text-lg font-medium">Bucket ID</h3>
+        <h3 class="text-lg font-medium">Base ID</h3>
         <p class="text-sm mt-3 mb-2">This is your primary namespace id</p>
         <input
-          v-model="bucketId"
+          v-model="baseId"
           type="text"
           class="
             border border-gray-200
@@ -51,7 +51,7 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      bucketId: '',
+      baseId: '',
       options: {
         tabSize: 4,
         styleActiveLine: true,
@@ -112,7 +112,7 @@ export default Vue.extend({
       d = Math.floor(d / 16)
       return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
     })
-    this.bucketId = id
+    this.baseId = id
   },
 })
 </script>

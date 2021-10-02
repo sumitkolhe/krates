@@ -1,7 +1,7 @@
 import { model, Schema, Document } from 'mongoose'
 
 export interface StorageDocument extends Document {
-  bucketId: string
+  baseId: string
   collectionId: string
   data: Record<string, unknown>
   createdAt: Date
@@ -10,7 +10,7 @@ export interface StorageDocument extends Document {
 
 const StorageSchema: Schema = new Schema(
   {
-    bucketId: {
+    baseId: {
       type: String,
       required: true,
     },
