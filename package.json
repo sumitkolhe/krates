@@ -58,6 +58,7 @@
   "dependencies": {
     "@nuxt/types": "^2.15.7",
     "@nuxtjs/axios": "^5.13.6",
+    "@tailwindcss/forms": "^0.3.4",
     "@types/morgan": "^1.9.3",
     "axios": "^0.21.4",
     "celebrate": "^15.0.0",

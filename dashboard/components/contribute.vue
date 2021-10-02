@@ -26,8 +26,8 @@
                 bg-clip-text
                 text-transparent
                 bg-gradient-to-r
-                from-green-400
-                to-blue-500
+                from-purple-800
+                to-red-400
               "
             >
               open-source

@@ -1,5 +1,5 @@
 <template>
-  <footer
+  <div
     class="
       w-full
       z-30
@@ -13,215 +13,139 @@
       dark:bg-gray-900 dark:border-t dark:border-gray-600
     "
   >
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex justify-between py-8 md:py-12">
-        <NuxtLink
-          to="/"
-          class="
-            inline-flex
-            cursor-pointer
-            items-center
-            justify-center
-            border border-transparent
-            rounded
-            leading-snug
-            transition
-            duration-150
-            ease-in-out
-            dark:text-white
-          "
-          aria-label="logo"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-12 w-12"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-            />
-          </svg>
-          <span class="text-2xl font-bold pl-4 dark:text-white">Detabase </span>
-        </NuxtLink>
-
-        <!-- Theme -->
-        <h6 class="text-gray-800 font-medium mt-2">
-          <div class="relative inline-block text-left dropdown">
-            <span class="rounded-md shadow-sm"
-              ><button
-                class="
-                  inline-flex
-                  justify-center
-                  w-full
-                  px-4
-                  py-2
-                  text-sm
-                  font-medium
-                  leading-5
-                  text-gray-700
-                  transition
-                  duration-100
-                  ease-in-out
-                  bg-white
-                  border border-gray-300
-                  rounded-md
-                  hover:text-gray-500
-                  focus:outline-none
-                  focus:border-blue-300
-                  focus:shadow-outline-blue
-                  active:bg-gray-50 active:text-gray-800
-                  dark:bg-black dark:text-gray-600
-                "
-                type="button"
-                aria-haspopup="true"
-                aria-expanded="true"
-                aria-controls="headlessui-menu-items-117"
-              >
-                <span>Theme</span>
-                <svg
-                  class="w-5 h-5 ml-2 -mr-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg></button
-            ></span>
-            <div
-              class="
-                opacity-0
-                invisible
-                dropdown-menu
-                transition-all
-                duration-100
-                transform
-                origin-top-right
-                -translate-y-2
-                scale-95
-              "
-            >
-              <div
-                id="headlessui-menu-items-117"
-                class="
-                  absolute
-                  right-0
-                  w-56
-                  mt-2
-                  origin-top-right
-                  bg-white
-                  border border-gray-200
-                  divide-y divide-gray-100
-                  rounded-md
-                  shadow-lg
-                  outline-none
-                "
-                aria-labelledby="theme-select"
-                role="menu"
-              >
-                <div class="py-1">
-                  <button
-                    tabindex="0"
-                    class="
-                      text-gray-700
-                      flex
-                      justify-between
-                      px-4
-                      py-2
-                      text-sm
-                      leading-5
-                      text-left
-                    "
-                    role="menuitem"
-                    @click="changeTheme('light')"
-                  >
-                    Light
-                  </button>
-                  <button
-                    tabindex="1"
-                    class="
-                      text-gray-700
-                      flex
-                      justify-between
-                      px-4
-                      py-2
-                      text-sm
-                      leading-5
-                      text-left
-                    "
-                    role="menuitem"
-                    @click="changeTheme('dark')"
-                  >
-                    Dark
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </h6>
-      </div>
-
-      <!-- Copyright -->
+    <footer class="max-w-6xl px-4 md:px-8 mx-auto">
       <div
         class="
-          md:flex md:items-center md:justify-between
-          justify-center
-          py-4
-          md:py-6 md:pb-12
-          border-t border-gray-200
+          flex flex-col
+          md:flex-row
+          justify-between
+          items-center
+          border-b
           dark:border-gray-600
+          gap-4
+          py-8
         "
       >
-        <ul class="flex mb-4 md:order-1 md:ml-4 md:mb-0">
-          <li class="ml-4">
-            <a
-              href="https://github.com/sumitkolhe/detabase"
-              target="_blank"
-              class="
-                flex
-                justify-center
-                items-center
-                text-gray-600
-                hover:text-gray-900 hover:bg-white-100
-                rounded-full
-                transition
-                duration-150
-                ease-in-out
-              "
-              aria-label="Github"
+        <nav
+          class="
+            flex flex-wrap
+            justify-center
+            md:justify-start
+            gap-x-4 gap-y-2
+            md:gap-6
+          "
+        >
+          <NuxtLink
+            to="/"
+            class="
+              inline-flex
+              cursor-pointer
+              items-center
+              justify-center
+              border border-transparent
+              rounded
+              leading-snug
+              transition
+              duration-150
+              ease-in-out
+              dark:text-white
+            "
+            aria-label="logo"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-12 w-12"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <svg
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
+              <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="css-i6dzq1"
-              >
-                <path
-                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                ></path>
-              </svg>
-            </a>
-          </li>
-        </ul>
+                stroke-width="2"
+                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+              />
+            </svg>
+            <span class="text-2xl font-bold pl-4 dark:text-white"
+              >Detabase
+            </span>
+          </NuxtLink>
+        </nav>
 
-        <div class="text-sm text-gray-600 dark:text-gray-400 text-center">
-          Copyright © 2021 All rights reserved.
+        <div class="flex gap-4">
+          <select
+            id="theme"
+            name="theme"
+            class="
+              rounded
+              text-sm
+              border
+              dark:border
+              border-gray-300
+              dark:border-gray-600
+              outline-none
+              dark:outline-none dark:bg-black dark:text-white
+              focus:ring-black focus:outline-none focus:ring-0
+            "
+          >
+            <option selected @click="changeTheme('light')">Light Theme</option>
+            <option @click="changeTheme('dark')">Dark Theme</option>
+          </select>
         </div>
       </div>
-    </div>
-  </footer>
+      <div
+        class="
+          flex flex-col
+          md:flex-row
+          justify-between
+          items-center
+          gap-4
+          py-8
+        "
+      >
+        <nav
+          class="
+            flex flex-wrap
+            justify-center
+            md:justify-start
+            gap-x-4 gap-y-2
+            md:gap-6
+          "
+        >
+          <div class="text-gray-600 text-sm text-center py-2">
+            © 2021 Detabase. All rights reserved.
+          </div>
+        </nav>
+
+        <div class="flex gap-4">
+          <a
+            href="https://github.com/sumitkolhe/detabase"
+            target="_blank"
+            class="
+              text-gray-400
+              hover:text-gray-500
+              active:text-gray-600
+              transition
+              duration-100
+            "
+          >
+            <svg
+              class="w-6 h-6"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
 
 <script>
