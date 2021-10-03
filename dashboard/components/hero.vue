@@ -50,91 +50,18 @@
             for your projects
           </h1>
           <div class="max-w-3xl mx-auto my-14">
-            <p
-              class="text-xl text-gray-600 mb-8 dark:text-gray-400"
-              data-aos="zoom-y-out"
-              data-aos-delay="150"
-            >
+            <p class="text-xl text-gray-500 mb-8">
               Detabase provides a HTTP based JSON database service for free to
               help you get started with your projects easily!
             </p>
-            <div
-              class="
-                max-w-xs
-                mx-auto
-                sm:max-w-none sm:flex sm:justify-center
-                md:pt-12
-                pt-8
-              "
-              data-aos="zoom-y-out"
-              data-aos-delay="300"
-            >
-              <div>
-                <NuxtLink
-                  class="
-                    btn
-                    text-white
-                    bg-black
-                    hover:bg-white hover:text-black hover:border-black
-                    w-full
-                    mb-4
-                    sm:w-auto sm:mb-0
-                    font-medium
-                    inline-flex
-                    cursor-pointer
-                    items-center
-                    justify-center
-                    border border-transparent
-                    rounded
-                    leading-snug
-                    transition
-                    duration-150
-                    ease-in-out
-                    p-4
-                    px-12
-                    dark:bg-white
-                    dark:text-black
-                    dark:hover:border-white
-                    dark:hover:bg-black
-                    dark:hover:text-white
-                  "
-                  to="/dashboard"
-                  >Get started</NuxtLink
-                >
-              </div>
-              <div>
-                <a
-                  class="
-                    btn
-                    text-black
-                    bg-white
-                    border-gray-200
-                    hover:border-black
-                    w-full
-                    sm:w-auto sm:ml-4
-                    font-medium
-                    inline-flex
-                    cursor-pointer
-                    items-center
-                    justify-center
-                    border border-transparent
-                    rounded
-                    leading-snug
-                    transition
-                    duration-150
-                    ease-in-out
-                    p-4
-                    px-12
-                    dark:bg-black
-                    dark:text-gray-400
-                    dark:border-gray-600
-                    dark:hover:border-white
-                    dark:hover:text-white
-                  "
-                  href="#0"
-                  >Read the docs</a
-                >
-              </div>
+
+            <div class="mt-20">
+              <NuxtLink to="/dashboard" class="px-2">
+                <zi-button type="primary">Get Started</zi-button></NuxtLink
+              >
+              <NuxtLink to="/dashboard" class="px-2">
+                <zi-button type="normal">Read the docs</zi-button></NuxtLink
+              >
             </div>
           </div>
         </div>
@@ -146,3 +73,10 @@
 <script>
 export default {}
 </script>
+
+<style>
+.zi-btn {
+  height: 60px;
+  font-size: 16px;
+}
+</style>

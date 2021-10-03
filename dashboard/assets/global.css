@@ -1,0 +1,16 @@
+.root,
+#root,
+#docs-root,
+#app,
+html {
+  --geist-background: var(--geist-background);
+  --geist-foreground: var(--geist-foreground);
+  --accent1: var(--accents-1);
+  --accent2: var(--accents-2);
+  --accent3: var(--accents-3);
+  --accent4: var(--accents-4);
+  --accent5: var(--accents-5);
+  --accent6: var(--accents-6);
+  --accent7: var(--accents-7);
+  --accent8: var(--accents-8);
+}

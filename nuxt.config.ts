@@ -24,7 +24,12 @@ const NuxtAppConfig: NuxtConfig = {
     ],
   },
 
-  css: ['codemirror/lib/codemirror.css', 'codemirror/theme/base16-dark.css', '@geist-ui/vue/dist/geist-ui.css'],
+  css: [
+    './assets/global.css',
+    'codemirror/lib/codemirror.css',
+    'codemirror/theme/base16-dark.css',
+    '@geist-ui/vue/dist/geist-ui.css',
+  ],
 
   plugins: [{ src: '~plugins/codemirror', ssr: false }, '~plugins/theme'],
 

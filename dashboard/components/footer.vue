@@ -88,8 +88,8 @@
               focus:ring-black focus:outline-none focus:ring-0
             "
           >
-            <option selected @click="changeTheme('light')">Light Theme</option>
-            <option @click="changeTheme('dark')">Dark Theme</option>
+            <option selected @click="switchTheme">Light Theme</option>
+            <option @click="switchTheme">Dark Theme</option>
           </select>
         </div>
       </div>
@@ -152,12 +152,32 @@
 import Vue from 'vue'
 import GeistUI from '@geist-ui/vue'
 export default Vue.extend({
+  data: () => ({
+    isDark: false,
+    language: 'en-us',
+    isEnglish: true,
+    isLoading: false,
+  }),
+  mounted() {
+    this.isEnglish = `${this.$route.params.language}`
+      .toLowerCase()
+      .includes('en')
+    const isDark = `${localStorage.getItem('theme')}`.includes('dark')
+    if (this.isDark !== isDark) {
+      this.switchTheme()
+    }
+  },
+
   methods: {
-    changeTheme() {
-      // if (themeType === 'dark') this.$emit('clicked', true)
-      // else this.$emit('clicked', false)
-      // GeistUI.theme.enableLight()
-      GeistUI.theme.enableDark()
+    switchTheme() {
+      const next = this.isDark ? 'light-theme' : 'dark-theme'
+      if (this.isDark) {
+        GeistUI.theme.enableLight()
+      } else {
+        GeistUI.theme.enableDark()
+      }
+      localStorage.setItem('theme', next)
+      this.isDark = !this.isDark
     },
   },
 })

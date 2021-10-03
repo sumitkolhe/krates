@@ -8,11 +8,9 @@
       transition
       duration-300
       ease-in-out
-      bg-white
-      dark:bg-black
+      bg-geist-background
       blur
-      border-b border-gray-200
-      dark:border-b-2 dark:border-gray-800
+      border-b border-accent2
     "
   >
     <div class="max-w-6xl mx-auto px-5 sm:px-6">
