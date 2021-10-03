@@ -7,10 +7,9 @@
       transition
       duration-300
       ease-in-out
-      bg-gray-50
+      bg-accent1
       blur
-      border-t border-gray-200
-      dark:bg-gray-900 dark:border-t dark:border-gray-600
+      border-t border-accent2
     "
   >
     <footer class="max-w-6xl px-4 md:px-8 mx-auto">
@@ -20,8 +19,7 @@
           md:flex-row
           justify-between
           items-center
-          border-b
-          dark:border-gray-600
+          border-b border-accent2
           gap-4
           py-8
         "
@@ -73,24 +71,10 @@
         </nav>
 
         <div class="flex gap-4">
-          <select
-            id="theme"
-            name="theme"
-            class="
-              rounded
-              text-sm
-              border
-              dark:border
-              border-gray-300
-              dark:border-gray-600
-              outline-none
-              dark:outline-none dark:bg-black dark:text-white
-              focus:ring-black focus:outline-none focus:ring-0
-            "
-          >
-            <option selected @click="switchTheme">Light Theme</option>
-            <option @click="switchTheme">Dark Theme</option>
-          </select>
+          <zi-select v-model="value" size="small">
+            <zi-option value="Light Theme"></zi-option
+            ><zi-option value="Dark Theme"></zi-option>
+          </zi-select>
         </div>
       </div>
       <div
@@ -112,7 +96,7 @@
             md:gap-6
           "
         >
-          <div class="text-gray-600 text-sm text-center py-2">
+          <div class="text-accent6 text-sm text-center py-2">
             © 2021 Detabase. All rights reserved.
           </div>
         </nav>
@@ -157,7 +141,20 @@ export default Vue.extend({
     language: 'en-us',
     isEnglish: true,
     isLoading: false,
+    value: 'Light Theme',
   }),
+  watch: {
+    value() {
+      const next = this.isDark ? 'light-theme' : 'dark-theme'
+      if (this.isDark) {
+        GeistUI.theme.enableLight()
+      } else {
+        GeistUI.theme.enableDark()
+      }
+      localStorage.setItem('theme', next)
+      this.isDark = !this.isDark
+    },
+  },
   mounted() {
     this.isEnglish = `${this.$route.params.language}`
       .toLowerCase()
@@ -169,16 +166,7 @@ export default Vue.extend({
   },
 
   methods: {
-    switchTheme() {
-      const next = this.isDark ? 'light-theme' : 'dark-theme'
-      if (this.isDark) {
-        GeistUI.theme.enableLight()
-      } else {
-        GeistUI.theme.enableDark()
-      }
-      localStorage.setItem('theme', next)
-      this.isDark = !this.isDark
-    },
+    switchTheme() {},
   },
 })
 </script>

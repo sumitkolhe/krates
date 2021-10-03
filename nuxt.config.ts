@@ -47,6 +47,8 @@ const NuxtAppConfig: NuxtConfig = {
     dir: './dist/dashboard',
     fallback: true,
   },
+
+  build: { transpile: ['@geist-ui/vue'] },
 }
 
 export default NuxtAppConfig

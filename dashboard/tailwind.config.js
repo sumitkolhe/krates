@@ -11,7 +11,7 @@ module.exports = {
       colors: {
         gray: colors.trueGray,
         'geist-background': 'var(--geist-background)',
-        'geist-foreground': 'var(--geist-background)',
+        'geist-foreground': 'var(--geist-foreground)',
         accent1: 'var(--accent1)',
         accent2: 'var(--accent2)',
         accent3: 'var(--accent3)',
@@ -26,5 +26,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [],
 }

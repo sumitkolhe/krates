@@ -32,11 +32,10 @@
               ease-in-out
               py-3
             "
-            aria-label="Cruip"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-10 w-10 dark:text-white"
+              class="h-10 w-10"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -48,58 +47,22 @@
                 d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
               />
             </svg>
-            <span class="pl-4 font-bold text-2xl dark:text-white"
-              >Detabase</span
-            >
+            <p class="pl-4 font-bold text-2xl text-accent8">Detabase</p>
           </NuxtLink>
         </div>
 
-        <nav
-          v-if="$route.path !== '/dashboard'"
-          class="md:flex flex-grow hidden"
-        >
+        <nav v-if="$route.path !== '/dashboard'" class="md:flex flex-grow">
           <ul class="flex flex-grow justify-end flex-wrap items-center">
-            <li>
-              <NuxtLink
-                to="/dashboard"
-                class="
-                  font-medium
-                  inline-flex
-                  cursor-pointer
-                  items-center
-                  justify-center
-                  border border-transparent
-                  rounded
-                  leading-snug
-                  transition
-                  duration-150
-                  ease-in-out
-                  text-gray-200
-                  bg-black
-                  dark:bg-white dark:text-black
-                  hover:bg-white hover:border-black hover:text-black
-                  dark:hover:bg-black
-                  dark:hover:border-white
-                  dark:hover:text-white
-                  ml-3
-                  p-2
-                  px-4
-                "
+            <NuxtLink to="/dashboard">
+              <zi-button
+                type="primary"
+                size="large"
+                auto
+                :icon-right="arrowRight"
               >
-                <span>Dashboard</span>
-
-                <svg
-                  class="w-3 h-3 fill-current flex-shrink-0 ml-2 -mr-1"
-                  viewBox="0 0 12 12"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
-                    fillRule="nonzero"
-                  />
-                </svg>
-              </NuxtLink>
-            </li>
+                <span class="pr-6">Dashboard</span>
+              </zi-button>
+            </NuxtLink>
           </ul>
         </nav>
       </div>
@@ -109,5 +72,10 @@
 
 <script>
 import Vue from 'vue'
-export default Vue.extend({})
+import arrowRight from '@geist-ui/vue-icons/packages/arrow-right'
+export default Vue.extend({
+  data: () => ({
+    arrowRight,
+  }),
+})
 </script>
