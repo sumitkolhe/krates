@@ -24,7 +24,9 @@
         footer="This is your personal detabase Id and used for storing your data."
       >
         <h3 class="text-lg font-medium">Base ID</h3>
-        <p class="text-sm mt-3 mb-2">This is your primary namespace id</p>
+        <p class="text-sm mt-3 mb-2">
+          This is your personal detabase Id and used for storing your data.
+        </p>
         <zi-snippet :text="baseId" width="300px"></zi-snippet>
         <template #footer>
           <p>
@@ -49,7 +51,8 @@
         </client-only>
         <template #footer>
           <p>
-            This is your personal detabase ID and is used for storing your data.
+            <span class="font-semibold text-lg"> Payload Size:</span>
+            {{ calculatePayloadSize() }} Kilobytes
           </p>
           <zi-button type="primary" auto @click="regenerateBaseId"
             >Copy
@@ -82,13 +85,7 @@ export default Vue.extend({
         autoCloseBrackets: true,
         lineWrapping: true,
       },
-      payload: `{
-  "method": "GET",
-  "args": {},
-  "data": "",
-  "path": "/",
-  "isBase64Encoded": false
-}`,
+      payload: `{"method":"GET","args":{},"data":"","path":"/","isBase64Encoded":false}`,
     }
   },
 
@@ -107,6 +104,7 @@ export default Vue.extend({
       this.baseId = this.generateBaseId()
       localStorage.setItem('baseId', this.baseId)
     },
+
     generateBaseId() {
       let date = new Date().getTime()
       const id = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
@@ -116,14 +114,12 @@ export default Vue.extend({
       })
       return id
     },
-    selectHandler(item) {
-      console.log(item)
-    },
 
     calculatePayloadSize() {
-      const size = new TextEncoder().encode(JSON.stringify(this.payload)).length
-      const kiloBytes = size / 1024
-      return kiloBytes
+      const bytes = ~-encodeURI(JSON.stringify(this.payload)).split(/%..|./)
+        .length
+      const kilobytes = bytes / 1024
+      return kilobytes.toString().slice(0, 6)
     },
   },
 })
