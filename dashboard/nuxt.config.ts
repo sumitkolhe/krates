@@ -35,18 +35,20 @@ const NuxtAppConfig: NuxtConfig = {
 
   components: true,
 
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/stylelint-module', '@nuxtjs/tailwindcss'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/tailwindcss',
+  ],
 
   modules: ['@nuxtjs/axios'],
 
   axios: {},
 
-  srcDir: 'dashboard/',
-
-  generate: {
-    dir: './dist/dashboard',
-    fallback: true,
-  },
+  // generate: {
+  //   dir: './dist/dashboard',
+  //   fallback: true,
+  // },
 
   build: { transpile: ['@geist-ui/vue'] },
 }
