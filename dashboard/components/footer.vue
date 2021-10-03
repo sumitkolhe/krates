@@ -71,7 +71,7 @@
         </nav>
 
         <div class="flex gap-4">
-          <zi-select v-model="value" size="small">
+          <zi-select v-model="theme" size="small">
             <zi-option value="Light Theme"></zi-option
             ><zi-option value="Dark Theme"></zi-option>
           </zi-select>
@@ -141,10 +141,10 @@ export default Vue.extend({
     language: 'en-us',
     isEnglish: true,
     isLoading: false,
-    value: 'Light Theme',
+    theme: 'Light Theme',
   }),
   watch: {
-    value() {
+    theme() {
       const next = this.isDark ? 'light-theme' : 'dark-theme'
       if (this.isDark) {
         GeistUI.theme.enableLight()
@@ -154,19 +154,6 @@ export default Vue.extend({
       localStorage.setItem('theme', next)
       this.isDark = !this.isDark
     },
-  },
-  mounted() {
-    this.isEnglish = `${this.$route.params.language}`
-      .toLowerCase()
-      .includes('en')
-    const isDark = `${localStorage.getItem('theme')}`.includes('dark')
-    if (this.isDark !== isDark) {
-      this.switchTheme()
-    }
-  },
-
-  methods: {
-    switchTheme() {},
   },
 })
 </script>

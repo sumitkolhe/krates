@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Base } from '@src/interfaces/base'
 
 export const sanitizeResponse = (data: Base[] | Base): Base[] | Base => {

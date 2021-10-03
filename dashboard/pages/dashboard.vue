@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="pt-32 pb-12">
+    <div class="pt-32 pb-12 border-b border-accent2">
       <h1 class="text-4xl font-semibold max-w-5xl mx-auto px-6">Dashboard</h1>
     </div>
     <!-- <div class="max-w-5xl mx-auto">
@@ -18,26 +18,20 @@
     </div> -->
 
     <div class="max-w-5xl mx-auto pt-12">
-      <!-- <Request :base="generatedBoxId" /> -->
-      <zi-fieldset
-        class="mb-8"
-        footer="This is your personal detabase Id and used for storing your data."
-      >
+      <zi-fieldset class="mb-8" footer="Base ID acts as a namespace for data.">
         <h3 class="text-lg font-medium">Base ID</h3>
-        <p class="text-sm mt-3 mb-2">
-          This is your personal detabase Id and used for storing your data.
-        </p>
+        <p class="text-sm mt-3 mb-2">Base ID acts as a namespace for data.</p>
         <zi-snippet :text="baseId" width="300px"></zi-snippet>
         <template #footer>
           <p>
             This is your personal detabase ID and is used for storing your data.
           </p>
-          <zi-button type="primary" auto @click="regenerateBaseId"
+          <zi-button type="error" auto @click="regenerateBaseId"
             >Regenerate ID
           </zi-button>
         </template>
       </zi-fieldset>
-
+      <Request :base-id="baseId" />
       <zi-fieldset
         class="mb-8"
         footer="This is your personal detabase Id and used for storing your data."
@@ -100,11 +94,6 @@ export default Vue.extend({
   },
 
   methods: {
-    regenerateBaseId() {
-      this.baseId = this.generateBaseId()
-      localStorage.setItem('baseId', this.baseId)
-    },
-
     generateBaseId() {
       let date = new Date().getTime()
       const id = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
@@ -113,6 +102,11 @@ export default Vue.extend({
         return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
       })
       return id
+    },
+
+    regenerateBaseId() {
+      this.baseId = this.generateBaseId()
+      localStorage.setItem('baseId', this.baseId)
     },
 
     calculatePayloadSize() {

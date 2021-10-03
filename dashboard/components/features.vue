@@ -95,8 +95,7 @@
             <cloud-snow-icon class="h-16 w-16 mb-2" />
             <h4 class="text-lg font-bold mb-1">Backend Agnostic</h4>
             <p class="text-accent6 text-center">
-              Use detabase with a backend server or even directly from the
-              browser.
+              Use detabase with a backend server or directly from the browser.
             </p>
           </div>
 
@@ -114,7 +113,7 @@
 
             <h4 class="text-lg font-bold mb-1">Host your own instance</h4>
             <p class="text-accent6 text-center">
-              Use Detabase as a free service or host your own private instance.
+              Use Detabase as a free service or host your own instance.
             </p>
           </div>
 
@@ -132,8 +131,7 @@
 
             <h4 class="text-lg font-bold mb-1">Backed by MongoDB</h4>
             <p class="text-accent6 text-center">
-              Unlimited possibilites in terms of structure of the data you can
-              store.
+              Supports all data formats that MongoDB supports.
             </p>
           </div>
         </div>
