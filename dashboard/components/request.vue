@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto px-5 sm:px-6">
+  <div class="max-w-5xl mx-auto px-5 sm:px-6">
     <form>
       <div class="flex flex-wrap mb-4">
         <div class="grid grid-flow-col auto-cols-max">

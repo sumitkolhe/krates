@@ -1,6 +1,6 @@
 <template>
   <section class="relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <div class="py-12 md:pt-20">
         <div class="max-w-3xl mx-auto text-center pb-12 md:pb-10">
           <h2 class="text-4xl font-black mb-8">Love Detabase?</h2>
@@ -42,11 +42,9 @@
           <div>
             <a href="https://github.com/sumitkolhe/detabase" target="_blank">
               <zi-button
-                auto
                 size="huge"
                 type="primary"
                 href="https://github.com/sumitkolhe/detabase"
-                primary
                 >Contribute</zi-button
               ></a
             >
@@ -60,3 +58,9 @@
 <script>
 export default {}
 </script>
+<style scoped>
+.zi-btn {
+  height: 60px;
+  font-size: 16px;
+}
+</style>

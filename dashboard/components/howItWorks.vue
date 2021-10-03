@@ -1,8 +1,8 @@
 <template>
-  <div class="container mx-auto max-w-6xl w-full h-full">
-    <div class="relative wrap overflow-hidden px-8 py-10 h-full">
+  <div class="container mx-auto max-w-5xl w-full h-full">
+    <div class="relative wrap overflow-hidden px-2 py-10 h-full">
       <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-        <h2 class="text-4xl mb-4">How Detabase works?</h2>
+        <h2 class="text-4xl mb-4 font-bold">How Detabase works?</h2>
         <p class="text-xl text-accent4">
           Detabase provides a REST API that you can use to make requests and
           store your JSON based data easily.

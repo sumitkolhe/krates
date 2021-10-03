@@ -1,10 +1,10 @@
 <template>
-  <div :class="[isDark ? 'dark' : ' ']">
+  <div>
     <Header />
     <main class="flex-grow dark:bg-black">
       <Nuxt />
     </main>
-    <Footer @clicked="onThemeChange" />
+    <Footer />
   </div>
 </template>
 
@@ -12,16 +12,10 @@
 import Vue from 'vue'
 export default Vue.extend({
   data() {
-    return {
-      isDark: false,
-    }
+    return {}
   },
 
-  methods: {
-    onThemeChange(value) {
-      this.isDark = value
-    },
-  },
+  methods: {},
 })
 </script>
 

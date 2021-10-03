@@ -1,6 +1,6 @@
 <template>
   <section class="relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <div class="pt-32 pb-12 md:pt-40 md:pb-20">
         <div class="text-center md:mt-6">
           <h1
@@ -55,12 +55,16 @@
               help you get started with your projects easily!
             </p>
 
-            <div class="mt-20">
-              <NuxtLink to="/dashboard" class="px-2">
-                <zi-button type="primary">Get Started</zi-button></NuxtLink
+            <div class="mt-20 flex flex-wrap justify-center">
+              <NuxtLink to="/dashboard" class="p-2 xs:w-full">
+                <zi-button type="primary" size="huge"
+                  >Get Started</zi-button
+                ></NuxtLink
               >
-              <NuxtLink to="/dashboard" class="px-2">
-                <zi-button type="normal">Read the docs</zi-button></NuxtLink
+              <NuxtLink to="/dashboard" class="p-2">
+                <zi-button type="normal" size="huge"
+                  >Read the docs</zi-button
+                ></NuxtLink
               >
             </div>
           </div>

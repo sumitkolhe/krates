@@ -12,7 +12,7 @@
       border-t border-accent2
     "
   >
-    <footer class="max-w-6xl px-4 md:px-8 mx-auto">
+    <footer class="max-w-5xl px-4 md:px-8 mx-auto">
       <div
         class="
           flex flex-col
