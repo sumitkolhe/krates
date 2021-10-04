@@ -44,6 +44,10 @@ const NuxtAppConfig: NuxtConfig = {
   modules: ['@nuxtjs/axios'],
 
   axios: {},
+  server: {
+    port: '3000',
+    host: '192.168.0.150',
+  },
 
   // generate: {
   //   dir: './dist/dashboard',

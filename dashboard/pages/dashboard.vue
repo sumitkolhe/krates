@@ -1,59 +1,63 @@
 <template>
   <div>
-    <div class="pt-32 pb-12 border-b border-accent2">
+    <div class="pt-32 pb-12">
       <h1 class="text-4xl font-semibold max-w-5xl mx-auto px-6">Dashboard</h1>
     </div>
-    <!-- <div class="max-w-5xl mx-auto">
-      <zi-tabs class="" @label-selected="selectHandler">
-        <zi-tabs-item
-          v-for="(item, index) in items"
-          :key="item.value + index"
-          :label="item.label"
-          :value="item.value"
-          class="border-t border-red-600"
-        >
-          ok
-        </zi-tabs-item>
-      </zi-tabs>
-    </div> -->
 
-    <div class="max-w-5xl mx-auto pt-12">
-      <zi-fieldset class="mb-8" footer="Base ID acts as a namespace for data.">
-        <h3 class="text-lg font-medium">Base ID</h3>
-        <p class="text-sm mt-3 mb-2">Base ID acts as a namespace for data.</p>
-        <zi-snippet :text="baseId" width="300px"></zi-snippet>
-        <template #footer>
-          <p>
-            This is your personal detabase ID and is used for storing your data.
-          </p>
-          <zi-button type="danger" auto @click="regenerateBaseId"
-            >Regenerate ID
-          </zi-button>
-        </template>
-      </zi-fieldset>
-      <Request :id="baseId" />
-      <zi-fieldset
-        class="mb-8"
-        footer="This is your personal detabase Id and used for storing your data."
+    <zi-tabs>
+      <zi-tabs-item
+        class="max-w-5xl mx-auto"
+        v-for="(item, index) in items"
+        :key="item.value + index"
+        :label="item.label"
+        :value="item.value"
       >
-        <client-only>
-          <div class="max-w-5xl mx-auto mb-12">
-            <div class="codemirror">
-              <codemirror v-model="payload" :options="options" />
-            </div>
+        <div class="max-w-5xl mx-auto pt-12 px-6">
+          <div v-if="item.label === 'Base Details'">
+            <zi-fieldset
+              class="mb-8"
+              footer="Base ID acts as a namespace for data."
+            >
+              <h3 class="text-lg font-medium">Base ID</h3>
+              <p class="text-sm mt-3 mb-2">
+                Base ID acts as a namespace for data.
+              </p>
+              <zi-snippet :text="baseId"></zi-snippet>
+              <template #footer>
+                <p>
+                  This is your personal detabase ID and is used for storing your
+                  data.
+                </p>
+                <zi-button
+                  type="success"
+                  class="px-4"
+                  auto
+                  @click="regenerateBaseId"
+                  >Regenerate ID
+                </zi-button>
+              </template>
+            </zi-fieldset>
+            <zi-fieldset
+              class="mb-8"
+              footer="Base ID acts as a namespace for data."
+            >
+              <h3 class="text-lg font-medium">Delete Base</h3>
+              <zi-note type="warning" class="mt-6">
+                This will delete all data in your base. This action is
+                irreversible.</zi-note
+              >
+              <template #footer>
+                <p></p>
+                <zi-button type="danger" auto @click="regenerateBaseId"
+                  >Delete Base
+                </zi-button>
+              </template>
+            </zi-fieldset>
           </div>
-        </client-only>
-        <template #footer>
-          <p>
-            <span class="font-semibold text-lg"> Payload Size:</span>
-            {{ calculatePayloadSize() }} Kilobytes
-          </p>
-          <zi-button type="primary" auto @click="regenerateBaseId"
-            >Copy
-          </zi-button>
-        </template>
-      </zi-fieldset>
-    </div>
+
+          <Request :id="baseId" v-else /></div
+      ></zi-tabs-item>
+    </zi-tabs>
   </div>
 </template>
 
@@ -63,23 +67,10 @@ export default Vue.extend({
   data() {
     return {
       items: [
-        { label: 'Setting', value: 'setting' },
-        { label: 'Lambda', value: 'lambda' },
-        { label: 'Server', value: 'server' },
+        { label: 'Base Details', value: 'details' },
+        { label: 'Connection', value: 'connect' },
       ],
       baseId: '',
-      options: {
-        tabSize: 4,
-        styleActiveLine: true,
-        lineNumbers: true,
-        line: true,
-        mode: 'application/ld+json',
-        theme: 'seti',
-        matchBrackets: true,
-        autoCloseBrackets: true,
-        lineWrapping: true,
-      },
-      payload: `{"method":"GET","args":{},"data":"","path":"/","isBase64Encoded":false}`,
     }
   },
 
@@ -107,13 +98,6 @@ export default Vue.extend({
       this.baseId = this.generateBaseId()
       localStorage.setItem('baseId', this.baseId)
     },
-
-    calculatePayloadSize() {
-      const bytes = ~-encodeURI(JSON.stringify(this.payload)).split(/%..|./)
-        .length
-      const kilobytes = bytes / 1024
-      return kilobytes.toString().slice(0, 6)
-    },
   },
 })
 </script>
@@ -123,7 +107,16 @@ export default Vue.extend({
   content: '';
   user-select: none;
 }
+
 .zi-tabs-container {
-  border-bottom: none !important;
+  width: 100vw !important;
+  margin: 0 auto !important;
+}
+
+.zi-item-wrapper:first-child {
+  margin-left: auto !important;
+}
+.zi-item-wrapper:last-child {
+  margin-right: auto !important;
 }
 </style>

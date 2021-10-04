@@ -8,11 +8,11 @@
       duration-300
       ease-in-out
       bg-geist-background
-      md:bg-opacity-10
+      md:opacity-90
       border-b border-accent2
     "
   >
-    <div class="max-w-5xl mx-auto px-5 sm:px-6">
+    <div class="max-w-5xl mx-auto px-6">
       <div class="flex items-center justify-between h-16 md:h-20">
         <div class="flex-shrink-0">
           <NuxtLink
@@ -38,14 +38,13 @@
           </NuxtLink>
         </div>
 
-        <nav
+        <NuxtLink
+          to="/dashboard"
           v-if="$route.path !== '/dashboard'"
-          class="md:flex flex-grow justify-end flex-wrap items-center"
+          class="flex flex-grow justify-end flex-wrap items-center"
         >
-          <NuxtLink to="/dashboard">
-            <zi-button type="primary" auto> Dashboard </zi-button>
-          </NuxtLink>
-        </nav>
+          <zi-button type="primary" auto> Dashboard </zi-button>
+        </NuxtLink>
       </div>
     </div>
   </header>
