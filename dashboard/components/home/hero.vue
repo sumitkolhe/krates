@@ -1,8 +1,8 @@
 <template>
   <section class="relative">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="pt-32 pb-12 md:pt-40 md:pb-20">
-        <div class="text-center md:mt-6">
+    <div class="max-w-5xl mx-auto px-4 mt-10">
+      <div class="pb-12 md:pb-20">
+        <div class="text-center">
           <h1
             class="
               text-5xl

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Header />
-    <main class="flex-grow dark:bg-black">
+    <CommonHeader />
+    <main class="flex-grow dark:bg-black pt-32">
       <Nuxt />
     </main>
-    <Footer />
+    <CommonFooter v-if="$route.path !== '/dashboard'" />
   </div>
 </template>
 

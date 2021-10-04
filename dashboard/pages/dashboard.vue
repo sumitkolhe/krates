@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="pt-32 pb-12">
-      <h1 class="text-4xl font-semibold max-w-5xl mx-auto px-6">Dashboard</h1>
-    </div>
+    <h1 class="text-4xl font-semibold max-w-5xl mx-auto px-6 pb-8">
+      Dashboard
+    </h1>
 
     <zi-tabs>
       <zi-tabs-item
@@ -12,7 +12,7 @@
         :label="item.label"
         :value="item.value"
       >
-        <div class="max-w-5xl mx-auto pt-12 px-6">
+        <div class="max-w-5xl mx-auto pt-12">
           <div v-if="item.label === 'Base Details'">
             <zi-fieldset
               class="mb-8"
@@ -22,7 +22,7 @@
               <p class="text-sm mt-3 mb-2">
                 Base ID acts as a namespace for data.
               </p>
-              <zi-snippet :text="baseId"></zi-snippet>
+              <zi-snippet :text="baseId" width="200px"></zi-snippet>
               <template #footer>
                 <p>
                   This is your personal detabase ID and is used for storing your
@@ -55,7 +55,7 @@
             </zi-fieldset>
           </div>
 
-          <Request :id="baseId" v-else /></div
+          <DashboardRequest :id="baseId" v-else /></div
       ></zi-tabs-item>
     </zi-tabs>
   </div>

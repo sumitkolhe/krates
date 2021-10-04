@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Hero />
-    <HowItWorks />
-    <Features />
-    <Contribute />
+    <HomeHero />
+    <HomeHowItWorks />
+    <HomeFeatures />
+    <HomeContribute />
   </div>
 </template>
 
