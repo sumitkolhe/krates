@@ -43,6 +43,7 @@
     "axios": "^0.21.4",
     "celebrate": "^15.0.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^17.4.2",
