@@ -26,12 +26,12 @@
           <p>
             This is your personal detabase ID and is used for storing your data.
           </p>
-          <zi-button type="error" auto @click="regenerateBaseId"
+          <zi-button type="danger" auto @click="regenerateBaseId"
             >Regenerate ID
           </zi-button>
         </template>
       </zi-fieldset>
-      <Request :base-id="baseId" />
+      <Request :id="baseId" />
       <zi-fieldset
         class="mb-8"
         footer="This is your personal detabase Id and used for storing your data."
@@ -57,7 +57,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
   data() {
@@ -84,8 +84,7 @@ export default Vue.extend({
   },
 
   mounted() {
-    const storedBaseId = localStorage.getItem('baseId')
-
+    const storedBaseId = localStorage.getItem('baseId') as string
     if (storedBaseId) this.baseId = storedBaseId
     else {
       this.baseId = this.generateBaseId()
@@ -101,7 +100,7 @@ export default Vue.extend({
         date = Math.floor(date / 16)
         return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
       })
-      return id
+      return id.toString()
     },
 
     regenerateBaseId() {

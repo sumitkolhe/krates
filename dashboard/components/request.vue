@@ -13,7 +13,7 @@
       </zi-select>
       <zi-input
         class="ml-2"
-        :placeholder="baseId"
+        :placeholder="id"
         prefix-label="https://detabase.me/"
         suffix-label="/api/"
         disabled
@@ -32,11 +32,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
+import '@nuxtjs/axios'
 export default Vue.extend({
   props: {
-    baseId: String,
+    id: String,
   },
   data() {
     return {
@@ -44,20 +45,10 @@ export default Vue.extend({
       collectionId: '',
     }
   },
-  watch: {
-    selectedRequestType(next) {
-      console.log(next)
-    },
-  },
 
   methods: {
     getBaseData() {
-      this.$axios
-        .get(`/api/${this.baseId}`)
-        .then((response) => {
-          console.log(response.data)
-        })
-        .catch((err) => console.error(err))
+      this.$axios.$get('http://localhost:3000/')
     },
   },
 })

@@ -9,7 +9,6 @@
       ease-in-out
       bg-geist-background
       md:bg-opacity-10
-      blur
       border-b border-accent2
     "
   >
@@ -44,9 +43,7 @@
           class="md:flex flex-grow justify-end flex-wrap items-center"
         >
           <NuxtLink to="/dashboard">
-            <zi-button type="primary" auto :icon-right="arrowRight">
-              <span class="pr-6">Dashboard</span>
-            </zi-button>
+            <zi-button type="primary" auto> Dashboard </zi-button>
           </NuxtLink>
         </nav>
       </div>
@@ -54,12 +51,9 @@
   </header>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
-import arrowRight from '@geist-ui/vue-icons/packages/arrow-right'
 export default Vue.extend({
-  data: () => ({
-    arrowRight,
-  }),
+  data: () => ({}),
 })
 </script>

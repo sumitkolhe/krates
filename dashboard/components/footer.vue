@@ -8,7 +8,6 @@
       duration-300
       ease-in-out
       bg-accent1
-      blur
       border-t border-accent2
     "
   >
@@ -132,15 +131,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import GeistUI from '@geist-ui/vue'
 export default Vue.extend({
   data: () => ({
     isDark: false,
-    language: 'en-us',
-    isEnglish: true,
-    isLoading: false,
     theme: 'Light Theme',
   }),
   watch: {
