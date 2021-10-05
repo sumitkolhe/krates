@@ -1,6 +1,7 @@
 <template>
   <div>
-    <CommonHeader />
+    <CommonHeader v-if="$route.path !== '/dashboard'" />
+    <DashboardHeader v-else />
     <main class="flex-grow dark:bg-black pt-32">
       <Nuxt />
     </main>

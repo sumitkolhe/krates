@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1 class="text-4xl font-semibold max-w-5xl mx-auto px-6 pb-8">
+    <CommonBlock />
+    <!-- <h1 class="text-4xl font-semibold max-w-5xl mx-auto px-6 pb-8">
       Dashboard
-    </h1>
+    </h1> -->
 
-    <zi-tabs>
+    <div class="border-accent2 border-b absolute mt-8 w-full"></div>
+    <zi-tabs class="max-w-5xl mx-auto">
       <zi-tabs-item
-        class="max-w-5xl mx-auto"
         v-for="(item, index) in items"
         :key="item.value + index"
         :label="item.label"
@@ -109,14 +110,6 @@ export default Vue.extend({
 }
 
 .zi-tabs-container {
-  width: 100vw !important;
-  margin: 0 auto !important;
-}
-
-.zi-item-wrapper:first-child {
-  margin-left: auto !important;
-}
-.zi-item-wrapper:last-child {
-  margin-right: auto !important;
+  border: none !important;
 }
 </style>

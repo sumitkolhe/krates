@@ -40,10 +40,27 @@
 
         <NuxtLink
           to="/dashboard"
+          v-if="$route.path !== '/dashboard'"
           class="flex flex-grow justify-end flex-wrap items-center"
         >
           <zi-button type="primary" auto> Dashboard </zi-button>
         </NuxtLink>
+
+        <zi-popover align="right" v-if="$route.path === '/dashboard'">
+          <zi-button size="medium" auto>Menu</zi-button>
+          <template v-slot:dropdown>
+            <zi-popover-item title>Dashboard</zi-popover-item>
+            <zi-popover-item line></zi-popover-item>
+            <zi-popover-item primary>New Base</zi-popover-item>
+            <zi-popover-item primary>Docs</zi-popover-item>
+            <zi-popover-item line></zi-popover-item>
+            <zi-popover-item>
+              <zi-select v-model="theme" size="small">
+                <zi-option value="Light Theme"></zi-option
+                ><zi-option value="Dark Theme"></zi-option> </zi-select
+            ></zi-popover-item>
+          </template>
+        </zi-popover>
       </div>
     </div>
   </header>

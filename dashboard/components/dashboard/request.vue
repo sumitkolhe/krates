@@ -25,7 +25,6 @@
         class="ml-2"
         :placeholder="id"
         prefix-label="https://detabase.me/"
-        suffix-label="/api/"
         disabled
       ></zi-input>
 
@@ -34,7 +33,6 @@
           class="ml-2"
           :placeholder="id"
           prefix-label="https://detabase.me/"
-          suffix-label="/api/"
           disabled
         ></zi-input>
         <zi-button type="success" auto @click="getBaseData">Send </zi-button>
