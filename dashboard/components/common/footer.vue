@@ -115,8 +115,8 @@ export default Vue.extend({
     }
   },
   mounted() {
-    this.$axios.$get('http://localhost:4000/health').then((response) => {
-      if (response?.message === 'OK') this.healthy = true
+    this.$axios.get('http://localhost:4000/health').then((response) => {
+      if (response?.status === 200) this.healthy = true
     })
   },
 })
