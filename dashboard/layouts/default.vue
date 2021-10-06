@@ -1,11 +1,12 @@
 <template>
   <div>
-    <CommonHeader v-if="$route.path !== '/dashboard'" />
+    <CommonHeader v-if="$route.path === '/'" />
     <DashboardHeader v-else />
+
     <main class="flex-grow dark:bg-black">
       <Nuxt />
     </main>
-    <CommonFooter v-if="$route.path !== '/dashboard'" />
+    <CommonFooter v-if="$route.path === '/'" />
   </div>
 </template>
 

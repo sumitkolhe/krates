@@ -16,7 +16,7 @@
       </nav>
 
       <div class="flex gap-4">
-        <zi-button type="primary">Create Base</zi-button>
+        <zi-button type="primary" @click="createNewBase">Create Base</zi-button>
       </div>
     </div>
   </div>
@@ -28,6 +28,16 @@ import '@nuxtjs/axios'
 export default Vue.extend({
   props: {
     title: String,
+  },
+  data() {
+    return {
+      newBaseId: '',
+    }
+  },
+  methods: {
+    createNewBase() {
+      this.$store.dispatch('bases/createNewBase')
+    },
   },
 })
 </script>

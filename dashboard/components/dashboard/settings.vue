@@ -8,7 +8,7 @@
         <p>
           This is your personal detabase ID and is used for storing your data.
         </p>
-        <zi-button type="success" class="px-4" auto @click="regenerateBaseId"
+        <zi-button type="success" class="px-4" auto @click=""
           >Regenerate ID
         </zi-button>
       </template>
@@ -21,9 +21,7 @@
       >
       <template #footer>
         <p></p>
-        <zi-button type="danger" auto @click="regenerateBaseId"
-          >Delete Base
-        </zi-button>
+        <zi-button type="danger" auto @click="">Delete Base </zi-button>
       </template>
     </zi-fieldset>
   </div>
@@ -34,39 +32,13 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      items: [
-        { label: 'Overview', value: 'overview' },
-        { label: 'Connection', value: 'connect' },
-      ],
       baseId: '',
     }
   },
 
-  mounted() {
-    const storedBaseId = localStorage.getItem('baseId') as string
-    if (storedBaseId) this.baseId = storedBaseId
-    else {
-      this.baseId = this.generateBaseId()
-      localStorage.setItem('baseId', this.baseId)
-    }
-  },
+  mounted() {},
 
-  methods: {
-    generateBaseId() {
-      let date = new Date().getTime()
-      const id = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
-        const r = (date + Math.random() * 16) % 16 | 0
-        date = Math.floor(date / 16)
-        return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
-      })
-      return id.toString()
-    },
-
-    regenerateBaseId() {
-      this.baseId = this.generateBaseId()
-      localStorage.setItem('baseId', this.baseId)
-    },
-  },
+  methods: {},
 })
 </script>
 
@@ -79,9 +51,4 @@ export default Vue.extend({
 .zi-tabs-container {
   border: none !important;
 }
-
-/* .zi-tabs-content {
-  width: 100vw !important;
-  margin: 0 auto !important;
-} */
 </style>

@@ -41,13 +41,16 @@ const NuxtAppConfig: NuxtConfig = {
     '@nuxtjs/tailwindcss',
   ],
 
-  modules: ['@nuxtjs/axios'],
+  modules: [
+    '@nuxtjs/axios',
+    ['nuxt-vuex-localstorage', { mode: 'debug', localStorage: ['bases'] }],
+  ],
 
   axios: {},
-  server: {
-    port: '3000',
-    host: '192.168.0.150',
-  },
+  // server: {
+  //   port: '3000',
+  //   host: '192.168.0.150',
+  // },
 
   // generate: {
   //   dir: './dist/dashboard',

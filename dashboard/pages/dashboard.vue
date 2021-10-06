@@ -10,8 +10,8 @@
         :value="item.value"
       >
         <CommonBlock :title="item.label" />
-
-        <DashboardSettings v-if="item.label !== 'Overview'" />
+        <DashboardOverview v-if="item.label === 'Overview'" />
+        <DashboardSettings v-if="item.label === 'Settings'" />
       </zi-tabs-item>
     </zi-tabs>
   </div>
@@ -19,42 +19,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Dashboard from './dashboard.vue'
 export default Vue.extend({
   data() {
     return {
       items: [
         { label: 'Overview', value: 'overview' },
-        { label: 'Connection', value: 'connect' },
+        { label: 'Settings', value: 'settings' },
       ],
-      baseId: '',
     }
-  },
-
-  mounted() {
-    const storedBaseId = localStorage.getItem('baseId') as string
-    if (storedBaseId) this.baseId = storedBaseId
-    else {
-      this.baseId = this.generateBaseId()
-      localStorage.setItem('baseId', this.baseId)
-    }
-  },
-
-  methods: {
-    generateBaseId() {
-      let date = new Date().getTime()
-      const id = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
-        const r = (date + Math.random() * 16) % 16 | 0
-        date = Math.floor(date / 16)
-        return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
-      })
-      return id.toString()
-    },
-
-    regenerateBaseId() {
-      this.baseId = this.generateBaseId()
-      localStorage.setItem('baseId', this.baseId)
-    },
   },
 })
 </script>
@@ -68,9 +40,4 @@ export default Vue.extend({
 .zi-tabs-container {
   border: none !important;
 }
-
-/* .zi-tabs-content {
-  width: 100vw !important;
-  margin: 0 auto !important;
-} */
 </style>
