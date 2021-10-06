@@ -51,33 +51,5 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import GeistUI from '@geist-ui/vue'
-export default Vue.extend({
-  data: () => ({
-    isDark: false,
-    theme: 'Light Theme',
-  }),
-  watch: {
-    theme() {
-      const next = this.isDark ? 'light-theme' : 'dark-theme'
-      if (this.isDark) {
-        GeistUI.theme.enableLight()
-      } else {
-        GeistUI.theme.enableDark()
-      }
-      localStorage.setItem('theme', next)
-      this.isDark = !this.isDark
-    },
-  },
-})
+export default Vue.extend({})
 </script>
-
-<style scoped>
-/* .popover-item {
-  padding: 12px 20px !important;
-} */
-
-/* .popover-item:hover {
-  background-color: rgb(0, 0, 0, 0.01);
-} */
-</style>

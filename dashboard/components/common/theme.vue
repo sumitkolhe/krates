@@ -1,27 +1,27 @@
 <template>
-  <zi-select v-model="theme" size="small">
-    <zi-option value="Light Theme"></zi-option
-    ><zi-option value="Dark Theme"></zi-option>
-  </zi-select>
+  <zi-button auto @click="changeTheme" action> {{ themeType }}</zi-button>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-
 export default Vue.extend({
-  data: () => ({
-    theme: '',
-  }),
-  watch: {
-    theme() {
-      this.$store.commit('theme/setTheme', this.theme)
+  methods: {
+    changeTheme() {
+      this.$store.commit('theme/setTheme')
+    },
+  },
+
+  computed: {
+    themeType() {
+      let isDark = this.$store.getters['theme/getTheme']
+
+      if (isDark) return 'Dark Theme'
+      return 'Light Theme'
     },
   },
 
   mounted() {
     this.$store.commit('theme/initTheme')
-    // this.theme = this.$store.getters['theme/getTheme']
-    // console.log(this.theme)
   },
 })
 </script>

@@ -16,10 +16,10 @@ export const mutations: MutationTree<BaseState> = {
 
 export const actions: ActionTree<BaseState, RootState> = {
   createNewBase: ({ commit }) => {
-    const newBase = generateBaseId()
+    const baseId = generateBaseId()
     const createdAt = new Date().toISOString().slice(0, 10)
 
-    const base = { baseId: newBase, createdAt }
+    const base = { baseId, createdAt }
 
     commit('setBase', base)
   },

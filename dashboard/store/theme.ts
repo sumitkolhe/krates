@@ -5,34 +5,33 @@ import GeistUI from '@geist-ui/vue'
 export type ThemeState = ReturnType<typeof state>
 
 export const state = () => ({
-  theme: 'Light Theme',
-  renderKey: 0,
+  isDark: false,
 })
 
 export const mutations: MutationTree<ThemeState> = {
   setTheme: (state) => {
-    if (state.theme === 'Light Theme') {
-      GeistUI.theme.enableDark()
-      state.theme = 'Dark Theme'
-    } else {
+    if (state.isDark) {
+      state.isDark = !state.isDark
       GeistUI.theme.enableLight()
-      state.theme === 'Light Theme'
+    } else {
+      state.isDark = !state.isDark
+      GeistUI.theme.enableDark()
     }
 
-    localStorage.setItem('theme', JSON.stringify(state.theme))
+    localStorage.setItem('isDark', JSON.stringify(state.isDark))
   },
 
   initTheme: (state) => {
-    state.theme = JSON.parse(localStorage.getItem('theme')!) || 'Light Theme'
-    if (state.theme === 'Light Theme') GeistUI.theme.enableLight()
+    state.isDark = JSON.parse(localStorage.getItem('isDark')!) || false
+    if (state.isDark) GeistUI.theme.enableDark()
     else {
-      GeistUI.theme.enableDark()
+      GeistUI.theme.enableLight()
     }
   },
 }
 
 export const getters: GetterTree<ThemeState, RootState> = {
   getTheme: (state) => {
-    return state.theme
+    return state.isDark
   },
 }
