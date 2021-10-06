@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pt-32">
     <HomeHero />
     <HomeHowItWorks />
     <HomeFeatures />

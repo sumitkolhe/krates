@@ -2,7 +2,7 @@
   <div>
     <CommonHeader v-if="$route.path !== '/dashboard'" />
     <DashboardHeader v-else />
-    <main class="flex-grow dark:bg-black pt-32">
+    <main class="flex-grow dark:bg-black">
       <Nuxt />
     </main>
     <CommonFooter v-if="$route.path !== '/dashboard'" />

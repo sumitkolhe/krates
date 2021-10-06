@@ -1,16 +1,35 @@
 <template>
   <div class="max-w-5xl mx-auto">
-    <!-- <zi-input placeholder="placeholder" v-model="value" size="big"></zi-input>
-    <zi-button type="primary" primary auto>New Base</zi-button> -->
+    <div
+      class="flex flex-col md:flex-row justify-between items-center gap-4 py-8"
+    >
+      <nav
+        class="
+          flex flex-wrap
+          justify-center
+          md:justify-start
+          gap-x-4 gap-y-2
+          md:gap-6
+        "
+      >
+        <h1 class="text-3xl font-medium">{{ title }}</h1>
+      </nav>
 
-    <p class="text-3xl">Dashboard</p>
+      <div class="flex gap-4">
+        <zi-button type="primary">Create Base</zi-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import '@nuxtjs/axios'
-export default Vue.extend({})
+export default Vue.extend({
+  props: {
+    title: String,
+  },
+})
 </script>
 
 <style scoped>

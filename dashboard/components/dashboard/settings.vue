@@ -1,25 +1,36 @@
 <template>
-  <div class="pt-24">
-    <div class="border-accent2 border-b absolute mt-8 w-full"></div>
-    <div class="border-accent2 border-b absolute mt-40 w-full"></div>
-    <zi-tabs class="max-w-5xl mx-auto">
-      <zi-tabs-item
-        v-for="(item, index) in items"
-        :key="item.value + index"
-        :label="item.label"
-        :value="item.value"
+  <div class="max-w-5xl mx-auto pt-12">
+    <zi-fieldset class="mb-8" footer="Base ID acts as a namespace for data.">
+      <h3 class="text-lg font-medium">Base ID</h3>
+      <p class="text-sm mt-3 mb-2">Base ID acts as a namespace for data.</p>
+      <zi-snippet :text="baseId" width="200px"></zi-snippet>
+      <template #footer>
+        <p>
+          This is your personal detabase ID and is used for storing your data.
+        </p>
+        <zi-button type="success" class="px-4" auto @click="regenerateBaseId"
+          >Regenerate ID
+        </zi-button>
+      </template>
+    </zi-fieldset>
+    <zi-fieldset class="mb-8" footer="Base ID acts as a namespace for data.">
+      <h3 class="text-lg font-medium">Delete Base</h3>
+      <zi-note type="warning" class="mt-6">
+        This will delete all data in your base. This action is
+        irreversible.</zi-note
       >
-        <CommonBlock :title="item.label" />
-
-        <DashboardSettings v-if="item.label !== 'Overview'" />
-      </zi-tabs-item>
-    </zi-tabs>
+      <template #footer>
+        <p></p>
+        <zi-button type="danger" auto @click="regenerateBaseId"
+          >Delete Base
+        </zi-button>
+      </template>
+    </zi-fieldset>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Dashboard from './dashboard.vue'
 export default Vue.extend({
   data() {
     return {

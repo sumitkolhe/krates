@@ -9,7 +9,6 @@
       ease-in-out
       bg-geist-background
       md:opacity-90
-      border-b border-accent2
     "
   >
     <div class="max-w-5xl mx-auto px-6">
@@ -38,15 +37,7 @@
           </NuxtLink>
         </div>
 
-        <NuxtLink
-          to="/dashboard"
-          v-if="$route.path !== '/dashboard'"
-          class="flex flex-grow justify-end flex-wrap items-center"
-        >
-          <zi-button type="primary" auto> Dashboard </zi-button>
-        </NuxtLink>
-
-        <zi-popover align="right" v-if="$route.path === '/dashboard'">
+        <zi-popover align="right">
           <zi-button size="medium" auto>Menu</zi-button>
           <template v-slot:dropdown>
             <zi-popover-item title>Dashboard</zi-popover-item>
