@@ -85,6 +85,19 @@
           </div>
         </nav>
 
+        <zi-tag>
+          <span class="font-semibold px-1">Status:</span>
+          <zi-dot :type="healthy ? 'success' : 'danger'"></zi-dot>
+          <span
+            :class="
+              healthy
+                ? 'text-blue-500 font-medium px-1'
+                : 'text-red-500 font-medium px-1'
+            "
+          >
+            {{ healthy ? 'System Healthy' : 'System Unhealthy' }}
+          </span>
+        </zi-tag>
         <a href="https://github.com/sumitkolhe/detabase" target="_blank"
           ><github-icon
         /></a>
@@ -95,8 +108,18 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import GeistUI from '@geist-ui/vue'
-export default Vue.extend({})
+export default Vue.extend({
+  data() {
+    return {
+      healthy: false,
+    }
+  },
+  mounted() {
+    this.$axios.$get('http://localhost:4000/health').then((response) => {
+      if (response?.message === 'OK') this.healthy = true
+    })
+  },
+})
 </script>
 <style>
 .dropdown:focus-within .dropdown-menu {
