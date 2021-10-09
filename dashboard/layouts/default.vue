@@ -6,7 +6,7 @@
     <main class="flex-grow dark:bg-black">
       <Nuxt />
     </main>
-    <CommonFooter v-if="$route.path === '/'" />
+    <CommonFooter />
   </div>
 </template>
 

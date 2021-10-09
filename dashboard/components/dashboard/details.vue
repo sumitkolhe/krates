@@ -2,7 +2,7 @@
   <div>
     <div class="border-b border-accent2">
       <div class="mx-auto max-w-5xl my-12">
-        <h2>Settings</h2>
+        <h2>Details</h2>
       </div>
     </div>
 

@@ -1,6 +1,39 @@
 <template>
-  <div class="max-w-5xl mx-auto mt-12">
-    <div class="grid grid-cols-3 gap-10">
+  <div>
+    <div class="border-b border-accent2">
+      <div class="mx-auto max-w-5xl pt-8 pb-12 text-center">
+        <database-icon class="h-20 w-20 align-center block mx-auto mb-6" />
+
+        <zi-button
+          :icon="database"
+          shadow
+          size="big"
+          type="success"
+          class="inline-block"
+          @click="openDialog"
+          >Create Base</zi-button
+        >
+
+        <zi-dialog closeByModal v-model="visible" :beforeDone="createNewBase">
+          <h3>Create new base?</h3>
+          <zi-note label="" filled class="mt-20"> oeignewoigbwo </zi-note>
+        </zi-dialog>
+      </div>
+    </div>
+
+    <div
+      class="
+        grid
+        md:grid-cols-3
+        max-w-5xl
+        mx-auto
+        grid-cols-auto
+        sm:grid-cols-2
+        gap-10
+        px-4
+        my-12
+      "
+    >
       <NuxtLink
         :to="`dashboard/${base.baseId}`"
         v-for="base in allBases"
@@ -50,18 +83,32 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import database from '@geist-ui/vue-icons/packages/database'
+
 export default Vue.extend({
+  data() {
+    return {
+      newBaseId: '',
+      visible: false,
+      database,
+    }
+  },
   computed: {
     allBases() {
       return this.$store.getters['bases/getAllBases']
     },
   },
   methods: {
+    openDialog() {
+      this.visible = true
+    },
+    createNewBase() {
+      this.$store.dispatch('bases/createNewBase')
+      this.visible = !this.visible
+    },
     numberOfDays(baseDate: number) {
       const currentDate = Date.now()
-
       const days = Math.round((currentDate - baseDate) / (1000 * 60 * 60 * 24))
-
       return days === 0 ? '0d ago' : `${days}d ago`
     },
   },
