@@ -37,10 +37,10 @@
             >
               0 Kb</span
             >
-            <a href="http://google.com" class="float-left"> </a>
-            <zi-button size="small" auto class="float-right"
-              ><arrow-right-icon />
-            </zi-button>
+            <a href="http://google.com" class="float-left">
+              <zi-button size="small" auto class="float-right"
+                ><arrow-right-icon /> </zi-button
+            ></a>
           </template>
         </zi-fieldset>
       </NuxtLink>
