@@ -43,7 +43,7 @@ const NuxtAppConfig: NuxtConfig = {
 
   modules: [
     '@nuxtjs/axios',
-    ['nuxt-vuex-localstorage', { mode: 'debug', localStorage: ['bases'] }],
+    ['nuxt-vuex-localstorage', { localStorage: ['bases'] }],
   ],
 
   axios: {},

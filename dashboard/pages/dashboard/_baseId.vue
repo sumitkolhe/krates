@@ -1,5 +1,6 @@
 <template>
-  <div class="pt-24">
+  <!-- <div class="pt-24">
+
     <div class="border-accent2 border-b absolute mt-8 w-full"></div>
     <div class="border-accent2 border-b absolute mt-40 w-full"></div>
     <zi-tabs class="max-w-5xl mx-auto">
@@ -9,12 +10,14 @@
         :label="item.label"
         :value="item.value"
       >
-        <CommonBlock :title="item.label" />
+        <CommonTitleBlock :title="item.label" />
         <DashboardOverview v-if="item.label === 'Overview'" />
         <DashboardSettings v-if="item.label === 'Settings'" />
       </zi-tabs-item>
     </zi-tabs>
-  </div>
+  </div> -->
+
+  <CommonTabs />
 </template>
 
 <script lang="ts">
@@ -23,8 +26,9 @@ export default Vue.extend({
   data() {
     return {
       items: [
-        { label: 'Overview', value: 'overview' },
-        { label: 'Settings', value: 'settings' },
+        { label: 'Base Details', value: 'baseDetails' },
+        { label: 'Query Data', value: 'queryData' },
+        { label: 'Danger Zone', value: 'dangerZone' },
       ],
     }
   },
