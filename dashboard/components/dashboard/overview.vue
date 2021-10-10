@@ -16,7 +16,7 @@
 
         <zi-dialog closeByModal v-model="visible" :beforeDone="createNewBase">
           <h3>Create new base?</h3>
-          <zi-note label="" filled class="mt-20"> oeignewoigbwo </zi-note>
+          <zi-note label="" filled class="mt-20"> {{ newBaseId }} </zi-note>
         </zi-dialog>
       </div>
     </div>
@@ -34,10 +34,11 @@
         my-12
       "
     >
-      <NuxtLink
-        :to="`dashboard/${base.baseId}`"
+      <div
         v-for="base in allBases"
         :key="base.baseId"
+        class="cursor-pointer"
+        @click="setSelectedBaseAndNavigate(base.baseId)"
       >
         <zi-fieldset
           class="text-accent8 hover:drop-shadow-xl"
@@ -76,7 +77,7 @@
             ></a>
           </template>
         </zi-fieldset>
-      </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -106,6 +107,10 @@ export default Vue.extend({
       this.$store.dispatch('bases/createNewBase')
       this.visible = !this.visible
     },
+    setSelectedBaseAndNavigate(baseId: string) {
+      this.$store.commit('bases/setSelectedBase', baseId)
+      this.$router.push(`dashboard/${baseId}`)
+    },
     numberOfDays(baseDate: number) {
       const currentDate = Date.now()
       const days = Math.round((currentDate - baseDate) / (1000 * 60 * 60 * 24))
@@ -119,9 +124,5 @@ export default Vue.extend({
 .zi-snippet > pre::before {
   content: '';
   user-select: none;
-}
-
-.zi-tabs-container {
-  border: none !important;
 }
 </style>

@@ -18,7 +18,6 @@
           <NuxtLink
             to="/"
             class="
-              font-medium
               inline-flex
               cursor-pointer
               items-center
@@ -29,12 +28,13 @@
               transition
               duration-150
               ease-in-out
-              py-3
+              text-accent8
             "
+            aria-label="logo"
           >
-            <box-icon class="w-10 h-10" />
+            <box-icon class="h-10 w-10" />
 
-            <p class="pl-4 font-bold text-2xl text-accent8">Detabase</p>
+            <p class="text-2xl font-bold pl-4">Detabase</p>
           </NuxtLink>
         </div>
 

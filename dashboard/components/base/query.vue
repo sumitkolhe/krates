@@ -1,25 +1,27 @@
 <template>
   <div>
     <div class="border-b border-accent2">
-      <div class="mx-auto max-w-5xl my-12">
-        <h2>Query Data</h2>
+      <div class="mx-auto max-w-5xl my-12 md:px-2 px-4">
+        <p class="text-3xl font-medium">Query Data</p>
       </div>
     </div>
 
-    <div class="max-w-5xl mx-auto my-12">
+    <div class="max-w-5xl mx-auto my-12 md:px-2 px-4">
       <zi-fieldset
         class="mb-8"
         footer="This is your personal detabase Id and used for storing your data."
       >
-        <h3 class="text-lg font-medium">Modify Data</h3>
-        <p class="text-sm mt-3 pb-6">
-          Make requests to detabase endpoint with your
-          <zi-tag class="mr-2">Base ID</zi-tag> to
-          <zi-tag class="mr-2">GET</zi-tag><zi-tag class="mr-2">INSERT</zi-tag
-          ><zi-tag class="mr-2">UPDATE</zi-tag
-          ><zi-tag class="mr-2">MODIFY</zi-tag> or
-          <zi-tag class="mr-2">DELETE</zi-tag> your data.
-        </p>
+        <div class="flex mb-2">
+          <h3 class="text-lg font-medium">Modify Data</h3>
+          <zi-tooltip placement="right">
+            <template v-slot:content>
+              <p>Make requests to detabase endpoint with your Base ID to</p>
+              <p>GET, INSERT, UPDATE, MODIFY, DELETE data.</p>
+            </template>
+
+            <question-circle-icon class="ml-4 h-5 w-5 mt-1" />
+          </zi-tooltip>
+        </div>
 
         <zi-select v-model="selectedRequestType" class="mt-4">
           <zi-option value="GET"> </zi-option>
@@ -30,15 +32,24 @@
         </zi-select>
         <zi-input
           class="ml-2"
-          :placeholder="id"
+          :placeholder="baseId"
           prefix-label="https://detabase.me/"
           disabled
         ></zi-input>
+        <p class="border-b border-accent2 py-4"></p>
+        <div class="grid grid-cols-2 gap-4">
+          <zi-description
+            title="COLLECTION ID"
+            content="Collections are optional"
+          ></zi-description>
+          <zi-input class="ml-1 py-8" :placeholder="baseId" disabled>
+          </zi-input>
+        </div>
 
         <template #footer>
           <zi-input
             class="ml-2"
-            :placeholder="id"
+            :placeholder="baseId"
             prefix-label="https://detabase.me/"
             disabled
           ></zi-input>
@@ -79,7 +90,7 @@ export default Vue.extend({
   data() {
     return {
       selectedRequestType: 'GET',
-      collectionId: '',
+      baseId: '',
       toggle: false,
       items: [
         { label: 'GET', value: 'setting' },
@@ -89,23 +100,36 @@ export default Vue.extend({
         { label: 'DELETE', value: 'seer' },
       ],
       payload: `{"method":"GET","args":{},"data":"","path":"/","isBase64Encoded":false}`,
-      options: {
+    }
+  },
+  mounted() {
+    this.baseId = this.$store.getters['bases/getSelectedBase']
+  },
+
+  computed: {
+    options() {
+      let isDark = this.$store.getters['theme/getTheme']
+      let options = {
         tabSize: 4,
         styleActiveLine: true,
         lineNumbers: true,
         line: true,
         mode: 'application/ld+json',
-        theme: 'seti',
         matchBrackets: true,
         autoCloseBrackets: true,
         lineWrapping: true,
-      },
-    }
+        theme: 'default',
+      }
+      if (isDark) return (options.theme = 'ayu-dark'), options
+      else {
+        return options
+      }
+    },
   },
 
   methods: {
     getBaseData() {
-      this.$axios.$get('http://localhost:3000/')
+      this.$axios.$get('http://localhost:4000/')
     },
 
     calculatePayloadSize() {
@@ -133,11 +157,5 @@ export default Vue.extend({
 .zi-toggle::before {
   height: 1rem !important;
   width: 1rem !important;
-}
-.zi-tabs-item .active {
-  background-color: aqua !important;
-}
-.zi-tag {
-  height: 1rem !important;
 }
 </style>

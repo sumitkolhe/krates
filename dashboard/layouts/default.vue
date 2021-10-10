@@ -19,4 +19,8 @@ export default Vue.extend({})
 #app {
   font-family: 'Inter', sans-serif;
 }
+
+::selection {
+  background: var(--geist-cyan);
+}
 </style>

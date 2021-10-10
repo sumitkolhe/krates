@@ -11,11 +11,11 @@
       md:opacity-90
     "
   >
-    <div class="max-w-5xl mx-auto px-6">
+    <div class="max-w-5xl mx-auto md:px-2 px-4">
       <div class="flex items-center justify-between h-16 md:h-20">
         <div class="flex-shrink-0">
           <NuxtLink
-            to="/"
+            to="/dashboard"
             class="
               font-medium
               inline-flex
@@ -29,11 +29,12 @@
               duration-150
               ease-in-out
               py-3
+              text-accent8
             "
           >
             <box-icon class="w-10 h-10" />
 
-            <p class="pl-4 font-bold text-2xl text-accent8">Detabase</p>
+            <p class="pl-4 font-bold text-2xl">Detabase</p>
           </NuxtLink>
         </div>
 

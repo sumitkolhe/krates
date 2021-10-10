@@ -1,7 +1,8 @@
 <template>
-  <div class="pt-24">
+  <div class="pt-20">
     <div>
       <tabs
+        class="pl-2 md:pl-0"
         :tabs="navigationItems"
         :currentTab="currentTab"
         :wrapper-class="`relative mx-auto max-w-5xl`"
@@ -11,8 +12,9 @@
         @onClick="handleClick"
       />
       <div class="border-t border-accent2">
-        <DashboardDetails v-if="currentTab === 'tab1'" />
-        <DashboardQuery v-if="currentTab === 'tab2'" />
+        <BaseDetails v-if="currentTab === 'tab1'" />
+        <BaseQuery v-if="currentTab === 'tab2'" />
+        <BaseDanger v-if="currentTab === 'tab3'" />
       </div>
     </div>
   </div>

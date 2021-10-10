@@ -2,11 +2,11 @@
   <div>
     <div class="border-b border-accent2">
       <div class="mx-auto max-w-5xl my-12">
-        <h2>Settings</h2>
+        <p class="text-3xl font-medium">Settings</p>
       </div>
     </div>
 
-    <div class="max-w-5xl mx-auto my-12">
+    <div class="max-w-5xl mx-auto my-12 md:px-2 px-4">
       <zi-fieldset class="mb-8" footer="Base ID acts as a namespace for data.">
         <h3 class="text-lg font-medium">Base ID</h3>
         <p class="text-sm mt-3 mb-2">Base ID acts as a namespace for data.</p>

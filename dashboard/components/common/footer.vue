@@ -45,15 +45,13 @@
               transition
               duration-150
               ease-in-out
-              dark:text-white
+              text-accent8
             "
             aria-label="logo"
           >
-            <box-icon class="h-12 w-12" />
+            <box-icon class="h-10 w-10" />
 
-            <span class="text-2xl font-bold pl-4 dark:text-white"
-              >Detabase
-            </span>
+            <p class="text-2xl font-bold pl-4">Detabase</p>
           </NuxtLink>
         </nav>
 
@@ -98,7 +96,10 @@
             {{ healthy ? 'System Healthy' : 'System Unhealthy' }}
           </span>
         </zi-tag>
-        <a href="https://github.com/sumitkolhe/detabase" target="_blank"
+        <a
+          href="https://github.com/sumitkolhe/detabase"
+          class="text-accent8 hover:text-accent4"
+          target="_blank"
           ><github-icon
         /></a>
       </div>

@@ -14,7 +14,6 @@ export default Vue.extend({
   computed: {
     themeType() {
       let isDark = this.$store.getters['theme/getTheme']
-
       if (isDark) return 'Dark Theme'
       return 'Light Theme'
     },
