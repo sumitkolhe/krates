@@ -44,13 +44,19 @@
             <zi-popover-item title>Dashboard</zi-popover-item>
             <zi-popover-item line></zi-popover-item>
             <zi-popover-item primary>New Base</zi-popover-item>
+            <zi-popover-item line></zi-popover-item>
             <zi-popover-item primary
-              ><zi-link href="//github.com/geist-org/vue" more
+              ><zi-link href="https://docs.detabase.me" more
                 >Docs</zi-link
               ></zi-popover-item
             >
-            <zi-popover-item line></zi-popover-item>
-            <zi-popover-item> <CommonTheme /></zi-popover-item>
+
+            <zi-popover-item primary
+              ><zi-link href="https:////github.com/sumitkolhe/detabase" more
+                >Github</zi-link
+              ></zi-popover-item
+            >
+            <!-- <zi-popover-item> <CommonTheme /></zi-popover-item> -->
           </template>
         </zi-popover>
       </div>

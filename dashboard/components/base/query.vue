@@ -6,13 +6,15 @@
       </div>
     </div>
 
+    <!-- Query  -->
     <div class="max-w-5xl mx-auto my-12 md:px-2 px-4">
+      <!-- Request module -->
       <zi-fieldset
         class="mb-8"
         footer="This is your personal detabase Id and used for storing your data."
       >
         <div class="flex mb-2">
-          <h3 class="text-lg font-medium">Modify Data</h3>
+          <h3 class="text-lg font-medium">Query data with HTTP requests</h3>
           <zi-tooltip placement="right">
             <template v-slot:content>
               <p>Make requests to detabase endpoint with your Base ID to</p>
@@ -23,29 +25,108 @@
           </zi-tooltip>
         </div>
 
-        <zi-select v-model="selectedRequestType" class="mt-4">
-          <zi-option value="GET"> </zi-option>
-          <zi-option value="POST"> </zi-option>
-          <zi-option value="PUT"> </zi-option>
-          <zi-option value="PATCH"> </zi-option>
-          <zi-option value="DELETE"> </zi-option>
-        </zi-select>
-        <zi-input
-          class="ml-2"
-          :placeholder="baseId"
-          prefix-label="https://detabase.me/"
-          disabled
-        ></zi-input>
-        <p class="border-b border-accent2 py-4"></p>
-        <div class="grid grid-cols-2 gap-4">
-          <zi-description
-            title="COLLECTION ID"
-            content="Collections are optional"
-          ></zi-description>
-          <zi-input class="ml-1 py-8" :placeholder="baseId" disabled>
-          </zi-input>
+        <div class="flex">
+          <zi-select v-model="selectedRequestType" class="mt-4 flex-none">
+            <zi-option value="GET"> </zi-option>
+            <zi-option value="POST"> </zi-option>
+            <zi-option value="PUT"> </zi-option>
+            <zi-option value="PATCH"> </zi-option>
+            <zi-option value="DELETE"> </zi-option>
+          </zi-select>
+          <zi-input
+            class="ml-2 mt-4 flex-grow"
+            :placeholder="baseId"
+            prefix-label="https://detabase.me/"
+            disabled
+          ></zi-input>
         </div>
+        <p class="border-b border-accent2 py-2"></p>
 
+        <!-- GET  -->
+        <zi-grid
+          container
+          align-items="center"
+          :spacing="3"
+          justify="center"
+          class="pt-8"
+          v-if="selectedRequestType === 'GET'"
+        >
+          <zi-grid :xs="4"> <p>COLLECTION ID</p></zi-grid>
+          <zi-grid :xs="16">
+            <zi-textarea
+              placeholder="placeholder"
+              rows="1"
+              :disabled="!toggleCollection"
+            ></zi-textarea
+          ></zi-grid>
+
+          <zi-grid :xs="4">
+            <zi-grid container align-items="center" spacing="2">
+              <zi-grid> <p>ENABLE</p></zi-grid>
+              <zi-grid>
+                <zi-toggle v-model="toggleCollection"></zi-toggle
+              ></zi-grid>
+            </zi-grid>
+          </zi-grid>
+          <zi-grid :xs="4"> <p>RECORD ID</p></zi-grid>
+          <zi-grid :xs="16">
+            <zi-textarea
+              placeholder="placeholder"
+              rows="1"
+              :disabled="!toggleRecord"
+            ></zi-textarea
+          ></zi-grid>
+
+          <zi-grid :xs="4">
+            <zi-grid container align-items="center" spacing="2">
+              <zi-grid> <p>ENABLE</p></zi-grid>
+              <zi-grid> <zi-toggle v-model="toggleRecord"></zi-toggle></zi-grid>
+            </zi-grid>
+          </zi-grid>
+        </zi-grid>
+
+        <!-- POST   -->
+        <zi-grid
+          container
+          align-items="center"
+          :spacing="3"
+          justify="center"
+          class="pt-8"
+          v-if="selectedRequestType === 'POST'"
+        >
+          <zi-grid :xs="4"> <p>COLLECTION ID</p></zi-grid>
+          <zi-grid :xs="16">
+            <zi-textarea
+              placeholder="placeholder"
+              rows="1"
+              :disabled="!toggleCollection"
+            ></zi-textarea
+          ></zi-grid>
+
+          <zi-grid :xs="4">
+            <zi-grid container align-items="center" spacing="2">
+              <zi-grid> <p>ENABLE</p></zi-grid>
+              <zi-grid>
+                <zi-toggle v-model="toggleCollection"></zi-toggle
+              ></zi-grid>
+            </zi-grid>
+          </zi-grid>
+          <zi-grid :xs="4"> <p>RECORD ID</p></zi-grid>
+          <zi-grid :xs="16">
+            <zi-textarea
+              placeholder="placeholder"
+              rows="4"
+              :disabled="!toggleRecord"
+            ></zi-textarea
+          ></zi-grid>
+
+          <zi-grid :xs="4">
+            <zi-grid container align-items="center" spacing="2">
+              <zi-grid> <p>ENABLE</p></zi-grid>
+              <zi-grid> <zi-toggle v-model="toggleRecord"></zi-toggle></zi-grid>
+            </zi-grid>
+          </zi-grid>
+        </zi-grid>
         <template #footer>
           <zi-input
             class="ml-2"
@@ -91,7 +172,8 @@ export default Vue.extend({
     return {
       selectedRequestType: 'GET',
       baseId: '',
-      toggle: false,
+      toggleCollection: false,
+      toggleRecord: false,
       items: [
         { label: 'GET', value: 'setting' },
         { label: 'POST', value: 'lambda' },
@@ -99,11 +181,12 @@ export default Vue.extend({
         { label: 'PATCH', value: 'rver' },
         { label: 'DELETE', value: 'seer' },
       ],
-      payload: `{"method":"GET","args":{},"data":"","path":"/","isBase64Encoded":false}`,
+      payload: '',
     }
   },
   mounted() {
     this.baseId = this.$store.getters['bases/getSelectedBase']
+    this.payload = ''
   },
 
   computed: {
@@ -120,16 +203,22 @@ export default Vue.extend({
         lineWrapping: true,
         theme: 'default',
       }
-      if (isDark) return (options.theme = 'ayu-dark'), options
-      else {
+      if (isDark) {
+        options.theme = 'isotope'
+        return options
+      } else {
         return options
       }
     },
   },
 
   methods: {
-    getBaseData() {
-      this.$axios.$get('http://localhost:4000/')
+    async getBaseData() {
+      const response = await this.$axios.$get(
+        `http://localhost:4000/${this.baseId}`
+      )
+
+      this.payload = JSON.stringify(response, null, 2)
     },
 
     calculatePayloadSize() {

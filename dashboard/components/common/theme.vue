@@ -1,5 +1,7 @@
 <template>
-  <zi-button auto @click="changeTheme" action> {{ themeType }}</zi-button>
+  <zi-button size="medium" auto @click="changeTheme" action>
+    {{ themeType }}</zi-button
+  >
 </template>
 
 <script lang="ts">

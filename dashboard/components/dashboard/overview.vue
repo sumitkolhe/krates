@@ -3,20 +3,36 @@
     <div class="border-b border-accent2">
       <div class="mx-auto max-w-5xl pt-8 pb-12 text-center">
         <database-icon class="h-20 w-20 align-center block mx-auto mb-6" />
-
         <zi-button
-          :icon="database"
+          :icon="plusCircle"
           shadow
           size="big"
           type="success"
           class="inline-block"
-          @click="openDialog"
-          >Create Base</zi-button
+          @click="openNewBaseDialog"
+          >Add Base</zi-button
         >
-
-        <zi-dialog closeByModal v-model="visible" :beforeDone="createNewBase">
-          <h3>Create new base?</h3>
-          <zi-note label="" filled class="mt-20"> {{ newBaseId }} </zi-note>
+        <zi-dialog
+          closeByModal
+          v-model="addBasedialog"
+          :beforeDone="createNewBase"
+        >
+          <zi-fieldset footer="The Evil Rabbit Jumped over the Fence">
+            <h3 class="pb-6">Add Base</h3>
+            <div>
+              <zi-input
+                prefix-label="https://detabase.me/"
+                :disabled="!customBaseToggle"
+                autofocus="true"
+                :value="newBaseId"
+              >
+              </zi-input>
+            </div>
+            <template v-slot:footer>
+              <span class="font-medium mr-4">Custom ID</span>
+              <zi-toggle class="ml-4" v-model="customBaseToggle"></zi-toggle>
+            </template>
+          </zi-fieldset>
         </zi-dialog>
       </div>
     </div>
@@ -38,7 +54,7 @@
         v-for="base in allBases"
         :key="base.baseId"
         class="cursor-pointer"
-        @click="setSelectedBaseAndNavigate(base.baseId)"
+        @click="setSelectedBase(base.baseId)"
       >
         <zi-fieldset
           class="text-accent8 hover:drop-shadow-xl"
@@ -71,10 +87,13 @@
             >
               0 Kb</span
             >
-            <a href="http://google.com" class="float-left">
+            <NuxtLink
+              :to="{ path: `dashboard/${base.baseId}` }"
+              class="float-left"
+            >
               <zi-button size="small" auto class="float-right"
                 ><arrow-right-icon /> </zi-button
-            ></a>
+            ></NuxtLink>
           </template>
         </zi-fieldset>
       </div>
@@ -84,32 +103,38 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import plusCircle from '@geist-ui/vue-icons/packages/plus-circle'
 import database from '@geist-ui/vue-icons/packages/database'
-
+import { generateBaseId } from '~/utils/generateBaseId'
 export default Vue.extend({
   data() {
     return {
-      newBaseId: '',
-      visible: false,
+      plusCircle,
       database,
+      addBasedialog: false,
+      customBaseToggle: false,
     }
   },
   computed: {
     allBases() {
       return this.$store.getters['bases/getAllBases']
     },
+
+    newBaseId() {
+      return generateBaseId()
+    },
   },
   methods: {
-    openDialog() {
-      this.visible = true
+    openNewBaseDialog() {
+      this.addBasedialog = true
     },
+
     createNewBase() {
-      this.$store.dispatch('bases/createNewBase')
-      this.visible = !this.visible
+      this.$store.dispatch('bases/createNewBase', this.newBaseId)
+      this.addBasedialog = !this.addBasedialog
     },
-    setSelectedBaseAndNavigate(baseId: string) {
+    setSelectedBase(baseId: string) {
       this.$store.commit('bases/setSelectedBase', baseId)
-      this.$router.push(`dashboard/${baseId}`)
     },
     numberOfDays(baseDate: number) {
       const currentDate = Date.now()
@@ -124,5 +149,15 @@ export default Vue.extend({
 .zi-snippet > pre::before {
   content: '';
   user-select: none;
+}
+.zi-input-group {
+  height: 42px !important;
+}
+.zi-input-group.prefix input {
+  height: 42px !important;
+}
+
+.zi-dialog-content {
+  padding: 0 !important;
 }
 </style>

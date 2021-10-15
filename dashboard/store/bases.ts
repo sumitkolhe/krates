@@ -1,6 +1,5 @@
 import { MutationTree, GetterTree, ActionTree } from 'vuex'
 import { RootState } from '~/store'
-import { generateBaseId } from '~/utils/generateBaseId'
 
 export type BaseState = ReturnType<typeof state>
 
@@ -19,8 +18,8 @@ export const mutations: MutationTree<BaseState> = {
 }
 
 export const actions: ActionTree<BaseState, RootState> = {
-  createNewBase: ({ commit }) => {
-    const baseId = generateBaseId()
+  createNewBase: ({ commit }, baseId) => {
+    //  const baseId = generateBaseId()
     const createdAt = Date.now()
     const base = { baseId, createdAt }
     commit('setBase', base)
