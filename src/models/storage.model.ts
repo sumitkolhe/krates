@@ -26,4 +26,4 @@ const StorageSchema: Schema = new Schema(
   { timestamps: true }
 )
 
-export const StorageModel = model<StorageDocument>('detabase', StorageSchema)
+export const StorageModel = model<StorageDocument>('krate', StorageSchema)

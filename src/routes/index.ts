@@ -1,5 +1,5 @@
 import express, { Router } from 'express'
-import { baseRouter } from '@src/routes/base.routes'
+import { krateRouter } from '@src/routes/krate.routes'
 
 export const parentRouter: Router = express.Router()
 
@@ -9,5 +9,5 @@ parentRouter.get('/', (req, res) => {
 parentRouter.get('/health', (req, res) => {
   res.json({ uptime: process.uptime(), message: 'OK', timestamp: Date.now() })
 })
-parentRouter.use('/', baseRouter)
-parentRouter.use('/meta', baseRouter)
+parentRouter.use('/', krateRouter)
+parentRouter.use('/meta', krateRouter)

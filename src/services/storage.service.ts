@@ -4,7 +4,7 @@ import { StorageModel } from '@src/models/storage.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
 export class StorageService {
-  // Get all data from a base/collection
+  // Get all data from a krate/collection
   static getData = async (requestOptions: KrateOptions): Promise<Krate[] | Krate> => {
     const responseData = await StorageModel.find(requestOptions.query)
       .skip(requestOptions.skip)
@@ -12,7 +12,7 @@ export class StorageService {
     return sanitizeResponse(responseData)
   }
 
-  // Insert data into a base/collection
+  // Insert data into a krate/collection
   static setData = async (krateId: string, collectionId: string, data: Krate): Promise<Krate[] | Krate> => {
     // Insert all objects in DB
     const createRecord = async (dataObject: Krate): Promise<Krate> => {
@@ -43,7 +43,7 @@ export class StorageService {
     return sanitizeResponse(savedRecord)
   }
 
-  // Insert data into a base/collection
+  // Insert data into a krate/collection
   static putData = async (krateId: string, recordId: string, data: Pick<Krate, 'data'>): Promise<Krate[] | Krate> => {
     const record = await StorageModel.findOneAndUpdate({ _id: recordId, krateId }, { data }, { new: true })
 
@@ -52,7 +52,7 @@ export class StorageService {
     return sanitizeResponse(record)
   }
 
-  // delete all data from a base
+  // delete all data from a krate
   static deleteData = async (krateId: string): Promise<void> => {
     await StorageModel.deleteMany({ krateId })
   }
