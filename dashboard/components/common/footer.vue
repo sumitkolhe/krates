@@ -66,25 +66,23 @@
           justify-between
           items-center
           gap-4
-          py-8
+          py-10
         "
       >
-        <nav
+        <div class="text-accent6 text-sm text-center py-2">
+          © 2021 Detabase. All rights reserved.
+        </div>
+
+        <div
           class="
-            flex flex-wrap
-            justify-center
-            md:justify-start
-            gap-x-4 gap-y-2
-            md:gap-6
+            border border-accent2
+            p-2
+            bg-geist-background
+            rounded-md
+            text-sm
           "
         >
-          <div class="text-accent6 text-sm text-center py-2">
-            © 2021 Detabase. All rights reserved.
-          </div>
-        </nav>
-
-        <zi-tag>
-          <span class="font-semibold px-1">Status:</span>
+          <span class="font-semibold">Status:</span>
           <zi-dot :type="healthy ? 'success' : 'danger'"></zi-dot>
           <span
             :class="
@@ -95,7 +93,8 @@
           >
             {{ healthy ? 'System Healthy' : 'System Unhealthy' }}
           </span>
-        </zi-tag>
+        </div>
+
         <a
           href="https://github.com/sumitkolhe/detabase"
           class="text-accent8 hover:text-accent4"

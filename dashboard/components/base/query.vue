@@ -13,8 +13,8 @@
         class="mb-8"
         footer="This is your personal detabase Id and used for storing your data."
       >
-        <div class="flex mb-2">
-          <h3 class="text-lg font-medium">Query data with HTTP requests</h3>
+        <div class="flex mb-4">
+          <span class="text-lg font-medium">Query data with HTTP requests</span>
           <zi-tooltip placement="right">
             <template v-slot:content>
               <p>Make requests to detabase endpoint with your Base ID to</p>
@@ -24,8 +24,11 @@
             <question-circle-icon class="ml-4 h-5 w-5 mt-1" />
           </zi-tooltip>
         </div>
-
-        <div class="flex">
+        <p class="text-accent5">
+          Make requests to detabase API endpoints to query / modify your data.
+        </p>
+        <p class="border-b border-accent2 py-2"></p>
+        <div class="flex flex-col md:flex-row">
           <zi-select v-model="selectedRequestType" class="mt-4 flex-none">
             <zi-option value="GET"> </zi-option>
             <zi-option value="POST"> </zi-option>
@@ -33,8 +36,9 @@
             <zi-option value="PATCH"> </zi-option>
             <zi-option value="DELETE"> </zi-option>
           </zi-select>
+
           <zi-input
-            class="ml-2 mt-4 flex-grow"
+            class="md:ml-3 mt-4 flex-grow"
             :placeholder="baseId"
             prefix-label="https://detabase.me/"
             disabled
@@ -48,39 +52,112 @@
           align-items="center"
           :spacing="3"
           justify="center"
-          class="pt-8"
+          class="pt-6 pb-2"
           v-if="selectedRequestType === 'GET'"
         >
-          <zi-grid :xs="4"> <p>COLLECTION ID</p></zi-grid>
-          <zi-grid :xs="16">
+          <zi-grid :xs="4">
+            <p class="text-accent5 font-medium">
+              <zi-tag>COLLECTION ID</zi-tag>
+            </p></zi-grid
+          >
+          <zi-grid :xs="14">
             <zi-textarea
-              placeholder="placeholder"
-              rows="1"
-              :disabled="!toggleCollection"
+              placeholder="Collection ID"
+              :rows="1"
+              :disabled="!toggleCollectionId"
+              v-model="collectionId"
             ></zi-textarea
           ></zi-grid>
 
-          <zi-grid :xs="4">
-            <zi-grid container align-items="center" spacing="2">
-              <zi-grid> <p>ENABLE</p></zi-grid>
+          <zi-grid :xs="6">
+            <zi-grid
+              container
+              align-items="center"
+              justify="center"
+              :spacing="2"
+            >
+              <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
               <zi-grid>
-                <zi-toggle v-model="toggleCollection"></zi-toggle
+                <zi-toggle v-model="toggleCollectionId"></zi-toggle
               ></zi-grid>
             </zi-grid>
           </zi-grid>
-          <zi-grid :xs="4"> <p>RECORD ID</p></zi-grid>
-          <zi-grid :xs="16">
-            <zi-textarea
-              placeholder="placeholder"
-              rows="1"
-              :disabled="!toggleRecord"
-            ></zi-textarea
-          ></zi-grid>
 
           <zi-grid :xs="4">
-            <zi-grid container align-items="center" spacing="2">
-              <zi-grid> <p>ENABLE</p></zi-grid>
-              <zi-grid> <zi-toggle v-model="toggleRecord"></zi-toggle></zi-grid>
+            <p class="text-accent5 font-medium">
+              <zi-tag> LIMIT</zi-tag>
+            </p></zi-grid
+          >
+          <zi-grid :xs="14">
+            <zi-textarea
+              placeholder="Limit number of records"
+              :rows="1"
+              :disabled="!toggleLimit"
+              v-model="limit"
+            ></zi-textarea>
+          </zi-grid>
+
+          <zi-grid :xs="6">
+            <zi-grid
+              container
+              align-items="center"
+              :spacing="2"
+              justify="center"
+            >
+              <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
+              <zi-grid> <zi-toggle v-model="toggleLimit"></zi-toggle></zi-grid>
+            </zi-grid>
+          </zi-grid>
+
+          <zi-grid :xs="4">
+            <p class="text-accent5 font-medium">
+              <zi-tag> SKIP</zi-tag>
+            </p></zi-grid
+          >
+          <zi-grid :xs="14">
+            <zi-textarea
+              placeholder="Skip number of records"
+              :rows="1"
+              :disabled="!toggleSkip"
+              v-model="skip"
+            ></zi-textarea>
+          </zi-grid>
+
+          <zi-grid :xs="6">
+            <zi-grid
+              container
+              align-items="center"
+              :spacing="2"
+              justify="center"
+            >
+              <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
+              <zi-grid> <zi-toggle v-model="toggleSkip"></zi-toggle></zi-grid>
+            </zi-grid>
+          </zi-grid>
+
+          <zi-grid :xs="4">
+            <p class="text-accent5 font-medium">
+              <zi-tag>FILTER</zi-tag>
+            </p></zi-grid
+          >
+          <zi-grid :xs="14">
+            <zi-textarea
+              placeholder="Query for filtering records"
+              :rows="1"
+              :disabled="!togglefilter"
+              v-model="filter"
+            ></zi-textarea>
+          </zi-grid>
+
+          <zi-grid :xs="6">
+            <zi-grid
+              container
+              align-items="center"
+              :spacing="2"
+              justify="center"
+            >
+              <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
+              <zi-grid> <zi-toggle v-model="togglefilter"></zi-toggle></zi-grid>
             </zi-grid>
           </zi-grid>
         </zi-grid>
@@ -91,49 +168,51 @@
           align-items="center"
           :spacing="3"
           justify="center"
-          class="pt-8"
+          class="pt-6"
           v-if="selectedRequestType === 'POST'"
         >
-          <zi-grid :xs="4"> <p>COLLECTION ID</p></zi-grid>
-          <zi-grid :xs="16">
+          <zi-grid :xs="6">
+            <p class="text-accent5 font-medium">COLLECTION ID</p></zi-grid
+          >
+          <zi-grid :xs="14">
             <zi-textarea
-              placeholder="placeholder"
-              rows="1"
-              :disabled="!toggleCollection"
+              placeholder="Collection ID"
+              :rows="1"
+              :disabled="!toggleCollectionId"
             ></zi-textarea
           ></zi-grid>
 
           <zi-grid :xs="4">
-            <zi-grid container align-items="center" spacing="2">
-              <zi-grid> <p>ENABLE</p></zi-grid>
+            <zi-grid
+              container
+              align-items="center"
+              :spacing="2"
+              justify="center"
+            >
+              <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
               <zi-grid>
-                <zi-toggle v-model="toggleCollection"></zi-toggle
+                <zi-toggle v-model="toggleCollectionId"></zi-toggle
               ></zi-grid>
             </zi-grid>
           </zi-grid>
-          <zi-grid :xs="4"> <p>RECORD ID</p></zi-grid>
-          <zi-grid :xs="16">
-            <zi-textarea
-              placeholder="placeholder"
-              rows="4"
-              :disabled="!toggleRecord"
-            ></zi-textarea
-          ></zi-grid>
 
-          <zi-grid :xs="4">
-            <zi-grid container align-items="center" spacing="2">
-              <zi-grid> <p>ENABLE</p></zi-grid>
-              <zi-grid> <zi-toggle v-model="toggleRecord"></zi-toggle></zi-grid>
-            </zi-grid>
+          <zi-grid :xs="24">
+            <p class="text-accent5 font-medium">PAYLOAD</p></zi-grid
+          >
+          <zi-grid :xs="24">
+            <codemirror v-model="responsePayload" :options="options" />
           </zi-grid>
         </zi-grid>
+
+        <!-- Footer -->
         <template #footer>
-          <zi-input
+          <p></p>
+          <!-- <zi-input
             class="ml-2"
             :placeholder="baseId"
             prefix-label="https://detabase.me/"
             disabled
-          ></zi-input>
+          ></zi-input> -->
           <zi-button type="success" auto @click="getBaseData">Send </zi-button>
         </template>
       </zi-fieldset>
@@ -144,15 +223,13 @@
       >
         <client-only>
           <div class="max-w-5xl mx-auto mb-12">
-            <div class="codemirror">
-              <codemirror v-model="payload" :options="options" />
-            </div>
+            <codemirror :value="responsePayload" :options="options" />
           </div>
         </client-only>
         <template #footer>
           <p>
-            <span class="font-semibold text-lg"> Payload Size:</span>
-            {{ calculatePayloadSize() }} Kilobytes
+            <span class="font-semibold text-lg"> Response Size:</span>
+            {{ calculateResponseSize() }} Kilobytes
           </p>
           <zi-button type="primary" auto @click="">Copy </zi-button>
         </template>
@@ -172,8 +249,14 @@ export default Vue.extend({
     return {
       selectedRequestType: 'GET',
       baseId: '',
-      toggleCollection: false,
-      toggleRecord: false,
+      toggleCollectionId: false,
+      collectionId: '',
+      toggleLimit: false,
+      limit: '',
+      toggleSkip: false,
+      skip: '',
+      togglefilter: false,
+      filter: '',
       items: [
         { label: 'GET', value: 'setting' },
         { label: 'POST', value: 'lambda' },
@@ -181,12 +264,13 @@ export default Vue.extend({
         { label: 'PATCH', value: 'rver' },
         { label: 'DELETE', value: 'seer' },
       ],
-      payload: '',
     }
   },
-  mounted() {
+
+  created() {
     this.baseId = this.$store.getters['bases/getSelectedBase']
-    this.payload = ''
+    // to reset response payload on every base change
+    this.$store.commit('request/setResponsePayload', undefined)
   },
 
   computed: {
@@ -210,27 +294,40 @@ export default Vue.extend({
         return options
       }
     },
+
+    finalUrl(): string {
+      return `${this.baseId}/${
+        this.collectionId && this.toggleCollectionId ? this.collectionId : ''
+      }?query=${this.filter && this.togglefilter ? this.filter : ''}&limit=${
+        this.limit
+      }&skip=${this.skip}`
+    },
+
+    responsePayload(): String {
+      return JSON.stringify(
+        this.$store.getters['request/getResponsePayload'],
+        null,
+        2
+      )
+    },
   },
 
   methods: {
     async getBaseData() {
-      const response = await this.$axios.$get(
-        `http://localhost:4000/${this.baseId}`
-      )
-
-      this.payload = JSON.stringify(response, null, 2)
+      await this.$store.dispatch('request/getBaseData', { url: this.finalUrl })
     },
 
-    calculatePayloadSize() {
-      const bytes = ~-encodeURI(JSON.stringify(this.payload)).split(/%..|./)
-        .length
+    calculateResponseSize() {
+      const bytes = ~-encodeURI(JSON.stringify(this.responsePayload)).split(
+        /%..|./
+      ).length
       const kilobytes = bytes / 1024
       return kilobytes.toString().slice(0, 6)
     },
   },
 })
 </script>
-<style>
+<style scoped>
 .zi-input-group {
   height: 42px !important;
 }
@@ -246,5 +343,9 @@ export default Vue.extend({
 .zi-toggle::before {
   height: 1rem !important;
   width: 1rem !important;
+}
+
+.CodeMirror {
+  height: 1200px !important;
 }
 </style>
