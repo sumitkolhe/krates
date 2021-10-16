@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-console */
-import { Base, BaseOptions } from '@src/interfaces/base'
+import { Krate, KrateOptions } from '@src/interfaces/krate'
 import { CreateError } from '@src/middleware/errorHandler'
 import { StorageModel } from '@src/models/storage.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
 export class StorageService {
   // Get all data from a base/collection
-  static getData = async (requestOptions: BaseOptions): Promise<Base[] | Base> => {
+  static getData = async (requestOptions: KrateOptions): Promise<Krate[] | Krate> => {
     const responseData = await StorageModel.find(requestOptions.query)
       .skip(requestOptions.skip)
       .limit(requestOptions.limit)
@@ -15,11 +13,11 @@ export class StorageService {
   }
 
   // Insert data into a base/collection
-  static setData = async (baseId: string, collectionId: string, data: Base): Promise<Base[] | Base> => {
+  static setData = async (krateId: string, collectionId: string, data: Krate): Promise<Krate[] | Krate> => {
     // Insert all objects in DB
-    const createRecord = async (dataObject: Base): Promise<Base> => {
+    const createRecord = async (dataObject: Krate): Promise<Krate> => {
       const newRecord = new StorageModel({
-        baseId,
+        krateId,
         ...(collectionId ? { collectionId } : {}),
         data: dataObject,
       })
@@ -36,7 +34,7 @@ export class StorageService {
     }
 
     const newRecord = new StorageModel({
-      baseId,
+      krateId,
       ...(collectionId ? { collectionId } : {}),
       data,
     })
@@ -46,8 +44,8 @@ export class StorageService {
   }
 
   // Insert data into a base/collection
-  static putData = async (baseId: string, recordId: string, data: Pick<Base, 'data'>): Promise<Base[] | Base> => {
-    const record = await StorageModel.findOneAndUpdate({ _id: recordId, baseId }, { data }, { new: true })
+  static putData = async (krateId: string, recordId: string, data: Pick<Krate, 'data'>): Promise<Krate[] | Krate> => {
+    const record = await StorageModel.findOneAndUpdate({ _id: recordId, krateId }, { data }, { new: true })
 
     if (!record) throw CreateError.BadRequest('No such record exists')
 
@@ -55,7 +53,7 @@ export class StorageService {
   }
 
   // delete all data from a base
-  static deleteData = async (baseId: string): Promise<void> => {
-    await StorageModel.deleteMany({ baseId })
+  static deleteData = async (krateId: string): Promise<void> => {
+    await StorageModel.deleteMany({ krateId })
   }
 }

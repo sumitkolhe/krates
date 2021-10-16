@@ -49,7 +49,7 @@
             "
             aria-label="logo"
           >
-            <box-icon class="h-10 w-10" />
+            <package-icon class="h-10 w-10" />
 
             <p class="text-2xl font-bold pl-4">Detabase</p>
           </NuxtLink>
@@ -115,8 +115,8 @@ export default Vue.extend({
     }
   },
   async mounted() {
-    const response = await this.$store.dispatch('request/getHealth')
-    if (response?.status === 200) this.healthy = true
+    // const response = await this.$store.dispatch('request/getHealth')
+    // if (response?.status === 200) this.healthy = true
   },
 })
 </script>

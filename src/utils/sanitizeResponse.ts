@@ -1,10 +1,10 @@
-import { Base } from '@src/interfaces/base'
+import { Krate } from '@src/interfaces/krate'
 
-export const sanitizeResponse = (data: Base[] | Base): Base[] | Base => {
+export const sanitizeResponse = (data: Krate[] | Krate): Krate[] | Krate => {
   if (Array.isArray(data)) {
-    const sanitizedResponse: Array<Base> = []
+    const sanitizedResponse: Array<Krate> = []
     data.forEach((item) => {
-      let response = {} as Base
+      let response = {} as Krate
 
       response._id = item._id
       response.createdAt = item.createdAt
@@ -17,7 +17,7 @@ export const sanitizeResponse = (data: Base[] | Base): Base[] | Base => {
     return sanitizedResponse
   }
 
-  let response = {} as Base
+  let response = {} as Krate
 
   response._id = data._id
   response.createdAt = data.createdAt

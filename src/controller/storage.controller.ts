@@ -19,10 +19,10 @@ export const getData: RequestHandler = async (req, res, next) => {
 
 export const setData: RequestHandler = async (req, res, next) => {
   try {
-    const { baseId, collectionId } = req.params
+    const { krateId, collectionId } = req.params
     const data = req.body
 
-    const responseData = await StorageService.setData(baseId, collectionId, data)
+    const responseData = await StorageService.setData(krateId, collectionId, data)
     res.json(responseData)
   } catch (error) {
     Logger.error(error.message)
@@ -32,10 +32,10 @@ export const setData: RequestHandler = async (req, res, next) => {
 
 export const putData: RequestHandler = async (req, res, next) => {
   try {
-    const { baseId, recordId } = req.params
+    const { krateId, recordId } = req.params
     const data = req.body
 
-    const responseData = await StorageService.putData(baseId, recordId, data)
+    const responseData = await StorageService.putData(krateId, recordId, data)
     res.json(responseData)
   } catch (error) {
     Logger.error(error.message)
@@ -45,10 +45,10 @@ export const putData: RequestHandler = async (req, res, next) => {
 
 export const deleteData: RequestHandler = async (req, res, next) => {
   try {
-    const { baseId } = req.params
+    const { krateId } = req.params
 
-    await StorageService.deleteData(baseId)
-    res.json({ status: globalConstants.status.success, message: 'Base deleted succesfully' })
+    await StorageService.deleteData(krateId)
+    res.json({ status: globalConstants.status.success, message: 'Krate deleted succesfully' })
   } catch (error) {
     Logger.error(error.message)
     next(error)

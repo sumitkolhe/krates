@@ -1,5 +1,5 @@
 import { Request } from 'express'
-import { BaseOptions } from '@src/interfaces/base'
+import { KrateOptions } from '@src/interfaces/krate'
 
 export const sanitizeQuery = (requestQuery: string): string => {
   const sanitizedQuery = Object()
@@ -51,16 +51,16 @@ export const sanitizeQuery = (requestQuery: string): string => {
   return sanitizedQuery
 }
 
-export const createRequestQuery = (req: Request): BaseOptions => {
+export const createRequestQuery = (req: Request): KrateOptions => {
   const requestOptions = Object()
   let queryOptions = Object()
 
   const { skip, limit, query } = req.query
-  const { baseId, collectionId } = req.params
+  const { krateId, collectionId } = req.params
   if (query) queryOptions = sanitizeQuery(query as string)
   if (collectionId) queryOptions.collectionId = collectionId
 
-  queryOptions.baseId = baseId
+  queryOptions.krateId = krateId
   requestOptions.skip = Number(skip) || 0
   requestOptions.limit = Number(limit) || 1000
 

@@ -4,7 +4,7 @@ const NuxtAppConfig: NuxtConfig = {
   target: 'static',
 
   head: {
-    title: 'Detabase',
+    title: 'Krates',
     htmlAttrs: {
       lang: 'en',
     },
@@ -43,14 +43,14 @@ const NuxtAppConfig: NuxtConfig = {
 
   modules: [
     '@nuxtjs/axios',
-    ['nuxt-vuex-localstorage', { localStorage: ['bases'] }],
+    ['nuxt-vuex-localstorage', { localStorage: ['krates'] }],
   ],
 
   axios: {},
-  // server: {
-  //   port: '3000',
-  //   host: '192.168.0.150',
-  // },
+  server: {
+    port: '3000',
+    host: '192.168.0.150',
+  },
 
   // generate: {
   //   dir: './dist/dashboard',

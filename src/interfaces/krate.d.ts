@@ -1,13 +1,13 @@
-export interface Base {
+export interface Krate {
   _id: string
-  baseId: string
+  krateId: string
   collectionId: string
   data: Record<string, unknown>
   createdAt: Date
   updatedAt: Date
 }
 
-export interface BaseOptions {
+export interface KrateOptions {
   sort: string
   limit: number
   skip: number

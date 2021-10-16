@@ -17,11 +17,11 @@
           v-model="addBasedialog"
           :beforeDone="createNewBase"
         >
-          <zi-fieldset footer="The Evil Rabbit Jumped over the Fence">
+          <zi-fieldset>
             <h3 class="pb-6">Add Base</h3>
             <div>
               <zi-input
-                prefix-label="https://detabase.me/"
+                prefix-label="krat.es/"
                 :disabled="!customBaseToggle"
                 autofocus="true"
                 v-model="newBaseId"

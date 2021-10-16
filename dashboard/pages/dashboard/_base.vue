@@ -2,7 +2,7 @@
   <div class="pt-20">
     <div>
       <tabs
-        class="pl-2 md:pl-0"
+        class="md:pl-0"
         :tabs="navigationItems"
         :currentTab="currentTab"
         :wrapper-class="`relative mx-auto max-w-5xl`"

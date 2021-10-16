@@ -1,9 +1,9 @@
 {
-  "name": "detabase",
+  "name": "krates",
   "version": "1.0.0",
   "description": "json based http database",
   "main": "index.js",
-  "repository": "https://github.com/sumitkolhe/detabase",
+  "repository": "https://github.com/sumitkolhe/krates",
   "author": "sumit kolhe",
   "license": "MIT",
   "scripts": {

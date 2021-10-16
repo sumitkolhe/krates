@@ -32,7 +32,7 @@
               text-accent8
             "
           >
-            <box-icon class="w-10 h-10" />
+            <package-icon class="w-10 h-10" />
 
             <p class="pl-4 font-bold text-2xl">Detabase</p>
           </NuxtLink>

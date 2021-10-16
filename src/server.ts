@@ -12,7 +12,7 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface Request {
-      baseId: string
+      krateId: string
       collectionId: string
     }
   }
