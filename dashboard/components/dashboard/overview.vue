@@ -9,35 +9,35 @@
           size="big"
           type="success"
           class="inline-block"
-          @click="openNewBaseDialog"
-          >Add Base</zi-button
+          @click="openNewKrateDialog"
+          >Add Krate</zi-button
         >
         <zi-dialog
           :closeByModal="false"
-          v-model="addBasedialog"
-          :beforeDone="createNewBase"
+          v-model="addKratedialog"
+          :beforeDone="createNewKrate"
         >
           <zi-fieldset>
-            <h3 class="pb-6">Add Base</h3>
+            <h3 class="pb-6">Add Krate</h3>
             <div>
               <zi-input
                 prefix-label="krat.es/"
-                :disabled="!customBaseToggle"
+                :disabled="!customKrateToggle"
                 autofocus="true"
-                v-model="newBaseId"
+                v-model="newKrateId"
               >
               </zi-input>
             </div>
             <template v-slot:footer>
               <span class="font-medium mr-4">Custom ID</span>
-              <zi-toggle class="ml-4" v-model="customBaseToggle"></zi-toggle>
+              <zi-toggle class="ml-4" v-model="customKrateToggle"></zi-toggle>
             </template>
           </zi-fieldset>
         </zi-dialog>
       </div>
     </div>
 
-    <DashboardAllBases />
+    <DashboardAllKrates />
   </div>
 </template>
 
@@ -45,28 +45,28 @@
 import Vue from 'vue'
 import plusCircle from '@geist-ui/vue-icons/packages/plus-circle'
 import database from '@geist-ui/vue-icons/packages/database'
-import { generateBaseId } from '~/utils/generateBaseId'
+import { generateKrateId } from '~/utils/krate'
 export default Vue.extend({
   data() {
     return {
       plusCircle,
       database,
-      addBasedialog: false,
-      customBaseToggle: false,
-      newBaseId: '',
+      addKratedialog: false,
+      customKrateToggle: false,
+      newKrateId: '',
     }
   },
   computed: {},
   methods: {
-    openNewBaseDialog() {
-      this.addBasedialog = !this.addBasedialog
-      this.newBaseId = generateBaseId()
+    openNewKrateDialog() {
+      this.addKratedialog = !this.addKratedialog
+      this.newKrateId = generateKrateId()
     },
 
-    createNewBase() {
-      this.$store.dispatch('bases/createNewBase', this.newBaseId)
-      this.addBasedialog = !this.addBasedialog
-      this.customBaseToggle = !this.customBaseToggle
+    createNewKrate() {
+      this.$store.dispatch('krates/createNewKrate', this.newKrateId)
+      this.addKratedialog = !this.addKratedialog
+      this.customKrateToggle = !this.customKrateToggle
     },
   },
 })

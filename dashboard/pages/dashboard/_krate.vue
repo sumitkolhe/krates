@@ -12,9 +12,9 @@
         @onClick="handleClick"
       />
       <div class="border-t border-accent2">
-        <BaseDetails v-if="currentTab === 'tab1'" />
-        <BaseQuery v-if="currentTab === 'tab2'" />
-        <BaseDanger v-if="currentTab === 'tab3'" />
+        <KrateDetails v-if="currentTab === 'tab1'" />
+        <KrateQuery v-if="currentTab === 'tab2'" />
+        <KrateDanger v-if="currentTab === 'tab3'" />
       </div>
     </div>
   </div>
@@ -29,10 +29,10 @@ export default Vue.extend({
   },
   data() {
     return {
-      newBaseId: '',
+      newKrateId: '',
       visible: false,
       navigationItems: [
-        { title: 'Base Details', value: 'tab1' },
+        { title: 'Krate Details', value: 'tab1' },
         { title: 'Query Data', value: 'tab2' },
         { title: 'Danger Zone', value: 'tab3' },
       ],
@@ -46,8 +46,8 @@ export default Vue.extend({
     openDialog() {
       this.visible = true
     },
-    createNewBase() {
-      this.$store.dispatch('bases/createNewBase')
+    createNewKrate() {
+      this.$store.dispatch('krates/createNewKrate')
       this.visible = !this.visible
     },
   },

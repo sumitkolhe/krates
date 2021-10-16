@@ -2,10 +2,10 @@
   <div class="container mx-auto max-w-5xl w-full h-full">
     <div class="relative wrap overflow-hidden px-6 py-10 h-full">
       <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-        <h2 class="text-4xl mb-4 font-bold">How Detabase works?</h2>
+        <h2 class="text-4xl mb-4 font-bold">How Krates works?</h2>
         <p class="text-xl text-accent4">
-          Detabase provides a REST API that you can use to make requests and
-          store your JSON based data easily.
+          Krates provides a REST API that you can use to make requests and store
+          your JSON based data easily.
         </p>
       </div>
 
@@ -45,9 +45,9 @@
             border border-accent2
           "
         >
-          <h3 class="mb-3 font-bold text-xl">Get your unique base ID</h3>
+          <h3 class="mb-3 font-bold text-xl">Get your unique krate ID</h3>
           <p class="text-sm leading-snug tracking-wide text-opacity-100">
-            Visit Detabase Dashboard and get your unique base ID. This base ID
+            Visit Krates Dashboard and get your unique krate ID. This krate ID
             will acts as your personal namespace for storing data.
           </p>
         </div>

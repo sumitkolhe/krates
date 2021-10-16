@@ -34,7 +34,7 @@
           >
             <package-icon class="h-10 w-10" />
 
-            <p class="text-2xl font-bold pl-4">Detabase</p>
+            <p class="text-2xl font-bold pl-4">Krates</p>
           </NuxtLink>
         </div>
 

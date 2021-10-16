@@ -3,13 +3,13 @@
     <div class="max-w-5xl mx-auto px-6">
       <div class="py-12 md:pt-20">
         <div class="max-w-3xl mx-auto text-center pb-12 md:pb-10">
-          <h2 class="text-4xl font-black mb-8">Love Detabase?</h2>
+          <h2 class="text-4xl font-black mb-8">Love Krates?</h2>
 
           <p
             class="text-xl text-gray-600 mb-2 text-accent4"
             data-aos="zoom-y-out"
           >
-            Detabase is fully
+            Krates is fully
 
             <span
               class="
@@ -36,15 +36,15 @@
             class="text-xl text-gray-600 mb-8 text-accent4"
             data-aos="zoom-y-out"
           >
-            If you'd like to contribute to Detabase feel free to raise a PR.
+            If you'd like to contribute to Krates feel free to raise a PR.
           </p>
 
           <div>
-            <a href="https://github.com/sumitkolhe/detabase" target="_blank">
+            <a href="https://github.com/sumitkolhe/krates" target="_blank">
               <zi-button
                 size="huge"
                 type="primary"
-                href="https://github.com/sumitkolhe/detabase"
+                href="https://github.com/sumitkolhe/krates"
                 >Contribute</zi-button
               ></a
             >

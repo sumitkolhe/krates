@@ -14,7 +14,7 @@
     ></div>
 
     <div class="relative max-w-5xl mx-auto px-6">
-      <h2 class="text-4xl font-black mb-2 text-center pt-20">Detabase is...</h2>
+      <h2 class="text-4xl font-black mb-2 text-center pt-20">Krates is...</h2>
       <div class="py-12 md:pb-24">
         <div
           class="
@@ -60,7 +60,7 @@
 
             <h4 class="text-lg font-bold mb-1">Free</h4>
             <p class="text-accent6 text-center">
-              Detabase is completely free to use and always will be.
+              Krates is completely free to use and always will be.
             </p>
           </div>
 
@@ -95,7 +95,7 @@
             <cloud-snow-icon class="h-16 w-16 mb-2" />
             <h4 class="text-lg font-bold mb-1">Backend Agnostic</h4>
             <p class="text-accent6 text-center">
-              Use detabase with a backend server or directly from the browser.
+              Use krates with a backend server or directly from the browser.
             </p>
           </div>
 
@@ -113,7 +113,7 @@
 
             <h4 class="text-lg font-bold mb-1">Host your own instance</h4>
             <p class="text-accent6 text-center">
-              Use Detabase as a free service or host your own instance.
+              Use Krates as a free service or host your own instance.
             </p>
           </div>
 

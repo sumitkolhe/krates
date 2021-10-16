@@ -11,13 +11,13 @@
       <!-- Request module -->
       <zi-fieldset
         class="mb-8"
-        footer="This is your personal detabase Id and used for storing your data."
+        footer="This is your personal krates Id and used for storing your data."
       >
         <div class="flex mb-4">
           <span class="text-lg font-medium">Query data with HTTP requests</span>
           <zi-tooltip placement="right">
             <template v-slot:content>
-              <p>Make requests to detabase endpoint with your Base ID to</p>
+              <p>Make requests to krates endpoint with your Krate ID to</p>
               <p>GET, INSERT, UPDATE, MODIFY, DELETE data.</p>
             </template>
 
@@ -25,7 +25,7 @@
           </zi-tooltip>
         </div>
         <p class="text-accent5">
-          Make requests to detabase API endpoints to query / modify your data.
+          Make requests to krates API endpoints to query / modify your data.
         </p>
         <p class="border-b border-accent2 py-2"></p>
         <div class="flex flex-col md:flex-row">
@@ -39,8 +39,8 @@
 
           <zi-input
             class="md:ml-3 mt-4 flex-grow"
-            :placeholder="baseId"
-            prefix-label="https://detabase.me/"
+            :placeholder="krateId"
+            prefix-label="https://krat.es/"
             disabled
           ></zi-input>
         </div>
@@ -209,17 +209,17 @@
           <p></p>
           <!-- <zi-input
             class="ml-2"
-            :placeholder="baseId"
-            prefix-label="https://detabase.me/"
+            :placeholder="krateId"
+            prefix-label="https://krat.es/"
             disabled
           ></zi-input> -->
-          <zi-button type="success" auto @click="getBaseData">Send </zi-button>
+          <zi-button type="success" auto @click="getKrateData">Send </zi-button>
         </template>
       </zi-fieldset>
 
       <zi-fieldset
         class="mb-8"
-        footer="This is your personal detabase Id and used for storing your data."
+        footer="This is your personal Krate Id and used for storing your data."
       >
         <client-only>
           <div class="max-w-5xl mx-auto mb-12">
@@ -248,7 +248,7 @@ export default Vue.extend({
   data() {
     return {
       selectedRequestType: 'GET',
-      baseId: '',
+      krateId: '',
       toggleCollectionId: false,
       collectionId: '',
       toggleLimit: false,
@@ -268,8 +268,8 @@ export default Vue.extend({
   },
 
   created() {
-    this.baseId = this.$store.getters['bases/getSelectedBase']
-    // to reset response payload on every base change
+    this.krateId = this.$store.getters['krates/getSelectedKrate']
+    // to reset response payload on every krate change
     this.$store.commit('request/setResponsePayload', undefined)
   },
 
@@ -296,7 +296,7 @@ export default Vue.extend({
     },
 
     finalUrl(): string {
-      return `${this.baseId}/${
+      return `${this.krateId}/${
         this.collectionId && this.toggleCollectionId ? this.collectionId : ''
       }?query=${this.filter && this.togglefilter ? this.filter : ''}&limit=${
         this.limit
@@ -313,8 +313,8 @@ export default Vue.extend({
   },
 
   methods: {
-    async getBaseData() {
-      await this.$store.dispatch('request/getBaseData', { url: this.finalUrl })
+    async getKrateData() {
+      await this.$store.dispatch('request/getKrateData', { url: this.finalUrl })
     },
 
     calculateResponseSize() {

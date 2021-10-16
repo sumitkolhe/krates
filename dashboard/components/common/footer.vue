@@ -51,7 +51,7 @@
           >
             <package-icon class="h-10 w-10" />
 
-            <p class="text-2xl font-bold pl-4">Detabase</p>
+            <p class="text-2xl font-bold pl-4">Krates</p>
           </NuxtLink>
         </nav>
 
@@ -70,7 +70,7 @@
         "
       >
         <div class="text-accent6 text-sm text-center py-2">
-          © 2021 Detabase. All rights reserved.
+          © 2021 Krates. All rights reserved.
         </div>
 
         <div
@@ -96,7 +96,7 @@
         </div>
 
         <a
-          href="https://github.com/sumitkolhe/detabase"
+          href="https://github.com/sumitkolhe/krates"
           class="text-accent8 hover:text-accent4"
           target="_blank"
           ><github-icon

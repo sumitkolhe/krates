@@ -34,7 +34,7 @@
           >
             <package-icon class="w-10 h-10" />
 
-            <p class="pl-4 font-bold text-2xl">Detabase</p>
+            <p class="pl-4 font-bold text-2xl">Krates</p>
           </NuxtLink>
         </div>
 
@@ -43,16 +43,16 @@
           <template v-slot:dropdown>
             <zi-popover-item title>Dashboard</zi-popover-item>
             <zi-popover-item line></zi-popover-item>
-            <zi-popover-item primary>New Base</zi-popover-item>
+            <zi-popover-item primary>New Krate</zi-popover-item>
             <zi-popover-item line></zi-popover-item>
             <zi-popover-item primary
-              ><zi-link href="https://docs.detabase.me" more
+              ><zi-link href="https://docs.krat.es" more
                 >Docs</zi-link
               ></zi-popover-item
             >
 
             <zi-popover-item primary
-              ><zi-link href="https:////github.com/sumitkolhe/detabase" more
+              ><zi-link href="https:////github.com/sumitkolhe/krates" more
                 >Github</zi-link
               ></zi-popover-item
             >

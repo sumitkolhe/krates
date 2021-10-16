@@ -13,22 +13,22 @@
     "
   >
     <div
-      v-for="base in allBases"
-      :key="base.baseId"
+      v-for="krate in allKrates"
+      :key="krate.krateId"
       class="cursor-pointer"
-      @click="setSelectedBase(base.baseId)"
+      @click="setSelectedKrate(krate.krateId)"
     >
       <zi-fieldset
         class="text-accent8 hover:drop-shadow-xl"
         footer="The Evil Rabbit Jumped over the Fence"
       >
-        <span class="text-lg font-semibold">Base ID</span>
+        <span class="text-lg font-semibold">Krate ID</span>
         <span
           class="text-sm float-right border border-accent2 py-1 px-2 rounded-md"
         >
-          {{ numberOfDays(base.createdAt) }}</span
+          {{ numberOfDays(krate.createdAt) }}</span
         >
-        <zi-snippet :text="base.baseId" class="mt-6"></zi-snippet>
+        <zi-snippet :text="krate.krateId" class="mt-6"></zi-snippet>
         <template v-slot:footer>
           <span
             class="
@@ -43,7 +43,7 @@
             0 Kb</span
           >
           <NuxtLink
-            :to="{ path: `dashboard/${base.baseId}` }"
+            :to="{ path: `dashboard/${krate.krateId}` }"
             class="float-left"
           >
             <zi-button size="small" auto class="float-right"
@@ -62,17 +62,17 @@ export default Vue.extend({
     return {}
   },
   computed: {
-    allBases() {
-      return this.$store.getters['bases/getAllBases']
+    allKrates() {
+      return this.$store.getters['krates/getAllKrates']
     },
   },
   methods: {
-    setSelectedBase(baseId: string) {
-      this.$store.commit('bases/setSelectedBase', baseId)
+    setSelectedKrate(krateId: string) {
+      this.$store.commit('krates/setSelectedKrate', krateId)
     },
-    numberOfDays(baseDate: number) {
+    numberOfDays(krateDate: number) {
       const currentDate = Date.now()
-      const days = Math.round((currentDate - baseDate) / (1000 * 60 * 60 * 24))
+      const days = Math.round((currentDate - krateDate) / (1000 * 60 * 60 * 24))
       return days === 0 ? '0d ago' : `${days}d ago`
     },
   },

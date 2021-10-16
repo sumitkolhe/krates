@@ -36,13 +36,13 @@ export default Vue.extend({
   data() {
     return {
       selectedRequestType: 'GET',
-      baseId: '',
+      krateId: '',
       toggleCollection: false,
       toggleRecord: false,
     }
   },
   mounted() {
-    this.baseId = this.$store.getters['bases/getSelectedBase']
+    this.krateId = this.$store.getters['krate/getSelectedKrate']
   },
 
   computed: {},

@@ -27,7 +27,6 @@ export default Vue.extend({
   },
   data() {
     return {
-      newBaseId: '',
       visible: false,
       navigationItems: [
         { title: 'Overview', value: 'tab1' },
@@ -42,10 +41,6 @@ export default Vue.extend({
     },
     openDialog() {
       this.visible = true
-    },
-    createNewBase() {
-      this.$store.dispatch('bases/createNewBase')
-      this.visible = !this.visible
     },
   },
 })

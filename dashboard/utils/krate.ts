@@ -1,4 +1,4 @@
-export const generateBaseId = () => {
+export const generateKrateId = () => {
   let date = new Date().getTime()
   const id = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
     const r = (date + Math.random() * 16) % 16 | 0

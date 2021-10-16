@@ -51,7 +51,7 @@
           </h1>
           <div class="max-w-3xl mx-auto my-14">
             <p class="text-xl text-gray-500 mb-8">
-              Detabase provides a HTTP based JSON database service for free to
+              Krates provides a HTTP based JSON database service for free to
               help you get started with your projects easily!
             </p>
 
