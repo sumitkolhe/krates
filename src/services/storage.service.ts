@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
-import { Base } from '@src/interfaces/base'
+import { Base, BaseOptions } from '@src/interfaces/base'
 import { CreateError } from '@src/middleware/errorHandler'
 import { StorageModel } from '@src/models/storage.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
 
 export class StorageService {
   // Get all data from a base/collection
-  static getData = async (baseId: string, collectionId: string): Promise<Base[] | Base> => {
-    const responseData = await StorageModel.find({ baseId, ...(collectionId ? { collectionId } : {}) })
+  static getData = async (requestOptions: BaseOptions): Promise<Base[] | Base> => {
+    const responseData = await StorageModel.find(requestOptions.query)
+      .skip(requestOptions.skip)
+      .limit(requestOptions.limit)
     return sanitizeResponse(responseData)
   }
 

@@ -7,7 +7,7 @@ export const validators = {
       baseId: Joi.string().trim().length(20).alphanum().required(),
       collectionId: Joi.string().trim().min(1).max(16).optional(),
     }),
-    [Segments.BODY]: Joi.object().min(1),
+    [Segments.BODY]: Joi.alternatives(Joi.object().min(1), Joi.array().min(1)),
   }),
 
   put: celebrate({

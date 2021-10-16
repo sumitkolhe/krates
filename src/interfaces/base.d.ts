@@ -6,3 +6,10 @@ export interface Base {
   createdAt: Date
   updatedAt: Date
 }
+
+export interface BaseOptions {
+  sort: string
+  limit: number
+  skip: number
+  query: Record<string, unknown>
+}

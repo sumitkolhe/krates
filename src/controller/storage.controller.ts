@@ -1,16 +1,18 @@
+/* eslint-disable no-console */
 import { RequestHandler } from 'express'
 import { Logger } from '@src/utils/logger'
 import { globalConstants } from '@src/constants'
 import { StorageService } from '@src/services/storage.service'
+import { createRequestQuery } from '@src/utils/query'
 
 export const getData: RequestHandler = async (req, res, next) => {
   try {
-    const { baseId, collectionId } = req.params
-
-    const responseData = await StorageService.getData(baseId, collectionId)
+    const requestOptions = createRequestQuery(req)
+    console.log(requestOptions)
+    const responseData = await StorageService.getData(requestOptions)
     res.json(responseData)
   } catch (error) {
-    Logger.error(error.message)
+    Logger.error(error.stack)
     next(error)
   }
 }

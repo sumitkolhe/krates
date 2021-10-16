@@ -4,10 +4,7 @@ import { deleteData, getData, putData, setData } from '@src/controller/storage.c
 
 export const baseRouter: Router = express.Router()
 
-baseRouter
-  .route('/:baseId/:collectionId?/')
-  .get(validators.storage, getData)
-  .post(validators.storage, setData)
-  .delete(validators.storage, deleteData)
-
-baseRouter.route('/:baseId/:recordId').put(validators.put, putData)
+baseRouter.get('/:baseId/:collectionId?/', validators.storage, getData)
+baseRouter.post('/:baseId/:collectionId?/', validators.storage, setData)
+baseRouter.put('/:baseId/:recordId', validators.put, putData)
+baseRouter.delete('/:baseId/:collectionId?/', validators.storage, deleteData)
