@@ -114,10 +114,9 @@ export default Vue.extend({
       healthy: false,
     }
   },
-  mounted() {
-    this.$axios.get('http://localhost:4000/health').then((response) => {
-      if (response?.status === 200) this.healthy = true
-    })
+  async mounted() {
+    const response = await this.$store.dispatch('request/getHealth')
+    if (response?.status === 200) this.healthy = true
   },
 })
 </script>
