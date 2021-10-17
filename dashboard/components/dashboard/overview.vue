@@ -19,15 +19,25 @@
         >
           <zi-fieldset>
             <h3 class="pb-6">Add Krate</h3>
-
-            <zi-input
-              prefix-label="krat.es/"
-              :disabled="!customKrateToggle"
-              autofocus="true"
-              v-model="newKrateId"
-              class="w-full"
-            >
-            </zi-input>
+            <div>
+              <zi-input
+                prefix-label="Krate Name"
+                autofocus="true"
+                v-model="newKrateName"
+                class="w-full mb-4"
+              >
+              </zi-input>
+            </div>
+            <div>
+              <zi-input
+                prefix-label="krat.es/"
+                :disabled="!customKrateToggle"
+                autofocus="true"
+                v-model="newKrateId"
+                class="w-full"
+              >
+              </zi-input>
+            </div>
 
             <template v-slot:footer>
               <span class="font-medium mr-4">Custom ID</span>
@@ -55,6 +65,7 @@ export default Vue.extend({
       addKratedialog: false,
       customKrateToggle: false,
       newKrateId: '',
+      newKrateName: '',
     }
   },
   computed: {},
@@ -65,7 +76,10 @@ export default Vue.extend({
     },
 
     createNewKrate() {
-      this.$store.dispatch('krates/createNewKrate', this.newKrateId)
+      this.$store.dispatch('krates/createNewKrate', {
+        krateId: this.newKrateId,
+        krateName: this.newKrateName,
+      })
       this.addKratedialog = !this.addKratedialog
       this.customKrateToggle = !this.customKrateToggle
     },

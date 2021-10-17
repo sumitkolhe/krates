@@ -1,56 +1,71 @@
 <template>
-  <div
-    class="
-      grid
-      md:grid-cols-3
-      max-w-5xl
-      mx-auto
-      grid-cols-auto
-      sm:grid-cols-2
-      gap-10
-      px-4
-      my-12
-    "
-  >
+  <div>
     <div
-      v-for="krate in allKrates"
-      :key="krate.krateId"
-      class="cursor-pointer"
-      @click="setSelectedKrate(krate.krateId)"
+      v-if="allKrates.length > 0"
+      class="
+        grid
+        md:grid-cols-3
+        max-w-5xl
+        mx-auto
+        grid-cols-auto
+        sm:grid-cols-2
+        gap-10
+        px-4
+        my-12
+      "
     >
-      <zi-fieldset
-        class="text-accent8 hover:drop-shadow-xl"
-        footer="The Evil Rabbit Jumped over the Fence"
+      <div
+        v-for="krate in allKrates"
+        :key="krate.krateId"
+        class="cursor-pointer"
+        @click="setSelectedKrate(krate.krateId)"
       >
-        <span class="text-lg font-semibold">Krate ID</span>
-        <span
-          class="text-sm float-right border border-accent2 py-1 px-2 rounded-md"
-        >
-          {{ numberOfDays(krate.createdAt) }}</span
-        >
-        <zi-snippet :text="krate.krateId" class="mt-6"></zi-snippet>
-        <template v-slot:footer>
-          <span
-            class="
-              text-sm
-              float-right
-              border border-accent2
-              py-1
-              px-2
-              rounded-md
-            "
+        <NuxtLink :to="{ path: `dashboard/${krate.krateId}` }">
+          <zi-fieldset
+            class="text-accent8 hover:drop-shadow-xl"
+            footer="The Evil Rabbit Jumped over the Fence"
           >
-            0 Kb</span
-          >
-          <NuxtLink
-            :to="{ path: `dashboard/${krate.krateId}` }"
-            class="float-left"
-          >
-            <zi-button size="small" auto class="float-right"
-              ><arrow-right-icon /> </zi-button
-          ></NuxtLink>
-        </template>
-      </zi-fieldset>
+            <span class="text-lg font-semibold">{{
+              truncatedKrateName(krate.krateName)
+            }}</span>
+            <span
+              class="
+                text-sm
+                float-right
+                border border-accent2
+                py-1
+                px-2
+                rounded-md
+              "
+            >
+              {{ numberOfDays(krate.createdAt) }}</span
+            >
+
+            <zi-note label="" class="mt-8 mb-4 bg-accent2" type="secondary">{{
+              krate.krateId
+            }}</zi-note>
+            <template v-slot:footer>
+              <span
+                class="
+                  text-sm
+                  float-right
+                  border border-accent2
+                  py-1
+                  px-2
+                  rounded-md
+                "
+              >
+                0 Kb</span
+              >
+            </template>
+          </zi-fieldset>
+        </NuxtLink>
+      </div>
+    </div>
+
+    <div v-else class="max-w-5xl mx-auto my-24">
+      <coffee-icon class="h-12 w-12 mx-auto" />
+      <p class="text-center font-semibold">No Krates found</p>
     </div>
   </div>
 </template>
@@ -66,6 +81,7 @@ export default Vue.extend({
       return this.$store.getters['krates/getAllKrates']
     },
   },
+
   methods: {
     setSelectedKrate(krateId: string) {
       this.$store.commit('krates/setSelectedKrate', krateId)
@@ -74,6 +90,9 @@ export default Vue.extend({
       const currentDate = Date.now()
       const days = Math.round((currentDate - krateDate) / (1000 * 60 * 60 * 24))
       return days === 0 ? '0d ago' : `${days}d ago`
+    },
+    truncatedKrateName(krateName: string) {
+      return `${krateName?.slice(0, 15)}${krateName?.length > 15 ? '..' : ''}`
     },
   },
 })
