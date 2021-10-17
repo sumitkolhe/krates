@@ -8,7 +8,6 @@ import { createRequestQuery } from '@src/utils/query'
 export const getData: RequestHandler = async (req, res, next) => {
   try {
     const requestOptions = createRequestQuery(req)
-    console.log(requestOptions)
     const responseData = await StorageService.getData(requestOptions)
     res.json(responseData)
   } catch (error) {

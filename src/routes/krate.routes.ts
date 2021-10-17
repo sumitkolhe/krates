@@ -6,5 +6,6 @@ export const krateRouter: Router = express.Router()
 
 krateRouter.get('/:krateId/:collectionId?/', validators.storage, getData)
 krateRouter.post('/:krateId/:collectionId?/', validators.storage, setData)
-krateRouter.put('/:krateId/:recordId', validators.put, putData)
 krateRouter.delete('/:krateId/:collectionId?/', validators.storage, deleteData)
+
+krateRouter.put('/:krateId/:recordId', validators.put, putData)
