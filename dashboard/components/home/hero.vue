@@ -59,8 +59,8 @@
               <NuxtLink to="/dashboard" class="p-2">
                 <zi-button type="primary">Get Started</zi-button></NuxtLink
               >
-              <NuxtLink to="/dashboard" class="p-2">
-                <zi-button type="normal">Read the docs</zi-button></NuxtLink
+              <a href="https://docs.krat.es" target="_blank" class="p-2">
+                <zi-button type="normal">Read the docs</zi-button></a
               >
             </div>
           </div>
