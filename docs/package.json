@@ -1,0 +1,16 @@
+{
+  "name": "krates-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "retype watch",
+    "build": "retype build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "retypeapp": "^1.10.0"
+  }
+}
