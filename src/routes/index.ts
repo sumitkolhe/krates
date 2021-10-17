@@ -3,7 +3,7 @@ import { krateRouter } from '@src/routes/krate.routes'
 
 export const parentRouter: Router = express.Router()
 
-parentRouter.get('', (req, res) => {
+parentRouter.get('/', (req, res) => {
   res.redirect(301, 'https://app.krat.es')
 })
 parentRouter.get('/health', (req, res) => {
