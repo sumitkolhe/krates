@@ -115,8 +115,8 @@ export default Vue.extend({
     }
   },
   async mounted() {
-    // const response = await this.$store.dispatch('request/getHealth')
-    // if (response?.status === 200) this.healthy = true
+    const response = await this.$store.dispatch('request/getHealth')
+    if (response?.status === 200) this.healthy = true
   },
 })
 </script>
