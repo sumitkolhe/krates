@@ -7,7 +7,7 @@ const stream: StreamOptions = {
 }
 
 const skip = () => {
-  return !isDev()
+  return isDev()
 }
 
 export const morganMiddleware = morgan(':method :url :status :res[content-length] - :response-time ms', {
