@@ -1,21 +1,21 @@
 <template>
   <div class="pt-20">
-    <div>
+    <div class="px-2 md:px-0">
       <tabs
-        class="md:pl-0"
+        class=""
         :tabs="navigationItems"
         :currentTab="currentTab"
         :wrapper-class="`relative mx-auto max-w-5xl`"
         :tab-class="`hover:bg-accent2 hover:rounded-md mx-2 my-2 p-2 text-sm`"
         :tab-active-class="`font-medium`"
-        :line-class="`border-b border-b-2 border-geist-foreground`"
+        :line-class="` border-b border-b-2 border-geist-foreground`"
         @onClick="handleClick"
       />
-      <div class="border-t border-accent2">
-        <KrateDetails v-if="currentTab === 'tab1'" />
-        <KrateQuery v-if="currentTab === 'tab2'" />
-        <KrateDanger v-if="currentTab === 'tab3'" />
-      </div>
+    </div>
+    <div class="border-t border-accent2">
+      <KrateDetails v-if="currentTab === 'tab1'" />
+      <KrateQuery v-if="currentTab === 'tab2'" />
+      <KrateDanger v-if="currentTab === 'tab3'" />
     </div>
   </div>
 </template>

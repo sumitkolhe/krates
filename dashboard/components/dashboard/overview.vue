@@ -19,15 +19,16 @@
         >
           <zi-fieldset>
             <h3 class="pb-6">Add Krate</h3>
-            <div>
-              <zi-input
-                prefix-label="krat.es/"
-                :disabled="!customKrateToggle"
-                autofocus="true"
-                v-model="newKrateId"
-              >
-              </zi-input>
-            </div>
+
+            <zi-input
+              prefix-label="krat.es/"
+              :disabled="!customKrateToggle"
+              autofocus="true"
+              v-model="newKrateId"
+              class="w-full"
+            >
+            </zi-input>
+
             <template v-slot:footer>
               <span class="font-medium mr-4">Custom ID</span>
               <zi-toggle class="ml-4" v-model="customKrateToggle"></zi-toggle>

@@ -1,19 +1,20 @@
 <template>
   <div class="pt-20">
-    <div>
+    <div class="px-2">
       <tabs
         :tabs="navigationItems"
         :currentTab="currentTab"
         :wrapper-class="`relative mx-auto max-w-5xl`"
         :tab-class="`hover:bg-accent2 hover:rounded-md mx-2 my-2 p-2 text-sm`"
         :tab-active-class="`font-medium`"
-        :line-class="`border-b border-b-2 border-geist-foreground`"
+        :line-class="`border-b border-b-2 border-geist-foreground `"
         @onClick="handleClick"
       />
-      <div class="border-t border-accent2">
-        <DashboardOverview v-if="currentTab === 'tab1'" />
-        <DashboardSettings v-if="currentTab === 'tab2'" />
-      </div>
+    </div>
+
+    <div class="border-t border-accent2">
+      <DashboardOverview v-if="currentTab === 'tab1'" />
+      <DashboardSettings v-if="currentTab === 'tab2'" />
     </div>
   </div>
 </template>
