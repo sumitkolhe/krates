@@ -40,7 +40,7 @@
           <zi-input
             class="md:ml-3 mt-4 flex-grow"
             :placeholder="krateId"
-            prefix-label="https://krat.es/"
+            prefix-label="krat.es/"
             disabled
           ></zi-input>
         </div>
@@ -55,12 +55,12 @@
           class="pt-6 pb-2"
           v-if="selectedRequestType === 'GET'"
         >
-          <zi-grid :xs="4">
+          <zi-grid :xs="24" :md="4">
             <p class="text-accent5 font-medium">
               <zi-tag>COLLECTION ID</zi-tag>
             </p></zi-grid
           >
-          <zi-grid :xs="14">
+          <zi-grid :xs="14" :md="14">
             <zi-textarea
               placeholder="Collection ID"
               :rows="1"
@@ -69,7 +69,7 @@
             ></zi-textarea
           ></zi-grid>
 
-          <zi-grid :xs="6">
+          <zi-grid :xs="10" :md="6">
             <zi-grid
               container
               align-items="center"
@@ -83,12 +83,12 @@
             </zi-grid>
           </zi-grid>
 
-          <zi-grid :xs="4">
+          <zi-grid :xs="24" :md="4">
             <p class="text-accent5 font-medium">
               <zi-tag> LIMIT</zi-tag>
             </p></zi-grid
           >
-          <zi-grid :xs="14">
+          <zi-grid :xs="14" :md="14">
             <zi-textarea
               placeholder="Limit number of records"
               :rows="1"
@@ -97,7 +97,7 @@
             ></zi-textarea>
           </zi-grid>
 
-          <zi-grid :xs="6">
+          <zi-grid :xs="10" :md="6">
             <zi-grid
               container
               align-items="center"
@@ -109,12 +109,12 @@
             </zi-grid>
           </zi-grid>
 
-          <zi-grid :xs="4">
+          <zi-grid :xs="24" :md="4">
             <p class="text-accent5 font-medium">
               <zi-tag> SKIP</zi-tag>
             </p></zi-grid
           >
-          <zi-grid :xs="14">
+          <zi-grid :xs="14" :md="14">
             <zi-textarea
               placeholder="Skip number of records"
               :rows="1"
@@ -123,7 +123,7 @@
             ></zi-textarea>
           </zi-grid>
 
-          <zi-grid :xs="6">
+          <zi-grid :xs="10" :md="6">
             <zi-grid
               container
               align-items="center"
@@ -135,21 +135,21 @@
             </zi-grid>
           </zi-grid>
 
-          <zi-grid :xs="4">
+          <zi-grid :xs="24" :md="4">
             <p class="text-accent5 font-medium">
               <zi-tag>FILTER</zi-tag>
             </p></zi-grid
           >
-          <zi-grid :xs="14">
+          <zi-grid :xs="14" :md="14">
             <zi-textarea
-              placeholder="Query for filtering records"
+              placeholder="Filter query"
               :rows="1"
               :disabled="!togglefilter"
               v-model="filter"
             ></zi-textarea>
           </zi-grid>
 
-          <zi-grid :xs="6">
+          <zi-grid :xs="10" :md="6">
             <zi-grid
               container
               align-items="center"
@@ -171,10 +171,10 @@
           class="pt-6"
           v-if="selectedRequestType === 'POST'"
         >
-          <zi-grid :xs="6">
+          <zi-grid :xs="24" :md="4">
             <p class="text-accent5 font-medium">COLLECTION ID</p></zi-grid
           >
-          <zi-grid :xs="14">
+          <zi-grid :xs="14" :md="14">
             <zi-textarea
               placeholder="Collection ID"
               :rows="1"
@@ -182,7 +182,7 @@
             ></zi-textarea
           ></zi-grid>
 
-          <zi-grid :xs="4">
+          <zi-grid :xs="10" :md="6">
             <zi-grid
               container
               align-items="center"
@@ -217,12 +217,11 @@
         </template>
       </zi-fieldset>
 
-      <zi-fieldset
-        class="mb-8"
-        footer="This is your personal Krate Id and used for storing your data."
-      >
+      <zi-fieldset class="mb-8">
+        <div class="text-lg font-medium">Response</div>
+        <p class="border-b border-accent2 pt-2"></p>
         <client-only>
-          <div class="max-w-5xl mx-auto mb-12">
+          <div class="max-w-5xl mx-auto mb-12 mt-6">
             <codemirror :value="responsePayload" :options="options" />
           </div>
         </client-only>
@@ -322,7 +321,7 @@ export default Vue.extend({
         /%..|./
       ).length
       const kilobytes = bytes / 1024
-      return kilobytes.toString().slice(0, 6)
+      return kilobytes.toString().slice(0, 4)
     },
   },
 })
