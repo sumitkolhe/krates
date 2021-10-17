@@ -45,7 +45,7 @@
 import Vue from 'vue'
 import plusCircle from '@geist-ui/vue-icons/packages/plus-circle'
 import database from '@geist-ui/vue-icons/packages/database'
-import { generateKrateId } from '~/utils/krate'
+
 export default Vue.extend({
   data() {
     return {
@@ -60,13 +60,23 @@ export default Vue.extend({
   methods: {
     openNewKrateDialog() {
       this.addKratedialog = !this.addKratedialog
-      this.newKrateId = generateKrateId()
+      this.newKrateId = this.generateKrateId()
     },
 
     createNewKrate() {
       this.$store.dispatch('krates/createNewKrate', this.newKrateId)
       this.addKratedialog = !this.addKratedialog
       this.customKrateToggle = !this.customKrateToggle
+    },
+
+    generateKrateId() {
+      let date = new Date().getTime()
+      const id = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
+        const r = (date + Math.random() * 16) % 16 | 0
+        date = Math.floor(date / 16)
+        return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
+      })
+      return id.toString()
     },
   },
 })

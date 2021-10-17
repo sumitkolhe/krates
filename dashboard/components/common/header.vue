@@ -12,7 +12,7 @@
       border-b border-accent2
     "
   >
-    <div class="max-w-5xl mx-auto px-6">
+    <div class="max-w-5xl mx-auto px-4">
       <div class="flex items-center justify-between h-16 md:h-20">
         <div class="flex-shrink-0">
           <NuxtLink

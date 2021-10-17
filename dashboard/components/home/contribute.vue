@@ -6,7 +6,7 @@
           <h2 class="text-4xl font-black mb-8">Love Krates?</h2>
 
           <p
-            class="text-xl text-gray-600 mb-2 text-accent4"
+            class="text-lg sm:text-xl text-gray-600 mb-2 text-accent4"
             data-aos="zoom-y-out"
           >
             Krates is fully
@@ -14,7 +14,6 @@
             <span
               class="
                 text-xl
-                md:text-xl
                 font-bold
                 leading-tighter
                 tracking-tighter
@@ -22,8 +21,8 @@
                 bg-clip-text
                 text-transparent
                 bg-gradient-to-r
-                from-purple-800
-                to-red-400
+                from-[#7928CA]
+                to-[#FF0080]
               "
             >
               open-source
@@ -33,7 +32,7 @@
           </p>
 
           <p
-            class="text-xl text-gray-600 mb-8 text-accent4"
+            class="text-lg sm:text-xl text-gray-600 mb-8 text-accent4"
             data-aos="zoom-y-out"
           >
             If you'd like to contribute to Krates feel free to raise a PR.
@@ -42,7 +41,6 @@
           <div>
             <a href="https://github.com/sumitkolhe/krates" target="_blank">
               <zi-button
-                size="huge"
                 type="primary"
                 href="https://github.com/sumitkolhe/krates"
                 >Contribute</zi-button
@@ -62,7 +60,7 @@ export default Vue.extend({})
 
 <style scoped>
 .zi-btn {
-  height: 60px;
+  height: 56px;
   font-size: 16px;
 }
 </style>

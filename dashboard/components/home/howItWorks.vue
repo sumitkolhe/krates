@@ -3,7 +3,7 @@
     <div class="relative wrap overflow-hidden px-6 py-10 h-full">
       <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
         <h2 class="text-4xl mb-4 font-bold">How Krates works?</h2>
-        <p class="text-xl text-accent4">
+        <p class="text-lg sm:text-xl text-accent4">
           Krates provides a REST API that you can use to make requests and store
           your JSON based data easily.
         </p>
@@ -11,11 +11,11 @@
 
       <!-- Vertical line -->
       <div
-        class="border-2-2 absolute border-opacity-80 h-full border"
+        class="border-2-2 bg-accent2 absolute border-opacity-80 h-full border"
         style="left: 50%"
       ></div>
       <!-- right timeline 1 -->
-      <div class="mb-8 flex justify-between items-center w-full">
+      <div class="mb-8 flex justify-between items-center w-full mt-10">
         <div class="order-1 md:w-5/12 hidden md:inline-flex"></div>
         <div
           class="

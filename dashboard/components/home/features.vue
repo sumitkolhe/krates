@@ -14,7 +14,7 @@
     ></div>
 
     <div class="relative max-w-5xl mx-auto px-6">
-      <h2 class="text-4xl font-black mb-2 text-center pt-20">Krates is...</h2>
+      <h2 class="text-4xl font-black mb-2 text-center pt-20">Krates is</h2>
       <div class="py-12 md:pb-24">
         <div
           class="

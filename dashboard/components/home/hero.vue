@@ -50,21 +50,17 @@
             for your projects
           </h1>
           <div class="max-w-3xl mx-auto my-14">
-            <p class="text-xl text-gray-500 mb-8">
+            <p class="text-lg sm:text-xl text-gray-500 mb-8">
               Krates provides a HTTP based JSON database service for free to
               help you get started with your projects easily!
             </p>
 
-            <div class="mt-20 flex flex-wrap justify-center">
-              <NuxtLink to="/dashboard" class="p-2 xs:w-full">
-                <zi-button type="primary" size="huge"
-                  >Get Started</zi-button
-                ></NuxtLink
+            <div class="mt-16 sm:mt-20 flex flex-wrap justify-center">
+              <NuxtLink to="/dashboard" class="p-2">
+                <zi-button type="primary">Get Started</zi-button></NuxtLink
               >
               <NuxtLink to="/dashboard" class="p-2">
-                <zi-button type="normal" size="huge"
-                  >Read the docs</zi-button
-                ></NuxtLink
+                <zi-button type="normal">Read the docs</zi-button></NuxtLink
               >
             </div>
           </div>
@@ -81,7 +77,7 @@ export default Vue.extend({})
 
 <style scoped>
 .zi-btn {
-  height: 60px;
+  height: 56px;
   font-size: 16px;
 }
 </style>
