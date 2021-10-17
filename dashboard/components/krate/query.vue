@@ -284,6 +284,7 @@ export default Vue.extend({
         matchBrackets: true,
         autoCloseBrackets: true,
         lineWrapping: true,
+        readOnly: true,
         theme: 'default',
       }
       if (isDark) {
