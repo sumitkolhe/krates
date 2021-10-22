@@ -2,7 +2,6 @@
   <div class="pt-20">
     <div class="px-2 md:px-0">
       <tabs
-        class=""
         :tabs="navigationItems"
         :currentTab="currentTab"
         :wrapper-class="`relative mx-auto max-w-5xl`"
@@ -15,7 +14,7 @@
     <div class="border-t border-accent2">
       <KrateDetails v-if="currentTab === 'tab1'" />
       <KrateQuery v-if="currentTab === 'tab2'" />
-      <KrateDanger v-if="currentTab === 'tab3'" />
+      <KrateSettings v-if="currentTab === 'tab3'" />
     </div>
   </div>
 </template>
@@ -32,9 +31,9 @@ export default Vue.extend({
       newKrateId: '',
       visible: false,
       navigationItems: [
-        { title: 'Krate Details', value: 'tab1' },
-        { title: 'Query Data', value: 'tab2' },
-        { title: 'Danger Zone', value: 'tab3' },
+        { title: 'Details', value: 'tab1' },
+        { title: 'Query', value: 'tab2' },
+        { title: 'Settings', value: 'tab3' },
       ],
       currentTab: 'tab1',
     }

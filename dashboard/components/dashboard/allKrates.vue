@@ -21,10 +21,7 @@
         @click="setSelectedKrate(krate.krateId)"
       >
         <NuxtLink :to="{ path: `dashboard/${krate.krateId}` }">
-          <zi-fieldset
-            class="text-accent8 hover:drop-shadow-xl"
-            footer="The Evil Rabbit Jumped over the Fence"
-          >
+          <zi-fieldset class="text-accent8 hover:drop-shadow-xl">
             <span class="text-lg font-semibold">{{
               truncatedKrateName(krate.krateName)
             }}</span>
@@ -41,9 +38,12 @@
               {{ numberOfDays(krate.createdAt) }}</span
             >
 
-            <zi-note label="" class="mt-8 mb-4 bg-accent2" type="secondary">{{
-              krate.krateId
-            }}</zi-note>
+            <zi-snippet
+              :copy="false"
+              :text="krate.krateId"
+              class="mt-8 mb-4"
+              >{{
+            }}</zi-snippet>
             <template v-slot:footer>
               <span
                 class="

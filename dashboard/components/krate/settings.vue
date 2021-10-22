@@ -2,7 +2,7 @@
   <div>
     <div class="border-b border-accent2">
       <div class="mx-auto max-w-5xl my-12 md:px-2 px-4">
-        <p class="text-3xl font-medium">Danger Zone</p>
+        <p class="text-3xl font-medium">Settings</p>
       </div>
     </div>
 
