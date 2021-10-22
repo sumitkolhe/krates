@@ -8,7 +8,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
+    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path  .gitignore",
     "lint": "npm run lint:js && npm run lint:style"
   },
   "lint-staged": {
@@ -43,8 +43,8 @@
     "lint-staged": "^11.2.3",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
-    "stylelint": "^14.0.0",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^23.0.0"
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0"
   }
 }

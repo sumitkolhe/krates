@@ -47,7 +47,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped>
 .zi-snippet > pre::before {
   content: '';
   user-select: none;

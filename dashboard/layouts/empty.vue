@@ -8,7 +8,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="css">
 div[id^='particles-js'] {
   height: 100vh !important;
   width: 100vw !important;
