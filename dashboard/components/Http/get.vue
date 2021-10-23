@@ -1,19 +1,21 @@
 <template>
   <!-- GET  -->
   <zi-fieldset class="mt-8">
+    <!-- RECORD -->
     <zi-grid
       container
       align-items="center"
-      :spacing="3"
       justify="center"
+      :spacing="3"
       class="pt-2 pb-2"
     >
-      <zi-grid :xs="24" :md="4">
+      <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
         <p class="text-accent5 font-medium">
           <zi-tag>RECORD ID</zi-tag>
         </p></zi-grid
       >
-      <zi-grid :xs="14" :md="14">
+
+      <zi-grid :xs="24" :sm="12" :md="14" class="sm:order-none order-last">
         <zi-textarea
           placeholder="Record ID"
           :rows="1"
@@ -22,21 +24,31 @@
         ></zi-textarea
       ></zi-grid>
 
-      <zi-grid :xs="10" :md="6">
+      <zi-grid :xs="12" :sm="6" class="sm:order-none">
         <zi-grid container align-items="center" justify="center" :spacing="2">
           <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
           <zi-grid> <zi-toggle v-model="toggleRecord"></zi-toggle></zi-grid>
         </zi-grid>
       </zi-grid>
+    </zi-grid>
 
-      <zi-more text="OR" text-up="OR"></zi-more>
+    <zi-more text="OR" text-up="OR"></zi-more>
 
-      <zi-grid :xs="24" :md="4">
+    <!-- COLLECTION -->
+    <zi-grid
+      container
+      align-items="center"
+      :spacing="3"
+      justify="center"
+      class="pt-2 pb-2"
+    >
+      <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
         <p class="text-accent5 font-medium">
           <zi-tag>COLLECTION ID</zi-tag>
         </p></zi-grid
       >
-      <zi-grid :xs="14" :md="14">
+
+      <zi-grid :xs="24" :sm="12" :md="14" class="sm:order-none order-last">
         <zi-textarea
           placeholder="Collection ID"
           :rows="1"
@@ -45,19 +57,28 @@
         ></zi-textarea
       ></zi-grid>
 
-      <zi-grid :xs="10" :md="6">
+      <zi-grid :xs="12" :sm="6" class="sm:order-none">
         <zi-grid container align-items="center" justify="center" :spacing="2">
           <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
           <zi-grid> <zi-toggle v-model="toggleCollection"></zi-toggle></zi-grid>
-        </zi-grid>
-      </zi-grid>
+        </zi-grid> </zi-grid
+    ></zi-grid>
 
-      <zi-grid :xs="24" :md="4">
+    <!-- LIMIT -->
+    <zi-grid
+      container
+      align-items="center"
+      :spacing="3"
+      justify="center"
+      class="pt-2 pb-2"
+    >
+      <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
         <p class="text-accent5 font-medium">
           <zi-tag> LIMIT</zi-tag>
         </p></zi-grid
       >
-      <zi-grid :xs="14" :md="14">
+
+      <zi-grid :xs="24" :sm="12" :md="14" class="sm:order-none order-last">
         <zi-textarea
           placeholder="Limit number of records"
           :rows="1"
@@ -66,19 +87,29 @@
         ></zi-textarea>
       </zi-grid>
 
-      <zi-grid :xs="10" :md="6">
+      <zi-grid :xs="12" :sm="6" class="sm:order-none">
         <zi-grid container align-items="center" :spacing="2" justify="center">
           <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
           <zi-grid> <zi-toggle v-model="toggleLimit"></zi-toggle></zi-grid>
         </zi-grid>
       </zi-grid>
+    </zi-grid>
 
-      <zi-grid :xs="24" :md="4">
+    <!-- SKIP -->
+    <zi-grid
+      container
+      align-items="center"
+      :spacing="3"
+      justify="center"
+      class="pt-2 pb-2"
+    >
+      <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
         <p class="text-accent5 font-medium">
           <zi-tag> SKIP</zi-tag>
         </p></zi-grid
       >
-      <zi-grid :xs="14" :md="14">
+
+      <zi-grid :xs="24" :sm="12" :md="14" class="sm:order-none order-last">
         <zi-textarea
           placeholder="Skip number of records"
           :rows="1"
@@ -87,19 +118,29 @@
         ></zi-textarea>
       </zi-grid>
 
-      <zi-grid :xs="10" :md="6">
+      <zi-grid :xs="12" :sm="6" class="sm:order-none">
         <zi-grid container align-items="center" :spacing="2" justify="center">
           <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
           <zi-grid> <zi-toggle v-model="toggleSkip"></zi-toggle></zi-grid>
         </zi-grid>
       </zi-grid>
+    </zi-grid>
 
-      <zi-grid :xs="24" :md="4">
+    <!-- FILTER QUERY -->
+    <zi-grid
+      container
+      align-items="center"
+      :spacing="3"
+      justify="center"
+      class="pt-2 pb-2"
+    >
+      <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
         <p class="text-accent5 font-medium">
           <zi-tag>FILTER</zi-tag>
         </p></zi-grid
       >
-      <zi-grid :xs="14" :md="14">
+
+      <zi-grid :xs="24" :sm="12" :md="14" class="sm:order-none order-last">
         <zi-textarea
           placeholder="Filter query"
           :rows="1"
@@ -108,15 +149,15 @@
         ></zi-textarea>
       </zi-grid>
 
-      <zi-grid :xs="10" :md="6">
+      <zi-grid :xs="12" :sm="6" class="sm:order-none">
         <zi-grid container align-items="center" :spacing="2" justify="center">
           <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
           <zi-grid> <zi-toggle v-model="toggleQuery"></zi-toggle></zi-grid>
         </zi-grid>
       </zi-grid>
     </zi-grid>
-    <!-- Footer -->
 
+    <!-- Footer -->
     <template #footer>
       <p></p>
       <!-- <zi-input

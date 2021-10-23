@@ -12,14 +12,6 @@
       <zi-card class="mb-8">
         <div class="flex mb-4">
           <span class="text-lg font-medium">Query data with HTTP requests</span>
-          <zi-tooltip placement="bottom">
-            <template v-slot:content>
-              <p>Make requests to krates endpoint with your Krate ID to</p>
-              <p>GET, INSERT, UPDATE, MODIFY, DELETE data.</p>
-            </template>
-
-            <question-circle-icon class="ml-4 h-5 w-5 mt-1" />
-          </zi-tooltip>
         </div>
         <p class="text-accent5">
           Make requests to krates API endpoints to query / modify your data.
