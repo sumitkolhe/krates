@@ -77,7 +77,7 @@ export default Vue.extend({})
 
 <style scoped>
 .zi-btn {
-  height: 56px;
-  font-size: 16px;
+  height: 56px !important;
+  font-size: 16px !important;
 }
 </style>

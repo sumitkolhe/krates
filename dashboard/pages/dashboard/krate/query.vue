@@ -9,10 +9,7 @@
     <!-- Query  -->
     <div class="max-w-5xl mx-auto my-12 md:px-2 px-4">
       <!-- Request module -->
-      <zi-fieldset
-        class="mb-8"
-        footer="This is your personal krates Id and used for storing your data."
-      >
+      <zi-card class="mb-8">
         <div class="flex mb-4">
           <span class="text-lg font-medium">Query data with HTTP requests</span>
           <zi-tooltip placement="right">
@@ -44,40 +41,12 @@
             disabled
           ></zi-input>
         </div>
-        <p class="border-b border-accent2 py-2"></p>
+      </zi-card>
 
-        <HttpGet v-if="selectedRequestType === 'GET'" />
-        <HttpPost v-if="selectedRequestType === 'POST'" />
+      <HttpGet v-if="selectedRequestType === 'GET'" />
+      <HttpPost v-if="selectedRequestType === 'POST'" />
 
-        <!-- Footer -->
-        <template #footer>
-          <p></p>
-          <!-- <zi-input
-            class="ml-2"
-            :placeholder="krateId"
-            prefix-label="https://krat.es/"
-            disabled
-          ></zi-input> -->
-          <zi-button type="success" auto @click="getKrateData">Send </zi-button>
-        </template>
-      </zi-fieldset>
-
-      <zi-fieldset class="mb-8">
-        <div class="text-lg font-medium">Response</div>
-        <p class="border-b border-accent2 pt-2"></p>
-        <client-only>
-          <div class="max-w-5xl mx-auto mb-12 mt-6">
-            <codemirror :value="responsePayload" :options="options" />
-          </div>
-        </client-only>
-        <template #footer>
-          <p>
-            <span class="font-semibold text-lg"> Response Size:</span>
-            {{ calculateResponseSize() }} Kilobytes
-          </p>
-          <zi-button type="primary" auto @click="">Copy </zi-button>
-        </template>
-      </zi-fieldset>
+      <HttpResponse />
     </div>
   </div>
 </template>
@@ -158,25 +127,3 @@ export default Vue.extend({
   },
 })
 </script>
-<style scoped>
-.zi-input-group {
-  height: 42px !important;
-}
-.zi-input-group.prefix input {
-  height: 42px !important;
-}
-
-.zi-toggle {
-  height: 20px !important;
-  width: 40px !important;
-}
-
-.zi-toggle::before {
-  height: 1rem !important;
-  width: 1rem !important;
-}
-
-.CodeMirror {
-  height: 1200px !important;
-}
-</style>

@@ -41,14 +41,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style>
-.zi-snippet > pre::before {
-  content: '';
-  user-select: none;
-}
-
-.zi-tabs-container {
-  border: none !important;
-}
-</style>

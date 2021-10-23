@@ -128,10 +128,3 @@ export default Vue.extend({
   },
 })
 </script>
-<style>
-.dropdown:focus-within .dropdown-menu {
-  opacity: 1;
-  transform: translate(0) scale(1);
-  visibility: visible;
-}
-</style>

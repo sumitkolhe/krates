@@ -11,9 +11,3 @@
 import Vue from 'vue'
 export default Vue.extend({})
 </script>
-
-<style>
-#app {
-  font-family: 'Inter', sans-serif;
-}
-</style>

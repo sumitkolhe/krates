@@ -30,8 +30,6 @@ export default Vue.extend({
   },
   data() {
     return {
-      newKrateId: '',
-      visible: false,
       navigationItems: [
         { title: 'Details', value: 'details' },
         { title: 'Query', value: 'query' },
@@ -42,17 +40,39 @@ export default Vue.extend({
   },
   methods: {
     handleClick(newTab: string) {
-      // if (newTab === '') this.$router.replace(newTab)
-      // else
       this.$router.push(newTab)
     },
   },
 })
 </script>
 
-<style>
+<style scoped>
+#app {
+  font-family: 'Inter', sans-serif;
+}
+
+.zi-input-group {
+  height: 42px !important;
+}
+.zi-input-group.prefix input {
+  height: 42px !important;
+}
+
+.zi-toggle {
+  height: 20px !important;
+  width: 40px !important;
+}
+
+.zi-toggle::before {
+  height: 1rem !important;
+  width: 1rem !important;
+}
+
 .zi-snippet > pre::before {
   content: '';
   user-select: none;
+}
+.CodeMirror {
+  height: 300px !important;
 }
 </style>

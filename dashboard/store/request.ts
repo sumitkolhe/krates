@@ -1,8 +1,9 @@
 import { MutationTree, GetterTree, ActionTree } from 'vuex'
 import { RootState } from '~/store'
+import { state as krateState } from '~/store/krates'
 import { axiosBase } from '~/utils/axios'
 
-export type KrateState = ReturnType<typeof state>
+export type RequestState = ReturnType<typeof state>
 
 export const state = () => ({
   responsePayload: undefined,
@@ -16,7 +17,7 @@ export const state = () => ({
   },
 })
 
-export const mutations: MutationTree<KrateState> = {
+export const mutations: MutationTree<RequestState> = {
   setResponsePayload: (state, response) => {
     state.responsePayload = response
   },
@@ -31,17 +32,13 @@ export const mutations: MutationTree<KrateState> = {
     }
   },
   setRequestUrl: (state, requestUrl) => {
-    state.requestUrl =
-      state.requestParams.collectionId +
-      state.requestParams.filter +
-      state.requestParams.limit +
-      state.requestParams.skip
+    state.requestUrl = requestUrl
+    console.log(state.requestUrl)
   },
 }
 
-export const actions: ActionTree<KrateState, RootState> = {
+export const actions: ActionTree<RequestState, RootState> = {
   getKrateData: async ({ commit, state }) => {
-    console.log(state.requestUrl)
     const response = await axiosBase.get(state.requestUrl)
     commit('setResponsePayload', response.data)
   },
@@ -67,7 +64,7 @@ export const actions: ActionTree<KrateState, RootState> = {
   },
 }
 
-export const getters: GetterTree<KrateState, RootState> = {
+export const getters: GetterTree<RequestState, RootState> = {
   getResponsePayload: (state) => {
     return state.responsePayload
   },

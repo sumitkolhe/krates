@@ -96,20 +96,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style>
-.zi-snippet > pre::before {
-  content: '';
-  user-select: none;
-}
-.zi-input-group {
-  height: 42px !important;
-}
-.zi-input-group.prefix input {
-  height: 42px !important;
-}
-
-.zi-dialog-content {
-  padding: 0 !important;
-}
-</style>

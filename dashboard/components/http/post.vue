@@ -122,25 +122,3 @@ export default Vue.extend({
   },
 })
 </script>
-<style scoped>
-.zi-input-group {
-  height: 42px !important;
-}
-.zi-input-group.prefix input {
-  height: 42px !important;
-}
-
-.zi-toggle {
-  height: 20px !important;
-  width: 40px !important;
-}
-
-.zi-toggle::before {
-  height: 1rem !important;
-  width: 1rem !important;
-}
-
-.CodeMirror {
-  height: 1200px !important;
-}
-</style>
