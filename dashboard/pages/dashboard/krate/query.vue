@@ -56,14 +56,11 @@ import Vue from 'vue'
 import '@nuxtjs/axios'
 export default Vue.extend({
   layout: 'krates',
-  props: {
-    id: String,
-  },
+
   data() {
     return {
       selectedRequestType: 'GET',
       krateId: '',
-
       items: [
         { label: 'GET', value: 'setting' },
         { label: 'POST', value: 'lambda' },
@@ -78,52 +75,6 @@ export default Vue.extend({
     this.krateId = this.$store.getters['krates/getSelectedKrate']
     // to reset response payload on every krate change
     this.$store.commit('request/setResponsePayload', undefined)
-  },
-
-  computed: {
-    options() {
-      let isDark = this.$store.getters['theme/getTheme']
-      let options = {
-        tabSize: 4,
-        styleActiveLine: true,
-        lineNumbers: true,
-        line: true,
-        mode: 'application/ld+json',
-        matchBrackets: true,
-        autoCloseBrackets: true,
-        lineWrapping: true,
-        readOnly: true,
-        theme: 'default',
-      }
-      if (isDark) {
-        options.theme = 'isotope'
-        return options
-      } else {
-        return options
-      }
-    },
-
-    responsePayload(): String {
-      return JSON.stringify(
-        this.$store.getters['request/getResponsePayload'],
-        null,
-        2
-      )
-    },
-  },
-
-  methods: {
-    async getKrateData() {
-      await this.$store.dispatch('request/getKrateData')
-    },
-
-    calculateResponseSize() {
-      const bytes = ~-encodeURI(JSON.stringify(this.responsePayload)).split(
-        /%..|./
-      ).length
-      const kilobytes = bytes / 1024
-      return kilobytes.toString().slice(0, 4)
-    },
   },
 })
 </script>

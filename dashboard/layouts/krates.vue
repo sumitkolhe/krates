@@ -46,7 +46,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style>
 #app {
   font-family: 'Inter', sans-serif;
 }

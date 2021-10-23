@@ -8,39 +8,19 @@ export type RequestState = ReturnType<typeof state>
 export const state = () => ({
   responsePayload: undefined,
   requestPayload: Object() || Array(),
-  requestUrl: '',
-  requestParams: {
-    collectionId: '',
-    filter: '',
-    limit: '',
-    skip: '',
-  },
 })
 
 export const mutations: MutationTree<RequestState> = {
   setResponsePayload: (state, response) => {
     state.responsePayload = response
   },
-
-  setRequestParams: (state, { collectionId, filter, limit, skip }) => {
-    console.log(collectionId, limit, skip, filter)
-    state.requestParams = {
-      collectionId: collectionId ? collectionId : '',
-      filter: filter ? filter : '',
-      limit: limit ? limit : '',
-      skip: skip ? skip : '',
-    }
-  },
-  setRequestUrl: (state, requestUrl) => {
-    state.requestUrl = requestUrl
-    console.log(state.requestUrl)
-  },
 }
 
 export const actions: ActionTree<RequestState, RootState> = {
-  getKrateData: async ({ commit, state }) => {
-    const response = await axiosBase.get(state.requestUrl)
-    commit('setResponsePayload', response.data)
+  getKrateData: async ({ commit }, requestUrl) => {
+    await axiosBase.get(requestUrl).then((response) => {
+      commit('setResponsePayload', response.data)
+    })
   },
   setKrateData: async ({ commit }, { krateId, payload }) => {
     const response = await axiosBase.post(krateId, payload)
@@ -67,8 +47,5 @@ export const actions: ActionTree<RequestState, RootState> = {
 export const getters: GetterTree<RequestState, RootState> = {
   getResponsePayload: (state) => {
     return state.responsePayload
-  },
-  getRequestParams: (state) => {
-    return state.requestParams
   },
 }

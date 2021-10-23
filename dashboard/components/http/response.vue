@@ -19,6 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { calculateObjectSize } from 'bson'
 import '@nuxtjs/axios'
 export default Vue.extend({
   layout: 'krates',
@@ -63,11 +64,13 @@ export default Vue.extend({
 
   methods: {
     calculateResponseSize() {
-      const bytes = ~-encodeURI(JSON.stringify(this.responsePayload)).split(
-        /%..|./
-      ).length
-      const kilobytes = bytes / 1024
-      return kilobytes.toString().slice(0, 4)
+      return (
+        calculateObjectSize(
+          this.$store.getters['request/getResponsePayload'] || {}
+        ) / 1000
+      )
+        .toString()
+        .slice(0, 4)
     },
   },
 })

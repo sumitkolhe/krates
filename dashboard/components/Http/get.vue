@@ -18,7 +18,7 @@
           placeholder="Record ID"
           :rows="1"
           :disabled="!toggleRecord"
-          v-on:input="updateRecordId"
+          v-model="requestParams.recordId"
         ></zi-textarea
       ></zi-grid>
 
@@ -41,7 +41,7 @@
           placeholder="Collection ID"
           :rows="1"
           :disabled="!toggleCollection"
-          v-on:input="updateCollectionId"
+          v-model="requestParams.collectionId"
         ></zi-textarea
       ></zi-grid>
 
@@ -62,7 +62,7 @@
           placeholder="Limit number of records"
           :rows="1"
           :disabled="!toggleLimit"
-          v-on:input="updateLimit"
+          v-model="requestParams.limit"
         ></zi-textarea>
       </zi-grid>
 
@@ -83,7 +83,7 @@
           placeholder="Skip number of records"
           :rows="1"
           :disabled="!toggleSkip"
-          v-on:input="updateSkip"
+          v-model="requestParams.skip"
         ></zi-textarea>
       </zi-grid>
 
@@ -103,15 +103,15 @@
         <zi-textarea
           placeholder="Filter query"
           :rows="1"
-          :disabled="!togglefilter"
-          v-on:input="updateFilter"
+          :disabled="!toggleQuery"
+          v-model="requestParams.query"
         ></zi-textarea>
       </zi-grid>
 
       <zi-grid :xs="10" :md="6">
         <zi-grid container align-items="center" :spacing="2" justify="center">
           <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
-          <zi-grid> <zi-toggle v-model="togglefilter"></zi-toggle></zi-grid>
+          <zi-grid> <zi-toggle v-model="toggleQuery"></zi-toggle></zi-grid>
         </zi-grid>
       </zi-grid>
     </zi-grid>
@@ -125,7 +125,9 @@
             prefix-label="https://krat.es/"
             disabled
           ></zi-input> -->
-      <zi-button type="success" auto>Send </zi-button>
+      <zi-button type="success" @click="sendRequest" auto :loading="loading"
+        >Send
+      </zi-button>
     </template>
   </zi-fieldset>
 </template>
@@ -134,80 +136,58 @@
 import Vue from 'vue'
 import '@nuxtjs/axios'
 export default Vue.extend({
-  props: {
-    id: String,
-  },
+  layout: 'krates',
+
   data() {
     return {
+      loading: false,
       toggleRecord: false,
       toggleCollection: false,
       toggleLimit: false,
       toggleSkip: false,
-      togglefilter: false,
+      toggleQuery: false,
+      requestParams: {
+        recordId: '',
+        collectionId: '',
+        limit: '',
+        skip: '',
+        query: '',
+      },
     }
   },
 
-  computed: {
-    requestParams: {
-      get: function () {
-        const requestParams = {
-          recordId: '',
-          collectionId: '',
-          limit: '',
-          skip: '',
-          filter: '',
-        }
-
-        return requestParams
-      },
-      set: function () {
-        let url = ''
-        if (this.toggleCollection && this.requestParams.collectionId)
-          url += this.requestParams.collectionId
-
-        if (this.togglefilter && this.requestParams.filter)
-          url += this.requestParams.filter
-
-        if (this.toggleLimit && this.requestParams.limit)
-          url += this.requestParams.limit
-        if (this.toggleSkip && this.requestParams.skip)
-          url += this.requestParams.skip
-
-        this.$store.commit('request/setRequestUrl', url)
-      },
-    },
-  },
-
   methods: {
-    // toggleRecord() {
-    //   this.toggleCollection = false
-    //   this.toggleLimit = false
-    //   this.toggleSkip = false
-    //   this.togglefilter = false
-    // },
-    updateRecordId(event: any) {
-      this.requestParams.recordId = event
-      this.updateRequestParams()
-    },
-    updateCollectionId(event: any) {
-      this.requestParams.collectionId = event
-      this.updateRequestParams()
-    },
-    updateFilter(event: any) {
-      this.requestParams.filter = event
-      this.updateRequestParams()
-    },
-    updateLimit(event: any) {
-      this.requestParams.limit = event
-      this.updateRequestParams()
-    },
-    updateSkip(event: any) {
-      this.requestParams.skip = event
-      this.updateRequestParams()
-    },
+    buildRequestUrl() {
+      const krateId = this.$store.getters['krates/getSelectedKrate']
 
-    updateRequestParams() {
-      this.$store.commit('request/setRequestParams', this.requestParams)
+      let url = krateId
+      if (this.toggleCollection && this.requestParams.collectionId)
+        url += '/' + this.requestParams.collectionId
+
+      if (this.toggleQuery && this.requestParams.query)
+        url += '&query=' + this.requestParams.query
+
+      if (this.toggleLimit && this.requestParams.limit)
+        url += '?limit=' + this.requestParams.limit
+      if (this.toggleSkip && this.requestParams.skip)
+        url += '&skip=' + this.requestParams.skip
+
+      return url
+    },
+    async sendRequest() {
+      this.loading = true
+      await this.$store
+        .dispatch('request/getKrateData', this.buildRequestUrl())
+        .catch((error) => {
+          this.loading = false
+          ;(this as any).$Toast.show({
+            type: 'danger',
+            text: error.response.data.message,
+            duration: 5000,
+          })
+        })
+
+      this.loading = false
     },
   },
 })
