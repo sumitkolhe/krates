@@ -1,7 +1,6 @@
 <template>
   <header
     class="
-      fixed
       w-full
       z-30
       transition

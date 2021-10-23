@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-if="allKrates.length > 0"
+      v-show="allKrates.length > 0"
       class="
         grid
         md:grid-cols-3
@@ -20,11 +20,30 @@
         class="cursor-pointer"
         @click="setSelectedKrate(krate.krateId)"
       >
-        <NuxtLink :to="{ path: `dashboard/${krate.krateId}` }">
-          <zi-fieldset class="text-accent8 hover:drop-shadow-xl">
-            <span class="text-lg font-semibold">{{
-              truncatedKrateName(krate.krateName)
-            }}</span>
+        <zi-fieldset class="text-accent8 hover:drop-shadow-xl">
+          <span class="text-lg font-semibold">{{
+            truncatedKrateName(krate.krateName)
+          }}</span>
+          <span
+            class="
+              text-sm
+              float-right
+              border border-accent2
+              py-1
+              px-2
+              rounded-md
+            "
+          >
+            {{ numberOfDays(krate.createdAt) }}</span
+          >
+
+          <zi-snippet
+            :copy="false"
+            :text="krate.krateId"
+            class="mt-8 mb-4"
+            >{{
+          }}</zi-snippet>
+          <template v-slot:footer>
             <span
               class="
                 text-sm
@@ -35,35 +54,14 @@
                 rounded-md
               "
             >
-              {{ numberOfDays(krate.createdAt) }}</span
+              0 Kb</span
             >
-
-            <zi-snippet
-              :copy="false"
-              :text="krate.krateId"
-              class="mt-8 mb-4"
-              >{{
-            }}</zi-snippet>
-            <template v-slot:footer>
-              <span
-                class="
-                  text-sm
-                  float-right
-                  border border-accent2
-                  py-1
-                  px-2
-                  rounded-md
-                "
-              >
-                0 Kb</span
-              >
-            </template>
-          </zi-fieldset>
-        </NuxtLink>
+          </template>
+        </zi-fieldset>
       </div>
     </div>
 
-    <div v-else class="max-w-5xl mx-auto my-24">
+    <div class="max-w-5xl mx-auto my-24">
       <coffee-icon class="h-12 w-12 mx-auto" />
       <p class="text-center font-semibold">No Krates found</p>
     </div>
@@ -85,6 +83,7 @@ export default Vue.extend({
   methods: {
     setSelectedKrate(krateId: string) {
       this.$store.commit('krates/setSelectedKrate', krateId)
+      this.$router.push('/dashboard/krate/details')
     },
     numberOfDays(krateDate: number) {
       const currentDate = Date.now()

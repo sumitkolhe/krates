@@ -1,5 +1,6 @@
 <template>
-  <div class="pt-20">
+  <div>
+    <DashboardHeader />
     <div class="px-2 md:px-0">
       <tabs
         :tabs="navigationItems"
@@ -11,11 +12,11 @@
         @onClick="handleClick"
       />
     </div>
-    <div class="border-t border-accent2">
-      <KrateDetails v-if="currentTab === 'tab1'" />
-      <KrateQuery v-if="currentTab === 'tab2'" />
-      <KrateSettings v-if="currentTab === 'tab3'" />
-    </div>
+
+    <main class="border-t border-accent2">
+      <Nuxt />
+    </main>
+    <CommonFooter />
   </div>
 </template>
 
@@ -23,6 +24,7 @@
 import Vue from 'vue'
 import Tabs from 'vue-tabs-with-active-line'
 export default Vue.extend({
+  layout: 'dashboard',
   components: {
     Tabs,
   },
@@ -31,23 +33,18 @@ export default Vue.extend({
       newKrateId: '',
       visible: false,
       navigationItems: [
-        { title: 'Details', value: 'tab1' },
-        { title: 'Query', value: 'tab2' },
-        { title: 'Settings', value: 'tab3' },
+        { title: 'Details', value: 'details' },
+        { title: 'Query', value: 'query' },
+        { title: 'Settings', value: 'settings' },
       ],
-      currentTab: 'tab1',
+      currentTab: 'details',
     }
   },
   methods: {
     handleClick(newTab: string) {
-      this.currentTab = newTab
-    },
-    openDialog() {
-      this.visible = true
-    },
-    createNewKrate() {
-      this.$store.dispatch('krates/createNewKrate')
-      this.visible = !this.visible
+      // if (newTab === '') this.$router.replace(newTab)
+      // else
+      this.$router.push(newTab)
     },
   },
 })

@@ -2,8 +2,6 @@
 
 <script>
 export default {
-  layout: 'empty',
-
   head() {
     const title = 404
     return {

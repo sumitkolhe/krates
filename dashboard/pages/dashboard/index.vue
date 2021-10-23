@@ -1,55 +1,116 @@
 <template>
-  <div class="pt-20">
-    <div class="px-2">
-      <tabs
-        :tabs="navigationItems"
-        :currentTab="currentTab"
-        :wrapper-class="`relative mx-auto max-w-5xl`"
-        :tab-class="`hover:bg-accent2 hover:rounded-md mx-2 my-2 p-2 text-sm`"
-        :tab-active-class="`font-medium`"
-        :line-class="`border-b border-b-2 border-geist-foreground `"
-        @onClick="handleClick"
-      />
+  <div>
+    <div class="border-b border-accent2">
+      <div class="mx-auto max-w-5xl pt-8 pb-12 text-center">
+        <database-icon class="h-20 w-20 align-center block mx-auto mb-6" />
+        <zi-button
+          :icon="plusCircle"
+          shadow
+          size="big"
+          type="success"
+          class="inline-block"
+          @click="openNewKrateDialog"
+          >Add Krate</zi-button
+        >
+        <zi-dialog
+          :closeByModal="false"
+          v-model="addKratedialog"
+          :beforeDone="createNewKrate"
+        >
+          <zi-fieldset>
+            <h3 class="pb-6">Add Krate</h3>
+            <div>
+              <zi-input
+                prefix-label="Krate Name"
+                autofocus="true"
+                v-model="newKrateName"
+                class="w-full mb-4"
+              >
+              </zi-input>
+            </div>
+            <div>
+              <zi-input
+                prefix-label="krat.es/"
+                :disabled="!customKrateToggle"
+                autofocus="true"
+                v-model="newKrateId"
+                class="w-full"
+              >
+              </zi-input>
+            </div>
+
+            <template v-slot:footer>
+              <span class="font-medium mr-4">Custom ID</span>
+              <zi-toggle class="ml-4" v-model="customKrateToggle"></zi-toggle>
+            </template>
+          </zi-fieldset>
+        </zi-dialog>
+      </div>
     </div>
 
-    <div class="border-t border-accent2">
-      <DashboardOverview v-if="currentTab === 'tab1'" />
-      <DashboardSettings v-if="currentTab === 'tab2'" />
-    </div>
+    <DashboardAllKrates />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Tabs from 'vue-tabs-with-active-line'
+import plusCircle from '@geist-ui/vue-icons/packages/plus-circle'
+import database from '@geist-ui/vue-icons/packages/database'
+
 export default Vue.extend({
-  components: {
-    Tabs,
-  },
+  layout: 'dashboard',
   data() {
     return {
-      visible: false,
-      navigationItems: [
-        { title: 'Overview', value: 'tab1' },
-        { title: 'Settings', value: 'tab2' },
-      ],
-      currentTab: 'tab1',
+      plusCircle,
+      database,
+      addKratedialog: false,
+      customKrateToggle: false,
+      newKrateId: '',
+      newKrateName: '',
     }
   },
+  computed: {},
   methods: {
-    handleClick(newTab: string) {
-      this.currentTab = newTab
+    openNewKrateDialog() {
+      this.addKratedialog = !this.addKratedialog
+      this.newKrateId = this.generateKrateId()
     },
-    openDialog() {
-      this.visible = true
+
+    createNewKrate() {
+      this.$store.dispatch('krates/createNewKrate', {
+        krateId: this.newKrateId,
+        krateName: this.newKrateName,
+      })
+      this.addKratedialog = !this.addKratedialog
+      this.customKrateToggle = !this.customKrateToggle
+    },
+
+    generateKrateId() {
+      let date = new Date().getTime()
+      const id = 'xxyxxxxxxyxxxxxyxxxx'.replace(/[xy]/g, function (c) {
+        const r = (date + Math.random() * 16) % 16 | 0
+        date = Math.floor(date / 16)
+        return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
+      })
+      return id.toString()
     },
   },
 })
 </script>
 
-<style scoped>
+<style>
 .zi-snippet > pre::before {
   content: '';
   user-select: none;
+}
+.zi-input-group {
+  height: 42px !important;
+}
+.zi-input-group.prefix input {
+  height: 42px !important;
+}
+
+.zi-dialog-content {
+  padding: 0 !important;
 }
 </style>
