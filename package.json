@@ -41,6 +41,7 @@
   "dependencies": {
     "@types/morgan": "^1.9.3",
     "axios": "^0.21.4",
+    "bson": "^4.5.3",
     "celebrate": "^15.0.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",

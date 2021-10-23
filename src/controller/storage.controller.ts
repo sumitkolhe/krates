@@ -53,3 +53,14 @@ export const deleteData: RequestHandler = async (req, res, next) => {
     next(error)
   }
 }
+
+export const getMetaData: RequestHandler = async (req, res, next) => {
+  try {
+    const requestOptions = createRequestQuery(req)
+    const responseData = await StorageService.getData(requestOptions)
+    res.json(responseData)
+  } catch (error) {
+    Logger.error(error.stack)
+    next(error)
+  }
+}

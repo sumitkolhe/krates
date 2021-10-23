@@ -1,7 +1,9 @@
+import { calculateObjectSize } from 'bson'
 import { Krate, KrateOptions } from '@src/interfaces/krate'
 import { CreateError } from '@src/middleware/errorHandler'
 import { StorageModel } from '@src/models/storage.model'
 import { sanitizeResponse } from '@src/utils/sanitizeResponse'
+import { Logger } from '@src/utils/logger'
 
 export class StorageService {
   // Get all data from a krate/collection
@@ -55,5 +57,12 @@ export class StorageService {
   // delete all data from a krate
   static deleteData = async (krateId: string): Promise<void> => {
     await StorageModel.deleteMany({ krateId })
+  }
+
+  static getMeta = async (requestOptions: KrateOptions): Promise<number> => {
+    const responseData = await StorageModel.find(requestOptions.query)
+
+    Logger.info(calculateObjectSize(responseData))
+    return calculateObjectSize(responseData)
   }
 }
