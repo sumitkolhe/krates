@@ -22,9 +22,12 @@ export const actions: ActionTree<RequestState, RootState> = {
       commit('setResponsePayload', response.data)
     })
   },
-  setKrateData: async ({ commit }, { krateId, payload }) => {
-    const response = await axiosBase.post(krateId, payload)
-    commit('setResponsePayload', response.data)
+  setKrateData: async ({ commit }, { requestUrl, payload }) => {
+    const response = await axiosBase
+      .post(requestUrl, payload)
+      .then((response) => {
+        commit('setResponsePayload', response.data)
+      })
   },
   putKrateData: async ({ commit }, krateId) => {
     const response = await axiosBase.get(`http://localhost:4000/${krateId}`)

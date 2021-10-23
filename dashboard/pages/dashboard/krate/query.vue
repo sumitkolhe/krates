@@ -36,7 +36,7 @@
       </zi-card>
 
       <HttpGet v-if="selectedRequestType === 'GET'" />
-      <HttpPost v-if="selectedRequestType === 'POST'" />
+      <HttpPost v-else-if="selectedRequestType === 'POST'" />
 
       <HttpResponse />
     </div>
@@ -53,20 +53,11 @@ export default Vue.extend({
     return {
       selectedRequestType: 'GET',
       krateId: '',
-      items: [
-        { label: 'GET', value: 'setting' },
-        { label: 'POST', value: 'lambda' },
-        { label: 'PUT', value: 'server' },
-        { label: 'PATCH', value: 'rver' },
-        { label: 'DELETE', value: 'seer' },
-      ],
     }
   },
 
   created() {
     this.krateId = this.$store.getters['krates/getSelectedKrate']
-    // to reset response payload on every krate change
-    this.$store.commit('request/setResponsePayload', undefined)
   },
 })
 </script>

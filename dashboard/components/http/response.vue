@@ -23,9 +23,7 @@ import { calculateObjectSize } from 'bson'
 import '@nuxtjs/axios'
 export default Vue.extend({
   layout: 'krates',
-  props: {
-    id: String,
-  },
+
   data() {
     return {}
   },
@@ -54,11 +52,8 @@ export default Vue.extend({
     },
 
     responsePayload(): String {
-      return JSON.stringify(
-        this.$store.getters['request/getResponsePayload'],
-        null,
-        2
-      )
+      const payload = this.$store.getters['request/getResponsePayload']
+      return payload ? JSON.stringify(payload, null, 2) : ''
     },
   },
 

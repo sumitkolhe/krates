@@ -7,7 +7,7 @@
       align-items="center"
       justify="center"
       :spacing="3"
-      class="pt-2 pb-2"
+      class="py-2"
     >
       <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
         <p class="text-accent5 font-medium">
@@ -196,6 +196,10 @@ export default Vue.extend({
       },
     }
   },
+  created() {
+    // to reset response payload on every krate change
+    this.$store.commit('request/setResponsePayload', undefined)
+  },
 
   methods: {
     buildRequestUrl() {
@@ -216,19 +220,28 @@ export default Vue.extend({
       return url
     },
     async sendRequest() {
-      this.loading = true
-      await this.$store
-        .dispatch('request/getKrateData', this.buildRequestUrl())
-        .catch((error) => {
-          this.loading = false
-          ;(this as any).$Toast.show({
-            type: 'danger',
-            text: error.response.data.message,
-            duration: 5000,
+      try {
+        this.loading = true
+        await this.$store
+          .dispatch('request/getKrateData', this.buildRequestUrl())
+          .catch((error) => {
+            this.loading = false
+            ;(this as any).$Toast.show({
+              type: 'danger',
+              text: error.response.data.message,
+              duration: 5000,
+            })
           })
-        })
 
-      this.loading = false
+        this.loading = false
+      } catch (error) {
+        ;(this as any).$Toast.show({
+          type: 'danger',
+          text: error,
+          duration: 5000,
+        })
+        this.loading = false
+      }
     },
   },
 })

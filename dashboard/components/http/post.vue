@@ -1,35 +1,62 @@
 <template>
   <!-- POST   -->
-  <zi-grid
-    container
-    align-items="center"
-    :spacing="3"
-    justify="center"
-    class="pt-6"
-  >
-    <zi-grid :xs="24" :md="4">
-      <p class="text-accent5 font-medium">COLLECTION ID</p></zi-grid
+  <zi-fieldset class="mt-8">
+    <zi-grid
+      container
+      align-items="center"
+      :spacing="3"
+      justify="center"
+      class="py-2"
     >
-    <zi-grid :xs="14" :md="14">
-      <zi-textarea
-        placeholder="Collection ID"
-        :rows="1"
-        :disabled="!toggleCollectionId"
-      ></zi-textarea
-    ></zi-grid>
+      <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
+        <p class="text-accent5 font-medium">COLLECTION ID</p></zi-grid
+      >
+      <zi-grid :xs="24" :sm="12" :md="14" class="sm:order-none order-last">
+        <zi-textarea
+          placeholder="Collection ID"
+          :rows="1"
+          :disabled="!toggleCollection"
+          v-model="requestParams.collectionId"
+        ></zi-textarea
+      ></zi-grid>
 
-    <zi-grid :xs="10" :md="6">
-      <zi-grid container align-items="center" :spacing="2" justify="center">
-        <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
-        <zi-grid> <zi-toggle v-model="toggleCollectionId"></zi-toggle></zi-grid>
+      <zi-grid :xs="12" :sm="6" class="sm:order-none">
+        <zi-grid container align-items="center" :spacing="2" justify="center">
+          <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
+          <zi-grid> <zi-toggle v-model="toggleCollection"></zi-toggle></zi-grid>
+        </zi-grid>
       </zi-grid>
     </zi-grid>
 
-    <zi-grid :xs="24"> <p class="text-accent5 font-medium">PAYLOAD</p></zi-grid>
-    <zi-grid :xs="24">
-      <codemirror v-model="responsePayload" :options="options" />
+    <zi-grid
+      container
+      align-items="center"
+      :spacing="3"
+      justify="center"
+      class="py-2"
+    >
+      <zi-grid :xs="24">
+        <p class="text-accent5 font-medium">PAYLOAD</p></zi-grid
+      >
+      <zi-grid :xs="24">
+        <codemirror :options="options" v-model="payload" />
+      </zi-grid>
     </zi-grid>
-  </zi-grid>
+
+    <!-- Footer -->
+    <template #footer>
+      <p></p>
+      <!-- <zi-input
+            class="ml-2"
+            :placeholder="krateId"
+            prefix-label="https://krat.es/"
+            disabled
+          ></zi-input> -->
+      <zi-button type="success" @click="sendRequest" auto :loading="loading"
+        >Send
+      </zi-button>
+    </template></zi-fieldset
+  >
 </template>
 
 <script lang="ts">
@@ -41,32 +68,14 @@ export default Vue.extend({
   },
   data() {
     return {
-      selectedRequestType: 'GET',
-      krateId: '',
-      toggleCollectionId: false,
-      collectionId: '',
-      toggleLimit: false,
-      limit: '',
-      toggleSkip: false,
-      skip: '',
-      togglefilter: false,
-      filter: '',
-      items: [
-        { label: 'GET', value: 'setting' },
-        { label: 'POST', value: 'lambda' },
-        { label: 'PUT', value: 'server' },
-        { label: 'PATCH', value: 'rver' },
-        { label: 'DELETE', value: 'seer' },
-      ],
+      loading: false,
+      toggleCollection: false,
+      payload: '',
+      requestParams: {
+        collectionId: '',
+      },
     }
   },
-
-  created() {
-    this.krateId = this.$store.getters['krates/getSelectedKrate']
-    // to reset response payload on every krate change
-    this.$store.commit('request/setResponsePayload', undefined)
-  },
-
   computed: {
     options() {
       let isDark = this.$store.getters['theme/getTheme']
@@ -79,7 +88,6 @@ export default Vue.extend({
         matchBrackets: true,
         autoCloseBrackets: true,
         lineWrapping: true,
-        readOnly: true,
         theme: 'default',
       }
       if (isDark) {
@@ -89,35 +97,49 @@ export default Vue.extend({
         return options
       }
     },
+  },
 
-    finalUrl(): string {
-      return `${this.krateId}/${
-        this.collectionId && this.toggleCollectionId ? this.collectionId : ''
-      }?query=${this.filter && this.togglefilter ? this.filter : ''}&limit=${
-        this.limit
-      }&skip=${this.skip}`
-    },
-
-    responsePayload(): String {
-      return JSON.stringify(
-        this.$store.getters['request/getResponsePayload'],
-        null,
-        2
-      )
-    },
+  created() {
+    // to reset response payload on every krate change
+    this.$store.commit('request/setResponsePayload', undefined)
   },
 
   methods: {
-    async getKrateData() {
-      await this.$store.dispatch('request/getKrateData', { url: this.finalUrl })
-    },
+    buildRequestUrl() {
+      const krateId = this.$store.getters['krates/getSelectedKrate']
 
-    calculateResponseSize() {
-      const bytes = ~-encodeURI(JSON.stringify(this.responsePayload)).split(
-        /%..|./
-      ).length
-      const kilobytes = bytes / 1024
-      return kilobytes.toString().slice(0, 4)
+      let url = krateId
+      if (this.toggleCollection && this.requestParams.collectionId)
+        url += '/' + this.requestParams.collectionId
+
+      return url
+    },
+    async sendRequest() {
+      try {
+        this.loading = true
+        await this.$store
+          .dispatch('request/setKrateData', {
+            requestUrl: this.buildRequestUrl(),
+            payload: JSON.parse(this.payload),
+          })
+          .catch((error) => {
+            this.loading = false
+            ;(this as any).$Toast.show({
+              type: 'danger',
+              text: error.response.data.message,
+              duration: 5000,
+            })
+          })
+
+        this.loading = false
+      } catch (error) {
+        ;(this as any).$Toast.show({
+          type: 'danger',
+          text: error,
+          duration: 5000,
+        })
+        this.loading = false
+      }
     },
   },
 })
