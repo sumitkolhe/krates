@@ -4,6 +4,7 @@ import { Logger } from '@src/utils/logger'
 import { globalConstants } from '@src/constants'
 import { StorageService } from '@src/services/storage.service'
 import { createRequestQuery } from '@src/utils/query'
+import { MetaService } from '@src/services/meta.service'
 
 export const getData: RequestHandler = async (req, res, next) => {
   try {
@@ -56,9 +57,9 @@ export const deleteData: RequestHandler = async (req, res, next) => {
 
 export const getMetaData: RequestHandler = async (req, res, next) => {
   try {
-    const requestOptions = createRequestQuery(req)
-    const responseData = await StorageService.getData(requestOptions)
-    res.json(responseData)
+    const { krateId } = req.params
+    const stats = await MetaService.getMetaData(krateId)
+    res.json(stats)
   } catch (error) {
     Logger.error(error.stack)
     next(error)
