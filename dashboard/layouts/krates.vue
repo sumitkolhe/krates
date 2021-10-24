@@ -35,9 +35,10 @@ export default Vue.extend({
         { title: 'Query', value: 'query' },
         { title: 'Settings', value: 'settings' },
       ],
-      currentTab: 'details',
+      currentTab: this.$route.fullPath.split('/')[3],
     }
   },
+
   methods: {
     handleClick(newTab: string) {
       this.$router.push(newTab)

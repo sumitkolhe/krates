@@ -61,7 +61,7 @@
       </div>
     </div>
 
-    <div class="max-w-5xl mx-auto my-24">
+    <div class="max-w-5xl mx-auto my-24" v-show="allKrates.length < 1">
       <coffee-icon class="h-12 w-12 mx-auto" />
       <p class="text-center font-semibold">No Krates found</p>
     </div>
