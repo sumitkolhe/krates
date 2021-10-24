@@ -7,7 +7,28 @@
     </div>
 
     <div class="max-w-5xl mx-auto my-12 md:px-2 px-4">
-      <zi-fieldset class="mb-8">
+      <div class="grid md:grid-cols-3 gap-6 md:gap-12">
+        <zi-card hoverable>
+          <h3 class="text-lg font-medium">Krate Size</h3>
+          <p class="text-sm">
+            This is your namespace for storing data within krates.
+          </p>
+        </zi-card>
+        <zi-card class="" hoverable>
+          <h3 class="text-lg font-medium">Total Records</h3>
+          <p class="text-sm">
+            This is your namespace for storing data within krates.
+          </p>
+        </zi-card>
+        <zi-card class="" hoverable>
+          <h3 class="text-lg font-medium">Created At</h3>
+          <p class="text-sm">
+            This is your namespace for storing data within krates.
+          </p>
+        </zi-card>
+      </div>
+
+      <zi-fieldset class="my-8">
         <h3 class="text-lg font-medium">Krate ID</h3>
         <p class="text-sm">
           This is your namespace for storing data within krates.
@@ -17,9 +38,6 @@
           <p>
             This is your personal krate ID and is used for storing your data.
           </p>
-          <!-- <zi-button type="success" class="px-4" auto @click=""
-            >Regenerate ID
-          </zi-button> -->
         </template>
       </zi-fieldset>
     </div>

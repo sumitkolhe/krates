@@ -1,11 +1,19 @@
 import { MutationTree, GetterTree, ActionTree } from 'vuex'
 import { RootState } from '~/store'
-import { state as krateState } from '~/store/krates'
 import { axiosBase } from '~/utils/axios'
+
+type ToastOption = {
+  text: string
+  action: string
+  type: 'success' | 'warning' | 'warning'
+  duration: number
+  handler: Function
+}
 
 export type RequestState = ReturnType<typeof state>
 
 export const state = () => ({
+  health: true,
   responsePayload: undefined,
   requestPayload: Object() || Array(),
 })
@@ -13,6 +21,10 @@ export const state = () => ({
 export const mutations: MutationTree<RequestState> = {
   setResponsePayload: (state, response) => {
     state.responsePayload = response
+  },
+
+  setHealth: (state, health) => {
+    state.health = health
   },
 }
 
@@ -23,32 +35,45 @@ export const actions: ActionTree<RequestState, RootState> = {
     })
   },
   setKrateData: async ({ commit }, { requestUrl, payload }) => {
-    const response = await axiosBase
-      .post(requestUrl, payload)
-      .then((response) => {
-        commit('setResponsePayload', response.data)
-      })
+    await axiosBase.post(requestUrl, payload).then((response) => {
+      commit('setResponsePayload', response.data)
+    })
   },
+
   putKrateData: async ({ commit }, krateId) => {
     const response = await axiosBase.get(`http://localhost:4000/${krateId}`)
     commit('setResponsePayload', response)
   },
+
   patchKrateData: async ({ commit }, krateId) => {
     const response = await axiosBase.get(`http://localhost:4000/${krateId}`)
     commit('setResponsePayload', response)
   },
+
   deleteKrateData: async ({ commit }, krateId) => {
     const response = await axiosBase.get(`http://localhost:4000/${krateId}`)
     commit('setResponsePayload', response)
   },
-  getHealth: async () => {
-    const response = await axiosBase.get('/health')
-    return response
+
+  getKrateStats: async () => {},
+
+  getHealthStatus: async ({ commit }) => {
+    await axiosBase
+      .get('/health')
+      .then((response) => {
+        commit('setHealth', true)
+      })
+      .catch((error) => {
+        commit('setHealth', false)
+      })
   },
 }
 
 export const getters: GetterTree<RequestState, RootState> = {
   getResponsePayload: (state) => {
     return state.responsePayload
+  },
+  getHealthStatus: (state) => {
+    return state.health
   },
 }

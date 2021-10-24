@@ -83,15 +83,15 @@
           "
         >
           <span class="font-semibold">Status:</span>
-          <zi-dot :type="healthy ? 'success' : 'danger'"></zi-dot>
+          <zi-dot :type="health ? 'success' : 'danger'" class="pl-1"></zi-dot>
           <span
             :class="
-              healthy
+              health
                 ? 'text-blue-500 font-medium px-1'
                 : 'text-red-500 font-medium px-1'
             "
           >
-            {{ healthy ? 'System Healthy' : 'System Unhealthy' }}
+            {{ health ? 'System Healthy' : 'System Unhealthy' }}
           </span>
         </div>
 
@@ -109,22 +109,24 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  data() {
-    return {
-      healthy: false,
-    }
-  },
   async mounted() {
-    try {
-      const response = await this.$store.dispatch('request/getHealth')
-      if (response?.status === 200) this.healthy = true
-    } catch (error) {
-      ;(this as any).$Toast.show({
-        type: 'danger',
-        text: 'Service Unhealthy',
-        duration: 5000,
-      })
-    }
+    await this.$store.dispatch('request/getHealthStatus')
+  },
+
+  computed: {
+    health() {
+      const healthStatus = this.$store.getters['request/getHealthStatus']
+
+      if (!healthStatus) {
+        ;(this as any).$Toast.show({
+          type: 'danger',
+          text: 'System Unhealthy',
+          duration: 5000,
+        })
+      }
+
+      return healthStatus
+    },
   },
 })
 </script>
