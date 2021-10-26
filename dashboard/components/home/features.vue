@@ -18,8 +18,6 @@
       <div class="py-12 md:pb-24">
         <div
           class="
-            max-w-sm
-            mx-auto
             grid
             gap-8
             md:grid-cols-2
@@ -29,111 +27,53 @@
             lg:max-w-none
           "
         >
-          <div
-            class="
-              relative
-              flex flex-col
-              items-center
-              p-6
-              rounded-lg
-              border-accent2 border-2
-            "
-          >
+          <zi-card hoverable class="flex flex-col items-center">
             <circle-icon class="h-16 w-16 mb-2" />
             <h4 class="text-lg font-bold mb-1">Simple</h4>
             <p class="text-accent6 text-center">
               Zero configuration required and super easy to use.
             </p>
-          </div>
+          </zi-card>
 
-          <div
-            class="
-              relative
-              flex flex-col
-              items-center
-              p-6
-              rounded-lg
-              border-accent2 border-2
-            "
-          >
+          <zi-card hoverable class="flex flex-col items-center">
             <credit-card-icon class="h-16 w-16 mb-2" />
-
             <h4 class="text-lg font-bold mb-1">Free</h4>
             <p class="text-accent6 text-center">
               Krates is completely free to use and always will be.
             </p>
-          </div>
+          </zi-card>
 
-          <div
-            class="
-              relative
-              flex flex-col
-              items-center
-              p-6
-              rounded-lg
-              border-accent2 border-2
-            "
-          >
+          <zi-card hoverable class="flex flex-col items-center">
             <zap-icon class="h-16 w-16 mb-2" />
-
             <h4 class="text-lg font-bold mb-1">Lightning Fast</h4>
             <p class="text-accent6 text-center">
               Saving your data is just a HTTP request away.
             </p>
-          </div>
+          </zi-card>
 
-          <div
-            class="
-              relative
-              flex flex-col
-              items-center
-              p-6
-              rounded-lg
-              border-accent2 border-2
-            "
-          >
+          <zi-card hoverable class="flex flex-col items-center">
             <cloud-snow-icon class="h-16 w-16 mb-2" />
             <h4 class="text-lg font-bold mb-1">Backend Agnostic</h4>
             <p class="text-accent6 text-center">
               Use krates with a backend server or directly from the browser.
             </p>
-          </div>
+          </zi-card>
 
-          <div
-            class="
-              relative
-              flex flex-col
-              items-center
-              p-6
-              rounded-lg
-              border-accent2 border-2
-            "
-          >
+          <zi-card hoverable class="flex flex-col items-center">
             <server-icon class="h-16 w-16 mb-2" />
-
             <h4 class="text-lg font-bold mb-1">Host your own instance</h4>
             <p class="text-accent6 text-center">
               Use Krates as a free service or host your own instance.
             </p>
-          </div>
+          </zi-card>
 
-          <div
-            class="
-              relative
-              flex flex-col
-              items-center
-              p-6
-              rounded-lg
-              border-accent2 border-2
-            "
-          >
+          <zi-card hoverable class="flex flex-col items-center">
             <database-icon class="h-16 w-16 mb-2" />
-
             <h4 class="text-lg font-bold mb-1">Backed by MongoDB</h4>
             <p class="text-accent6 text-center">
               Supports all data formats that MongoDB supports.
             </p>
-          </div>
+          </zi-card>
         </div>
       </div>
     </div>

@@ -10,195 +10,51 @@
       </div>
 
       <!-- Vertical line -->
-      <div
-        class="border-2-2 bg-accent2 absolute border-opacity-80 h-full border"
-        style="left: 50%"
-      ></div>
-      <!-- right timeline 1 -->
-      <div class="mb-8 flex justify-between items-center w-full mt-10">
-        <div class="order-1 md:w-5/12 hidden md:inline-flex"></div>
-        <div
-          class="
-            z-20
-            items-center
-            order-1
-            shadow-xl
-            w-8
-            h-8
-            rounded-full
-            hidden
-            md:inline-flex
-          "
-        >
-          <h1 class="mx-auto font-semibold text-lg">1</h1>
-        </div>
-        <div
-          class="
-            order-1
-            rounded-lg
-            md:w-5/12
-            px-6
-            py-4
-            z-20
-            bg-geist-background
-            text-accent9
-            border border-accent2
-          "
-        >
+      <div class="absolute z-0 h-full border" style="left: 50%"></div>
+
+      <div class="grid md:grid-cols-2 gap-4 md:gap-12 z-20 relative">
+        <!-- left timeline 1 -->
+        <zi-card>
           <h3 class="mb-3 font-bold text-xl">Get your unique krate ID</h3>
-          <p class="text-sm leading-snug tracking-wide text-opacity-100">
+          <p class="text-sm leading-snug tracking-wide">
             Visit Krates Dashboard and get your unique krate ID. This krate ID
             will acts as your personal namespace for storing data.
           </p>
-        </div>
-      </div>
+        </zi-card>
+        <div class="md:visible invisible"></div>
 
-      <!-- left timeline -->
-      <div
-        class="
-          mb-8
-          flex
-          justify-between
-          flex-row-reverse
-          items-center
-          w-full
-          left-timeline
-        "
-      >
-        <div class="order-1 md:w-5/12 hidden md:inline-flex"></div>
-        <div
-          class="
-            z-20
-            items-center
-            order-1
-            shadow-xl
-            w-8
-            h-8
-            rounded-full
-            hidden
-            md:inline-flex
-          "
-        >
-          <h1 class="mx-auto font-semibold text-lg">2</h1>
-        </div>
-        <div
-          class="
-            order-1
-            bg-geist-foreground
-            text-accent9
-            border border-accent2
-            text-accent1
-            rounded-lg
-            md:w-5/12
-            px-6
-            py-4
-            z-20
-          "
-        >
+        <!-- right timeline -->
+        <div class="md:visible invisible"></div>
+        <zi-card>
           <h3 class="mb-3 font-bold text-xl">Make Requests</h3>
-          <p
-            class="
-              text-sm
-              font-medium
-              leading-snug
-              tracking-wide
-              text-opacity-100
-            "
-          >
+          <p class="text-sm leading-snug tracking-wide">
             Make standard HTTP requests suchs as POST, PUT and PATCH to store
             your data in the root of your namespace or a seperate collection if
             you wish.
           </p>
-        </div>
-      </div>
+        </zi-card>
 
-      <!-- right timeline -->
-      <div class="mb-8 flex justify-between items-center w-full">
-        <div class="order-1 md:w-5/12 hidden md:inline-flex"></div>
-        <div
-          class="
-            z-20
-            items-center
-            order-1
-            shadow-xl
-            w-8
-            h-8
-            rounded-full
-            hidden
-            md:inline-flex
-          "
-        >
-          <h1 class="mx-auto font-semibold text-lg">3</h1>
-        </div>
-        <div
-          class="
-            order-1
-            bg-geist-background
-            border border-accent2
-            text-accent9
-            rounded-lg
-            md:w-5/12
-            px-6
-            py-4
-            z-20
-          "
-        >
+        <!-- left timeline -->
+        <zi-card>
           <h3 class="mb-3 font-bold text-xl">Query your data</h3>
           <p class="text-sm leading-snug tracking-wide">
             Query your data using GET request from the root of your namespace or
             a seperate collection. Add sort, filter, limit to your queries to
             get sanitized data back.
           </p>
-        </div>
-      </div>
+        </zi-card>
+        <div class="md:visible invisible"></div>
 
-      <!-- left timeline -->
-      <div
-        class="
-          mb-14
-          flex
-          justify-between
-          flex-row-reverse
-          items-center
-          w-full
-          left-timeline
-        "
-      >
-        <div class="order-1 w-5/12 hidden md:inline-flex"></div>
-        <div
-          class="
-            z-20
-            items-center
-            order-1
-            shadow-xl
-            w-8
-            h-8
-            rounded-full
-            hidden
-            md:inline-flex
-          "
-        >
-          <h1 class="mx-auto font-semibold text-lg">4</h1>
-        </div>
-        <div
-          class="
-            order-1
-            bg-geist-foreground
-            border border-accent2
-            text-accent1
-            rounded-lg
-            md:w-5/12
-            px-6
-            py-4
-            z-20
-          "
-        >
+        <!-- right timeline -->
+
+        <div class="md:hidden"></div>
+        <zi-card>
           <h3 class="mb-3 font-bold text-xl">Modify your Data</h3>
           <p class="text-sm font-medium leading-snug tracking-wide">
             Modify or delete your records using PUT, PATCH or DELETE requests on
             a namespace, a collection or even an individual record.
           </p>
-        </div>
+        </zi-card>
       </div>
     </div>
   </div>
