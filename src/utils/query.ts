@@ -56,9 +56,10 @@ export const createRequestQuery = (req: Request): KrateOptions => {
   let queryOptions = Object()
 
   const { skip, limit, query } = req.query
-  const { krateId, collectionId } = req.params
+  const { krateId, collectionId, recordId } = req.params
   if (query) queryOptions = sanitizeQuery(query as string)
   if (collectionId) queryOptions.collectionId = collectionId
+  if (recordId) queryOptions._id = recordId
 
   queryOptions.krateId = krateId
   requestOptions.skip = Number(skip) || 0

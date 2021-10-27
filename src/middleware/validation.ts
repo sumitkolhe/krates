@@ -2,14 +2,40 @@ import Joi from 'joi'
 import { celebrate, Segments } from 'celebrate'
 
 export const validators = {
-  storage: celebrate({
+  getAllData: celebrate({
     [Segments.PARAMS]: Joi.object().keys({
       krateId: Joi.string().trim().length(20).alphanum().required().messages({
-        'string.empty': 'krate ID name cannot be empty',
-        'string.length': 'krate ID should be 20 characters long',
-        'string.alphanum': 'krate ID should alpha-numeric',
+        'string.empty': 'Krate ID name cannot be empty',
+        'string.length': 'Krate ID should be 20 characters long',
+        'string.alphanum': 'Krate ID should alpha-numeric',
       }),
-      collectionId: Joi.string().trim().min(1).max(16).message('invalid collection id').optional(),
+      collectionId: Joi.string().trim().min(1).max(16).not('record').message('Invalid Collection ID').optional(),
+    }),
+  }),
+
+  getRecordData: celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      krateId: Joi.string().trim().length(20).alphanum().required().messages({
+        'string.empty': 'Krate ID name cannot be empty',
+        'string.length': 'Krate ID should be 20 characters long',
+        'string.alphanum': 'Krate ID should alpha-numeric',
+      }),
+      recordId: Joi.string().trim().length(24).alphanum().required().messages({
+        'string.empty': 'Record ID name cannot be empty',
+        'string.length': 'Record ID should be 20 characters long',
+        'string.alphanum': 'Record ID should alpha-numeric',
+      }),
+    }),
+  }),
+
+  post: celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      krateId: Joi.string().trim().length(20).alphanum().required().messages({
+        'string.empty': 'Krate ID name cannot be empty',
+        'string.length': 'Krate ID should be 20 characters long',
+        'string.alphanum': 'Krate ID should alpha-numeric',
+      }),
+      collectionId: Joi.string().trim().min(1).max(16).message('Invalid Collection ID').optional(),
     }),
     [Segments.BODY]: Joi.alternatives(Joi.object().min(1), Joi.array().min(1)),
   }),

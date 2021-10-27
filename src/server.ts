@@ -3,7 +3,7 @@ import express, { Application } from 'express'
 import cors from 'cors'
 import { expressConfig } from '@src/config/express'
 import { parentRouter } from '@src/routes'
-import { HandleError } from '@src/middleware/errorHandler'
+import { CreateError, HandleError } from '@src/middleware/errorHandler'
 import { Logger } from '@src/utils/logger'
 import { morganMiddleware } from '@src/middleware/morgan'
 import { connectDatabase } from '@src/helpers/connectDatabase'
@@ -29,6 +29,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(morganMiddleware)
 
 app.use(parentRouter)
+app.use((req, res, next) => {
+  next(CreateError.NotFound('Not Found'))
+})
 app.use((err: express.ErrorRequestHandler, req: express.Request, res: express.Response, next: express.NextFunction) =>
   HandleError(err, req, res, next)
 )
