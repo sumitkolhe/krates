@@ -6,9 +6,9 @@ export class MetaService {
     const responseData = await StorageModel.find({ krateId }).sort('createdAt')
 
     const stats = {
-      krateSize: calculateObjectSize(responseData),
-      totalRecords: responseData.length,
-      createdAt: responseData[0].createdAt,
+      krateSize: responseData ? calculateObjectSize(responseData) : 0,
+      totalRecords: responseData ? responseData.length : 0,
+      createdAt: responseData ? responseData[0]?.createdAt : null,
     }
     return stats
   }
