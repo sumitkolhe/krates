@@ -241,7 +241,7 @@ export default Vue.extend({
 
       if (this.isRecord) {
         if (this.toggleRecord && this.requestParams.recordId)
-          return `${url}/${this.requestParams.recordId}`
+          return `${url}/record/${this.requestParams.recordId}`
         return url
       } else {
         return `${url}/${
