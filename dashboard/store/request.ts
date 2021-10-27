@@ -49,13 +49,13 @@ export const actions: ActionTree<RequestState, RootState> = {
   },
 
   deleteKrateData: async ({ commit }, krateId) => {
-    const response = await axiosBase.get(`http://localhost:4000/${krateId}`)
-    commit('setResponsePayload', response)
+    await axiosBase.delete(krateId).then((response) => {
+      commit('krates/deleteKrate', krateId, { root: true })
+    })
   },
 
   getKrateStats: async ({ commit }, krateId) => {
     await axiosBase.get('meta/' + krateId).then((response) => {
-      console.log(response.data)
       commit('setKrateStats', response.data)
     })
   },

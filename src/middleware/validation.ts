@@ -49,4 +49,9 @@ export const validators = {
         .required(),
     }),
   }),
+  delete: celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+      krateId: Joi.string().trim().length(20).alphanum().required(),
+    }),
+  }),
 }

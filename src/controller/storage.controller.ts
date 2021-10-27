@@ -46,7 +46,6 @@ export const putData: RequestHandler = async (req, res, next) => {
 export const deleteData: RequestHandler = async (req, res, next) => {
   try {
     const { krateId } = req.params
-
     await StorageService.deleteData(krateId)
     res.json({ status: globalConstants.status.success, message: 'Krate deleted succesfully' })
   } catch (error) {
