@@ -40,7 +40,6 @@
   },
   "dependencies": {
     "@types/morgan": "^1.9.3",
-    "axios": "^0.24.0",
     "bson": "^4.5.3",
     "celebrate": "^15.0.0",
     "cors": "^2.8.5",
@@ -50,6 +49,7 @@
     "joi": "^17.4.2",
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0",
+    "rate-limiter-flexible": "^2.3.2",
     "winston": "^3.3.3"
   }
 }
