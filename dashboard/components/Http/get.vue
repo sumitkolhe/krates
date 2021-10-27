@@ -9,7 +9,7 @@
           align-items="center"
           :spacing="3"
           justify="center"
-          class="pt-4 pb-2"
+          class="pt-4"
         >
           <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
             <p class="text-accent5 font-medium">
@@ -46,7 +46,7 @@
           align-items="center"
           :spacing="3"
           justify="center"
-          class="pt-2 pb-2"
+          class="pt-2"
         >
           <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
             <p class="text-accent5 font-medium">
@@ -82,7 +82,7 @@
           align-items="center"
           :spacing="3"
           justify="center"
-          class="pt-2 pb-2"
+          class="pt-2"
         >
           <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
             <p class="text-accent5 font-medium">
@@ -118,7 +118,7 @@
           align-items="center"
           :spacing="3"
           justify="center"
-          class="pt-2 pb-2"
+          class="py-2"
         >
           <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
             <p class="text-accent5 font-medium">
@@ -155,7 +155,7 @@
           align-items="center"
           justify="center"
           :spacing="3"
-          class="py-4"
+          class="pt-4 pb-2"
         >
           <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
             <p class="text-accent5 font-medium">
@@ -201,7 +201,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import '@nuxtjs/axios'
-import { log } from 'console'
 export default Vue.extend({
   layout: 'krates',
 
