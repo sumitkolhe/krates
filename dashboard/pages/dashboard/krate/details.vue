@@ -23,15 +23,30 @@
       <div class="grid md:grid-cols-3 gap-6 md:gap-12">
         <zi-card hoverable>
           <h3 class="text-lg font-medium mb-6">Krate Size</h3>
-          <zi-note label="">{{ krateStats.size }} Bytes</zi-note>
+          <zi-snippet
+            :text="`${krateStats.size} Bytes`"
+            :copy="false"
+            type="lite"
+          >
+          </zi-snippet>
         </zi-card>
         <zi-card class="" hoverable>
           <h3 class="text-lg font-medium mb-6">Total Records</h3>
-          <zi-note label="">{{ krateStats.totalRecords }} Records</zi-note>
+          <zi-snippet
+            :text="`${krateStats.totalRecords} Records`"
+            :copy="false"
+            type="lite"
+          >
+          </zi-snippet>
         </zi-card>
         <zi-card class="" hoverable>
           <h3 class="text-lg font-medium mb-6">Created At</h3>
-          <zi-note label="">{{ krateStats.createdAt }} </zi-note>
+          <zi-snippet
+            :text="`${krateStats.createdAt}`"
+            :copy="false"
+            type="lite"
+          >
+          </zi-snippet>
         </zi-card>
       </div>
     </div>
