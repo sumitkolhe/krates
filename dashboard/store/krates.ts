@@ -12,8 +12,15 @@ export const mutations: MutationTree<KrateState> = {
   setKrate: (state, newKrate) => {
     state.allKrates.unshift(newKrate)
   },
+
   setSelectedKrate: (state, krate) => {
     state.selectedKrate = krate
+  },
+
+  deleteKrate: (state, krateId) => {
+    state.allKrates = state.allKrates.filter((item) => {
+      return item.krateId !== krateId
+    })
   },
 }
 

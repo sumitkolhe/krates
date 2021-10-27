@@ -15,7 +15,9 @@
         >
         <template #footer>
           <p></p>
-          <zi-button type="danger" auto @click="">Delete Krate </zi-button>
+          <zi-button type="danger" auto @click="deleteKrate"
+            >Delete Krate
+          </zi-button>
         </template>
       </zi-fieldset>
     </div>
@@ -27,11 +29,20 @@ import Vue from 'vue'
 export default Vue.extend({
   layout: 'krates',
   data() {
-    return {}
+    return {
+      krateId: '',
+    }
   },
 
-  mounted() {},
+  mounted() {
+    this.krateId = this.$store.getters['krates/getSelectedKrate']
+  },
 
-  methods: {},
+  methods: {
+    deleteKrate() {
+      this.$store.dispatch('request/deleteKrateData', this.krateId)
+      this.$router.push('/dashboard')
+    },
+  },
 })
 </script>
