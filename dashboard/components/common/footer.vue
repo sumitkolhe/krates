@@ -1,16 +1,5 @@
 <template>
-  <div
-    class="
-      w-full
-      z-30
-      md:bg-opacity-90
-      transition
-      duration-300
-      ease-in-out
-      bg-accent1
-      border-t border-accent2
-    "
-  >
+  <div class="w-full z-30 bg-accent1 border-t border-accent2">
     <footer class="max-w-5xl mx-auto">
       <div
         class="

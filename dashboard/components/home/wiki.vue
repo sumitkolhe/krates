@@ -21,10 +21,10 @@
             will acts as your personal namespace for storing data.
           </p>
         </zi-card>
-        <div class="md:visible invisible"></div>
+        <div class="hidden md:block"></div>
 
         <!-- right timeline -->
-        <div class="md:visible invisible"></div>
+        <div class="hidden md:block"></div>
         <zi-card>
           <h3 class="mb-3 font-bold text-xl">Make Requests</h3>
           <p class="text-sm leading-snug tracking-wide">
@@ -43,11 +43,11 @@
             get sanitized data back.
           </p>
         </zi-card>
-        <div class="md:visible invisible"></div>
+        <div class="hidden md:block"></div>
 
         <!-- right timeline -->
 
-        <div class="md:hidden"></div>
+        <div class="hidden md:block"></div>
         <zi-card>
           <h3 class="mb-3 font-bold text-xl">Modify your Data</h3>
           <p class="text-sm font-medium leading-snug tracking-wide">

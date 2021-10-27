@@ -1,7 +1,7 @@
 <template>
   <div class="pt-32">
     <HomeHero />
-    <HomeHowItWorks />
+    <HomeWiki />
     <HomeFeatures />
     <HomeContribute />
   </div>

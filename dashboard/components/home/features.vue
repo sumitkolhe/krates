@@ -4,7 +4,6 @@
       class="
         absolute
         inset-0
-        md:mt-24
         lg:mt-0
         bg-accent1
         border-accent2 border-t border-b
@@ -25,53 +24,37 @@
             items-start
             md:max-w-2xl
             lg:max-w-none
+            mx-auto
           "
         >
-          <zi-card hoverable class="flex flex-col items-center">
-            <circle-icon class="h-16 w-16 mb-2" />
-            <h4 class="text-lg font-bold mb-1">Simple</h4>
-            <p class="text-accent6 text-center">
-              Zero configuration required and super easy to use.
-            </p>
-          </zi-card>
+          <zi-card
+            hoverable
+            class="flex flex-col items-center"
+            v-for="(feature, index) in features"
+            :key="feature.title"
+          >
+            <template v-if="index === 0">
+              <circle-icon class="h-16 w-16" />
+            </template>
+            <template v-if="index === 1">
+              <credit-card-icon class="h-16 w-16" />
+            </template>
+            <template v-if="index === 2">
+              <zap-icon class="h-16 w-16" />
+            </template>
+            <template v-if="index === 3">
+              <cloud-snow-icon class="h-16 w-16" />
+            </template>
+            <template v-if="index === 4">
+              <server-icon class="h-16 w-16" />
+            </template>
+            <template v-if="index === 5">
+              <database-icon class="h-16 w-16" />
+            </template>
 
-          <zi-card hoverable class="flex flex-col items-center">
-            <credit-card-icon class="h-16 w-16 mb-2" />
-            <h4 class="text-lg font-bold mb-1">Free</h4>
+            <h4 class="text-lg font-semibold mb-1 mt-4">{{ feature.title }}</h4>
             <p class="text-accent6 text-center">
-              Krates is completely free to use and always will be.
-            </p>
-          </zi-card>
-
-          <zi-card hoverable class="flex flex-col items-center">
-            <zap-icon class="h-16 w-16 mb-2" />
-            <h4 class="text-lg font-bold mb-1">Lightning Fast</h4>
-            <p class="text-accent6 text-center">
-              Saving your data is just a HTTP request away.
-            </p>
-          </zi-card>
-
-          <zi-card hoverable class="flex flex-col items-center">
-            <cloud-snow-icon class="h-16 w-16 mb-2" />
-            <h4 class="text-lg font-bold mb-1">Backend Agnostic</h4>
-            <p class="text-accent6 text-center">
-              Use krates with a backend server or directly from the browser.
-            </p>
-          </zi-card>
-
-          <zi-card hoverable class="flex flex-col items-center">
-            <server-icon class="h-16 w-16 mb-2" />
-            <h4 class="text-lg font-bold mb-1">Host your own instance</h4>
-            <p class="text-accent6 text-center">
-              Use Krates as a free service or host your own instance.
-            </p>
-          </zi-card>
-
-          <zi-card hoverable class="flex flex-col items-center">
-            <database-icon class="h-16 w-16 mb-2" />
-            <h4 class="text-lg font-bold mb-1">Backed by MongoDB</h4>
-            <p class="text-accent6 text-center">
-              Supports all data formats that MongoDB supports.
+              {{ feature.description }}
             </p>
           </zi-card>
         </div>
@@ -82,5 +65,38 @@
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({})
+export default Vue.extend({
+  data() {
+    return {
+      features: [
+        {
+          title: 'Simple',
+          description: 'Zero configuration required and super easy to use.',
+        },
+        {
+          title: 'Free',
+          description: 'Krates is completely free to use and always will be',
+        },
+        {
+          title: 'Lightning Fast',
+          description: 'Saving your data is just a HTTP request away.',
+        },
+        {
+          title: 'Backend Agnostic',
+          description:
+            'Use krates with a backend server or directly from the browser.',
+        },
+        {
+          title: 'Host your own instance',
+          description:
+            'Use Krates as a free service or host your own instance.',
+        },
+        {
+          title: 'Backed by MongoDB',
+          description: ' Supports all data formats that MongoDB supports.',
+        },
+      ],
+    }
+  },
+})
 </script>
