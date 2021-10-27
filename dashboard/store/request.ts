@@ -1,14 +1,7 @@
+import { response } from 'express'
 import { MutationTree, GetterTree, ActionTree } from 'vuex'
 import { RootState } from '~/store'
 import { axiosBase } from '~/utils/axios'
-
-type ToastOption = {
-  text: string
-  action: string
-  type: 'success' | 'warning' | 'warning'
-  duration: number
-  handler: Function
-}
 
 export type RequestState = ReturnType<typeof state>
 
@@ -16,11 +9,16 @@ export const state = () => ({
   health: true,
   responsePayload: undefined,
   requestPayload: Object() || Array(),
+  krateStats: Object(),
 })
 
 export const mutations: MutationTree<RequestState> = {
   setResponsePayload: (state, response) => {
     state.responsePayload = response
+  },
+
+  setKrateStats: (state, response) => {
+    state.krateStats = response
   },
 
   setHealth: (state, health) => {
@@ -55,7 +53,12 @@ export const actions: ActionTree<RequestState, RootState> = {
     commit('setResponsePayload', response)
   },
 
-  getKrateStats: async () => {},
+  getKrateStats: async ({ commit }, krateId) => {
+    await axiosBase.get('meta/' + krateId).then((response) => {
+      console.log(response.data)
+      commit('setKrateStats', response.data)
+    })
+  },
 
   getHealthStatus: async ({ commit }) => {
     await axiosBase
@@ -75,5 +78,8 @@ export const getters: GetterTree<RequestState, RootState> = {
   },
   getHealthStatus: (state) => {
     return state.health
+  },
+  getKrateStats: (state) => {
+    return state.krateStats
   },
 }

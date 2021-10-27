@@ -7,32 +7,11 @@
     </div>
 
     <div class="max-w-5xl mx-auto my-12 md:px-2 px-4">
-      <div class="grid md:grid-cols-3 gap-6 md:gap-12">
-        <zi-card hoverable>
-          <h3 class="text-lg font-medium">Krate Size</h3>
-          <p class="text-sm">
-            This is your namespace for storing data within krates.
-          </p>
-        </zi-card>
-        <zi-card class="" hoverable>
-          <h3 class="text-lg font-medium">Total Records</h3>
-          <p class="text-sm">
-            This is your namespace for storing data within krates.
-          </p>
-        </zi-card>
-        <zi-card class="" hoverable>
-          <h3 class="text-lg font-medium">Created At</h3>
-          <p class="text-sm">
-            This is your namespace for storing data within krates.
-          </p>
-        </zi-card>
-      </div>
-
       <zi-fieldset class="my-8">
-        <h3 class="text-lg font-medium">Krate ID</h3>
-        <p class="text-sm">
+        <h3 class="text-lg font-medium pb-6">Krate ID</h3>
+        <!-- <p class="text-sm">
           This is your namespace for storing data within krates.
-        </p>
+        </p> -->
         <zi-snippet :text="krateId" type="lite"></zi-snippet>
         <template #footer>
           <p>
@@ -40,6 +19,21 @@
           </p>
         </template>
       </zi-fieldset>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-12">
+        <zi-card hoverable>
+          <h3 class="text-lg font-medium mb-6">Krate Size</h3>
+          <zi-note label="">{{ krateStats.size }} Bytes</zi-note>
+        </zi-card>
+        <zi-card class="" hoverable>
+          <h3 class="text-lg font-medium mb-6">Total Records</h3>
+          <zi-note label="">{{ krateStats.totalRecords }} Records</zi-note>
+        </zi-card>
+        <zi-card class="" hoverable>
+          <h3 class="text-lg font-medium mb-6">Created At</h3>
+          <zi-note label="">{{ krateStats.createdAt }} </zi-note>
+        </zi-card>
+      </div>
     </div>
   </div>
 </template>
@@ -51,11 +45,24 @@ export default Vue.extend({
   data() {
     return {
       krateId: '',
+      krateStats: {
+        size: 0,
+        totalRecords: 0,
+        createdAt: '',
+      },
     }
   },
 
-  mounted() {
+  async mounted() {
     this.krateId = this.$store.getters['krates/getSelectedKrate']
+    await this.$store.dispatch('request/getKrateStats', this.krateId)
+    const stats = this.$store.getters['request/getKrateStats']
+
+    this.krateStats.size = stats.krateSize
+    this.krateStats.totalRecords = stats.totalRecords
+    this.krateStats.createdAt = new Date(stats.createdAt)
+      .toString()
+      .split('G')[0]
   },
 })
 </script>
