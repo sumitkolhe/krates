@@ -10,8 +10,8 @@ const redisClient = createClient(redisConfig)
 const rateLimiter = new RateLimiterRedis({
   storeClient: redisClient,
   keyPrefix: 'middleware',
-  points: 30, // 10 requests
-  duration: 60, // per 1 second by IP
+  points: 6, // 6 requests
+  duration: 10, // per 10 second by IP
 })
 
 export const rateLimit: RequestHandler = async (req, res, next) => {
