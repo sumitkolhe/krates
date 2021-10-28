@@ -1,4 +1,4 @@
-import { RateLimiterMongo } from 'rate-limiter-flexible'
+import { RateLimiterMongo, RateLimiterRes } from 'rate-limiter-flexible'
 import { RequestHandler } from 'express'
 import mongoose from 'mongoose'
 import { databaseConfig } from '@src/config/database'
@@ -16,20 +16,35 @@ const opts = {
   mongo: mongoConnection,
   storeClient: mongoConnection,
   keyPrefix: 'limits',
-  points: 20, // total points available
-  duration: 60, // in seconds
+  points: 60, // total points available
+  duration: 60, // per second
 }
 
 const rateLimiterMongo = new RateLimiterMongo(opts)
 
-export const rateLimit: RequestHandler = async (req, _res, next) => {
+export const rateLimit: RequestHandler = async (req, res, next) => {
   try {
+    Logger.info(req.ip)
     await rateLimiterMongo
       .consume(req.ip, 1) // consumes 1 point
-      .then(() => {
+      .then((info: RateLimiterRes) => {
+        const rateLimiterHeaders = {
+          'Retry-After': info.msBeforeNext / 1000,
+          'X-RateLimit-Limit': opts.points,
+          'X-RateLimit-Remaining': info.remainingPoints,
+          'X-RateLimit-Reset': new Date(Date.now() + info.msBeforeNext),
+        }
+        res.set(rateLimiterHeaders)
         next()
       })
-      .catch(() => {
+      .catch((info: RateLimiterRes) => {
+        const rateLimiterHeaders = {
+          'Retry-After': info.msBeforeNext / 1000,
+          'X-RateLimit-Limit': opts.points,
+          'X-RateLimit-Remaining': info.remainingPoints,
+          'X-RateLimit-Reset': new Date(Date.now() + info.msBeforeNext),
+        }
+        res.set(rateLimiterHeaders)
         throw CreateError.TooManyRequests('Rate limit exceeded')
       })
   } catch (error) {
