@@ -1,36 +1,28 @@
-import { RateLimiterMongo, RateLimiterRes } from 'rate-limiter-flexible'
+import { RateLimiterRedis, RateLimiterRes } from 'rate-limiter-flexible'
 import { RequestHandler } from 'express'
-import mongoose from 'mongoose'
-import { databaseConfig } from '@src/config/database'
-import { mongoOptions } from '@src/helpers/connectDatabase'
+import { createClient } from 'redis'
 import { CreateError } from '@src/middleware/errorHandler'
 import { Logger } from '@src/utils/logger'
+import { redisConfig } from '@src/config/database'
 
-const mongoConnection = mongoose.createConnection(databaseConfig.mongoUrl, mongoOptions)
+const redisClient = createClient(redisConfig)
 
-mongoConnection.on('connected', () => {
-  Logger.info('limiter connected')
+const rateLimiter = new RateLimiterRedis({
+  storeClient: redisClient,
+  keyPrefix: 'middleware',
+  points: 30, // 10 requests
+  duration: 60, // per 1 second by IP
 })
-
-const opts = {
-  mongo: mongoConnection,
-  storeClient: mongoConnection,
-  keyPrefix: 'limits',
-  points: 60, // total points available
-  duration: 60, // per second
-}
-
-const rateLimiterMongo = new RateLimiterMongo(opts)
 
 export const rateLimit: RequestHandler = async (req, res, next) => {
   try {
     Logger.info(req.ip)
-    await rateLimiterMongo
+    await rateLimiter
       .consume(req.ip, 1) // consumes 1 point
       .then((info: RateLimiterRes) => {
         const rateLimiterHeaders = {
           'Retry-After': info.msBeforeNext / 1000,
-          'X-RateLimit-Limit': opts.points,
+          'X-RateLimit-Limit': rateLimiter.points,
           'X-RateLimit-Remaining': info.remainingPoints,
           'X-RateLimit-Reset': new Date(Date.now() + info.msBeforeNext),
         }
@@ -40,7 +32,7 @@ export const rateLimit: RequestHandler = async (req, res, next) => {
       .catch((info: RateLimiterRes) => {
         const rateLimiterHeaders = {
           'Retry-After': info.msBeforeNext / 1000,
-          'X-RateLimit-Limit': opts.points,
+          'X-RateLimit-Limit': rateLimiter.points,
           'X-RateLimit-Remaining': info.remainingPoints,
           'X-RateLimit-Reset': new Date(Date.now() + info.msBeforeNext),
         }
