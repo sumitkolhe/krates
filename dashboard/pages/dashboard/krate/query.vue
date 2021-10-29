@@ -22,7 +22,7 @@
             <zi-option value="GET"> </zi-option>
             <zi-option value="POST"> </zi-option>
             <zi-option value="PUT"> </zi-option>
-            <zi-option value="PATCH"> </zi-option>
+            <!-- <zi-option value="PATCH"> </zi-option> -->
             <zi-option value="DELETE"> </zi-option>
           </zi-select>
 
@@ -37,6 +37,7 @@
 
       <HttpGet v-if="selectedRequestType === 'GET'" />
       <HttpPost v-else-if="selectedRequestType === 'POST'" />
+      <HttpPut v-else-if="selectedRequestType === 'PUT'" />
 
       <HttpResponse />
     </div>
@@ -45,7 +46,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import '@nuxtjs/axios'
 export default Vue.extend({
   layout: 'krates',
 

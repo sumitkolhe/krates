@@ -47,10 +47,7 @@ const NuxtAppConfig: NuxtConfig = {
     '@nuxtjs/tailwindcss',
   ],
 
-  modules: [
-    '@nuxtjs/axios',
-    ['nuxt-vuex-localstorage', { localStorage: ['krates'] }],
-  ],
+  modules: [['nuxt-vuex-localstorage', { localStorage: ['krates'] }]],
 
   axios: {},
   server: {

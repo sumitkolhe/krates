@@ -200,7 +200,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import '@nuxtjs/axios'
 export default Vue.extend({
   layout: 'krates',
 
@@ -229,8 +228,13 @@ export default Vue.extend({
 
   methods: {
     switcher(label: string) {
-      if (label === 'By Record') this.isRecord = true
-      else this.isRecord = false
+      if (label === 'By Record') {
+        this.isRecord = true
+        this.$store.commit('request/setResponsePayload', undefined)
+        this.$store.commit('request/setResponsePayload', undefined)
+      } else {
+        this.isRecord = false
+      }
     },
 
     buildRequestUrl() {

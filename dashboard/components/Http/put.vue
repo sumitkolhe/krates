@@ -8,24 +8,16 @@
       justify="center"
       class="py-2"
     >
-      <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
-        <p class="text-accent5 font-medium">COLLECTION ID</p></zi-grid
+      <zi-grid :xs="24" :sm="4">
+        <p class="text-accent5 font-medium">RECORD ID</p></zi-grid
       >
-      <zi-grid :xs="24" :sm="12" :md="14" class="sm:order-none order-last">
+      <zi-grid :xs="24" :sm="20">
         <zi-textarea
-          placeholder="Collection ID"
+          placeholder="Record ID"
           :rows="1"
-          :disabled="!toggleCollection"
-          v-model="requestParams.collectionId"
+          v-model="requestParams.recordId"
         ></zi-textarea
       ></zi-grid>
-
-      <zi-grid :xs="12" :sm="6" class="sm:order-none">
-        <zi-grid container align-items="center" :spacing="2" justify="center">
-          <zi-grid> <p class="text-accent5 font-medium">ENABLE</p></zi-grid>
-          <zi-grid> <zi-toggle v-model="toggleCollection"></zi-toggle></zi-grid>
-        </zi-grid>
-      </zi-grid>
     </zi-grid>
 
     <zi-grid
@@ -46,18 +38,7 @@
     <!-- Footer -->
     <template #footer>
       <p></p>
-      <!-- <zi-input
-            class="ml-2"
-            :placeholder="krateId"
-            prefix-label="https://krat.es/"
-            disabled
-          ></zi-input> -->
-      <zi-button
-        :disabled="!payload"
-        type="success"
-        @click="sendRequest"
-        auto
-        :loading="loading"
+      <zi-button type="success" @click="sendRequest" auto :loading="loading"
         >Send
       </zi-button>
     </template></zi-fieldset
@@ -73,10 +54,9 @@ export default Vue.extend({
   data() {
     return {
       loading: false,
-      toggleCollection: false,
       payload: '',
       requestParams: {
-        collectionId: '',
+        recordId: '',
       },
     }
   },
@@ -111,18 +91,14 @@ export default Vue.extend({
   methods: {
     buildRequestUrl() {
       const krateId = this.$store.getters['krates/getSelectedKrate']
-
-      let url = krateId
-      if (this.toggleCollection && this.requestParams.collectionId)
-        url += '/' + this.requestParams.collectionId
-
-      return url
+      return krateId + '/' + this.requestParams.recordId
     },
+
     async sendRequest() {
       try {
         this.loading = true
         await this.$store
-          .dispatch('request/setKrateData', {
+          .dispatch('request/putKrateData', {
             requestUrl: this.buildRequestUrl(),
             payload: JSON.parse(this.payload),
           })

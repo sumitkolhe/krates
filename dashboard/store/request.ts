@@ -1,4 +1,3 @@
-import { response } from 'express'
 import { MutationTree, GetterTree, ActionTree } from 'vuex'
 import { RootState } from '~/store'
 import { axiosBase } from '~/utils/axios'
@@ -38,14 +37,10 @@ export const actions: ActionTree<RequestState, RootState> = {
     })
   },
 
-  putKrateData: async ({ commit }, krateId) => {
-    const response = await axiosBase.get(`http://localhost:4000/${krateId}`)
-    commit('setResponsePayload', response)
-  },
-
-  patchKrateData: async ({ commit }, krateId) => {
-    const response = await axiosBase.get(`http://localhost:4000/${krateId}`)
-    commit('setResponsePayload', response)
+  putKrateData: async ({ commit }, { requestUrl, payload }) => {
+    await axiosBase.put(requestUrl, payload).then((response) => {
+      commit('setResponsePayload', response.data)
+    })
   },
 
   deleteKrateData: async ({ commit }, krateId) => {
