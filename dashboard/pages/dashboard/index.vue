@@ -2,7 +2,7 @@
   <div>
     <div class="border-b border-accent2">
       <div class="mx-auto max-w-5xl pt-8 pb-12 text-center">
-        <database-icon class="h-20 w-20 align-center block mx-auto mb-6" />
+        <package-icon class="h-20 w-20 align-center block mx-auto mb-6" />
         <zi-button
           :icon="plusCircle"
           shadow
@@ -55,14 +55,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import plusCircle from '@geist-ui/vue-icons/packages/plus-circle'
-import database from '@geist-ui/vue-icons/packages/database'
 
 export default Vue.extend({
   layout: 'dashboard',
   data() {
     return {
       plusCircle,
-      database,
       addKratedialog: false,
       customKrateToggle: false,
       newKrateId: '',

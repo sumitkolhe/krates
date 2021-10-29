@@ -9,9 +9,7 @@
     <div class="max-w-5xl mx-auto my-12 md:px-2 px-4">
       <zi-fieldset class="my-8">
         <h3 class="text-lg font-medium pb-6">Krate ID</h3>
-        <!-- <p class="text-sm">
-          This is your namespace for storing data within krates.
-        </p> -->
+
         <zi-snippet :text="krateId" type="lite"></zi-snippet>
         <template #footer>
           <p>
@@ -24,7 +22,7 @@
         <zi-card hoverable>
           <h3 class="text-lg font-medium mb-6">Krate Size</h3>
           <zi-snippet
-            :text="`${krateStats.size} Bytes`"
+            :text="`${(krateStats.size / 1024).toString().slice(0, 5)} Kb`"
             :copy="false"
             type="lite"
           >
@@ -75,9 +73,10 @@ export default Vue.extend({
 
     this.krateStats.size = stats.krateSize
     this.krateStats.totalRecords = stats.totalRecords
-    this.krateStats.createdAt = new Date(stats.createdAt)
-      .toString()
-      .split('G')[0]
+    this.krateStats.createdAt =
+      stats.totalRecords > 0
+        ? new Date(stats.createdAt).toString().split('G')[0]
+        : 'No records yet!'
   },
 })
 </script>

@@ -15,12 +15,26 @@
         >
         <template #footer>
           <p></p>
-          <zi-button type="danger" auto @click="deleteKrate"
+          <zi-button
+            type="danger"
+            auto
+            @click="deleteKrateDialog = !deleteKrateDialog"
             >Delete Krate
           </zi-button>
         </template>
       </zi-fieldset>
     </div>
+
+    <zi-dialog
+      :closeByModal="false"
+      v-model="deleteKrateDialog"
+      :beforeDone="deleteKrate"
+    >
+      <zi-card>
+        <h3 class="pb-4">Delete Krate</h3>
+        <zi-note type="error" label="NOTE">This action is irreversible</zi-note>
+      </zi-card>
+    </zi-dialog>
   </div>
 </template>
 
@@ -31,6 +45,7 @@ export default Vue.extend({
   data() {
     return {
       krateId: '',
+      deleteKrateDialog: false,
     }
   },
 
@@ -39,8 +54,8 @@ export default Vue.extend({
   },
 
   methods: {
-    deleteKrate() {
-      this.$store.dispatch('request/deleteKrateData', this.krateId)
+    async deleteKrate() {
+      await this.$store.dispatch('request/deleteKrateData', this.krateId)
       this.$router.push('/dashboard')
     },
   },
