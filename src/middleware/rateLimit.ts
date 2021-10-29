@@ -2,7 +2,6 @@ import { RateLimiterRedis, RateLimiterRes } from 'rate-limiter-flexible'
 import { RequestHandler } from 'express'
 import { createClient } from 'redis'
 import { CreateError } from '@src/middleware/errorHandler'
-import { Logger } from '@src/utils/logger'
 import { redisConfig } from '@src/config/database'
 
 const redisClient = createClient(redisConfig)
@@ -16,7 +15,6 @@ const rateLimiter = new RateLimiterRedis({
 
 export const rateLimit: RequestHandler = async (req, res, next) => {
   try {
-    Logger.info(req.ip)
     await rateLimiter
       .consume(req.ip, 1) // consumes 1 point
       .then((info: RateLimiterRes) => {

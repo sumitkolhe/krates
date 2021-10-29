@@ -9,7 +9,11 @@ export const validators = {
         'string.length': 'Krate ID should be 20 characters long',
         'string.alphanum': 'Krate ID should alpha-numeric',
       }),
-      collectionId: Joi.string().trim().min(1).max(16).not('record').message('Invalid Collection ID').optional(),
+      collectionId: Joi.string().trim().min(1).max(16).not('record').optional().messages({
+        'string.min': 'Collection ID should be atleast 1 character long',
+        'string.max': 'Collection ID should be atleast 1 character long',
+        'string.not': 'Collection ID is invalid',
+      }),
     }),
   }),
 
@@ -35,7 +39,11 @@ export const validators = {
         'string.length': 'Krate ID should be 20 characters long',
         'string.alphanum': 'Krate ID should alpha-numeric',
       }),
-      collectionId: Joi.string().trim().min(1).max(16).message('Invalid Collection ID').optional(),
+      collectionId: Joi.string().trim().min(1).max(16).alphanum().optional().messages({
+        'string.min': 'Record ID name cannot be empty',
+        'string.max': 'Record ID should be 20 characters long',
+        'string.alphanum': 'Record ID should alpha-numeric',
+      }),
     }),
     [Segments.BODY]: Joi.alternatives(Joi.object().min(1), Joi.array().min(1)),
   }),
@@ -46,6 +54,7 @@ export const validators = {
       recordId: Joi.string()
         .trim()
         .pattern(/^[0-9a-fA-F]{24}$/)
+        .message('Invalid record ID')
         .required(),
     }),
   }),
