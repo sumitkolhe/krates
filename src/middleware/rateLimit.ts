@@ -3,14 +3,15 @@ import { RequestHandler } from 'express'
 import { createClient } from 'redis'
 import { CreateError } from '@src/middleware/errorHandler'
 import { redisConfig } from '@src/config/database'
+import { globalConfig } from '@src/config/global'
 
 const redisClient = createClient(redisConfig)
 
 const rateLimiter = new RateLimiterRedis({
   storeClient: redisClient,
   keyPrefix: 'middleware',
-  points: 6, // 6 requests
-  duration: 10, // per 10 second by IP
+  points: globalConfig.rateLimitPoints,
+  duration: globalConfig.rateLimitDuration,
 })
 
 export const rateLimit: RequestHandler = async (req, res, next) => {
