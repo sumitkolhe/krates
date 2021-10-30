@@ -49,7 +49,8 @@
               <server-icon class="h-16 w-16" />
             </template>
             <template v-if="index === 5">
-              <database-icon class="h-16 w-16" />
+              <lock-icon class="h-16 w-16" />
+              <!-- <database-icon class="h-16 w-16" /> -->
             </template>
 
             <h4 class="text-lg font-semibold mb-1 mt-4">{{ feature.title }}</h4>
@@ -91,9 +92,13 @@ export default Vue.extend({
           description:
             'Use Krates as a free service or host your own instance.',
         },
+        // {
+        //   title: 'Backed by MongoDB',
+        //   description: ' Supports all data formats that MongoDB supports.',
+        // },
         {
-          title: 'Backed by MongoDB',
-          description: ' Supports all data formats that MongoDB supports.',
+          title: 'Protected Krates',
+          description: 'Protect you krates from unauthorized access.',
         },
       ],
     }
