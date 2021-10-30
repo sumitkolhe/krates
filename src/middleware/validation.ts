@@ -3,10 +3,7 @@ import { celebrate, Segments } from 'celebrate'
 
 const apiKeyValidator = Joi.object()
   .keys({
-    'x-api-key': Joi.string()
-      .optional()
-      .regex(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
-      .message('Invalid API key'),
+    'x-api-key': Joi.string().optional().uuid().message('Invalid API key'),
   })
   .unknown()
 
@@ -20,7 +17,7 @@ const collectionValidator = Joi.string().trim().min(1).max(16).alphanum().not('r
   'string.min': 'Collection ID should be at least 1 character long',
   'string.max': 'Collection ID should be at max 16 characters long',
   'string.alphanum': 'Collection ID should alpha-numeric',
-  'string.not': 'Collection ID is invalid',
+  'any.invalid': 'Collection ID contains an invalid word',
 })
 
 const recordValidator = Joi.string().trim().length(24).alphanum().required().messages({
