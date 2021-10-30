@@ -10,4 +10,5 @@ krateRouter.get('/:krateId/record/:recordId/', validators.getRecordData, getData
 krateRouter.get('/:krateId/:collectionId?/', validators.getAllData, getData)
 krateRouter.post('/:krateId/:collectionId?/', rateLimit, validators.postData, authenticateRequest, setData)
 krateRouter.put('/:krateId/:recordId/', rateLimit, validators.putData, putData)
-krateRouter.delete('/:krateId/', rateLimit, validators.deleteData, deleteData)
+krateRouter.delete('/:krateId/', rateLimit, validators.deleteAllData, deleteData)
+krateRouter.delete('/:krateId/record/:recordId', rateLimit, validators.deleteRecordData, deleteData)

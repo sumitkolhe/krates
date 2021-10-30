@@ -60,7 +60,7 @@ export class StorageService {
   }
 
   // delete all data from a krate
-  static deleteData = async (krateId: string): Promise<void> => {
-    await StorageModel.deleteMany({ krateId })
+  static deleteData = async (requestOptions: KrateOptions): Promise<void> => {
+    await StorageModel.deleteMany(requestOptions.query)
   }
 }

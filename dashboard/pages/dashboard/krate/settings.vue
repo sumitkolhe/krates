@@ -10,7 +10,7 @@
       <zi-fieldset class="mb-8" footer="Krate ID acts as a namespace for data.">
         <h3 class="text-lg font-medium">Delete Krate</h3>
         <zi-note type="warning" class="mt-6">
-          This will delete all data in your krate. This action is
+          This will delete all the data in your krate. This action is
           irreversible.</zi-note
         >
         <template #footer>

@@ -23,7 +23,12 @@
     <!-- Footer -->
     <template #footer>
       <p></p>
-      <zi-button type="success" @click="sendRequest" auto :loading="loading"
+      <zi-button
+        :disabled="!requestParams.recordId"
+        type="success"
+        @click="sendRequest"
+        auto
+        :loading="loading"
         >Send
       </zi-button>
     </template></zi-fieldset
@@ -31,6 +36,7 @@
 </template>
 
 <script lang="ts">
+import e from 'express'
 import Vue from 'vue'
 export default Vue.extend({
   props: {
@@ -53,7 +59,7 @@ export default Vue.extend({
   methods: {
     buildRequestUrl() {
       const krateId = this.$store.getters['krates/getSelectedKrate']
-      return krateId + '/' + this.requestParams.recordId
+      return krateId + '/record/' + this.requestParams.recordId
     },
 
     async sendRequest() {

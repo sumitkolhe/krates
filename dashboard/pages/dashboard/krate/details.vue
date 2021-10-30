@@ -14,7 +14,7 @@
         <template #footer>
           <p>
             Learn more about
-            <zi-link href="//docs.krat.es" more color>Krate ID</zi-link>
+            <zi-link bold href="//docs.krat.es" more color>Krate ID</zi-link>
           </p>
         </template>
       </zi-fieldset>

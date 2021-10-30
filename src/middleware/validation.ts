@@ -80,10 +80,18 @@ export const validators = {
     [Segments.BODY]: payloadValidator,
   }),
 
-  deleteData: celebrate({
+  deleteAllData: celebrate({
     [Segments.HEADERS]: apiKeyValidator,
     [Segments.PARAMS]: Joi.object().keys({
       krateId: krateValidator,
+    }),
+  }),
+
+  deleteRecordData: celebrate({
+    [Segments.HEADERS]: apiKeyValidator,
+    [Segments.PARAMS]: Joi.object().keys({
+      krateId: krateValidator,
+      recordId: recordValidator,
     }),
   }),
 }

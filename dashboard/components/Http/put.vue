@@ -38,7 +38,12 @@
     <!-- Footer -->
     <template #footer>
       <p></p>
-      <zi-button type="success" @click="sendRequest" auto :loading="loading"
+      <zi-button
+        :disabled="!requestParams.recordId"
+        type="success"
+        @click="sendRequest"
+        auto
+        :loading="loading"
         >Send
       </zi-button>
     </template></zi-fieldset
