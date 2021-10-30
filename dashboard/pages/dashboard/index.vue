@@ -25,6 +25,8 @@
                 autofocus="true"
                 v-model="newKrateName"
                 class="w-full mb-4"
+                :type="errorType"
+                :placeholder="errorType === 'danger' ? 'Name is required' : ''"
               >
               </zi-input>
             </div>
@@ -63,6 +65,7 @@ export default Vue.extend({
       plusCircle,
       addKratedialog: false,
       customKrateToggle: false,
+      errorType: 'primary',
       newKrateId: '',
       newKrateName: '',
     }
@@ -75,12 +78,16 @@ export default Vue.extend({
     },
 
     createNewKrate() {
-      this.$store.dispatch('krates/createNewKrate', {
-        krateId: this.newKrateId,
-        krateName: this.newKrateName,
-      })
-      this.addKratedialog = !this.addKratedialog
-      this.customKrateToggle = !this.customKrateToggle
+      if (this.newKrateName) {
+        this.$store.dispatch('krates/createNewKrate', {
+          krateId: this.newKrateId,
+          krateName: this.newKrateName,
+        })
+        this.addKratedialog = !this.addKratedialog
+        this.customKrateToggle = !this.customKrateToggle
+      } else {
+        this.errorType = 'danger'
+      }
     },
 
     generateKrateId() {
