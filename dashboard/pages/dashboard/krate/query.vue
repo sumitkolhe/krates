@@ -38,6 +38,7 @@
       <HttpGet v-if="selectedRequestType === 'GET'" />
       <HttpPost v-else-if="selectedRequestType === 'POST'" />
       <HttpPut v-else-if="selectedRequestType === 'PUT'" />
+      <HttpDelete v-else-if="selectedRequestType === 'DELETE'" />
 
       <HttpResponse />
     </div>
