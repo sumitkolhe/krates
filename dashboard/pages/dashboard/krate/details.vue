@@ -13,7 +13,8 @@
         <zi-snippet :text="krateId" type="lite"></zi-snippet>
         <template #footer>
           <p>
-            This is your personal krate ID and is used for storing your data.
+            Learn more about
+            <zi-link href="//docs.krat.es" more color>Krate ID</zi-link>
           </p>
         </template>
       </zi-fieldset>

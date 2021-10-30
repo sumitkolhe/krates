@@ -25,8 +25,10 @@
                 autofocus="true"
                 v-model="newKrateName"
                 class="w-full mb-4"
-                :type="errorType"
-                :placeholder="errorType === 'danger' ? 'Name is required' : ''"
+                :type="inputError.name"
+                :placeholder="
+                  inputError.name === 'danger' ? 'Name is required' : ''
+                "
               >
               </zi-input>
             </div>
@@ -36,6 +38,10 @@
                 :disabled="!customKrateToggle"
                 autofocus="true"
                 v-model="newKrateId"
+                :type="inputError.krate"
+                :placeholder="
+                  inputError.krate === 'danger' ? 'Krate ID is invalid' : ''
+                "
                 class="w-full"
               >
               </zi-input>
@@ -65,9 +71,13 @@ export default Vue.extend({
       plusCircle,
       addKratedialog: false,
       customKrateToggle: false,
-      errorType: 'primary',
+
       newKrateId: '',
       newKrateName: '',
+      inputError: {
+        name: 'primary',
+        krate: 'primary',
+      },
     }
   },
   computed: {},
@@ -78,16 +88,17 @@ export default Vue.extend({
     },
 
     createNewKrate() {
-      if (this.newKrateName) {
-        this.$store.dispatch('krates/createNewKrate', {
-          krateId: this.newKrateId,
-          krateName: this.newKrateName,
-        })
-        this.addKratedialog = !this.addKratedialog
-        this.customKrateToggle = !this.customKrateToggle
-      } else {
-        this.errorType = 'danger'
-      }
+      if (!this.newKrateName) return (this.inputError.name = 'danger')
+      if (this.newKrateId.trim().length < 20)
+        return (this.inputError.krate = 'danger')
+
+      this.$store.dispatch('krates/createNewKrate', {
+        krateId: this.newKrateId,
+        krateName: this.newKrateName,
+      })
+      this.customKrateToggle = false
+      this.newKrateName = ''
+      this.addKratedialog = !this.addKratedialog
     },
 
     generateKrateId() {
