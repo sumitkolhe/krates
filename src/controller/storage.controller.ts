@@ -19,10 +19,11 @@ export const getData: RequestHandler = async (req, res, next) => {
 
 export const setData: RequestHandler = async (req, res, next) => {
   try {
+    const { apiKey } = req
     const { krateId, collectionId } = req.params
     const data = req.body
 
-    const responseData = await StorageService.setData(krateId, collectionId, data)
+    const responseData = await StorageService.setData(krateId, collectionId, apiKey, data)
     res.json(responseData)
   } catch (error) {
     Logger.error(error.message)

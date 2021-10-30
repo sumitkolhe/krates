@@ -1,66 +1,76 @@
 import Joi from 'joi'
 import { celebrate, Segments } from 'celebrate'
 
+const apiKeyValidator = Joi.object()
+  .keys({
+    'x-api-key': Joi.string()
+      .optional()
+      .regex(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
+      .message('Invalid API key'),
+  })
+  .unknown()
+
+const krateValidator = Joi.string().trim().length(20).alphanum().required().messages({
+  'string.empty': 'Krate ID name cannot be empty',
+  'string.length': 'Krate ID should be 20 characters long',
+  'string.alphanum': 'Krate ID should alpha-numeric',
+})
+
+const collectionValidator = Joi.string().trim().min(1).max(16).alphanum().not('record').optional().messages({
+  'string.min': 'Collection ID should be at least 1 character long',
+  'string.max': 'Collection ID should be at max 16 characters long',
+  'string.alphanum': 'Collection ID should alpha-numeric',
+  'string.not': 'Collection ID is invalid',
+})
+
+const recordValidator = Joi.string().trim().length(24).alphanum().required().messages({
+  'string.empty': 'Record ID name cannot be empty',
+  'string.length': 'Record ID should be 20 characters long',
+  'string.alphanum': 'Record ID should alpha-numeric',
+})
+
+const payloadValidator = Joi.alternatives(
+  Joi.object().min(1).message('Empty object is not allowed.'),
+  Joi.array().min(1).message('Empty array is not allowed.')
+)
+
 export const validators = {
   getAllData: celebrate({
     [Segments.PARAMS]: Joi.object().keys({
-      krateId: Joi.string().trim().length(20).alphanum().required().messages({
-        'string.empty': 'Krate ID name cannot be empty',
-        'string.length': 'Krate ID should be 20 characters long',
-        'string.alphanum': 'Krate ID should alpha-numeric',
-      }),
-      collectionId: Joi.string().trim().min(1).max(16).not('record').optional().messages({
-        'string.min': 'Collection ID should be atleast 1 character long',
-        'string.max': 'Collection ID should be atleast 1 character long',
-        'string.not': 'Collection ID is invalid',
-      }),
+      krateId: krateValidator,
+      collectionId: collectionValidator,
     }),
   }),
 
   getRecordData: celebrate({
     [Segments.PARAMS]: Joi.object().keys({
-      krateId: Joi.string().trim().length(20).alphanum().required().messages({
-        'string.empty': 'Krate ID name cannot be empty',
-        'string.length': 'Krate ID should be 20 characters long',
-        'string.alphanum': 'Krate ID should alpha-numeric',
-      }),
-      recordId: Joi.string().trim().length(24).alphanum().required().messages({
-        'string.empty': 'Record ID name cannot be empty',
-        'string.length': 'Record ID should be 20 characters long',
-        'string.alphanum': 'Record ID should alpha-numeric',
-      }),
+      krateId: krateValidator,
+      recordId: recordValidator,
     }),
   }),
 
-  post: celebrate({
+  postData: celebrate({
+    [Segments.HEADERS]: apiKeyValidator,
     [Segments.PARAMS]: Joi.object().keys({
-      krateId: Joi.string().trim().length(20).alphanum().required().messages({
-        'string.empty': 'Krate ID name cannot be empty',
-        'string.length': 'Krate ID should be 20 characters long',
-        'string.alphanum': 'Krate ID should alpha-numeric',
-      }),
-      collectionId: Joi.string().trim().min(1).max(16).alphanum().optional().messages({
-        'string.min': 'Record ID name cannot be empty',
-        'string.max': 'Record ID should be 20 characters long',
-        'string.alphanum': 'Record ID should alpha-numeric',
-      }),
+      krateId: krateValidator,
+      collectionId: collectionValidator,
     }),
-    [Segments.BODY]: Joi.alternatives(Joi.object().min(1), Joi.array().min(1)),
+    [Segments.BODY]: payloadValidator,
   }),
 
-  put: celebrate({
+  putData: celebrate({
+    [Segments.HEADERS]: apiKeyValidator,
     [Segments.PARAMS]: Joi.object().keys({
-      krateId: Joi.string().trim().length(20).alphanum().required(),
-      recordId: Joi.string()
-        .trim()
-        .pattern(/^[0-9a-fA-F]{24}$/)
-        .message('Invalid record ID')
-        .required(),
+      krateId: krateValidator,
+      recordId: recordValidator,
     }),
+    [Segments.BODY]: payloadValidator,
   }),
-  delete: celebrate({
+
+  deleteData: celebrate({
+    [Segments.HEADERS]: apiKeyValidator,
     [Segments.PARAMS]: Joi.object().keys({
-      krateId: Joi.string().trim().length(20).alphanum().required(),
+      krateId: krateValidator,
     }),
   }),
 }

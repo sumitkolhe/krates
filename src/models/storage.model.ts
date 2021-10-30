@@ -4,6 +4,7 @@ export interface StorageDocument extends Document {
   krateId: string
   collectionId: string
   data: Record<string, unknown>
+  apiKey: string
   createdAt: Date
   updatedAt: Date
 }
@@ -21,6 +22,10 @@ const StorageSchema: Schema = new Schema(
     data: {
       type: Object,
       required: true,
+    },
+    apiKey: {
+      type: String,
+      required: false,
     },
   },
   { timestamps: true }

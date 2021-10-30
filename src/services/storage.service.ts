@@ -13,11 +13,17 @@ export class StorageService {
   }
 
   // Insert data into a krate/collection
-  static setData = async (krateId: string, collectionId: string, data: Krate): Promise<Krate[] | Krate> => {
+  static setData = async (
+    krateId: string,
+    collectionId: string,
+    apiKey: string | null,
+    data: Krate
+  ): Promise<Krate[] | Krate> => {
     // Insert all objects in DB
     const createRecord = async (dataObject: Krate): Promise<Krate> => {
       const newRecord = new StorageModel({
         krateId,
+        apiKey,
         ...(collectionId ? { collectionId } : {}),
         data: dataObject,
       })
@@ -35,6 +41,7 @@ export class StorageService {
 
     const newRecord = new StorageModel({
       krateId,
+      apiKey,
       ...(collectionId ? { collectionId } : {}),
       data,
     })
