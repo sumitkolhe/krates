@@ -31,7 +31,9 @@
         <p class="text-accent5 font-medium">PAYLOAD</p></zi-grid
       >
       <zi-grid :xs="24">
-        <codemirror :options="options" v-model="payload" />
+        <div class="border border-accent2 rounded-sm">
+          <codemirror :options="options" v-model="payload" />
+        </div>
       </zi-grid>
     </zi-grid>
 

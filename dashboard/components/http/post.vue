@@ -39,19 +39,15 @@
         <p class="text-accent5 font-medium">PAYLOAD</p></zi-grid
       >
       <zi-grid :xs="24">
-        <codemirror :options="options" v-model="payload" />
+        <div class="border border-accent2 rounded-sm">
+          <codemirror :options="options" v-model="payload" />
+        </div>
       </zi-grid>
     </zi-grid>
 
     <!-- Footer -->
     <template #footer>
       <p></p>
-      <!-- <zi-input
-            class="ml-2"
-            :placeholder="krateId"
-            prefix-label="https://krat.es/"
-            disabled
-          ></zi-input> -->
       <zi-button
         :disabled="!payload"
         type="success"
