@@ -131,6 +131,7 @@ export default Vue.extend({
       this.$store.dispatch('krates/createNewKrate', {
         krateId: this.newKrateId,
         krateName: this.newKrateName,
+        apiKey: this.newKrateApiKey,
       })
 
       this.customKrateToggle = false

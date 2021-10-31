@@ -7,45 +7,42 @@
     </div>
 
     <div class="max-w-5xl mx-auto my-12 md:px-2 px-4">
-      <zi-fieldset class="my-8">
-        <h3 class="text-lg font-medium pb-6">Krate ID</h3>
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+        <zi-fieldset>
+          <h3 class="text-lg font-medium pb-6">Krate ID</h3>
 
-        <zi-snippet :text="krateDetails.krateId" type="lite"></zi-snippet>
-        <template #footer>
-          <p>
-            Learn more about
-            <zi-link bold href="//docs.krat.es" more color>Krate ID</zi-link>
-          </p>
-        </template>
-      </zi-fieldset>
+          <zi-snippet :text="krateDetails.krateId" type="lite"></zi-snippet>
+          <template #footer>
+            <p>
+              Learn more about
+              <zi-link bold href="//docs.krat.es" more color>Krate ID</zi-link>
+            </p>
+          </template>
+        </zi-fieldset>
+        <zi-fieldset>
+          <h3 class="text-lg font-medium pb-6">API Key</h3>
 
-      <div class="grid md:grid-cols-3 gap-6 md:gap-8 my-8">
-        <zi-card hoverable>
-          <h3 class="text-lg font-medium mb-6">API Key</h3>
-          <zi-snippet :text="krateDetails.apiKey" type="lite"> </zi-snippet>
-        </zi-card>
-        <zi-card hoverable>
-          <h3 class="text-lg font-medium mb-6">Total Collections</h3>
           <zi-snippet
-            :text="`${krateDetails.totalCollections} collections`"
-            :copy="false"
+            :text="
+              krateDetails.apiKey
+                ? krateDetails.apiKey
+                : 'This krate is not protected'
+            "
+            :copy="krateDetails.apiKey !== undefined"
             type="lite"
-          >
-          </zi-snippet>
-        </zi-card>
-
-        <zi-card class="" hoverable>
-          <h3 class="text-lg font-medium mb-6">Created On</h3>
-          <zi-snippet
-            :text="`${krateDetails.createdAt}`"
-            :copy="false"
-            type="lite"
-          >
-          </zi-snippet>
-        </zi-card>
+          ></zi-snippet>
+          <template #footer>
+            <p>
+              Learn more about
+              <zi-link bold href="//docs.krat.es" more color
+                >Protected Krates</zi-link
+              >
+            </p>
+          </template>
+        </zi-fieldset>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      <div class="grid md:grid-cols-3 gap-6 md:gap-10 mt-10">
         <zi-card hoverable>
           <h3 class="text-lg font-medium mb-6">Krate Size</h3>
           <zi-snippet
@@ -57,7 +54,16 @@
           >
           </zi-snippet>
         </zi-card>
-        <zi-card class="" hoverable>
+        <zi-card hoverable>
+          <h3 class="text-lg font-medium mb-6">Total Collections</h3>
+          <zi-snippet
+            :text="`${krateDetails.totalCollections} collections`"
+            :copy="false"
+            type="lite"
+          >
+          </zi-snippet>
+        </zi-card>
+        <zi-card hoverable>
           <h3 class="text-lg font-medium mb-6">Total Records</h3>
           <zi-snippet
             :text="`${krateDetails.totalRecords} Records`"
@@ -66,7 +72,10 @@
           >
           </zi-snippet>
         </zi-card>
-        <zi-card class="" hoverable>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-10 mt-6 md:mt-10">
+        <zi-card hoverable>
           <h3 class="text-lg font-medium mb-6">Created On</h3>
           <zi-snippet
             :text="`${
@@ -74,6 +83,15 @@
                 ? new Date(krateDetails.createdAt).toString().split('G')[0]
                 : 'No records yet!'
             }`"
+            :copy="false"
+            type="lite"
+          >
+          </zi-snippet>
+        </zi-card>
+        <zi-card class="" hoverable>
+          <h3 class="text-lg font-medium mb-6">Updated On</h3>
+          <zi-snippet
+            :text="`${krateDetails.updatedAt}`"
             :copy="false"
             type="lite"
           >
@@ -107,9 +125,9 @@ export default Vue.extend({
     await this.$store.dispatch('request/getKrateStats', data.krateId)
     const stats = this.$store.getters['request/getKrateStats']
 
+    this.krateDetails = stats
     this.krateDetails.krateId = data.krateId
     this.krateDetails.apiKey = data.apiKey
-    this.krateDetails = stats
     console.log(this.krateDetails)
   },
 })
