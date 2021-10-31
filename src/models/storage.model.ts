@@ -31,4 +31,6 @@ const StorageSchema: Schema = new Schema(
   { timestamps: true }
 )
 
+StorageSchema.index({ krateId: 1, collectionId: 1 })
+
 export const StorageModel = model<StorageDocument>('krate', StorageSchema)
