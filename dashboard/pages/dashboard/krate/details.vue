@@ -91,7 +91,11 @@
         <zi-card class="" hoverable>
           <h3 class="text-lg font-medium mb-6">Updated On</h3>
           <zi-snippet
-            :text="`${krateDetails.updatedAt}`"
+            :text="`${
+              krateDetails.updatedAt
+                ? new Date(krateDetails.updatedAt).toString().split('G')[0]
+                : 'No records yet!'
+            }`"
             :copy="false"
             type="lite"
           >
@@ -122,13 +126,22 @@ export default Vue.extend({
 
   async mounted() {
     const data = this.$store.getters['krates/getSelectedKrate']
-    await this.$store.dispatch('request/getKrateStats', data.krateId)
+
+    try {
+      await this.$store.dispatch('request/getKrateStats', data.krateId)
+    } catch (error: any) {
+      ;(this as any).$Toast.show({
+        type: 'danger',
+        text: error.response.data.message || error,
+        duration: 5000,
+      })
+    }
+
     const stats = this.$store.getters['request/getKrateStats']
 
     this.krateDetails = stats
     this.krateDetails.krateId = data.krateId
     this.krateDetails.apiKey = data.apiKey
-    console.log(this.krateDetails)
   },
 })
 </script>

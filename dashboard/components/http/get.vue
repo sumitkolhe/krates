@@ -268,22 +268,15 @@ export default Vue.extend({
     async sendRequest() {
       try {
         this.loading = true
-        await this.$store
-          .dispatch('request/getKrateData', this.buildRequestUrl())
-          .catch((error) => {
-            this.loading = false
-            ;(this as any).$Toast.show({
-              type: 'danger',
-              text: error.response.data.message,
-              duration: 5000,
-            })
-          })
-
+        await this.$store.dispatch(
+          'request/getKrateData',
+          this.buildRequestUrl()
+        )
         this.loading = false
-      } catch (error) {
+      } catch (error: any) {
         ;(this as any).$Toast.show({
           type: 'danger',
-          text: error,
+          text: error.response.data.message || error,
           duration: 5000,
         })
         this.loading = false

@@ -46,19 +46,36 @@ export default Vue.extend({
     return {
       krateId: '',
       deleteKrateDialog: false,
+      krateDetails: {
+        krateId: '',
+        createdAt: '',
+        apiKey: '',
+        krateName: '',
+      },
     }
   },
 
   mounted() {
-    this.krateId = this.$store.getters['krates/getSelectedKrate'].krateId
+    this.krateDetails = this.$store.getters['krates/getSelectedKrate']
   },
 
   methods: {
     async deleteKrate() {
-      await this.$store.dispatch('request/deleteKrateData', {
-        requestUrl: this.krateId,
-      })
-      this.$router.push('/dashboard')
+      try {
+        await this.$store.dispatch('request/deleteKrateData', {
+          requestUrl: this.krateDetails.krateId,
+          headers: this.krateDetails.apiKey
+            ? { 'x-api-key': this.krateDetails.apiKey }
+            : '',
+        })
+        this.$router.push('/dashboard')
+      } catch (error: any) {
+        ;(this as any).$Toast.show({
+          type: 'danger',
+          text: error.response.data.message || error,
+          duration: 5000,
+        })
+      }
     },
   },
 })

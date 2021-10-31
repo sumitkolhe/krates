@@ -69,6 +69,12 @@ export default Vue.extend({
       requestParams: {
         recordId: '',
       },
+      krateDetails: {
+        krateId: '',
+        createdAt: '',
+        apiKey: '',
+        krateName: '',
+      },
     }
   },
   computed: {
@@ -101,32 +107,25 @@ export default Vue.extend({
 
   methods: {
     buildRequestUrl() {
-      const krateId = this.$store.getters['krates/getSelectedKrate'].krateId
-      return krateId + '/' + this.requestParams.recordId
+      this.krateDetails = this.$store.getters['krates/getSelectedKrate']
+      return this.krateDetails.krateId + '/' + this.requestParams.recordId
     },
 
     async sendRequest() {
       try {
         this.loading = true
-        await this.$store
-          .dispatch('request/putKrateData', {
-            requestUrl: this.buildRequestUrl(),
-            payload: JSON.parse(this.payload),
-          })
-          .catch((error) => {
-            this.loading = false
-            ;(this as any).$Toast.show({
-              type: 'danger',
-              text: error.response.data.message,
-              duration: 5000,
-            })
-          })
-
+        await this.$store.dispatch('request/putKrateData', {
+          requestUrl: this.buildRequestUrl(),
+          payload: JSON.parse(this.payload),
+          headers: this.krateDetails.apiKey
+            ? { 'x-api-key': this.krateDetails.apiKey }
+            : '',
+        })
         this.loading = false
-      } catch (error) {
+      } catch (error: any) {
         ;(this as any).$Toast.show({
           type: 'danger',
-          text: error,
+          text: error.response.data.message || error,
           duration: 5000,
         })
         this.loading = false

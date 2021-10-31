@@ -78,6 +78,12 @@ export default Vue.extend({
         recordId: '',
         query: '',
       },
+      krateDetails: {
+        krateId: '',
+        createdAt: '',
+        apiKey: '',
+        krateName: '',
+      },
     }
   },
 
@@ -97,8 +103,8 @@ export default Vue.extend({
     },
 
     buildRequestUrl() {
-      const krateId = this.$store.getters['krates/getSelectedKrate'].krateId
-      let url = krateId
+      this.krateDetails = this.$store.getters['krates/getSelectedKrate']
+      let url = this.krateDetails.krateId
       if (this.isRecord) {
         return `${url}/record/${this.requestParams.recordId}`
       } else {
@@ -109,24 +115,17 @@ export default Vue.extend({
     async sendRequest() {
       try {
         this.loading = true
-        await this.$store
-          .dispatch('request/deleteKrateData', {
-            requestUrl: this.buildRequestUrl(),
-          })
-          .catch((error) => {
-            this.loading = false
-            ;(this as any).$Toast.show({
-              type: 'danger',
-              text: error.response.data.message,
-              duration: 5000,
-            })
-          })
-
+        await this.$store.dispatch('request/deleteKrateData', {
+          requestUrl: this.buildRequestUrl(),
+          headers: this.krateDetails.apiKey
+            ? { 'x-api-key': this.krateDetails.apiKey }
+            : '',
+        })
         this.loading = false
-      } catch (error) {
+      } catch (error: any) {
         ;(this as any).$Toast.show({
           type: 'danger',
-          text: error,
+          text: error.response.data.message || error,
           duration: 5000,
         })
         this.loading = false

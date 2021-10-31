@@ -78,7 +78,7 @@
                 v-model="newKrateApiKey"
                 :type="inputError.apiKey"
                 :placeholder="
-                  inputError.apiKey === 'danger' ? 'Krate ID is invalid' : ''
+                  inputError.apiKey === 'danger' ? 'API key is invalid' : ''
                 "
                 class="w-full"
               >
@@ -123,20 +123,30 @@ export default Vue.extend({
       this.newKrateApiKey = this.generateApiKey()
     },
 
-    createNewKrate() {
+    async createNewKrate() {
       if (!this.newKrateName.trim()) return (this.inputError.name = 'danger')
       if (this.newKrateId.trim().length < 20)
         return (this.inputError.krate = 'danger')
+      if (this.newKrateApiKey.trim().length < 36)
+        return (this.inputError.apiKey = 'danger')
 
-      this.$store.dispatch('krates/createNewKrate', {
-        krateId: this.newKrateId,
-        krateName: this.newKrateName,
-        apiKey: this.newKrateApiKey,
-      })
-
-      this.customKrateToggle = false
-      this.newKrateName = ''
-      this.addKratedialog = !this.addKratedialog
+      try {
+        await this.$store.dispatch('krates/createNewKrate', {
+          krateId: this.newKrateId,
+          krateName: this.newKrateName,
+          apiKey: this.protectedKrateToggle ? this.newKrateApiKey : null,
+        })
+        this.customKrateToggle = false
+        this.protectedKrateToggle = false
+        this.newKrateName = ''
+        this.addKratedialog = !this.addKratedialog
+      } catch (error: any) {
+        ;(this as any).$Toast.show({
+          type: 'danger',
+          text: error.response.data.message || error,
+          duration: 5000,
+        })
+      }
     },
 
     generateKrateId() {

@@ -32,25 +32,31 @@ export const actions: ActionTree<RequestState, RootState> = {
     })
   },
 
-  setKrateData: async ({ commit }, { requestUrl, payload }) => {
-    await axiosBase.post(requestUrl, payload).then((response) => {
-      commit('setResponsePayload', response.data)
-    })
+  setKrateData: async ({ commit }, { requestUrl, payload, headers }) => {
+    await axiosBase
+      .post(requestUrl, payload, { headers: headers })
+      .then((response) => {
+        commit('setResponsePayload', response.data)
+      })
   },
 
-  putKrateData: async ({ commit }, { requestUrl, payload }) => {
-    await axiosBase.put(requestUrl, payload).then((response) => {
-      commit('setResponsePayload', response.data)
-    })
+  putKrateData: async ({ commit }, { requestUrl, payload, headers }) => {
+    await axiosBase
+      .put(requestUrl, payload, { headers: headers })
+      .then((response) => {
+        commit('setResponsePayload', response.data)
+      })
   },
 
-  deleteKrateData: async ({ commit }, { requestUrl }) => {
-    await axiosBase.delete(requestUrl).then((response) => {
-      commit('setResponsePayload', response.data)
+  deleteKrateData: async ({ commit }, { requestUrl, headers }) => {
+    await axiosBase
+      .delete(requestUrl, { headers: headers })
+      .then((response) => {
+        commit('setResponsePayload', response.data)
 
-      if (requestUrl.length === 20 && !requestUrl.includes('query'))
-        commit('krates/deleteKrate', requestUrl, { root: true })
-    })
+        if (requestUrl.length === 20 && !requestUrl.includes('query'))
+          commit('krates/deleteKrate', requestUrl, { root: true })
+      })
   },
 
   getKrateStats: async ({ commit }, krateId) => {
