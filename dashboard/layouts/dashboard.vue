@@ -2,7 +2,7 @@
   <div>
     <DashboardHeader />
     <div class="px-2">
-      <tabs
+      <CommonTabs
         :tabs="navigationItems"
         :currentTab="currentTab"
         :wrapper-class="`relative mx-auto max-w-5xl`"
@@ -22,11 +22,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Tabs from 'vue-tabs-with-active-line'
 export default Vue.extend({
-  components: {
-    Tabs,
-  },
   data() {
     return {
       navigationItems: [

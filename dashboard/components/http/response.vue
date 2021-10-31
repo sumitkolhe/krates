@@ -1,5 +1,5 @@
 <template>
-  <zi-fieldset class="mt-8 mb-12">
+  <zi-fieldset class="mt-8 mb-12" v-if="responsePayload">
     <div class="text-lg font-medium">Response</div>
     <client-only>
       <div

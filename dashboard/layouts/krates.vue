@@ -2,13 +2,9 @@
   <div>
     <DashboardHeader />
     <div class="px-2 md:px-0">
-      <tabs
+      <CommonTabs
         :tabs="navigationItems"
         :currentTab="currentTab"
-        :wrapper-class="`relative mx-auto max-w-5xl`"
-        :tab-class="`hover:bg-accent2 hover:rounded-md mx-2 my-2 p-2 text-sm`"
-        :tab-active-class="``"
-        :line-class="` border-b border-b-2 border-geist-foreground`"
         @onClick="handleClick"
       />
     </div>
@@ -22,17 +18,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Tabs from 'vue-tabs-with-active-line'
 export default Vue.extend({
   layout: 'dashboard',
-  components: {
-    Tabs,
-  },
   data() {
     return {
       navigationItems: [
         { title: 'Details', value: 'details' },
-        { title: 'Query', value: 'query' },
+        { title: 'Queries', value: 'query' },
         { title: 'Settings', value: 'settings' },
       ],
       currentTab: this.$route.fullPath.split('/')[3],
