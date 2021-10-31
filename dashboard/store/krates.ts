@@ -36,6 +36,7 @@ export const getters: GetterTree<KrateState, RootState> = {
   getAllKrates: (state) => {
     return state.allKrates
   },
+
   getSelectedKrate: (state) => {
     return state.selectedKrate
   },

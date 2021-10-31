@@ -31,6 +31,7 @@ export const actions: ActionTree<RequestState, RootState> = {
       commit('setResponsePayload', response.data)
     })
   },
+
   setKrateData: async ({ commit }, { requestUrl, payload }) => {
     await axiosBase.post(requestUrl, payload).then((response) => {
       commit('setResponsePayload', response.data)
@@ -71,9 +72,11 @@ export const getters: GetterTree<RequestState, RootState> = {
   getResponsePayload: (state) => {
     return state.responsePayload
   },
+
   getHealthStatus: (state) => {
     return state.health
   },
+
   getKrateStats: (state) => {
     return state.krateStats
   },
