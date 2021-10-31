@@ -10,7 +10,7 @@
       <zi-fieldset class="my-8">
         <h3 class="text-lg font-medium pb-6">Krate ID</h3>
 
-        <zi-snippet :text="krateId" type="lite"></zi-snippet>
+        <zi-snippet :text="krateDetails.krateId" type="lite"></zi-snippet>
         <template #footer>
           <p>
             Learn more about
@@ -19,11 +19,39 @@
         </template>
       </zi-fieldset>
 
-      <div class="grid md:grid-cols-3 gap-6 md:gap-12">
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8 my-8">
+        <zi-card hoverable>
+          <h3 class="text-lg font-medium mb-6">API Key</h3>
+          <zi-snippet :text="krateDetails.apiKey" type="lite"> </zi-snippet>
+        </zi-card>
+        <zi-card hoverable>
+          <h3 class="text-lg font-medium mb-6">Total Collections</h3>
+          <zi-snippet
+            :text="`${krateDetails.totalCollections} collections`"
+            :copy="false"
+            type="lite"
+          >
+          </zi-snippet>
+        </zi-card>
+
+        <zi-card class="" hoverable>
+          <h3 class="text-lg font-medium mb-6">Created On</h3>
+          <zi-snippet
+            :text="`${krateDetails.createdAt}`"
+            :copy="false"
+            type="lite"
+          >
+          </zi-snippet>
+        </zi-card>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
         <zi-card hoverable>
           <h3 class="text-lg font-medium mb-6">Krate Size</h3>
           <zi-snippet
-            :text="`${(krateStats.size / 1024).toString().slice(0, 5)} Kb`"
+            :text="`${(krateDetails.krateSize / 1024)
+              .toString()
+              .slice(0, 5)} Kb`"
             :copy="false"
             type="lite"
           >
@@ -32,16 +60,20 @@
         <zi-card class="" hoverable>
           <h3 class="text-lg font-medium mb-6">Total Records</h3>
           <zi-snippet
-            :text="`${krateStats.totalRecords} Records`"
+            :text="`${krateDetails.totalRecords} Records`"
             :copy="false"
             type="lite"
           >
           </zi-snippet>
         </zi-card>
         <zi-card class="" hoverable>
-          <h3 class="text-lg font-medium mb-6">Created At</h3>
+          <h3 class="text-lg font-medium mb-6">Created On</h3>
           <zi-snippet
-            :text="`${krateStats.createdAt}`"
+            :text="`${
+              krateDetails.createdAt
+                ? new Date(krateDetails.createdAt).toString().split('G')[0]
+                : 'No records yet!'
+            }`"
             :copy="false"
             type="lite"
           >
@@ -58,26 +90,27 @@ export default Vue.extend({
   layout: 'krates',
   data() {
     return {
-      krateId: '',
-      krateStats: {
-        size: 0,
+      krateDetails: {
+        krateId: '',
+        apiKey: '',
+        krateSize: 0,
         totalRecords: 0,
+        totalCollections: 0,
         createdAt: '',
+        updatedAt: '',
       },
     }
   },
 
   async mounted() {
-    this.krateId = this.$store.getters['krates/getSelectedKrate']
-    await this.$store.dispatch('request/getKrateStats', this.krateId)
+    const data = this.$store.getters['krates/getSelectedKrate']
+    await this.$store.dispatch('request/getKrateStats', data.krateId)
     const stats = this.$store.getters['request/getKrateStats']
 
-    this.krateStats.size = stats.krateSize
-    this.krateStats.totalRecords = stats.totalRecords
-    this.krateStats.createdAt =
-      stats.totalRecords > 0
-        ? new Date(stats.createdAt).toString().split('G')[0]
-        : 'No records yet!'
+    this.krateDetails.krateId = data.krateId
+    this.krateDetails.apiKey = data.apiKey
+    this.krateDetails = stats
+    console.log(this.krateDetails)
   },
 })
 </script>

@@ -1,5 +1,13 @@
+/* eslint-disable no-console */
 import { calculateObjectSize } from 'bson'
 import { StorageModel } from '@src/models/storage.model'
+import { Krate } from '@src/interfaces/krate'
+
+const getUniqueCollectionCount = (responseData: Krate[]): number => {
+  const uniqueCollections = [...new Set(responseData.map((item) => item.collectionId))]
+
+  return uniqueCollections.filter((item) => item).length
+}
 
 export class MetaService {
   static getMetaData = async (krateId: string): Promise<Record<string, unknown>> => {
@@ -7,8 +15,10 @@ export class MetaService {
 
     const stats = {
       krateSize: responseData ? calculateObjectSize(responseData) : 0,
+      totalCollections: responseData ? getUniqueCollectionCount(responseData) : 0,
       totalRecords: responseData ? responseData.length : 0,
       createdAt: responseData ? responseData[0]?.createdAt : null,
+      updatedAt: responseData ? responseData[0]?.updatedAt : null,
     }
     return stats
   }

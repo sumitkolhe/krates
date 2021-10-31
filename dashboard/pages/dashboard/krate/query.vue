@@ -57,7 +57,7 @@ export default Vue.extend({
   },
 
   created() {
-    this.krateId = this.$store.getters['krates/getSelectedKrate']
+    this.krateId = this.$store.getters['krates/getSelectedKrate'].krateId
   },
 })
 </script>

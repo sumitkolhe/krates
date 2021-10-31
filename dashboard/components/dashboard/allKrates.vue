@@ -18,7 +18,7 @@
         v-for="krate in allKrates"
         :key="krate.krateId"
         class="cursor-pointer"
-        @click="setSelectedKrate(krate.krateId)"
+        @click="setSelectedKrate(krate)"
       >
         <zi-fieldset class="text-accent8 hover:drop-shadow-xl">
           <span class="text-lg font-semibold">{{

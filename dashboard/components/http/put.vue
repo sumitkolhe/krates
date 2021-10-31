@@ -101,7 +101,7 @@ export default Vue.extend({
 
   methods: {
     buildRequestUrl() {
-      const krateId = this.$store.getters['krates/getSelectedKrate']
+      const krateId = this.$store.getters['krates/getSelectedKrate'].krateId
       return krateId + '/' + this.requestParams.recordId
     },
 

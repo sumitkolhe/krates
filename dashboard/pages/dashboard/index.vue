@@ -17,9 +17,9 @@
           v-model="addKratedialog"
           :beforeDone="createNewKrate"
         >
-          <zi-fieldset>
-            <h3 class="pb-6">Add Krate</h3>
-            <div>
+          <zi-card>
+            <h4 class="pb-6">Add Krate</h4>
+            <div class="-mt-4">
               <zi-input
                 prefix-label="Krate Name"
                 autofocus="true"
@@ -31,6 +31,14 @@
                 "
               >
               </zi-input>
+            </div>
+            <div class="flex flex-row flex-grow mt-4 mb-2">
+              <div class="font-medium mr-4 flex-grow">
+                <zi-tag> Custom ID</zi-tag>
+              </div>
+              <div>
+                <zi-toggle class="ml-4" v-model="customKrateToggle"></zi-toggle>
+              </div>
             </div>
             <div>
               <zi-input
@@ -47,11 +55,36 @@
               </zi-input>
             </div>
 
-            <template v-slot:footer>
-              <span class="font-medium mr-4">Custom ID</span>
-              <zi-toggle class="ml-4" v-model="customKrateToggle"></zi-toggle>
-            </template>
-          </zi-fieldset>
+            <div class="flex flex-row flex-grow mt-6 mb-2">
+              <div class="font-medium mr-4 flex-grow">
+                <div class="flex flex-row">
+                  <zi-tag> Protected Krate</zi-tag>
+                  <zi-link href="//docs.krat.es" pure class="m-1 ml-2">
+                    <question-circle-icon />
+                  </zi-link>
+                </div>
+              </div>
+              <div>
+                <zi-toggle
+                  class="ml-4"
+                  v-model="protectedKrateToggle"
+                ></zi-toggle>
+              </div>
+            </div>
+            <div>
+              <zi-input
+                :disabled="!protectedKrateToggle"
+                autofocus="true"
+                v-model="newKrateApiKey"
+                :type="inputError.apiKey"
+                :placeholder="
+                  inputError.apiKey === 'danger' ? 'Krate ID is invalid' : ''
+                "
+                class="w-full"
+              >
+              </zi-input>
+            </div>
+          </zi-card>
         </zi-dialog>
       </div>
     </div>
@@ -71,24 +104,27 @@ export default Vue.extend({
       plusCircle,
       addKratedialog: false,
       customKrateToggle: false,
-
+      protectedKrateToggle: false,
       newKrateId: '',
       newKrateName: '',
+      newKrateApiKey: '',
       inputError: {
         name: 'primary',
         krate: 'primary',
+        apiKey: 'primary',
       },
     }
   },
-  computed: {},
+
   methods: {
     openNewKrateDialog() {
       this.addKratedialog = !this.addKratedialog
       this.newKrateId = this.generateKrateId()
+      this.newKrateApiKey = this.generateApiKey()
     },
 
     createNewKrate() {
-      if (!this.newKrateName) return (this.inputError.name = 'danger')
+      if (!this.newKrateName.trim()) return (this.inputError.name = 'danger')
       if (this.newKrateId.trim().length < 20)
         return (this.inputError.krate = 'danger')
 
@@ -96,6 +132,7 @@ export default Vue.extend({
         krateId: this.newKrateId,
         krateName: this.newKrateName,
       })
+
       this.customKrateToggle = false
       this.newKrateName = ''
       this.addKratedialog = !this.addKratedialog
@@ -109,6 +146,19 @@ export default Vue.extend({
         return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
       })
       return id.toString()
+    },
+
+    generateApiKey(): string {
+      // @ts-ignore
+      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(
+        /[018]/g,
+        (c: number) =>
+          // tslint:disable-next-line:no-bitwise
+          (
+            c ^
+            (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+          ).toString(16)
+      )
     },
   },
 })

@@ -5,7 +5,7 @@ export type KrateState = ReturnType<typeof state>
 
 export const state = () => ({
   allKrates: Array(),
-  selectedKrate: String,
+  selectedKrate: Object(),
 })
 
 export const mutations: MutationTree<KrateState> = {
