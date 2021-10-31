@@ -25,9 +25,9 @@ export const mutations: MutationTree<KrateState> = {
 }
 
 export const actions: ActionTree<KrateState, RootState> = {
-  createNewKrate: ({ commit }, { krateId, krateName }) => {
+  createNewKrate: ({ commit }, { krateId, krateName, apiKey }) => {
     const createdAt = Date.now()
-    const krate = { krateId, krateName, createdAt }
+    const krate = { krateId, krateName, apiKey, createdAt }
     commit('setKrate', krate)
   },
 }

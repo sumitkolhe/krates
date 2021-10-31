@@ -55,7 +55,9 @@ export default Vue.extend({
 
   methods: {
     async deleteKrate() {
-      await this.$store.dispatch('request/deleteKrateData', this.krateId)
+      await this.$store.dispatch('request/deleteKrateData', {
+        requestUrl: this.krateId,
+      })
       this.$router.push('/dashboard')
     },
   },

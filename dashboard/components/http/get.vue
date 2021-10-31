@@ -231,7 +231,6 @@ export default Vue.extend({
       if (label === 'By Record') {
         this.isRecord = true
         this.$store.commit('request/setResponsePayload', undefined)
-        this.$store.commit('request/setResponsePayload', undefined)
       } else {
         this.isRecord = false
       }

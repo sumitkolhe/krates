@@ -9,7 +9,9 @@
       class="py-2"
     >
       <zi-grid :xs="24" :sm="4">
-        <p class="text-accent5 font-medium">RECORD ID</p></zi-grid
+        <p class="text-accent5 font-medium">
+          <zi-tag>RECORD ID</zi-tag>
+        </p></zi-grid
       >
       <zi-grid :xs="24" :sm="20">
         <zi-textarea
@@ -28,7 +30,9 @@
       class="py-2"
     >
       <zi-grid :xs="24">
-        <p class="text-accent5 font-medium">PAYLOAD</p></zi-grid
+        <p class="text-accent5 font-medium">
+          <zi-tag>PAYLOAD</zi-tag>
+        </p></zi-grid
       >
       <zi-grid :xs="24">
         <div class="border border-accent2 rounded-sm">

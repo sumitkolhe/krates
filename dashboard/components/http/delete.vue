@@ -1,30 +1,62 @@
 <template>
   <!-- POST   -->
   <zi-fieldset class="mt-8">
-    <zi-grid
-      container
-      align-items="center"
-      :spacing="3"
-      justify="center"
-      class="py-2"
-    >
-      <zi-grid :xs="24" :sm="4">
-        <p class="text-accent5 font-medium">RECORD ID</p></zi-grid
-      >
-      <zi-grid :xs="24" :sm="20">
-        <zi-textarea
-          placeholder="Record ID"
-          :rows="1"
-          v-model="requestParams.recordId"
-        ></zi-textarea
-      ></zi-grid>
-    </zi-grid>
+    <zi-switcher @label-selected="switcher">
+      <!-- FILTER QUERY -->
+      <zi-switcher-item active label="By Filter">
+        <zi-grid
+          container
+          align-items="center"
+          :spacing="3"
+          justify="center"
+          class="py-2"
+        >
+          <zi-grid :xs="24" :sm="4" class="sm:order-none order-first">
+            <p class="text-accent5 font-medium">
+              <zi-tag>FILTER</zi-tag>
+            </p></zi-grid
+          >
+
+          <zi-grid :xs="24" :sm="20" class="sm:order-none order-last">
+            <zi-textarea
+              placeholder="Filter query"
+              :rows="1"
+              v-model="requestParams.query"
+            ></zi-textarea>
+          </zi-grid>
+        </zi-grid>
+      </zi-switcher-item>
+
+      <zi-switcher-item label="By Record">
+        <!-- RECORD -->
+        <zi-grid
+          container
+          align-items="center"
+          :spacing="3"
+          justify="center"
+          class="py-2"
+        >
+          <zi-grid :xs="24" :sm="4">
+            <p class="text-accent5 font-medium">
+              <zi-tag>RECORD ID</zi-tag>
+            </p></zi-grid
+          >
+          <zi-grid :xs="24" :sm="20">
+            <zi-textarea
+              placeholder="Record ID"
+              :rows="1"
+              v-model="requestParams.recordId"
+            ></zi-textarea
+          ></zi-grid>
+        </zi-grid>
+      </zi-switcher-item>
+    </zi-switcher>
 
     <!-- Footer -->
     <template #footer>
       <p></p>
       <zi-button
-        :disabled="!requestParams.recordId"
+        :disabled="isRecord ? !requestParams.recordId : !requestParams.query"
         type="success"
         @click="sendRequest"
         auto
@@ -36,17 +68,15 @@
 </template>
 
 <script lang="ts">
-import e from 'express'
 import Vue from 'vue'
 export default Vue.extend({
-  props: {
-    id: String,
-  },
   data() {
     return {
       loading: false,
+      isRecord: false,
       requestParams: {
         recordId: '',
+        query: '',
       },
     }
   },
@@ -57,9 +87,23 @@ export default Vue.extend({
   },
 
   methods: {
+    switcher(label: string) {
+      if (label === 'By Record') {
+        this.isRecord = true
+        this.$store.commit('request/setResponsePayload', undefined)
+      } else {
+        this.isRecord = false
+      }
+    },
+
     buildRequestUrl() {
       const krateId = this.$store.getters['krates/getSelectedKrate']
-      return krateId + '/record/' + this.requestParams.recordId
+      let url = krateId
+      if (this.isRecord) {
+        return `${url}/record/${this.requestParams.recordId}`
+      } else {
+        return `${url}/?query=${this.requestParams.query}`
+      }
     },
 
     async sendRequest() {

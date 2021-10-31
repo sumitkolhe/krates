@@ -45,8 +45,11 @@ export const actions: ActionTree<RequestState, RootState> = {
   },
 
   deleteKrateData: async ({ commit }, { requestUrl }) => {
-    const response = await axiosBase.delete(requestUrl).then((response) => {
+    await axiosBase.delete(requestUrl).then((response) => {
       commit('setResponsePayload', response.data)
+
+      if (requestUrl.length === 20 && !requestUrl.includes('query'))
+        commit('krates/deleteKrate', requestUrl, { root: true })
     })
   },
 

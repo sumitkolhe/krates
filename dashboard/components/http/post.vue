@@ -9,7 +9,9 @@
       class="py-2"
     >
       <zi-grid :xs="12" :sm="6" :md="4" class="sm:order-none order-first">
-        <p class="text-accent5 font-medium">COLLECTION ID</p></zi-grid
+        <p class="text-accent5 font-medium">
+          <zi-tag> COLLECTION ID </zi-tag>
+        </p></zi-grid
       >
       <zi-grid :xs="24" :sm="12" :md="14" class="sm:order-none order-last">
         <zi-textarea
@@ -36,7 +38,9 @@
       class="py-2"
     >
       <zi-grid :xs="24">
-        <p class="text-accent5 font-medium">PAYLOAD</p></zi-grid
+        <p class="text-accent5 font-medium">
+          <zi-tag>PAYLOAD</zi-tag>
+        </p></zi-grid
       >
       <zi-grid :xs="24">
         <div class="border border-accent2 rounded-sm">
@@ -107,11 +111,9 @@ export default Vue.extend({
   methods: {
     buildRequestUrl() {
       const krateId = this.$store.getters['krates/getSelectedKrate']
-
       let url = krateId
       if (this.toggleCollection && this.requestParams.collectionId)
         url += '/' + this.requestParams.collectionId
-
       return url
     },
     async sendRequest() {
