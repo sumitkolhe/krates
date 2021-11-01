@@ -1,61 +1,31 @@
 <template>
   <div class="w-full z-30 bg-accent1 border-t border-accent2">
     <footer class="max-w-5xl mx-auto">
-      <div
-        class="
-          flex flex-col
-          md:flex-row
-          justify-between
-          items-center
-          border-b border-accent2
-          gap-4
-          py-8
-        "
-      >
-        <nav
-          class="
-            flex flex-wrap
-            justify-center
-            md:justify-start
-            gap-x-4 gap-y-2
-            md:gap-6
-          "
+      <div class="border-b border-accent2 py-8">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <NuxtLink
             to="/"
-            class="
-              inline-flex
-              cursor-pointer
-              items-center
-              justify-center
-              border border-transparent
-              rounded
-              leading-snug
-              transition
-              duration-150
-              ease-in-out
-              text-accent8
-            "
+            class="inline-flex cursor-pointer text-accent8"
             aria-label="logo"
           >
             <package-icon class="h-10 w-10" />
-
             <p class="text-2xl font-bold pl-4">Krates</p>
           </NuxtLink>
-        </nav>
 
-        <div class="flex gap-4">
           <CommonTheme />
         </div>
       </div>
+
       <div
         class="
           flex flex-col
           md:flex-row
           justify-between
           items-center
-          gap-4
           py-10
+          gap-4
         "
       >
         <div class="text-accent6 text-sm text-center py-2">
