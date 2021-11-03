@@ -127,7 +127,12 @@ export default Vue.extend({
       if (!this.newKrateName.trim()) return (this.inputError.name = 'danger')
       if (this.newKrateId.trim().length < 20)
         return (this.inputError.krate = 'danger')
-      if (this.newKrateApiKey.trim().length < 36)
+      if (
+        this.newKrateApiKey.trim().length < 36 ||
+        !this.newKrateApiKey.match(
+          '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+        )
+      )
         return (this.inputError.apiKey = 'danger')
 
       try {
@@ -139,6 +144,7 @@ export default Vue.extend({
         this.customKrateToggle = false
         this.protectedKrateToggle = false
         this.newKrateName = ''
+        this.newKrateApiKey = ''
         this.addKratedialog = !this.addKratedialog
       } catch (error: any) {
         ;(this as any).$Toast.show({
