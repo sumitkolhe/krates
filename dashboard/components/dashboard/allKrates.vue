@@ -41,21 +41,22 @@
             :copy="false"
             :text="krate.krateId"
             class="mt-8 mb-4"
+            type="lite"
             >{{
           }}</zi-snippet>
           <template v-slot:footer>
-            <span
-              class="
-                text-sm
-                float-right
-                border border-accent2
-                py-1
-                px-2
-                rounded-md
-              "
+            <p></p>
+
+            <zi-tooltip
+              v-if="krate.apiKey"
+              content="Protected Krate"
+              placement="left"
             >
-              0 Kb</span
-            >
+              <shield-icon
+            /></zi-tooltip>
+            <zi-tooltip content="Un-protected Krate" placement="left" v-else>
+              <shield-off-icon
+            /></zi-tooltip>
           </template>
         </zi-fieldset>
       </div>
