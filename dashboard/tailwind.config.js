@@ -1,5 +1,3 @@
-const colors = require('tailwindcss/colors')
-
 module.exports = {
   mode: 'jit',
   purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
@@ -10,7 +8,6 @@ module.exports = {
         sans: ['Inter'],
       },
       colors: {
-        gray: colors.trueGray,
         'geist-background': 'var(--geist-background)',
         'geist-foreground': 'var(--geist-foreground)',
         accent1: 'var(--accent1)',

@@ -12,6 +12,10 @@
           <h3 class="text-lg font-medium pb-6">Krate ID</h3>
 
           <zi-snippet :text="krateDetails.krateId" type="lite"></zi-snippet>
+
+          <!-- <div class="animate-pulse flex space-x-4" v-else>
+            <div class="bg-accent1 border w-full h-10 rounded-md"></div>
+          </div> -->
           <template #footer>
             <p>
               Learn more about
@@ -113,8 +117,8 @@ export default Vue.extend({
   data() {
     return {
       krateDetails: {
-        krateId: '',
-        apiKey: '',
+        krateId: 'loading...',
+        apiKey: 'loading...',
         krateSize: 0,
         totalRecords: 0,
         totalCollections: 0,
@@ -127,6 +131,11 @@ export default Vue.extend({
   async mounted() {
     const data = this.$store.getters['krates/getSelectedKrate']
 
+    const { krateId, apiKey } = data
+
+    this.krateDetails.krateId = krateId
+    this.krateDetails.apiKey = apiKey
+
     try {
       await this.$store.dispatch('request/getKrateStats', data.krateId)
     } catch (error: any) {
@@ -138,10 +147,15 @@ export default Vue.extend({
     }
 
     const stats = this.$store.getters['request/getKrateStats']
+    this.krateDetails = { krateId, apiKey, ...stats }
 
-    this.krateDetails = stats
-    this.krateDetails.krateId = data.krateId
-    this.krateDetails.apiKey = data.apiKey
+    // this.krateDetails.krateSize = stats.krateSize
+    // this.krateDetails.totalRecords = stats.totalRecords
+    // this.krateDetails.totalCollections = stats.totalCollections
+    // this.krateDetails.createdAt = stats.createdAt
+    // this.krateDetails.updatedAt = stats.updatedAt
+
+    console.log(this.krateDetails)
   },
 })
 </script>
