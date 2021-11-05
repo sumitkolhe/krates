@@ -27,7 +27,7 @@ export default Vue.extend({
     return {
       navigationItems: [
         { title: 'Overview', value: '/' },
-        { title: 'Settings', value: 'settings' },
+        // { title: 'Settings', value: 'settings' },
       ],
       currentTab: '/',
     }

@@ -55,7 +55,6 @@
                 >Github</zi-link
               ></zi-popover-item
             >
-            <!-- <zi-popover-item> <CommonTheme /></zi-popover-item> -->
           </template>
         </zi-popover>
       </div>

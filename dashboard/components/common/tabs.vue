@@ -41,6 +41,7 @@ export default {
       default: undefined,
     },
   },
+
   watch: {
     currentTab(newCurrentTab) {
       if (this.newTab === newCurrentTab) return
@@ -51,11 +52,13 @@ export default {
       this.moveActiveLine(this.currentTab)
     },
   },
+
   data: () => ({
     activeLineWidth: 0,
     activeLineOffset: 0,
     newTab: '',
   }),
+
   methods: {
     handleClick(value) {
       this.$emit('onClick', value)
@@ -74,6 +77,7 @@ export default {
       this.activeLineOffset = element.offsetLeft
     },
   },
+
   mounted() {
     this.moveActiveLine(this.currentTab)
     this.newTab = this.currentTab

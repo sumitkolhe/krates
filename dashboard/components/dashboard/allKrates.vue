@@ -1,18 +1,8 @@
 <template>
-  <div>
+  <div class="max-w-5xl mx-auto px-4 my-12">
     <div
       v-show="allKrates.length > 0"
-      class="
-        grid
-        md:grid-cols-3
-        max-w-5xl
-        mx-auto
-        grid-cols-auto
-        sm:grid-cols-2
-        gap-10
-        px-4
-        my-12
-      "
+      class="grid md:grid-cols-3 grid-cols-auto sm:grid-cols-2 gap-8 md:gap-10"
     >
       <div
         v-for="krate in allKrates"
@@ -42,21 +32,34 @@
             :text="krate.krateId"
             class="mt-8 mb-4"
             type="lite"
-            >{{
-          }}</zi-snippet>
-          <template v-slot:footer>
-            <p></p>
+          ></zi-snippet>
 
-            <zi-tooltip
-              v-if="krate.apiKey"
-              content="Protected Krate"
-              placement="left"
-            >
-              <shield-icon
-            /></zi-tooltip>
-            <zi-tooltip content="Un-protected Krate" placement="left" v-else>
-              <shield-off-icon
-            /></zi-tooltip>
+          <template v-slot:footer>
+            <p class="h-6"></p>
+
+            <span>
+              <zi-tooltip
+                v-if="krate.apiKey"
+                content="Protected Krate"
+                placement="left"
+              >
+                <!-- <shield-icon class="h-5 w-5" color="blue"
+              /> -->
+
+                <zi-dot
+                  type="success"
+                  class="border rounded-full p-1 border-blue-500"
+                ></zi-dot>
+              </zi-tooltip>
+              <zi-tooltip content="Public Krate" placement="left" v-else>
+                <!-- <shield-off-icon class="h-5 w-5" color="#f55"
+              /> -->
+                <zi-dot
+                  type="warning"
+                  class="border rounded-full p-1 border-yellow-400"
+                ></zi-dot>
+              </zi-tooltip>
+            </span>
           </template>
         </zi-fieldset>
       </div>
