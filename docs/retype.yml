@@ -11,6 +11,11 @@ links:
     link: https://docs.krat.es
 
 edit:
-  repo: 'https://github.com/sumitkolhe/krates/blob/main/docs/'
+  repo: 'https://github.com/sumitkolhe/krates'
+
+server:
+  port: 8000
+  host: 0.0.0.0
+
 footer:
   copyright: '© Copyright {{ year }}. [Krates](https://krat.es) All rights reserved.'
