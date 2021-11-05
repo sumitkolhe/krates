@@ -6,7 +6,7 @@ import { globalConfig } from '@src/config/global'
 
 const payloadSizeCalculator = (payload: Record<string, unknown>) => {
   if (calculateObjectSize(payload) < globalConfig.maxPayloadSize) return payload
-  throw CreateError.BadRequest('Payload size exceeded')
+  throw CreateError.BadRequest(`Max allowed payload size is ${globalConfig.maxPayloadSize}`)
 }
 
 const apiKeyValidator = Joi.object()
