@@ -12,47 +12,46 @@
       <!-- Vertical line -->
       <div class="absolute z-0 h-full border" style="left: 50%"></div>
 
-      <div class="grid md:grid-cols-2 gap-4 md:gap-12 z-20 relative">
+      <div class="grid md:grid-cols-2 gap-2 md:gap-10 z-20 relative">
         <!-- left timeline 1 -->
         <zi-card>
-          <h3 class="mb-3 font-bold text-xl">Get your unique krate ID</h3>
+          <h3 class="mb-3 font-bold text-xl">Create a new Krate</h3>
           <p class="text-sm leading-snug tracking-wide">
-            Visit Krates Dashboard and get your unique krate ID. This krate ID
-            will acts as your personal namespace for storing data.
+            Visit the dashboard and create a new krate. Each krate gets an
+            unique ID.
           </p>
         </zi-card>
-        <div class="hidden md:block"></div>
+        <div class="md:block"></div>
 
         <!-- right timeline -->
-        <div class="hidden md:block"></div>
+        <div class="md:block"></div>
         <zi-card>
-          <h3 class="mb-3 font-bold text-xl">Make Requests</h3>
+          <h3 class="mb-3 font-bold text-xl">Store your data</h3>
           <p class="text-sm leading-snug tracking-wide">
-            Make standard HTTP requests suchs as POST, PUT and PATCH to store
-            your data in the root of your namespace or a seperate collection if
-            you wish.
+            Make HTTP network requests suchs as POST to store data in the krate
+            or a separate collection.
           </p>
         </zi-card>
-
+        <div class="md:hidden"></div>
         <!-- left timeline -->
+        <div class="md:hidden"></div>
         <zi-card>
-          <h3 class="mb-3 font-bold text-xl">Query your data</h3>
+          <h3 class="mb-3 font-bold text-xl">Modify your data</h3>
           <p class="text-sm leading-snug tracking-wide">
-            Query your data using GET request from the root of your namespace or
-            a seperate collection. Add sort, filter, limit to your queries to
-            get sanitized data back.
+            Modify or delete data using PUT or DELETE requests on a krate, a
+            collection or even an individual record.
           </p>
         </zi-card>
-        <div class="hidden md:block"></div>
+        <div class="md:block"></div>
 
         <!-- right timeline -->
 
-        <div class="hidden md:block"></div>
+        <div class="md:block"></div>
         <zi-card>
-          <h3 class="mb-3 font-bold text-xl">Modify your Data</h3>
+          <h3 class="mb-3 font-bold text-xl">Retreive your Data</h3>
           <p class="text-sm font-medium leading-snug tracking-wide">
-            Modify or delete your records using PUT, PATCH or DELETE requests on
-            a namespace, a collection or even an individual record.
+            Query your data using GET request from a krate or a collection. Add
+            sort, filter, limit to query the data.
           </p>
         </zi-card>
       </div>
