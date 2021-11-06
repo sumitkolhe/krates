@@ -63,7 +63,7 @@ export const createRequestQuery = (req: Request): KrateOptions => {
 
   queryOptions.krateId = krateId
   requestOptions.skip = Number(skip) || 0
-  requestOptions.limit = Number(limit) || 1000
+  requestOptions.limit = Number(limit) || 25
 
   requestOptions.query = queryOptions
 
