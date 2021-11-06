@@ -11,6 +11,8 @@ Everything stored inside a Krate can be uniquely identified by its **Record ID**
 
 ## Properties
 
-- [!badge size="xl" text="Krate ID"]
+||| [!badge variant="contrast" size="xl" text="Krate ID"]
 
-  A Krate ID should always be a 20 character alpha-numeric string.
+- **Length** : 20 characters
+- **Type** : Alpha Numeric
+  |||
