@@ -1,4 +1,4 @@
-# Concepts
+# Overview
 
 Krates, in its essence is a JSON storage service where clients can store, modify and retrieve data.
 
