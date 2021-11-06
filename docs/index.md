@@ -6,9 +6,9 @@ label: Introduction
 
 # Introduction
 
-Krates is a free, minimalist and open-source HTTP based JSON storage service. It is meant to be easy to use and easy to self-host.
+[Krates](https://krat.es) is a free, minimalist and open-source HTTP based JSON storage service. It is meant to be easy to use and easy to self-host.
 
-### Why use Krates?
+## Why use Krates?
 
 Its hard for developers to have to setup a storage service everytime they want to prototype or test out a new project. Existing solutions either rely on big corporations that crave user data, or require a non-trivial amount of time and expertise to setup a new server for every new project.
 
@@ -16,7 +16,7 @@ We want to help developers focus on the frontend, and we don’t want the challe
 
 The backend can often be universal, generic and resuable. Krates believes in allowing anyone to store their data as easily as possible or just self host a storage service solution with a click of a button!
 
-### Use cases
+## Use cases
 
 - A generic Web database: JSON store for mobile and Web apps, games, or IoT.
 
@@ -28,7 +28,7 @@ The backend can often be universal, generic and resuable. Krates believes in all
 
 - Data collection: easily collect structured data from surveys, forms, analytics.
 
-### How does krates work?
+## How does krates work?
 
 Krates is an HTTP API in front of a NoSQL database. Interactions with the server are simple HTTP requests rather than complex queries. It is meant to be minimalist and simple.
 

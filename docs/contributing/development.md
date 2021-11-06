@@ -23,7 +23,7 @@ This would clone the whole repository onto your machine.
 
 ## Run locally
 
-The repository contains frontend and backend code as well. You will need to be run them separately.
+The repository contains frontend and backend code as well. You will need to run them separately.
 
 ### Backend server
 
