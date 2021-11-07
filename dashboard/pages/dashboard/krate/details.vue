@@ -13,13 +13,16 @@
 
           <zi-snippet :text="krateDetails.krateId" type="lite"></zi-snippet>
 
-          <!-- <div class="animate-pulse flex space-x-4" v-else>
-            <div class="bg-accent1 border w-full h-10 rounded-md"></div>
-          </div> -->
           <template #footer>
             <p>
               Learn more about
-              <zi-link bold href="//docs.krat.es" more color>Krate ID</zi-link>
+              <zi-link
+                bold
+                href="//docs.krat.es/concepts/krate/#properties"
+                more
+                color
+                >Krate ID</zi-link
+              >
             </p>
           </template>
         </zi-fieldset>
@@ -38,7 +41,11 @@
           <template #footer>
             <p>
               Learn more about
-              <zi-link bold href="//docs.krat.es" more color
+              <zi-link
+                bold
+                href="//docs.krat.es/concepts/protected-krate/#protected-krate"
+                more
+                color
                 >Protected Krates</zi-link
               >
             </p>

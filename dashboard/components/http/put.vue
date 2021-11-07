@@ -43,7 +43,12 @@
 
     <!-- Footer -->
     <template #footer>
-      <p></p>
+      <p>
+        Learn more about
+        <zi-link bold href="//docs.krat.es/api/update" more color
+          >Updating records</zi-link
+        >
+      </p>
       <zi-button
         :disabled="!requestParams.recordId"
         type="success"

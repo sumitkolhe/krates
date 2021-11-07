@@ -51,7 +51,12 @@
 
     <!-- Footer -->
     <template #footer>
-      <p></p>
+      <p>
+        Learn more about
+        <zi-link bold href="//docs.krat.es/api/create" more color
+          >Creating records</zi-link
+        >
+      </p>
       <zi-button
         :disabled="!payload"
         type="success"

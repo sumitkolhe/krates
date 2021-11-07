@@ -189,7 +189,23 @@
 
     <!-- Footer -->
     <template #footer>
-      <p></p>
+      <p v-if="!isRecord">
+        Learn more about
+        <zi-link bold href="//docs.krat.es/api/read/#filter-records" more color
+          >Filter and query</zi-link
+        >
+      </p>
+
+      <p v-else>
+        Learn more about
+        <zi-link
+          bold
+          href="//docs.krat.es/api/read/#reading-a-specific-record"
+          more
+          color
+          >By record</zi-link
+        >
+      </p>
 
       <zi-button type="success" @click="sendRequest" auto :loading="loading"
         >Send

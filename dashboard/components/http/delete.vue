@@ -54,7 +54,27 @@
 
     <!-- Footer -->
     <template #footer>
-      <p></p>
+      <p v-if="!isRecord">
+        Learn more about
+        <zi-link
+          bold
+          href="//docs.krat.es/api/delete/#deleting-filtered-data"
+          more
+          color
+          >Delete by filter</zi-link
+        >
+      </p>
+
+      <p v-else>
+        Learn more about
+        <zi-link
+          bold
+          href="//docs.krat.es/api/delete/#deleting-a-single-record"
+          more
+          color
+          >Delete by record ID</zi-link
+        >
+      </p>
       <zi-button
         :disabled="isRecord ? !requestParams.recordId : !requestParams.query"
         type="success"
