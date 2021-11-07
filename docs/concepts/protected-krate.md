@@ -68,3 +68,9 @@ You cannot change a public krate to protected or vice versa.
 - **Length** : 20 characters
 - **Type** : Alpha Numeric
   |||
+
+  ||| [!badge variant="contrast" size="xl" text="Data"]
+
+- **Schema** : Undefined
+- **Type** : Any
+  |||
