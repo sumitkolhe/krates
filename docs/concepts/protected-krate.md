@@ -17,14 +17,6 @@ Protected Krates are similar to regular krates, the only difference being that p
 Reading records is open and does not need API-KEY.
 !!!
 
-### Properties
-
-||| [!badge variant="contrast" size="xl" text="Krate ID"]
-
-- **Length** : 20 characters
-- **Type** : Alpha Numeric
-  |||
-
 ## How to create a protected krate?
 
 Protected Krates can be created by passing the `x-api-key` header where the value is a valid **GUID/UUID**.
@@ -68,3 +60,11 @@ Write requests include `POST` , `DELETE` , `PUT`
 !!! warning
 You cannot change a public krate to protected or vice versa.
 !!!
+
+### Properties
+
+||| [!badge variant="contrast" size="xl" text="Krate ID"]
+
+- **Length** : 20 characters
+- **Type** : Alpha Numeric
+  |||
