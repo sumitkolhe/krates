@@ -15,5 +15,6 @@ In order to establish a structure for the API and storage hierarchy, krates intr
 > Each kind of object manipulated by Krates have a unique identifier assigned to them.
 
 [!ref icon="archive"](../concepts/krate.md)
+[!ref icon="shield-lock"](../concepts/protected-krate.md)
 [!ref icon="stack"](../concepts/collection.md)
 [!ref icon="note"](../concepts/record.md)

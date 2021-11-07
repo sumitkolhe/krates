@@ -174,5 +174,10 @@ https://krat.es/demokrate12345abcdef?query=name:Tony%20Stark,age:>30,aka:Iron*&l
 ```
 
 ```sh
-https://krat.es/demokrate12345abcdef?query=age:%3C=30&limit=1
+https://krat.es/demokrate12345abcdef?query=age:=30&limit=1
 ```
+
+!!!
+Some symbols used in query might get URL encoded when directly used in browsers, so the URL might look different but it would work the same.
+
+!!!
