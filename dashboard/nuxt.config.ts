@@ -16,6 +16,8 @@ const NuxtAppConfig: NuxtConfig = {
         name: 'description',
         content: 'A free HTTP based JSON storage service ',
       },
+      { hid: 'og:title', name: 'og:title', content: 'Krates' },
+      // { hid: 'og:image', name: 'og:image', content:  },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
