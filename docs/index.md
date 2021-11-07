@@ -1,10 +1,11 @@
 ---
 order: 100
 icon: home
-label: Introduction
 ---
 
 # Introduction
+
+![](../assets/banner.png)
 
 [Krates](https://krat.es) is a free, minimalist and open-source HTTP based JSON storage service. It is meant to be easy to use and easy to self-host.
 
