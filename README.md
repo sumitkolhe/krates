@@ -4,8 +4,10 @@
 <br>
 <h2><b>Krates</b>
 </h2>
-<p >A free HTTP based JSON storage service</p>
+<b>A free HTTP based JSON storage service</b>
+<br>
 
+<p>Krates is a free, minimalist and open-source HTTP based JSON storage service. It is meant to be easy to use and easy to self-host. It lets you store, read & modify JSON data over HTTP APIs for FREE.</p>
 ![GitHub repo size](https://img.shields.io/github/repo-size/sumitkolhe/krates?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/sumitkolhe/krates?style=flat-square)
 
@@ -84,40 +86,6 @@ npm run dev
 ```
 
 > This will start the backend server on port `3000`
-
-## Production Build
-
-To create a production build and serve it -
-
-### Backend build
-
-Create a production ready build
-
-```bash
-cd krates
-npm run build
-```
-
-Serve the build
-
-```bash
-npm run start
-```
-
-### Frontend build
-
-Create a production ready build
-
-```bash
-cd krates/dashboard
-npm run build
-```
-
-Serve the build
-
-```bash
-npm run start
-```
 
 ## ✍️ Authors
 
