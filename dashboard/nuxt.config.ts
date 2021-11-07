@@ -25,7 +25,6 @@ const NuxtAppConfig: NuxtConfig = {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
 
       {
