@@ -59,7 +59,11 @@
               <div class="font-medium mr-4 flex-grow">
                 <div class="flex flex-row">
                   <zi-tag> Protected Krate</zi-tag>
-                  <zi-link href="//docs.krat.es" pure class="m-1 ml-2">
+                  <zi-link
+                    href="//docs.krat.es/concepts/protected-krate/"
+                    pure
+                    class="m-1 ml-2"
+                  >
                     <question-circle-icon />
                   </zi-link>
                 </div>
