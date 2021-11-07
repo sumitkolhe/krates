@@ -1,11 +1,11 @@
 <div align="center">
-<img src="./dashboard/static/logo.svg" width="120"/>
+<img src="./logo.svg" width="120"/>
 <br>
 <br>
 <h2><b>Krates</b>
 </h2>
 <p >A free HTTP based JSON storage service</p>
-]
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/sumitkolhe/krates?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/sumitkolhe/krates?style=flat-square)
 
