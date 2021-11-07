@@ -10,11 +10,14 @@
       </div>
 
       <!-- Vertical line -->
-      <div class="absolute z-0 h-full border" style="left: 50%"></div>
+      <div
+        class="absolute z-0 h-full border border-accent2"
+        style="left: 50%"
+      ></div>
 
       <div class="grid md:grid-cols-2 gap-2 md:gap-10 z-20 relative">
         <!-- left timeline 1 -->
-        <zi-card>
+        <zi-card hoverable>
           <h3 class="mb-3 font-bold text-xl">Create a new Krate</h3>
           <p class="text-sm leading-snug tracking-wide">
             Visit the dashboard and create a new krate. Each krate gets an
@@ -25,7 +28,7 @@
 
         <!-- right timeline -->
         <div class="md:block"></div>
-        <zi-card>
+        <zi-card hoverable>
           <h3 class="mb-3 font-bold text-xl">Store your data</h3>
           <p class="text-sm leading-snug tracking-wide">
             Make HTTP network requests suchs as POST to store data in the krate
@@ -35,7 +38,7 @@
         <div class="md:hidden"></div>
         <!-- left timeline -->
         <div class="md:hidden"></div>
-        <zi-card>
+        <zi-card hoverable>
           <h3 class="mb-3 font-bold text-xl">Modify your data</h3>
           <p class="text-sm leading-snug tracking-wide">
             Modify or delete data using PUT or DELETE requests on a krate, a
@@ -47,7 +50,7 @@
         <!-- right timeline -->
 
         <div class="md:block"></div>
-        <zi-card>
+        <zi-card hoverable>
           <h3 class="mb-3 font-bold text-xl">Retreive your Data</h3>
           <p class="text-sm font-medium leading-snug tracking-wide">
             Query your data using GET request from a krate or a collection. Add
