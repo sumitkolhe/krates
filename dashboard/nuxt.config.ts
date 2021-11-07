@@ -20,7 +20,7 @@ const NuxtAppConfig: NuxtConfig = {
       {
         hid: 'og:image',
         name: 'og:image',
-        content: 'https://app.krat.es/preview.png',
+        content: '/preview.png',
       },
       { name: 'format-detection', content: 'telephone=no' },
     ],
