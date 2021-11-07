@@ -28,17 +28,14 @@ curl -X DELETE 'https://krat.es/demokrate12345abcdef/record/61865154a0b2f9c31e61
 
 +++
 
-## Deleting the whole krate
+## Deleting filtered data
 
-For deleting the whole krate, pass in the krate ID.
+To delete using a filter pass the filters in `query` param. For example of query values see [Query Examples](../API/read.md#query)
 
-!!! danger
-This operation will delete all the data in the krate, it is recommended to always use [protected krates](../concepts/protected-krate.md) for sensitive data to avoid unwanted data manipulation.
-!!!
 +++ Request
 
 ```bash
-curl -X DELETE 'https://krat.es/demokrate12345abcdef/' \
+curl -X DELETE 'https://krat.es/demokrate12345abcdef/?query=name:Tony*' \
 
 ```
 
@@ -53,14 +50,17 @@ curl -X DELETE 'https://krat.es/demokrate12345abcdef/' \
 
 +++
 
-## Deleting filtered data
+## Deleting the whole krate
 
-To delete using a filter pass the filters in `query` param. For example of query values see [Query Examples](../API/read.md#query)
+For deleting the whole krate, pass in the krate ID.
 
+!!! danger
+This operation will delete all the data in the krate, it is recommended to always use [protected krates](../concepts/protected-krate.md) for sensitive data to avoid unwanted data manipulation.
+!!!
 +++ Request
 
 ```bash
-curl -X DELETE 'https://krat.es/demokrate12345abcdef/?query=name:Tony*' \
+curl -X DELETE 'https://krat.es/demokrate12345abcdef/' \
 
 ```
 
