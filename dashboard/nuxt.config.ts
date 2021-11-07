@@ -17,7 +17,11 @@ const NuxtAppConfig: NuxtConfig = {
         content: 'A free HTTP based JSON storage service ',
       },
       { hid: 'og:title', name: 'og:title', content: 'Krates' },
-      // { hid: 'og:image', name: 'og:image', content:  },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: 'https://app.krat.es/preview.png',
+      },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
