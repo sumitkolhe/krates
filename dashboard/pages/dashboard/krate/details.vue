@@ -141,21 +141,13 @@ export default Vue.extend({
     } catch (error: any) {
       ;(this as any).$Toast.show({
         type: 'danger',
-        text: error.response.data.message || error,
+        text: error?.response?.data?.message || error,
         duration: 5000,
       })
     }
 
     const stats = this.$store.getters['request/getKrateStats']
     this.krateDetails = { krateId, apiKey, ...stats }
-
-    // this.krateDetails.krateSize = stats.krateSize
-    // this.krateDetails.totalRecords = stats.totalRecords
-    // this.krateDetails.totalCollections = stats.totalCollections
-    // this.krateDetails.createdAt = stats.createdAt
-    // this.krateDetails.updatedAt = stats.updatedAt
-
-    console.log(this.krateDetails)
   },
 })
 </script>

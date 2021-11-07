@@ -149,7 +149,7 @@ export default Vue.extend({
       } catch (error: any) {
         ;(this as any).$Toast.show({
           type: 'danger',
-          text: error.response.data.message || error,
+          text: error?.response?.data?.message || error,
           duration: 5000,
         })
       }
