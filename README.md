@@ -1,10 +1,6 @@
-<div align="center">
-<img src="./logo.svg" width="120"/>
-<br>
-<br>
-<h2>Krates
-</h2>
-<p>Krates is a free HTTP based JSON storage service. It is meant to be easy to use and easy to self-host. It lets you store, read & modify JSON data over HTTP APIs for FREE.</p>
+# ![Krates](./logo.svg | width=100) Krates
+
+Krates is a free HTTP based JSON storage service. It is meant to be easy to use and easy to self-host. It lets you store, read & modify JSON data over HTTP APIs for FREE.
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/sumitkolhe/krates?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/sumitkolhe/krates?style=flat-square)
@@ -25,7 +21,9 @@
 
 ## Documentation
 
-Check out the docs at - https://docs.krat.es
+- Dashboard - <https://app.krat.es>
+
+- Check out the docs at - <https://docs.krat.es>
 
 ## Local Setup
 
