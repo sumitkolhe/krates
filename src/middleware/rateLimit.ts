@@ -1,11 +1,11 @@
 import { RateLimiterRedis, RateLimiterRes } from 'rate-limiter-flexible'
 import { RequestHandler } from 'express'
-import { createClient } from 'redis'
+import Redis from 'ioredis'
 import { CreateError } from '@src/middleware/errorHandler'
 import { redisConfig } from '@src/config/database'
 import { globalConfig } from '@src/config/global'
 
-const redisClient = createClient(redisConfig)
+const redisClient = new Redis(redisConfig)
 
 const rateLimiter = new RateLimiterRedis({
   storeClient: redisClient,
