@@ -129,7 +129,10 @@ export default Vue.extend({
 
     async createNewKrate() {
       if (!this.newKrateName.trim()) return (this.inputError.name = 'danger')
-      if (this.newKrateId.trim().length < 20)
+      if (
+        this.newKrateId.trim().length !== 20 ||
+        !this.newKrateId.trim().match(/^[a-zA-Z0-9]+$/)
+      )
         return (this.inputError.krate = 'danger')
       if (
         this.newKrateApiKey.trim().length < 36 ||
