@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { RequestHandler } from 'express'
 import { Logger } from '@src/utils/logger'
 import { globalConstants } from '@src/constants'
