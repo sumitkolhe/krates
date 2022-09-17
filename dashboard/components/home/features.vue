@@ -79,7 +79,7 @@ export default Vue.extend({
             'Use krates with a backend server or directly from the browser.',
         },
         {
-          title: 'Host Your Own Instance',
+          title: 'Self-Hostable',
           description:
             'Use Krates as a free service or host your own instance.',
         },
@@ -88,7 +88,7 @@ export default Vue.extend({
         //   description: ' Supports all data formats that MongoDB supports.',
         // },
         {
-          title: 'Protected Krates',
+          title: 'Secure',
           description: 'Protect your krates from unauthorized access.',
         },
       ],
