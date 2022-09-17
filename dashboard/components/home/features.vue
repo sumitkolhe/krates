@@ -79,7 +79,7 @@ export default Vue.extend({
             'Use krates with a backend server or directly from the browser.',
         },
         {
-          title: 'Host your own instance',
+          title: 'Host Your Own Instance',
           description:
             'Use Krates as a free service or host your own instance.',
         },
