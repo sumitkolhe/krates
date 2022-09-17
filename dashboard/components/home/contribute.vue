@@ -27,8 +27,7 @@
             >
               open-source
             </span>
-
-            , if you like it please leave a star on github.
+            . If you like it, please leave a star on Github.
           </p>
 
           <p
