@@ -98,7 +98,7 @@ export default Vue.extend({
         // },
         {
           title: 'Protected Krates',
-          description: 'Protect you krates from unauthorized access.',
+          description: 'Protect your krates from unauthorized access.',
         },
       ],
     }
