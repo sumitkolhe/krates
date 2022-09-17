@@ -52,7 +52,7 @@
         <div class="md:block"></div>
         <zi-card hoverable>
           <h3 class="mb-3 font-bold text-xl">Retreive your Data</h3>
-          <p class="text-sm font-medium leading-snug tracking-wide">
+          <p class="text-sm leading-snug tracking-wide">
             Query your data with a GET request on a krate or a collection. Add
             sort, filter, and limit operations to enhance your query.
           </p>
