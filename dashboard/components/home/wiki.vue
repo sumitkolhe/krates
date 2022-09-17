@@ -20,7 +20,7 @@
         <zi-card hoverable>
           <h3 class="mb-3 font-bold text-xl">Create a new Krate</h3>
           <p class="text-sm leading-snug tracking-wide">
-            Visit the dashboard and create a new krate. Each krate gets an
+            Visit the dashboard and create a new krate. Each krate gets a
             unique ID.
           </p>
         </zi-card>
