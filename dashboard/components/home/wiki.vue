@@ -5,7 +5,7 @@
         <h2 class="text-4xl mb-4 font-bold">How does Krates work?</h2>
         <p class="text-lg sm:text-xl text-accent4">
           Krates provides a REST API that you can use to make requests and store
-          your JSON based data easily.
+          your JSON-based data easily.
         </p>
       </div>
 
