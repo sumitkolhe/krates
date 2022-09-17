@@ -85,7 +85,7 @@ Start the frontend server by running
 npm run dev
 ```
 
-> This will start the backend server on port `3000`
+> This will start the frontend server on port `3000`
 
 ## ✍️ Authors
 
