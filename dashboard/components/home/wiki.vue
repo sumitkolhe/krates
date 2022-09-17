@@ -31,7 +31,7 @@
         <zi-card hoverable>
           <h3 class="mb-3 font-bold text-xl">Store your data</h3>
           <p class="text-sm leading-snug tracking-wide">
-            Make HTTP network requests suchs as POST to store data in the krate
+            Make HTTP network requests (such as POST) to store data in a krate
             or a separate collection.
           </p>
         </zi-card>
