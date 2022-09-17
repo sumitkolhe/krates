@@ -53,8 +53,8 @@
         <zi-card hoverable>
           <h3 class="mb-3 font-bold text-xl">Retreive your Data</h3>
           <p class="text-sm font-medium leading-snug tracking-wide">
-            Query your data using GET request from a krate or a collection. Add
-            sort, filter, limit to query the data.
+            Query your data with GET request on a krate or a collection. Add
+            sort, filter, and limit to enhance your query.
           </p>
         </zi-card>
       </div>
