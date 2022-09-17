@@ -76,7 +76,7 @@ export default Vue.extend({
         },
         {
           title: 'Free',
-          description: 'Krates is completely free to use and always will be',
+          description: 'Krates is completely free to use and always will be.',
         },
         {
           title: 'Lightning Fast',
