@@ -42,7 +42,7 @@
           <h3 class="mb-3 font-bold text-xl">Modify your data</h3>
           <p class="text-sm leading-snug tracking-wide">
             Modify or delete data using PUT or DELETE requests on a krate, a
-            collection or even an individual record.
+            collection, or even an individual record.
           </p>
         </zi-card>
         <div class="md:block"></div>
