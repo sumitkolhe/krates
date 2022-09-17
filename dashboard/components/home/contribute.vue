@@ -27,15 +27,14 @@
             >
               open-source
             </span>
-
-            , if you like it please leave a star on github.
+            . If you like it, please leave a star on Github.
           </p>
 
           <p
             class="text-lg sm:text-xl text-gray-600 mb-8 text-accent4"
             data-aos="zoom-y-out"
           >
-            If you'd like to contribute to Krates feel free to raise a PR.
+            If you'd like to contribute to Krates, feel free to raise a PR.
           </p>
 
           <div>
