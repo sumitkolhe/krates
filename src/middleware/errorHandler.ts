@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import { isCelebrateError } from 'celebrate'
 import { ErrorRequestHandler } from 'express'
-import { globalConstants } from '@src/constants'
+import { globalConstants } from '../constants'
 
 export class CreateError extends Error {
   public status: number

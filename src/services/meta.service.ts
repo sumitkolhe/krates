@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
 import { calculateObjectSize } from 'bson'
-import { StorageModel } from '@src/models/storage.model'
-import { Krate } from '@src/interfaces/krate'
+import { StorageModel } from '../models/storage.model'
+import { Krate } from '../interfaces/krate'
 
 const getUniqueCollectionCount = (responseData: Krate[]): number => {
   const uniqueCollections = [...new Set(responseData.map((item) => item.collectionId))]

@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express'
-import { StorageModel } from '@src/models/storage.model'
-import { CreateError } from '@src/middleware/errorHandler'
+import { StorageModel } from '../models/storage.model'
+import { CreateError } from './errorHandler'
 
 export const authenticateRequest: RequestHandler = async (req, res, next): Promise<void> => {
   try {

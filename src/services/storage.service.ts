@@ -1,7 +1,7 @@
-import { Krate, KrateOptions } from '@src/interfaces/krate'
-import { CreateError } from '@src/middleware/errorHandler'
-import { StorageModel } from '@src/models/storage.model'
-import { sanitizeResponse } from '@src/utils/sanitizeResponse'
+import { Krate, KrateOptions } from '../interfaces/krate'
+import { CreateError } from '../middleware/errorHandler'
+import { StorageModel } from '../models/storage.model'
+import { sanitizeResponse } from '../utils/sanitizeResponse'
 
 export class StorageService {
   // Get all data from a krate/collection

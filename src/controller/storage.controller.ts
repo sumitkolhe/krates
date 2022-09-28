@@ -1,9 +1,9 @@
 import { RequestHandler } from 'express'
-import { Logger } from '@src/utils/logger'
-import { globalConstants } from '@src/constants'
-import { StorageService } from '@src/services/storage.service'
-import { createRequestQuery } from '@src/utils/query'
-import { MetaService } from '@src/services/meta.service'
+import { Logger } from '../utils/logger'
+import { globalConstants } from '../constants'
+import { StorageService } from '../services/storage.service'
+import { createRequestQuery } from '../utils/query'
+import { MetaService } from '../services/meta.service'
 
 export const getData: RequestHandler = async (req, res, next) => {
   try {

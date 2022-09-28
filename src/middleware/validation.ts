@@ -1,8 +1,8 @@
 import Joi from 'joi'
 import { celebrate, Segments } from 'celebrate'
 import { calculateObjectSize } from 'bson'
-import { CreateError } from '@src/middleware/errorHandler'
-import { globalConfig } from '@src/config/global'
+import { CreateError } from './errorHandler'
+import { globalConfig } from '../config/global'
 
 const payloadSizeCalculator = (payload: Record<string, unknown>) => {
   if (calculateObjectSize(payload) < globalConfig.maxPayloadSize) return payload

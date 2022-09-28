@@ -1,7 +1,7 @@
 import dotenv from 'dotenv-safe'
-import { expressConfig } from '@src/config/express'
-import { Logger } from '@src/utils/logger'
-import { createApp } from '@src/app'
+import { expressConfig } from './config/express'
+import { Logger } from './utils/logger'
+import { createApp } from './app'
 
 dotenv.config({ allowEmptyValues: true })
 

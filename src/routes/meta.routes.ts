@@ -1,5 +1,5 @@
 import express, { Router } from 'express'
-import { getMetaData } from '@src/controller/storage.controller'
+import { getMetaData } from '../controller/storage.controller'
 
 export const metaRouter: Router = express.Router()
 

@@ -1,10 +1,10 @@
 import dotenv from 'dotenv-safe'
 import express, { Application } from 'express'
 import cors from 'cors'
-import { parentRouter } from '@src/routes'
-import { CreateError, HandleError } from '@src/middleware/errorHandler'
-import { morganMiddleware } from '@src/middleware/morgan'
-import { connectDatabase } from '@src/helpers/connectDatabase'
+import { parentRouter } from './routes'
+import { CreateError, HandleError } from './middleware/errorHandler'
+import { morganMiddleware } from './middleware/morgan'
+import { connectDatabase } from './helpers/connectDatabase'
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace

@@ -1,5 +1,5 @@
 import { Request } from 'express'
-import { KrateOptions } from '@src/interfaces/krate'
+import { KrateOptions } from '../interfaces/krate'
 
 export const sanitizeQuery = (requestQuery: string): string => {
   const sanitizedQuery = Object()

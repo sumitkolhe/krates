@@ -1,4 +1,4 @@
-import { Krate } from '@src/interfaces/krate'
+import { Krate } from '../interfaces/krate'
 
 export const sanitizeResponse = (data: Krate[] | Krate): Krate[] | Krate => {
   if (Array.isArray(data)) {

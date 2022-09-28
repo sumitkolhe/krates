@@ -1,8 +1,8 @@
 import express, { Router } from 'express'
-import { validators } from '@src/middleware/validation'
-import { deleteData, getData, putData, setData } from '@src/controller/storage.controller'
-import { rateLimit } from '@src/middleware/rateLimit'
-import { authenticateRequest } from '@src/middleware/authentication'
+import { validators } from '../middleware/validation'
+import { deleteData, getData, putData, setData } from '../controller/storage.controller'
+import { rateLimit } from '../middleware/rateLimit'
+import { authenticateRequest } from '../middleware/authentication'
 
 export const krateRouter: Router = express.Router()
 

@@ -1,6 +1,6 @@
 import express, { Router } from 'express'
-import { krateRouter } from '@src/routes/krate.routes'
-import { metaRouter } from '@src/routes/meta.routes'
+import { krateRouter } from './krate.routes'
+import { metaRouter } from './meta.routes'
 
 export const parentRouter: Router = express.Router()
 

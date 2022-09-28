@@ -8,8 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
-    "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/server.js",
-    "build": "tsc -p tsconfig.prod.json",
+    "start": "cross-env NODE_ENV=production node -r ts-node/register/transpile-only ./dist/src/server.js",
+    "build": "cross-env NODE_ENV=production tsc -p tsconfig.prod.json",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
