@@ -8,11 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
-    "start": "cross-env NODE_ENV=production node -r ts-node/register/transpile-only ./dist/src/server.js",
-    "build": "cross-env NODE_ENV=production tsc -p tsconfig.prod.json",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "start": " node -r ts-node/register/transpile-only ./dist/src/server.js",
+    "build": "tsc -p tsconfig.prod.json",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
   },
@@ -30,10 +27,8 @@
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.4.7",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
-    "ts-jest": "^27.1.2",
     "typescript": "^4.5.4"
   },
   "dependencies": {
