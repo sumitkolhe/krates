@@ -1,6 +1,6 @@
-import dotenv from 'dotenv-safe'
+import dotenv from 'dotenv'
 
-dotenv.config({ allowEmptyValues: true })
+dotenv.config()
 
 export const globalConfig = {
   rateLimitPoints: process.env.RATE_LIMIT_POINTS ? Number(process.env.RATE_LIMIT_POINTS) : 20,

@@ -1,9 +1,9 @@
-import dotenv from 'dotenv-safe'
+import dotenv from 'dotenv'
 import { expressConfig } from './config/express'
 import { Logger } from './utils/logger'
 import { createApp } from './app'
 
-dotenv.config({ allowEmptyValues: true })
+dotenv.config()
 
 const { serverPort } = expressConfig
 

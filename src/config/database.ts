@@ -1,6 +1,6 @@
-import dotenv from 'dotenv-safe'
+import dotenv from 'dotenv'
 
-dotenv.config({ allowEmptyValues: true })
+dotenv.config()
 
 export const mongoConfig = {
   databaseName: process.env.DB_NAME ? process.env.DB_NAME : 'krates_dev',

@@ -1,6 +1,6 @@
-import dotenv from 'dotenv-safe'
+import dotenv from 'dotenv'
 
-dotenv.config({ allowEmptyValues: true })
+dotenv.config()
 const isDev = process.env.NODE_ENV !== 'production'
 
 export const expressConfig = {

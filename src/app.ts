@@ -1,4 +1,4 @@
-import dotenv from 'dotenv-safe'
+import dotenv from 'dotenv'
 import express, { Application } from 'express'
 import cors from 'cors'
 import { parentRouter } from './routes'
@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-dotenv.config({ allowEmptyValues: true })
+dotenv.config()
 
 export const createApp = async (): Promise<Application> => {
   const app: Application = express()
