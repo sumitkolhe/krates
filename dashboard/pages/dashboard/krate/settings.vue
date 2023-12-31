@@ -66,7 +66,7 @@ export default Vue.extend({
           requestUrl: this.krateDetails.krateId,
           headers: this.krateDetails.apiKey
             ? { 'x-api-key': this.krateDetails.apiKey }
-            : '',
+            : {},
         })
         this.$router.push('/dashboard')
       } catch (error: any) {
